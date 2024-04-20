@@ -31,25 +31,27 @@ def create_tables(cursor):
 
 def generate_doctors(cursor, num_doctors):
     faker = Faker()
+    doctors = []
     for _ in range(num_doctors):
         name = faker.name()
         specialization = faker.job()
-        cursor.execute(
-            "INSERT INTO doctors (name, specialization) VALUES (?, ?)",
-            (name, specialization),
-        )
+        doctors.append((name, specialization))
+    cursor.executemany(
+        "INSERT INTO doctors (name, specialization) VALUES (?, ?)", doctors
+    )
 
 
 def generate_patients(cursor, num_patients, num_doctors):
     faker = Faker()
+    patients = []
     for _ in range(num_patients):
         name = faker.name()
         age = random.randint(0, 100)
         doctor_id = random.randint(1, num_doctors) if num_doctors > 0 else None
-        cursor.execute(
-            "INSERT INTO patients (name, age, doctor_id) VALUES (?, ?, ?)",
-            (name, age, doctor_id),
-        )
+        patients.append((name, age, doctor_id))
+    cursor.executemany(
+        "INSERT INTO patients (name, age, doctor_id) VALUES (?, ?, ?)", patients
+    )
 
 
 def main(num_doctors, num_patients):
@@ -65,11 +67,19 @@ def main(num_doctors, num_patients):
     create_tables(cursor)
 
     # Generate random data for doctors and patients
-    generate_doctors(cursor, num_doctors)
-    generate_patients(cursor, num_patients, num_doctors)
+    page_size = 100_000
+    for x in range(0, num_doctors, page_size):
+        print(f"Doctors {x/num_doctors: .5%}")
+        temp = min(page_size, num_doctors - x)
+        generate_doctors(cursor, temp)
+        connection.commit()
+    for x in range(0, num_patients, page_size):
+        print(f"Patients {x/num_patients: .5%}")
+        temp = min(page_size, num_patients - x)
+        generate_patients(cursor, temp, num_doctors)
+        connection.commit()
 
     # Commit changes and close connection
-    connection.commit()
     connection.close()
 
 
