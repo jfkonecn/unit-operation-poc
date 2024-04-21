@@ -30,18 +30,26 @@ def get_just_doctors_at_once(page: int, page_size: int):
 
 
 def get_patients_by_doctor_ids(ids):
+    def get_chunks(lst, chunk_size):
+        for i in range(0, len(lst), chunk_size):
+            yield lst[i : i + chunk_size]
+
     connection = create_connection()
 
     cursor = connection.cursor()
 
-    query = f"""
-    SELECT p.doctor_id, p.name, p.age
-    FROM patients p
-    WHERE doctor_id IN ({','.join('?'*len(ids))})
-    """
-    cursor.execute(query, ids)
+    rows = []
 
-    rows = cursor.fetchall()
+    for chunk in get_chunks(ids, 100_000):
+        query = f"""
+        SELECT p.doctor_id, p.name, p.age
+        FROM patients p
+        WHERE doctor_id IN ({','.join('?'*len(chunk))})
+        """
+        cursor.execute(query, chunk)
+        for row in cursor:
+            rows.append(row)
+
     connection.close()
     return rows
 
