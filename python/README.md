@@ -12,4 +12,6 @@ pip install -r requirements.txt
 
 ```py
 pytest -vs | egrep main.py
+# One at a time
+pytest -vs -k test_get_one_row_at_a_time | egrep main.py
 ```
