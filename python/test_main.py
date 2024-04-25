@@ -11,6 +11,7 @@ from tabulate import tabulate
 
 # https://docs.python.org/3/library/tracemalloc.html
 # https://www.fugue.co/blog/diagnosing-and-fixing-memory-leaks-in-python.html
+# https://d3-graph-gallery.com/graph/scatter_basic.html
 
 
 def display_top(snapshot, key_type="lineno"):
