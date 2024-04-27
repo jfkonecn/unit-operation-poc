@@ -1,10 +1,10 @@
-import * as d3 from "d3";
+import { select } from "d3";
 import { JSDOM } from "jsdom";
 import * as fs from "fs";
 
-const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
+const dom = new JSDOM(`<body></body>`);
 
-const body = d3.select(dom.window.document.querySelector("body"));
+const body = select(dom.window.document.querySelector("body"));
 const svg = body
   .append("svg")
   .attr("width", 100)
