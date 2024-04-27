@@ -1,6 +1,8 @@
 import { select } from "d3";
 import { JSDOM } from "jsdom";
 import * as fs from "fs";
+import * as path from "node:path";
+import * as consts from "./consts.ts";
 
 const dom = new JSDOM(`<body></body>`);
 
@@ -16,6 +18,5 @@ svg
   .attr("y", 10)
   .attr("width", 80)
   .attr("height", 80)
-  .style("fill", "orange");
-
-fs.writeFileSync("out.svg", body.html());
+  .style("fill", "red");
+fs.writeFileSync(path.join(consts.pathToSvg, "out.svg"), body.html());

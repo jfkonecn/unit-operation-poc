@@ -44,6 +44,8 @@
     // "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+
+    "allowImportingTsExtensions": true
   }
 }
