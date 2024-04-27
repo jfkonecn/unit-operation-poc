@@ -50,4 +50,9 @@ export function addMap({ height, width, x, y, svg }: AddSvgItemArgs) {
     .attr("width", width)
     .attr("height", height)
     .style("fill", "green");
+  svg
+    .append("polyline")
+    .style("stroke", "black")
+    .style("fill", "red")
+    .attr("points", "10,10,15,10,15,30,30,30");
 }
