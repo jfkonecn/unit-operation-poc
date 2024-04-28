@@ -40,19 +40,119 @@ interface AddSvgItemArgs {
   x: number;
   y: number;
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
+  label: string;
+  stroke?: string;
+  debug?: boolean;
 }
 
-export function addMap({ height, width, x, y, svg }: AddSvgItemArgs) {
-  svg
-    .append("rect")
-    .attr("x", x)
-    .attr("y", y)
-    .attr("width", width)
-    .attr("height", height)
-    .style("fill", "green");
+export function addMap({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  stroke = "black",
+  debug = false,
+  label,
+}: AddSvgItemArgs) {
+  if (debug) {
+    const leftX = x - width / 2;
+    const rightX = leftX + width;
+    const topY = y - height / 2;
+    const bottomY = topY + height;
+    svg
+      .append("rect")
+      .attr("x", leftX)
+      .attr("y", topY)
+      .attr("width", width)
+      .attr("stroke", "red")
+      .attr("fill", "transparent")
+      .attr("height", height);
+
+    svg
+      .append("line")
+      .style("stroke", "red")
+      .attr("x1", leftX)
+      .attr("x2", rightX)
+      .attr("y1", topY)
+      .attr("y2", bottomY);
+
+    svg
+      .append("line")
+      .style("stroke", "red")
+      .attr("x1", leftX)
+      .attr("x2", rightX)
+      .attr("y1", bottomY)
+      .attr("y2", topY);
+  }
+
+  const triangleSize = width * 0.25;
+  const topY = y - (height / 2) * 0.9;
+  const bottomY = y + (height / 2) * 0.9;
+  const leftX = x - width / 2;
+  const rightX = x + width / 2;
+  const outerPoints: { x: number; y: number }[] = [
+    { x: leftX, y: topY },
+    { x: rightX - triangleSize, y: topY },
+    { x: rightX, y },
+    { x: rightX - triangleSize, y: bottomY },
+    { x: leftX, y: bottomY },
+    { x: leftX + triangleSize, y },
+    { x: leftX, y: topY },
+  ];
   svg
     .append("polyline")
-    .style("stroke", "black")
-    .style("fill", "red")
-    .attr("points", "10,10,15,10,15,30,30,30");
+    .style("stroke", stroke)
+    .style("fill", "transparent")
+    .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+
+  const innerTopY = y - (height / 2) * 0.5;
+  const innerBottomY = y + (height / 2) * 0.5;
+  const innerLeftX = x - (width / 2) * 0.5;
+  const innerRightX = x + (width / 2) * 0.5;
+
+  if (debug) {
+    svg
+      .append("rect")
+      .attr("x", innerLeftX)
+      .attr("y", innerTopY)
+      .attr("width", innerRightX - innerLeftX)
+      .attr("stroke", "red")
+      .attr("fill", "transparent")
+      .attr("height", innerBottomY - innerTopY);
+  }
+
+  svg
+    .append("line")
+    .style("stroke", stroke)
+    .attr("x1", innerLeftX)
+    .attr("x2", innerRightX - triangleSize)
+    .attr("y1", (innerTopY - y) * 0.5 + y)
+    .attr("y2", (innerTopY - y) * 0.5 + y);
+
+  svg
+    .append("line")
+    .style("stroke", stroke)
+    .attr("x1", innerLeftX)
+    .attr("x2", innerRightX - triangleSize)
+    .attr("y1", (innerBottomY - y) * 0.5 + y)
+    .attr("y2", (innerBottomY - y) * 0.5 + y);
+
+  const innerPoints: { x: number; y: number }[] = [
+    { x: innerRightX - triangleSize, y: innerTopY },
+    { x: innerRightX, y },
+    { x: innerRightX - triangleSize, y: innerBottomY },
+  ];
+  svg
+    .append("polyline")
+    .style("stroke", stroke)
+    .style("fill", "transparent")
+    .attr("points", innerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+
+  svg
+    .append("text")
+    .style("stroke", stroke)
+    .attr("x", x - width / 2)
+    .attr("y", y - height / 2)
+    .text(() => label);
 }
