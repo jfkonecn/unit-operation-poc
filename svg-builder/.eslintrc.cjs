@@ -33,6 +33,7 @@ const config = {
       { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
 
     // For educational purposes we format our comments/jsdoc nicely
     "isaacscript/complete-sentences-jsdoc": "warn",

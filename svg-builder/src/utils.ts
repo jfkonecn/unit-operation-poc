@@ -6,10 +6,10 @@ import * as consts from "./consts.ts";
 import { type Selection } from "d3-selection";
 // https://gist.github.com/denisemauldin/977dc65d13acf24f7b86bbf2d14eb384
 
-interface CreateSvgBuilderArgs {
+type CreateSvgBuilderArgs = {
   height?: number;
   width?: number;
-}
+};
 
 export function createSvgBuilder({
   height = 100,
@@ -35,7 +35,7 @@ export function createSvgBuilder({
   };
 }
 
-interface AddSvgItemArgs {
+type AddSvgItemArgs = {
   height: number;
   width: number;
   x: number;
@@ -44,7 +44,7 @@ interface AddSvgItemArgs {
   label: string;
   stroke?: string;
   debug?: boolean;
-}
+};
 
 export function addMap({
   height,
@@ -87,25 +87,15 @@ export function addMap({
       .attr("y2", topY);
   }
 
-  const triangleSize = width * 0.25;
-  const topY = y - (height / 2) * 0.9;
-  const bottomY = y + (height / 2) * 0.9;
-  const leftX = x - width / 2;
-  const rightX = x + width / 2;
-  const outerPoints: { x: number; y: number }[] = [
-    { x: leftX, y: topY },
-    { x: rightX - triangleSize, y: topY },
-    { x: rightX, y },
-    { x: rightX - triangleSize, y: bottomY },
-    { x: leftX, y: bottomY },
-    { x: leftX + triangleSize, y },
-    { x: leftX, y: topY },
-  ];
-  svg
-    .append("polyline")
-    .style("stroke", stroke)
-    .style("fill", "transparent")
-    .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+  const { triangleSize } = drawSingleOutputArrow({
+    width,
+    y,
+    height,
+    x,
+    svg,
+    stroke,
+    label,
+  });
 
   const innerTopY = y - (height / 2) * 0.5;
   const innerBottomY = y + (height / 2) * 0.5;
@@ -149,13 +139,6 @@ export function addMap({
     .style("stroke", stroke)
     .style("fill", "transparent")
     .attr("points", innerPoints.map(({ x, y }) => `${x},${y}`).join(","));
-
-  svg
-    .append("text")
-    .style("stroke", stroke)
-    .attr("x", x - width / 2)
-    .attr("y", y - height / 2)
-    .text(() => label);
 }
 
 export function addFilter({
@@ -217,7 +200,41 @@ export function addFilter({
     .attr("x2", 0)
     .attr("y1", 0)
     .attr("y2", 10);
+  drawSingleOutputArrow({
+    width,
+    y,
+    height,
+    x,
+    svg,
+    stroke,
+    label,
+    fill: `url(#${fillPatternId})`,
+  });
+}
 
+type DrawSingleOutputArrowArgs = {
+  width: number;
+  y: number;
+  height: number;
+  x: number;
+  svg: Selection<SVGSVGElement, unknown, null, undefined>;
+  stroke: string;
+  fill?: string;
+  label: string;
+};
+type DrawSingleOutputArrowRtn = {
+  triangleSize: number;
+};
+function drawSingleOutputArrow({
+  width,
+  y,
+  height,
+  x,
+  svg,
+  stroke,
+  label,
+  fill = "transparent",
+}: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
   const triangleSize = width * 0.25;
   const topY = y - (height / 2) * 0.9;
   const bottomY = y + (height / 2) * 0.9;
@@ -235,13 +252,13 @@ export function addFilter({
   svg
     .append("polyline")
     .style("stroke", stroke)
-    .style("fill", `url(#${fillPatternId})`)
+    .style("fill", fill)
     .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
-
   svg
     .append("text")
     .style("stroke", stroke)
     .attr("x", x - width / 2)
     .attr("y", y - height / 2)
     .text(() => label);
+  return { triangleSize };
 }
