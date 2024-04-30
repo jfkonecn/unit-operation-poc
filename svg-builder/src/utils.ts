@@ -4,6 +4,7 @@ import * as fs from "fs";
 import * as path from "node:path";
 import * as consts from "./consts.ts";
 import { type Selection } from "d3-selection";
+// https://gist.github.com/denisemauldin/977dc65d13acf24f7b86bbf2d14eb384
 
 interface CreateSvgBuilderArgs {
   height?: number;
@@ -148,6 +149,94 @@ export function addMap({
     .style("stroke", stroke)
     .style("fill", "transparent")
     .attr("points", innerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+
+  svg
+    .append("text")
+    .style("stroke", stroke)
+    .attr("x", x - width / 2)
+    .attr("y", y - height / 2)
+    .text(() => label);
+}
+
+export function addFilter({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  stroke = "black",
+  debug = false,
+  label,
+}: AddSvgItemArgs) {
+  if (debug) {
+    const leftX = x - width / 2;
+    const rightX = leftX + width;
+    const topY = y - height / 2;
+    const bottomY = topY + height;
+    svg
+      .append("rect")
+      .attr("x", leftX)
+      .attr("y", topY)
+      .attr("width", width)
+      .attr("stroke", "red")
+      .attr("fill", "transparent")
+      .attr("height", height);
+
+    svg
+      .append("line")
+      .style("stroke", "red")
+      .attr("x1", leftX)
+      .attr("x2", rightX)
+      .attr("y1", topY)
+      .attr("y2", bottomY);
+
+    svg
+      .append("line")
+      .style("stroke", "red")
+      .attr("x1", leftX)
+      .attr("x2", rightX)
+      .attr("y1", bottomY)
+      .attr("y2", topY);
+  }
+
+  const defs = svg.append("defs");
+
+  const fillPatternId = "fill";
+  defs
+    .append("pattern")
+    .attr("id", fillPatternId)
+    .attr("patternUnits", "userSpaceOnUse")
+    .attr("patternTransform", "rotate(45 0 0)")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 10)
+    .attr("height", 10)
+    .append("line")
+    .style("stroke", stroke)
+    .attr("x1", 0)
+    .attr("x2", 0)
+    .attr("y1", 0)
+    .attr("y2", 10);
+
+  const triangleSize = width * 0.25;
+  const topY = y - (height / 2) * 0.9;
+  const bottomY = y + (height / 2) * 0.9;
+  const leftX = x - width / 2;
+  const rightX = x + width / 2;
+  const outerPoints: { x: number; y: number }[] = [
+    { x: leftX, y: topY },
+    { x: rightX - triangleSize, y: topY },
+    { x: rightX, y },
+    { x: rightX - triangleSize, y: bottomY },
+    { x: leftX, y: bottomY },
+    { x: leftX + triangleSize, y },
+    { x: leftX, y: topY },
+  ];
+  svg
+    .append("polyline")
+    .style("stroke", stroke)
+    .style("fill", `url(#${fillPatternId})`)
+    .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
 
   svg
     .append("text")
