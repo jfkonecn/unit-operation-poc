@@ -5,6 +5,8 @@ import * as path from "node:path";
 import * as consts from "./consts.ts";
 import { type Selection } from "d3-selection";
 // https://gist.github.com/denisemauldin/977dc65d13acf24f7b86bbf2d14eb384
+// https://heroicons.com/
+// https://www.sarasoueidan.com/blog/svg-coordinate-systems/
 
 type CreateSvgBuilderArgs = {
   height?: number;
@@ -209,6 +211,91 @@ export function addFilter({
     stroke,
     label,
     fill: `url(#${fillPatternId})`,
+  });
+}
+
+export function addSort({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  stroke = "black",
+  debug = false,
+  label,
+}: AddSvgItemArgs) {
+  if (debug) {
+    const leftX = x - width / 2;
+    const rightX = leftX + width;
+    const topY = y - height / 2;
+    const bottomY = topY + height;
+    svg
+      .append("rect")
+      .attr("x", leftX)
+      .attr("y", topY)
+      .attr("width", width)
+      .attr("stroke", "red")
+      .attr("fill", "transparent")
+      .attr("height", height);
+
+    svg
+      .append("line")
+      .style("stroke", "red")
+      .attr("x1", leftX)
+      .attr("x2", rightX)
+      .attr("y1", topY)
+      .attr("y2", bottomY);
+
+    svg
+      .append("line")
+      .style("stroke", "red")
+      .attr("x1", leftX)
+      .attr("x2", rightX)
+      .attr("y1", bottomY)
+      .attr("y2", topY);
+  }
+
+  /**
+      * <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+</svg>
+
+*/
+
+  svg
+    .append("svg")
+    .attr("height", height)
+    .attr("width", width)
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("viewBox", [0, 0, 24, 24])
+    .attr("stroke-width", 1.5)
+    .attr("stroke", "currentColor")
+    .append("path")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      "M3",
+      "7.5",
+      "7.5",
+      "3m0",
+      "0L12",
+      "7.5M7.5",
+      "3v13.5m13.5",
+      "0L16.5",
+      "21m0",
+      "0L12",
+      "16.5m4.5",
+      "4.5V7.5",
+    ]);
+  drawSingleOutputArrow({
+    width,
+    y,
+    height,
+    x,
+    svg,
+    stroke,
+    label,
   });
 }
 

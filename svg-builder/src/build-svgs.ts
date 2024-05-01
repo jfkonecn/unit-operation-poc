@@ -1,4 +1,9 @@
-import { buildFilterSample, buildMapSample } from "./builders.ts";
+import {
+  buildFilterSample,
+  buildMapSample,
+  buildSortSample,
+} from "./builders.ts";
 
 buildMapSample();
 buildFilterSample();
+buildSortSample();
