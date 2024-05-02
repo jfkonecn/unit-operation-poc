@@ -91,9 +91,7 @@ export function addMap({
 
   const { triangleSize } = drawSingleOutputArrow({
     width,
-    y,
     height,
-    x,
     svg,
     stroke,
     label,
@@ -204,9 +202,7 @@ export function addFilter({
     .attr("y2", 10);
   drawSingleOutputArrow({
     width,
-    y,
     height,
-    x,
     svg,
     stroke,
     label,
@@ -219,20 +215,24 @@ export function addSort({
   width,
   x,
   y,
-  svg,
+  svg: parentSvg,
   stroke = "black",
   debug = false,
   label,
 }: AddSvgItemArgs) {
+  const leftX = x - width / 2;
+  const topY = y - height / 2;
+  const svg = parentSvg
+    .append("svg")
+    .attr("x", leftX)
+    .attr("y", topY)
+    .attr("width", width)
+    .attr("height", height);
   if (debug) {
-    const leftX = x - width / 2;
-    const rightX = leftX + width;
-    const topY = y - height / 2;
-    const bottomY = topY + height;
     svg
       .append("rect")
-      .attr("x", leftX)
-      .attr("y", topY)
+      .attr("x", 0)
+      .attr("y", 0)
       .attr("width", width)
       .attr("stroke", "red")
       .attr("fill", "transparent")
@@ -241,18 +241,18 @@ export function addSort({
     svg
       .append("line")
       .style("stroke", "red")
-      .attr("x1", leftX)
-      .attr("x2", rightX)
-      .attr("y1", topY)
-      .attr("y2", bottomY);
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", 0)
+      .attr("y2", height);
 
     svg
       .append("line")
       .style("stroke", "red")
-      .attr("x1", leftX)
-      .attr("x2", rightX)
-      .attr("y1", bottomY)
-      .attr("y2", topY);
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", height)
+      .attr("y2", 0);
   }
 
   /**
@@ -264,10 +264,10 @@ export function addSort({
 
   svg
     .append("svg")
-    .attr("height", height)
-    .attr("width", width)
-    .attr("x", 0)
-    .attr("y", 0)
+    .attr("height", height / 2)
+    .attr("width", width / 2)
+    .attr("x", width / 4)
+    .attr("y", height / 4)
     .attr("viewBox", [0, 0, 24, 24])
     .attr("stroke-width", 1.5)
     .attr("stroke", "currentColor")
@@ -290,9 +290,7 @@ export function addSort({
     ]);
   drawSingleOutputArrow({
     width,
-    y,
     height,
-    x,
     svg,
     stroke,
     label,
@@ -301,9 +299,7 @@ export function addSort({
 
 type DrawSingleOutputArrowArgs = {
   width: number;
-  y: number;
   height: number;
-  x: number;
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
   stroke: string;
   fill?: string;
@@ -314,27 +310,28 @@ type DrawSingleOutputArrowRtn = {
 };
 function drawSingleOutputArrow({
   width,
-  y,
   height,
-  x,
-  svg,
+  svg: parentSvg,
   stroke,
   label,
   fill = "transparent",
 }: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
   const triangleSize = width * 0.25;
-  const topY = y - (height / 2) * 0.9;
-  const bottomY = y + (height / 2) * 0.9;
-  const leftX = x - width / 2;
-  const rightX = x + width / 2;
+  const svg = parentSvg
+    .append("svg")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("height", height)
+    .attr("width", width);
+
   const outerPoints: { x: number; y: number }[] = [
-    { x: leftX, y: topY },
-    { x: rightX - triangleSize, y: topY },
-    { x: rightX, y },
-    { x: rightX - triangleSize, y: bottomY },
-    { x: leftX, y: bottomY },
-    { x: leftX + triangleSize, y },
-    { x: leftX, y: topY },
+    { x: 0, y: 0 },
+    { x: width - triangleSize, y: 0 },
+    { x: width, y: height / 2 },
+    { x: width - triangleSize, y: height },
+    { x: 0, y: height },
+    { x: triangleSize, y: height / 2 },
+    { x: 0, y: 0 },
   ];
   svg
     .append("polyline")
@@ -344,8 +341,8 @@ function drawSingleOutputArrow({
   svg
     .append("text")
     .style("stroke", stroke)
-    .attr("x", x - width / 2)
-    .attr("y", y - height / 2)
+    .attr("x", triangleSize)
+    .attr("y", "1rem")
     .text(() => label);
   return { triangleSize };
 }

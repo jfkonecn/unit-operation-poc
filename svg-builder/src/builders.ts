@@ -44,6 +44,7 @@ export function buildSortSample() {
     y: 300,
     svg,
     label: "sort",
+    debug: true,
   });
   saveToFile("unit-operations/sort.svg");
 }
