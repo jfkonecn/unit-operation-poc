@@ -44,8 +44,6 @@ type AddSvgItemArgs = {
   y: number;
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
   label: string;
-  stroke?: string;
-  debug?: boolean;
 };
 
 export function addMap({
@@ -53,92 +51,30 @@ export function addMap({
   width,
   x,
   y,
-  svg,
-  stroke = "black",
-  debug = false,
+  svg: parentSvg,
   label,
 }: AddSvgItemArgs) {
-  if (debug) {
-    const leftX = x - width / 2;
-    const rightX = leftX + width;
-    const topY = y - height / 2;
-    const bottomY = topY + height;
-    svg
-      .append("rect")
-      .attr("x", leftX)
-      .attr("y", topY)
-      .attr("width", width)
-      .attr("stroke", "red")
-      .attr("fill", "transparent")
-      .attr("height", height);
+  const svg = createChildSvg({ parentSvg, x, y, width, height });
 
-    svg
-      .append("line")
-      .style("stroke", "red")
-      .attr("x1", leftX)
-      .attr("x2", rightX)
-      .attr("y1", topY)
-      .attr("y2", bottomY);
-
-    svg
-      .append("line")
-      .style("stroke", "red")
-      .attr("x1", leftX)
-      .attr("x2", rightX)
-      .attr("y1", bottomY)
-      .attr("y2", topY);
-  }
-
-  const { triangleSize } = drawSingleOutputArrow({
-    width,
-    height,
+  const { centerSvg } = drawSingleOutputArrow({
     svg,
-    stroke,
     label,
   });
 
-  const innerTopY = y - (height / 2) * 0.5;
-  const innerBottomY = y + (height / 2) * 0.5;
-  const innerLeftX = x - (width / 2) * 0.5;
-  const innerRightX = x + (width / 2) * 0.5;
-
-  if (debug) {
-    svg
-      .append("rect")
-      .attr("x", innerLeftX)
-      .attr("y", innerTopY)
-      .attr("width", innerRightX - innerLeftX)
-      .attr("stroke", "red")
-      .attr("fill", "transparent")
-      .attr("height", innerBottomY - innerTopY);
-  }
-
-  svg
-    .append("line")
-    .style("stroke", stroke)
-    .attr("x1", innerLeftX)
-    .attr("x2", innerRightX - triangleSize)
-    .attr("y1", (innerTopY - y) * 0.5 + y)
-    .attr("y2", (innerTopY - y) * 0.5 + y);
-
-  svg
-    .append("line")
-    .style("stroke", stroke)
-    .attr("x1", innerLeftX)
-    .attr("x2", innerRightX - triangleSize)
-    .attr("y1", (innerBottomY - y) * 0.5 + y)
-    .attr("y2", (innerBottomY - y) * 0.5 + y);
-
-  const innerPoints: { x: number; y: number }[] = [
-    { x: innerRightX - triangleSize, y: innerTopY },
-    { x: innerRightX, y },
-    { x: innerRightX - triangleSize, y: innerBottomY },
-  ];
-  svg
-    .append("polyline")
-    .style("stroke", stroke)
-    .style("fill", "transparent")
-    .attr("points", innerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+  centerSvg
+    .append("path")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      "M 0 6",
+      "H 18",
+      "M 0 18",
+      "H 18",
+      "M 12 0",
+      "L 24 12",
+      "M 12 24",
+      "L 24 12",
+    ]);
 }
 
 export function addFilter({
@@ -146,41 +82,10 @@ export function addFilter({
   width,
   x,
   y,
-  svg,
-  stroke = "black",
-  debug = false,
+  svg: parentSvg,
   label,
 }: AddSvgItemArgs) {
-  if (debug) {
-    const leftX = x - width / 2;
-    const rightX = leftX + width;
-    const topY = y - height / 2;
-    const bottomY = topY + height;
-    svg
-      .append("rect")
-      .attr("x", leftX)
-      .attr("y", topY)
-      .attr("width", width)
-      .attr("stroke", "red")
-      .attr("fill", "transparent")
-      .attr("height", height);
-
-    svg
-      .append("line")
-      .style("stroke", "red")
-      .attr("x1", leftX)
-      .attr("x2", rightX)
-      .attr("y1", topY)
-      .attr("y2", bottomY);
-
-    svg
-      .append("line")
-      .style("stroke", "red")
-      .attr("x1", leftX)
-      .attr("x2", rightX)
-      .attr("y1", bottomY)
-      .attr("y2", topY);
-  }
+  const svg = createChildSvg({ parentSvg, x, y, width, height });
 
   const defs = svg.append("defs");
 
@@ -195,16 +100,13 @@ export function addFilter({
     .attr("width", 10)
     .attr("height", 10)
     .append("line")
-    .style("stroke", stroke)
+    .style("stroke", "currentColor")
     .attr("x1", 0)
     .attr("x2", 0)
     .attr("y1", 0)
     .attr("y2", 10);
   drawSingleOutputArrow({
-    width,
-    height,
     svg,
-    stroke,
     label,
     fill: `url(#${fillPatternId})`,
   });
@@ -216,61 +118,16 @@ export function addSort({
   x,
   y,
   svg: parentSvg,
-  stroke = "black",
-  debug = false,
   label,
 }: AddSvgItemArgs) {
-  const leftX = x - width / 2;
-  const topY = y - height / 2;
-  const svg = parentSvg
-    .append("svg")
-    .attr("x", leftX)
-    .attr("y", topY)
-    .attr("width", width)
-    .attr("height", height);
-  if (debug) {
-    svg
-      .append("rect")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("width", width)
-      .attr("stroke", "red")
-      .attr("fill", "transparent")
-      .attr("height", height);
+  const svg = createChildSvg({ parentSvg, x, y, width, height });
 
-    svg
-      .append("line")
-      .style("stroke", "red")
-      .attr("x1", 0)
-      .attr("x2", width)
-      .attr("y1", 0)
-      .attr("y2", height);
+  const { centerSvg } = drawSingleOutputArrow({
+    svg,
+    label,
+  });
 
-    svg
-      .append("line")
-      .style("stroke", "red")
-      .attr("x1", 0)
-      .attr("x2", width)
-      .attr("y1", height)
-      .attr("y2", 0);
-  }
-
-  /**
-      * <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
-</svg>
-
-*/
-
-  svg
-    .append("svg")
-    .attr("height", height / 2)
-    .attr("width", width / 2)
-    .attr("x", width / 4)
-    .attr("y", height / 4)
-    .attr("viewBox", [0, 0, 24, 24])
-    .attr("stroke-width", 1.5)
-    .attr("stroke", "currentColor")
+  centerSvg
     .append("path")
     .attr("stroke-linecap", "round")
     .attr("stroke-linejoin", "round")
@@ -288,41 +145,53 @@ export function addSort({
       "16.5m4.5",
       "4.5V7.5",
     ]);
-  drawSingleOutputArrow({
-    width,
-    height,
-    svg,
-    stroke,
-    label,
-  });
+}
+
+type CreateChildSvgArgs = {
+  parentSvg: Selection<SVGSVGElement, unknown, null, undefined>;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+function createChildSvg({
+  parentSvg,
+  x,
+  y,
+  width,
+  height,
+}: CreateChildSvgArgs) {
+  return parentSvg
+    .append("svg")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("width", width)
+    .attr("height", height);
 }
 
 type DrawSingleOutputArrowArgs = {
-  width: number;
-  height: number;
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
-  stroke: string;
   fill?: string;
   label: string;
 };
 type DrawSingleOutputArrowRtn = {
-  triangleSize: number;
+  centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
 };
+
 function drawSingleOutputArrow({
-  width,
-  height,
   svg: parentSvg,
-  stroke,
   label,
   fill = "transparent",
 }: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
+  const width = 200;
+  const height = 100;
   const triangleSize = width * 0.25;
   const svg = parentSvg
     .append("svg")
+    .attr("viewBox", [0, 0, width, height])
     .attr("x", 0)
-    .attr("y", 0)
-    .attr("height", height)
-    .attr("width", width);
+    .attr("y", 0);
 
   const outerPoints: { x: number; y: number }[] = [
     { x: 0, y: 0 },
@@ -335,14 +204,24 @@ function drawSingleOutputArrow({
   ];
   svg
     .append("polyline")
-    .style("stroke", stroke)
     .style("fill", fill)
+    .attr("stroke", "currentColor")
+    .attr("stroke-width", 1.5)
     .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
   svg
     .append("text")
-    .style("stroke", stroke)
+    .attr("stroke", "currentColor")
     .attr("x", triangleSize)
     .attr("y", "1rem")
     .text(() => label);
-  return { triangleSize };
+  const centerSvg = svg
+    .append("svg")
+    .attr("height", height / 2)
+    .attr("width", width / 2)
+    .attr("x", width / 4)
+    .attr("y", height / 4)
+    .attr("viewBox", [0, 0, 24, 24])
+    .attr("stroke-width", 1.5)
+    .attr("stroke", "currentColor");
+  return { centerSvg };
 }
