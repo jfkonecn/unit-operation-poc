@@ -37,28 +37,21 @@ export function createSvgBuilder({
   };
 }
 
-type AddSvgItemArgs = {
+export type AddSvgItemArgs = {
   height: number;
-  width: number;
   x: number;
   y: number;
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
   label: string;
 };
 
-export function addMap({
-  height,
-  width,
-  x,
-  y,
-  svg: parentSvg,
-  label,
-}: AddSvgItemArgs) {
-  const svg = createChildSvg({ parentSvg, x, y, width, height });
-
+export function addMap({ height, x, y, svg, label }: AddSvgItemArgs) {
   const { centerSvg } = drawSingleOutputArrow({
     svg,
     label,
+    x,
+    y,
+    height,
   });
 
   centerSvg
@@ -77,16 +70,7 @@ export function addMap({
     ]);
 }
 
-export function addFilter({
-  height,
-  width,
-  x,
-  y,
-  svg: parentSvg,
-  label,
-}: AddSvgItemArgs) {
-  const svg = createChildSvg({ parentSvg, x, y, width, height });
-
+export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
   const defs = svg.append("defs");
 
   const fillPatternId = "fill";
@@ -108,23 +92,20 @@ export function addFilter({
   drawSingleOutputArrow({
     svg,
     label,
+    x,
+    y,
+    height,
     fill: `url(#${fillPatternId})`,
   });
 }
 
-export function addSort({
-  height,
-  width,
-  x,
-  y,
-  svg: parentSvg,
-  label,
-}: AddSvgItemArgs) {
-  const svg = createChildSvg({ parentSvg, x, y, width, height });
-
+export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
   const { centerSvg } = drawSingleOutputArrow({
     svg,
     label,
+    x,
+    y,
+    height,
   });
 
   centerSvg
@@ -147,79 +128,65 @@ export function addSort({
     ]);
 }
 
-type CreateChildSvgArgs = {
-  parentSvg: Selection<SVGSVGElement, unknown, null, undefined>;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-};
-
-function createChildSvg({
-  parentSvg,
-  x,
-  y,
-  width,
-  height,
-}: CreateChildSvgArgs) {
-  return parentSvg
-    .append("svg")
-    .attr("x", x)
-    .attr("y", y)
-    .attr("width", width)
-    .attr("height", height);
-}
-
 type DrawSingleOutputArrowArgs = {
-  svg: Selection<SVGSVGElement, unknown, null, undefined>;
   fill?: string;
-  label: string;
-};
+} & AddSvgItemArgs;
 type DrawSingleOutputArrowRtn = {
   centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
 };
 
 function drawSingleOutputArrow({
   svg: parentSvg,
+  x: absX,
+  y: absY,
+  height: absHeight,
   label,
   fill = "transparent",
 }: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
-  const width = 200;
-  const height = 100;
-  const triangleSize = width * 0.25;
+  const outerViewBoxWidth = 200;
+  const outerViewBoxHeight = 150;
   const svg = parentSvg
     .append("svg")
-    .attr("viewBox", [0, 0, width, height])
-    .attr("x", 0)
-    .attr("y", 0);
+    .attr("viewBox", [0, 0, outerViewBoxWidth, outerViewBoxHeight])
+    .attr("x", absX)
+    .attr("y", absY)
+    .attr("height", absHeight);
 
+  const outlineViewBoxWidth = 200;
+  const outlineViewBoxHeight = 100;
+  const triangleSize = outlineViewBoxWidth * 0.25;
   const outerPoints: { x: number; y: number }[] = [
     { x: 0, y: 0 },
-    { x: width - triangleSize, y: 0 },
-    { x: width, y: height / 2 },
-    { x: width - triangleSize, y: height },
-    { x: 0, y: height },
-    { x: triangleSize, y: height / 2 },
+    { x: outlineViewBoxWidth - triangleSize, y: 0 },
+    { x: outlineViewBoxWidth, y: outlineViewBoxHeight / 2 },
+    { x: outlineViewBoxWidth - triangleSize, y: outlineViewBoxHeight },
+    { x: 0, y: outlineViewBoxHeight },
+    { x: triangleSize, y: outlineViewBoxHeight / 2 },
     { x: 0, y: 0 },
   ];
   svg
+    .append("svg")
+    .attr("width", outerViewBoxWidth)
+    .attr("viewBox", [0, 0, outlineViewBoxWidth, outlineViewBoxHeight])
     .append("polyline")
     .style("fill", fill)
     .attr("stroke", "currentColor")
-    .attr("stroke-width", 1.5)
+    .attr("stroke-width", 4)
     .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+
   svg
     .append("text")
     .attr("stroke", "currentColor")
-    .attr("x", triangleSize)
+    .attr("x", 0)
     .attr("y", "1rem")
+    .attr("font-size", "x-large")
     .text(() => label);
   const centerSvg = svg
     .append("svg")
-    .attr("height", height / 2)
-    .attr("width", width / 2)
-    .attr("x", width / 4)
-    .attr("y", height / 4)
+    .attr("height", outerViewBoxHeight / 2)
+    .attr("width", outerViewBoxWidth / 2)
+    .attr("x", outerViewBoxWidth / 4)
+    .attr("y", outerViewBoxHeight / 4)
     .attr("viewBox", [0, 0, 24, 24])
     .attr("stroke-width", 1.5)
     .attr("stroke", "currentColor");

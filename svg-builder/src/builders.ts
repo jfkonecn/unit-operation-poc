@@ -1,50 +1,38 @@
-import { addFilter, addMap, addSort, createSvgBuilder } from "./utils.ts";
+import {
+  type AddSvgItemArgs,
+  addFilter,
+  addMap,
+  addSort,
+  createSvgBuilder,
+} from "./utils.ts";
 
-export function buildMapSample() {
+function renderSampleSvg(
+  label: string,
+  render: (args: AddSvgItemArgs) => void,
+) {
   const { svg, saveToFile } = createSvgBuilder({
     height: 600,
     width: 600,
   });
-  addMap({
-    height: 100,
-    width: 200,
-    x: 300,
-    y: 300,
+  const args: AddSvgItemArgs = {
+    label,
+    height: 200,
+    x: 100,
+    y: 200,
     svg,
-    label: "map",
-  });
-  saveToFile("unit-operations/map.svg");
+  };
+  render(args);
+  saveToFile(`unit-operations/${label}.svg`);
+}
+
+export function buildMapSample() {
+  renderSampleSvg("map", addMap);
 }
 
 export function buildFilterSample() {
-  const { svg, saveToFile } = createSvgBuilder({
-    height: 600,
-    width: 600,
-  });
-  addFilter({
-    height: 100,
-    width: 200,
-    x: 300,
-    y: 300,
-    svg,
-    label: "filter",
-  });
-  saveToFile("unit-operations/filter.svg");
+  renderSampleSvg("filter", addFilter);
 }
 
 export function buildSortSample() {
-  const { svg, saveToFile } = createSvgBuilder({
-    height: 600,
-    width: 600,
-  });
-  addSort({
-    height: 100,
-    width: 200,
-    x: 300,
-    y: 300,
-    svg,
-    label: "sort",
-    debug: true,
-  });
-  saveToFile("unit-operations/sort.svg");
+  renderSampleSvg("sort", addSort);
 }
