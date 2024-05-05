@@ -276,6 +276,36 @@ function drawUnitOperator({
       .attr("y1", (outlineViewBoxHeight * 2) / 3)
       .attr("x2", outerViewBoxWidth)
       .attr("y2", (outlineViewBoxHeight * 2) / 3);
+
+    outerLineSvg
+      .append("svg")
+      .attr("height", outlineViewBoxHeight / 6)
+      .attr("width", outlineViewBoxWidth / 6)
+      .attr("x", (outlineViewBoxWidth * 5) / 8 + outlineXOffset)
+      .attr("y", outlineViewBoxHeight / 8 + outlineYOffset)
+      .attr("viewBox", [0, 0, 24, 24])
+      .attr("stroke-width", 3)
+      .attr("stroke", "currentColor")
+      .attr("fill", "none")
+      .append("path")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("d", ["m4.5", "12.75", "6", "6", "9-13.5"]);
+
+    outerLineSvg
+      .append("svg")
+      .attr("height", outlineViewBoxHeight / 6)
+      .attr("width", outlineViewBoxWidth / 6)
+      .attr("x", (outlineViewBoxWidth * 5) / 8 + outlineXOffset)
+      .attr("y", outlineViewBoxHeight / 2 + outlineYOffset)
+      .attr("viewBox", [0, 0, 24, 24])
+      .attr("stroke-width", 3)
+      .attr("stroke", "currentColor")
+      .attr("fill", "none")
+      .append("path")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("d", ["M6", "18", "18", "6M6", "6l12", "12"]);
   } else {
     outerLineSvg
       .append("line")
