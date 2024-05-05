@@ -52,6 +52,7 @@ export function addMap({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    returns: "simple",
   });
 
   centerSvg
@@ -96,6 +97,7 @@ export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
     y,
     height,
     fill: `url(#${fillPatternId})`,
+    returns: "simple",
   });
 }
 
@@ -106,6 +108,7 @@ export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    returns: "simple",
   });
 
   centerSvg
@@ -135,6 +138,7 @@ export function addValidate({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    returns: "result",
   });
 
   centerSvg
@@ -162,6 +166,7 @@ export function addValidate({ height, x, y, svg, label }: AddSvgItemArgs) {
 
 type DrawSingleOutputArrowArgs = {
   fill?: string;
+  returns: "simple" | "result";
 } & AddSvgItemArgs;
 type DrawSingleOutputArrowRtn = {
   centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
@@ -174,6 +179,7 @@ function drawUnitOperator({
   height: absHeight,
   label,
   fill = "transparent",
+  returns,
 }: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
   const outerViewBoxWidth = 200;
   const outerViewBoxHeight = 150;
@@ -189,13 +195,38 @@ function drawUnitOperator({
   const triangleSize = outlineViewBoxWidth * 0.25;
   const outlineXOffset = 10;
   const outlineYOffset = 10;
-  const outerPoints: { x: number; y: number }[] = [
+
+  type OuterPoint = { x: number; y: number };
+  const outerPointReturns: OuterPoint[] =
+    returns === "result"
+      ? [
+          {
+            x: outlineViewBoxWidth - outlineXOffset,
+            y: outlineViewBoxHeight / 3,
+          },
+          {
+            x: outlineViewBoxWidth - triangleSize - outlineXOffset,
+            y: outlineViewBoxHeight / 2,
+          },
+          {
+            x: outlineViewBoxWidth - outlineXOffset,
+            y: (outlineViewBoxHeight * 2) / 3,
+          },
+        ]
+      : [
+          {
+            x: outlineViewBoxWidth - outlineXOffset,
+            y: outlineViewBoxHeight / 2,
+          },
+        ];
+
+  const outerPoints: OuterPoint[] = [
     { x: outlineXOffset, y: outlineYOffset },
     {
       x: outlineViewBoxWidth - triangleSize - outlineXOffset,
       y: outlineYOffset,
     },
-    { x: outlineViewBoxWidth - outlineXOffset, y: outlineViewBoxHeight / 2 },
+    ...outerPointReturns,
     {
       x: outlineViewBoxWidth - triangleSize - outlineXOffset,
       y: outlineViewBoxHeight - outlineYOffset,
@@ -228,14 +259,33 @@ function drawUnitOperator({
     .attr("x2", triangleSize + outlineXOffset)
     .attr("y2", outlineViewBoxHeight / 2);
 
-  outerLineSvg
-    .append("line")
-    .attr("stroke", "currentColor")
-    .attr("stroke-width", 4)
-    .attr("x1", outlineViewBoxWidth - outlineXOffset)
-    .attr("y1", outlineViewBoxHeight / 2)
-    .attr("x2", outerViewBoxWidth)
-    .attr("y2", outlineViewBoxHeight / 2);
+  if (returns === "result") {
+    outerLineSvg
+      .append("line")
+      .attr("stroke", "currentColor")
+      .attr("stroke-width", 4)
+      .attr("x1", outlineViewBoxWidth - outlineXOffset)
+      .attr("y1", outlineViewBoxHeight / 3)
+      .attr("x2", outerViewBoxWidth)
+      .attr("y2", outlineViewBoxHeight / 3);
+    outerLineSvg
+      .append("line")
+      .attr("stroke", "currentColor")
+      .attr("stroke-width", 4)
+      .attr("x1", outlineViewBoxWidth - outlineXOffset)
+      .attr("y1", (outlineViewBoxHeight * 2) / 3)
+      .attr("x2", outerViewBoxWidth)
+      .attr("y2", (outlineViewBoxHeight * 2) / 3);
+  } else {
+    outerLineSvg
+      .append("line")
+      .attr("stroke", "currentColor")
+      .attr("stroke-width", 4)
+      .attr("x1", outlineViewBoxWidth - outlineXOffset)
+      .attr("y1", outlineViewBoxHeight / 2)
+      .attr("x2", outerViewBoxWidth)
+      .attr("y2", outlineViewBoxHeight / 2);
+  }
 
   svg
     .append("text")
