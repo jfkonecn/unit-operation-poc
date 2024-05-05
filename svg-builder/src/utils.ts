@@ -171,10 +171,12 @@ function drawSingleOutputArrow({
     { x: outlineXOffset, y: outlineViewBoxHeight - outlineYOffset },
     { x: triangleSize + outlineXOffset, y: outlineViewBoxHeight / 2 },
   ];
-  svg
+  const outerLineSvg = svg
     .append("svg")
     .attr("width", outerViewBoxWidth)
-    .attr("viewBox", [0, 0, outlineViewBoxWidth, outlineViewBoxHeight])
+    .attr("viewBox", [0, 0, outlineViewBoxWidth, outlineViewBoxHeight]);
+
+  outerLineSvg
     .append("polygon")
     .attr("stroke-linejoin", "round")
     .style("fill", fill)
@@ -184,6 +186,24 @@ function drawSingleOutputArrow({
       "points",
       outerPoints.map(({ x, y }) => `${x},${y}`),
     );
+
+  outerLineSvg
+    .append("line")
+    .attr("stroke", "currentColor")
+    .attr("stroke-width", 4)
+    .attr("x1", 0)
+    .attr("y1", outlineViewBoxHeight / 2)
+    .attr("x2", triangleSize + outlineXOffset)
+    .attr("y2", outlineViewBoxHeight / 2);
+
+  outerLineSvg
+    .append("line")
+    .attr("stroke", "currentColor")
+    .attr("stroke-width", 4)
+    .attr("x1", outlineViewBoxWidth - outlineXOffset)
+    .attr("y1", outlineViewBoxHeight / 2)
+    .attr("x2", outerViewBoxWidth)
+    .attr("y2", outlineViewBoxHeight / 2);
 
   svg
     .append("text")
