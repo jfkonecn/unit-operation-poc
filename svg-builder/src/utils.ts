@@ -155,38 +155,49 @@ function drawSingleOutputArrow({
   const outlineViewBoxWidth = 200;
   const outlineViewBoxHeight = 100;
   const triangleSize = outlineViewBoxWidth * 0.25;
+  const outlineXOffset = 10;
+  const outlineYOffset = 10;
   const outerPoints: { x: number; y: number }[] = [
-    { x: 0, y: 0 },
-    { x: outlineViewBoxWidth - triangleSize, y: 0 },
-    { x: outlineViewBoxWidth, y: outlineViewBoxHeight / 2 },
-    { x: outlineViewBoxWidth - triangleSize, y: outlineViewBoxHeight },
-    { x: 0, y: outlineViewBoxHeight },
-    { x: triangleSize, y: outlineViewBoxHeight / 2 },
-    { x: 0, y: 0 },
+    { x: outlineXOffset, y: outlineYOffset },
+    {
+      x: outlineViewBoxWidth - triangleSize - outlineXOffset,
+      y: outlineYOffset,
+    },
+    { x: outlineViewBoxWidth - outlineXOffset, y: outlineViewBoxHeight / 2 },
+    {
+      x: outlineViewBoxWidth - triangleSize - outlineXOffset,
+      y: outlineViewBoxHeight - outlineYOffset,
+    },
+    { x: outlineXOffset, y: outlineViewBoxHeight - outlineYOffset },
+    { x: triangleSize + outlineXOffset, y: outlineViewBoxHeight / 2 },
   ];
   svg
     .append("svg")
     .attr("width", outerViewBoxWidth)
     .attr("viewBox", [0, 0, outlineViewBoxWidth, outlineViewBoxHeight])
-    .append("polyline")
+    .append("polygon")
+    .attr("stroke-linejoin", "round")
     .style("fill", fill)
     .attr("stroke", "currentColor")
     .attr("stroke-width", 4)
-    .attr("points", outerPoints.map(({ x, y }) => `${x},${y}`).join(","));
+    .attr(
+      "points",
+      outerPoints.map(({ x, y }) => `${x},${y}`),
+    );
 
   svg
     .append("text")
     .attr("stroke", "currentColor")
     .attr("x", 0)
     .attr("y", "1rem")
-    .attr("font-size", "x-large")
+    .attr("font-size", "1rem")
     .text(() => label);
   const centerSvg = svg
     .append("svg")
-    .attr("height", outerViewBoxHeight / 2)
-    .attr("width", outerViewBoxWidth / 2)
-    .attr("x", outerViewBoxWidth / 4)
-    .attr("y", outerViewBoxHeight / 4)
+    .attr("height", outerViewBoxHeight / 2 - outlineYOffset * 2)
+    .attr("width", outerViewBoxWidth / 2 - outlineXOffset * 2)
+    .attr("x", outerViewBoxWidth / 4 + outlineXOffset)
+    .attr("y", outerViewBoxHeight / 4 + outlineYOffset)
     .attr("viewBox", [0, 0, 24, 24])
     .attr("stroke-width", 1.5)
     .attr("stroke", "currentColor");

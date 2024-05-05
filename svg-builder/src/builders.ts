@@ -15,7 +15,7 @@ function renderSampleSvg(
     width: 600,
   });
   const args: AddSvgItemArgs = {
-    label,
+    label: label.toUpperCase(),
     height: 200,
     x: 100,
     y: 200,
