@@ -4,6 +4,7 @@ import {
   addMap,
   addSort,
   createSvgBuilder,
+  addValidate,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -35,4 +36,8 @@ export function buildFilterSample() {
 
 export function buildSortSample() {
   renderSampleSvg("sort", addSort);
+}
+
+export function buildValidateSample() {
+  renderSampleSvg("validate", addValidate);
 }

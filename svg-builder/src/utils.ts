@@ -46,7 +46,7 @@ export type AddSvgItemArgs = {
 };
 
 export function addMap({ height, x, y, svg, label }: AddSvgItemArgs) {
-  const { centerSvg } = drawSingleOutputArrow({
+  const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
@@ -89,7 +89,7 @@ export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
     .attr("x2", 0)
     .attr("y1", 0)
     .attr("y2", 10);
-  drawSingleOutputArrow({
+  drawUnitOperator({
     svg,
     label,
     x,
@@ -100,7 +100,7 @@ export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
 }
 
 export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
-  const { centerSvg } = drawSingleOutputArrow({
+  const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
@@ -128,6 +128,38 @@ export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
+export function addValidate({ height, x, y, svg, label }: AddSvgItemArgs) {
+  const { centerSvg } = drawUnitOperator({
+    svg,
+    label,
+    x,
+    y,
+    height,
+  });
+
+  centerSvg
+    .attr("fill", "none")
+    .append("path")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      "M12",
+      "9v3.75m-9.303",
+      "3.376c-.866",
+      "1.5.217",
+      "3.374",
+      "1.948",
+      "3.374h14.71c1.73",
+      "0",
+      "2.813-1.874",
+      "1.948-3.374L13.949",
+      "3.378c-.866-1.5-3.032-1.5-3.898",
+      "0L2.697",
+      "16.126ZM12",
+      "15.75h.007v.008H12v-.008Z",
+    ]);
+}
+
 type DrawSingleOutputArrowArgs = {
   fill?: string;
 } & AddSvgItemArgs;
@@ -135,7 +167,7 @@ type DrawSingleOutputArrowRtn = {
   centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
 };
 
-function drawSingleOutputArrow({
+function drawUnitOperator({
   svg: parentSvg,
   x: absX,
   y: absY,
