@@ -1,5 +1,6 @@
 import {
   buildAuthenticateSample,
+  buildAuthorizeSample,
   buildFilterSample,
   buildMapSample,
   buildSortSample,
@@ -11,3 +12,4 @@ buildFilterSample();
 buildSortSample();
 buildValidateSample();
 buildAuthenticateSample();
+buildAuthorizeSample();

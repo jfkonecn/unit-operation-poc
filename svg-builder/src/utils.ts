@@ -211,6 +211,49 @@ export function addAuthenticate({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
+export function addAuthorize({ height, x, y, svg, label }: AddSvgItemArgs) {
+  const { centerSvg } = drawUnitOperator({
+    svg,
+    label,
+    x,
+    y,
+    height,
+    returns: "result",
+  });
+
+  /*
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+</svg>
+
+      * */
+
+  centerSvg
+    .attr("fill", "none")
+    .append("path")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      "M18.364",
+      "18.364A9",
+      "9",
+      "0",
+      "0",
+      "0",
+      "5.636",
+      "5.636m12.728",
+      "12.728A9",
+      "9",
+      "0",
+      "0",
+      "1",
+      "5.636",
+      "5.636m12.728",
+      "12.728L5.636",
+      "5.636",
+    ]);
+}
+
 type DrawSingleOutputArrowArgs = {
   fill?: string;
   returns: "simple" | "result";

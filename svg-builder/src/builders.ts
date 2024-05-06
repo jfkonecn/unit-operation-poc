@@ -6,6 +6,7 @@ import {
   createSvgBuilder,
   addValidate,
   addAuthenticate,
+  addAuthorize,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -45,4 +46,8 @@ export function buildValidateSample() {
 
 export function buildAuthenticateSample() {
   renderSampleSvg("authenticate", addAuthenticate);
+}
+
+export function buildAuthorizeSample() {
+  renderSampleSvg("authorize", addAuthorize);
 }
