@@ -1,4 +1,5 @@
 import {
+  buildAuthenticateSample,
   buildFilterSample,
   buildMapSample,
   buildSortSample,
@@ -9,3 +10,4 @@ buildMapSample();
 buildFilterSample();
 buildSortSample();
 buildValidateSample();
+buildAuthenticateSample();

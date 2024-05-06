@@ -5,6 +5,7 @@ import {
   addSort,
   createSvgBuilder,
   addValidate,
+  addAuthenticate,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -40,4 +41,8 @@ export function buildSortSample() {
 
 export function buildValidateSample() {
   renderSampleSvg("validate", addValidate);
+}
+
+export function buildAuthenticateSample() {
+  renderSampleSvg("authenticate", addAuthenticate);
 }
