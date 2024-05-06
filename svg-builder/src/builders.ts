@@ -1,3 +1,4 @@
+import { warn } from "node:console";
 import {
   type AddSvgItemArgs,
   addFilter,
@@ -8,6 +9,7 @@ import {
   addAuthenticate,
   addAuthorize,
   addGlobalStateRead,
+  addGlobalStateWrite,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -55,4 +57,8 @@ export function buildAuthorizeSample() {
 
 export function buildGlobalStateRead() {
   renderSampleSvg("global_state_read", addGlobalStateRead);
+}
+
+export function buildGlobalStateWrite() {
+  renderSampleSvg("global_state_write", addGlobalStateWrite);
 }

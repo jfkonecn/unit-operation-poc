@@ -270,6 +270,41 @@ export function addGlobalStateRead({
     returns: "simple",
   });
 
+  makeRamSvg(centerSvg);
+}
+
+export function addGlobalStateWrite({
+  height,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
+  const { centerSvg } = drawUnitOperator({
+    svg,
+    label,
+    x,
+    y,
+    height,
+    accepts: "simple",
+    returns: "unit",
+  });
+
+  makeRamSvg(centerSvg);
+}
+
+type DrawSingleOutputArrowArgs = {
+  fill?: string;
+  accepts: "simple" | "unit";
+  returns: "simple" | "result" | "unit";
+} & AddSvgItemArgs;
+type DrawSingleOutputArrowRtn = {
+  centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
+};
+
+function makeRamSvg(
+  centerSvg: Selection<SVGSVGElement, unknown, null, undefined>,
+) {
   centerSvg
     .attr("fill", "none")
     .append("path")
@@ -311,15 +346,6 @@ export function addGlobalStateRead({
       "V 6",
     ]);
 }
-
-type DrawSingleOutputArrowArgs = {
-  fill?: string;
-  accepts: "simple" | "unit";
-  returns: "simple" | "result" | "unit";
-} & AddSvgItemArgs;
-type DrawSingleOutputArrowRtn = {
-  centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
-};
 
 function drawUnitOperator({
   svg: parentSvg,
@@ -363,12 +389,23 @@ function drawUnitOperator({
             y: (outlineViewBoxHeight * 2) / 3,
           },
         ]
-      : [
-          {
-            x: outlineViewBoxWidth - outlineXOffset,
-            y: outlineViewBoxHeight / 2,
-          },
-        ];
+      : returns === "simple"
+        ? [
+            {
+              x: outlineViewBoxWidth - outlineXOffset,
+              y: outlineViewBoxHeight / 2,
+            },
+          ]
+        : [
+            {
+              x: outlineViewBoxWidth - outlineXOffset,
+              y: outlineYOffset,
+            },
+            {
+              x: outlineViewBoxWidth - outlineXOffset,
+              y: outlineViewBoxHeight - outlineYOffset,
+            },
+          ];
   const outerPointAccepts: OuterPoint[] =
     accepts === "simple"
       ? [{ x: triangleSize + outlineXOffset, y: outlineViewBoxHeight / 2 }]
@@ -462,7 +499,7 @@ function drawUnitOperator({
       .attr("stroke-linecap", "round")
       .attr("stroke-linejoin", "round")
       .attr("d", ["M6", "18", "18", "6M6", "6l12", "12"]);
-  } else {
+  } else if (returns !== "unit") {
     outerLineSvg
       .append("line")
       .attr("stroke", "currentColor")
