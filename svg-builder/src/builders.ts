@@ -7,6 +7,7 @@ import {
   addValidate,
   addAuthenticate,
   addAuthorize,
+  addGlobalStateRead,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -50,4 +51,8 @@ export function buildAuthenticateSample() {
 
 export function buildAuthorizeSample() {
   renderSampleSvg("authorize", addAuthorize);
+}
+
+export function buildGlobalStateRead() {
+  renderSampleSvg("global_state_read", addGlobalStateRead);
 }

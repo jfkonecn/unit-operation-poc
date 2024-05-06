@@ -2,6 +2,7 @@ import {
   buildAuthenticateSample,
   buildAuthorizeSample,
   buildFilterSample,
+  buildGlobalStateRead,
   buildMapSample,
   buildSortSample,
   buildValidateSample,
@@ -13,3 +14,4 @@ buildSortSample();
 buildValidateSample();
 buildAuthenticateSample();
 buildAuthorizeSample();
+buildGlobalStateRead();

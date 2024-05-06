@@ -52,6 +52,7 @@ export function addMap({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    accepts: "simple",
     returns: "simple",
   });
 
@@ -97,6 +98,7 @@ export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
     y,
     height,
     fill: `url(#${fillPatternId})`,
+    accepts: "simple",
     returns: "simple",
   });
 }
@@ -108,6 +110,7 @@ export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    accepts: "simple",
     returns: "simple",
   });
 
@@ -138,6 +141,7 @@ export function addValidate({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    accepts: "simple",
     returns: "result",
   });
 
@@ -171,6 +175,7 @@ export function addAuthenticate({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    accepts: "simple",
     returns: "result",
   });
 
@@ -218,15 +223,9 @@ export function addAuthorize({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    accepts: "simple",
     returns: "result",
   });
-
-  /*
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
-</svg>
-
-      * */
 
   centerSvg
     .attr("fill", "none")
@@ -254,9 +253,69 @@ export function addAuthorize({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
+export function addGlobalStateRead({
+  height,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
+  const { centerSvg } = drawUnitOperator({
+    svg,
+    label,
+    x,
+    y,
+    height,
+    accepts: "unit",
+    returns: "simple",
+  });
+
+  centerSvg
+    .attr("fill", "none")
+    .append("path")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      "M 0 3",
+      "H 24",
+      "V 12",
+      "H 0",
+      "V 3",
+      "M 0 12",
+      "V 18",
+      "H 6",
+      "V 12",
+      "M 6 18",
+      "H 12",
+      "V 12",
+      "M 12 18",
+      "H 18",
+      "V 12",
+      "M 18 18",
+      "H 24",
+      "V 12",
+      "M 5 6",
+      "H 7",
+      "V 8",
+      "H 5",
+      "V 6",
+      "M 11 6",
+      "H 13",
+      "V 8",
+      "H 11",
+      "V 6",
+      "M 17 6",
+      "H 19",
+      "V 8",
+      "H 17",
+      "V 6",
+    ]);
+}
+
 type DrawSingleOutputArrowArgs = {
   fill?: string;
-  returns: "simple" | "result";
+  accepts: "simple" | "unit";
+  returns: "simple" | "result" | "unit";
 } & AddSvgItemArgs;
 type DrawSingleOutputArrowRtn = {
   centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
@@ -269,6 +328,7 @@ function drawUnitOperator({
   height: absHeight,
   label,
   fill = "transparent",
+  accepts,
   returns,
 }: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
   const outerViewBoxWidth = 200;
@@ -309,6 +369,10 @@ function drawUnitOperator({
             y: outlineViewBoxHeight / 2,
           },
         ];
+  const outerPointAccepts: OuterPoint[] =
+    accepts === "simple"
+      ? [{ x: triangleSize + outlineXOffset, y: outlineViewBoxHeight / 2 }]
+      : [];
 
   const outerPoints: OuterPoint[] = [
     { x: outlineXOffset, y: outlineYOffset },
@@ -322,7 +386,7 @@ function drawUnitOperator({
       y: outlineViewBoxHeight - outlineYOffset,
     },
     { x: outlineXOffset, y: outlineViewBoxHeight - outlineYOffset },
-    { x: triangleSize + outlineXOffset, y: outlineViewBoxHeight / 2 },
+    ...outerPointAccepts,
   ];
   const outerLineSvg = svg
     .append("svg")
@@ -340,14 +404,16 @@ function drawUnitOperator({
       outerPoints.map(({ x, y }) => `${x},${y}`),
     );
 
-  outerLineSvg
-    .append("line")
-    .attr("stroke", "currentColor")
-    .attr("stroke-width", 4)
-    .attr("x1", 0)
-    .attr("y1", outlineViewBoxHeight / 2)
-    .attr("x2", triangleSize + outlineXOffset)
-    .attr("y2", outlineViewBoxHeight / 2);
+  if (accepts === "simple") {
+    outerLineSvg
+      .append("line")
+      .attr("stroke", "currentColor")
+      .attr("stroke-width", 4)
+      .attr("x1", 0)
+      .attr("y1", outlineViewBoxHeight / 2)
+      .attr("x2", triangleSize + outlineXOffset)
+      .attr("y2", outlineViewBoxHeight / 2);
+  }
 
   if (returns === "result") {
     outerLineSvg
