@@ -4,6 +4,7 @@ import {
   buildFilterSample,
   buildGlobalStateRead,
   buildGlobalStateWrite,
+  buildGuard,
   buildIo,
   buildMapSample,
   buildSortSample,
@@ -19,3 +20,4 @@ buildAuthorizeSample();
 buildGlobalStateRead();
 buildGlobalStateWrite();
 buildIo();
+buildGuard();

@@ -1,4 +1,3 @@
-import { warn } from "node:console";
 import {
   type AddSvgItemArgs,
   addFilter,
@@ -11,6 +10,7 @@ import {
   addGlobalStateRead,
   addGlobalStateWrite,
   addIo,
+  addGuard,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -68,4 +68,8 @@ export function buildIo() {
   renderSampleSvg("io", (x) =>
     addIo({ ...x, accepts: "simple", returns: "result" }),
   );
+}
+
+export function buildGuard() {
+  renderSampleSvg("guard", addGuard);
 }
