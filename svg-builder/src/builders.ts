@@ -10,6 +10,7 @@ import {
   addAuthorize,
   addGlobalStateRead,
   addGlobalStateWrite,
+  addIo,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -61,4 +62,10 @@ export function buildGlobalStateRead() {
 
 export function buildGlobalStateWrite() {
   renderSampleSvg("global_state_write", addGlobalStateWrite);
+}
+
+export function buildIo() {
+  renderSampleSvg("io", (x) =>
+    addIo({ ...x, accepts: "simple", returns: "result" }),
+  );
 }
