@@ -11,6 +11,7 @@ import {
   addGlobalStateWrite,
   addIo,
   addGuard,
+  addPanic,
 } from "./utils.ts";
 
 function renderSampleSvg(
@@ -72,4 +73,8 @@ export function buildIo() {
 
 export function buildGuard() {
   renderSampleSvg("guard", addGuard);
+}
+
+export function buildPanic() {
+  renderSampleSvg("panic", addPanic);
 }

@@ -394,6 +394,45 @@ export function addGuard({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
+export function addPanic({ height, x, y, svg, label }: AddSvgItemArgs) {
+  const { centerSvg } = drawUnitOperator({
+    svg,
+    label,
+    x,
+    y,
+    height,
+    accepts: "simple",
+    returns: "simple",
+  });
+
+  /*<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+</svg>
+*/
+  centerSvg
+    .attr("fill", "none")
+    .append("path")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      "M12",
+      "9v3.75m9-.75a9",
+      "9",
+      "0",
+      "1",
+      "1-18",
+      "0",
+      "9",
+      "9",
+      "0",
+      "0",
+      "1",
+      "18",
+      "0Zm-9",
+      "3.75h.008v.008H12v-.008Z",
+    ]);
+}
+
 type DrawSingleOutputArrowArgs = {
   fill?: string;
   accepts: "simple" | "unit";

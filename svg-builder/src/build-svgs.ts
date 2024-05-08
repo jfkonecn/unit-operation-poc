@@ -7,6 +7,7 @@ import {
   buildGuard,
   buildIo,
   buildMapSample,
+  buildPanic,
   buildSortSample,
   buildValidateSample,
 } from "./builders.ts";
@@ -21,3 +22,4 @@ buildGlobalStateRead();
 buildGlobalStateWrite();
 buildIo();
 buildGuard();
+buildPanic();
