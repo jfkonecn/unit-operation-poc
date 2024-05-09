@@ -12,7 +12,7 @@ import {
   addIo,
   addGuard,
   addPanic,
-} from "./utils.ts";
+} from "./unit-operator-builders.ts";
 
 function renderSampleSvg(
   label: string,

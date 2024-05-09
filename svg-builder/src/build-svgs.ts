@@ -10,7 +10,7 @@ import {
   buildPanic,
   buildSortSample,
   buildValidateSample,
-} from "./builders.ts";
+} from "./sample-unit-operator-builders.ts";
 
 buildMapSample();
 buildFilterSample();
