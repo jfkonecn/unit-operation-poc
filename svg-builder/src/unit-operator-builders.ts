@@ -38,20 +38,22 @@ export function createSvgBuilder({
 }
 
 export type AddSvgItemArgs = {
-  height: number;
+  height?: number;
+  width?: number;
   x: number;
   y: number;
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
-  label: string;
+  label?: string;
 };
 
-export function addMap({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addMap({ height, width, x, y, svg, label }: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "simple",
   });
@@ -72,7 +74,7 @@ export function addMap({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
-export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addFilter({ height, width, x, y, svg, label }: AddSvgItemArgs) {
   const defs = svg.append("defs");
 
   const fillPatternId = "fill";
@@ -97,19 +99,21 @@ export function addFilter({ height, x, y, svg, label }: AddSvgItemArgs) {
     x,
     y,
     height,
+    width,
     fill: `url(#${fillPatternId})`,
     accepts: "simple",
     returns: "simple",
   });
 }
 
-export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addSort({ height, width, x, y, svg, label }: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "simple",
   });
@@ -134,13 +138,21 @@ export function addSort({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
-export function addValidate({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addValidate({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "result",
   });
@@ -168,13 +180,21 @@ export function addValidate({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
-export function addAuthenticate({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addAuthenticate({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "result",
   });
@@ -216,13 +236,21 @@ export function addAuthenticate({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
-export function addAuthorize({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addAuthorize({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "result",
   });
@@ -255,6 +283,7 @@ export function addAuthorize({ height, x, y, svg, label }: AddSvgItemArgs) {
 
 export function addGlobalStateRead({
   height,
+  width,
   x,
   y,
   svg,
@@ -266,6 +295,7 @@ export function addGlobalStateRead({
     x,
     y,
     height,
+    width,
     accepts: "unit",
     returns: "simple",
   });
@@ -275,6 +305,7 @@ export function addGlobalStateRead({
 
 export function addGlobalStateWrite({
   height,
+  width,
   x,
   y,
   svg,
@@ -286,6 +317,7 @@ export function addGlobalStateWrite({
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "unit",
   });
@@ -295,6 +327,7 @@ export function addGlobalStateWrite({
 
 export function addIo({
   height,
+  width,
   x,
   y,
   svg,
@@ -308,6 +341,7 @@ export function addIo({
     x,
     y,
     height,
+    width,
     accepts,
     returns,
   });
@@ -348,13 +382,21 @@ export function addIo({
     ]);
 }
 
-export function addDistribution({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addDistribution({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "simple",
   });
@@ -396,13 +438,14 @@ export function addDistribution({ height, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
-export function addPanic({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addPanic({ height, width, x, y, svg, label }: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
     x,
     y,
     height,
+    width,
     accepts: "simple",
     returns: "simple",
   });
@@ -490,6 +533,7 @@ function drawUnitOperator({
   x: absX,
   y: absY,
   height: absHeight,
+  width: absWidth,
   label,
   fill = "transparent",
   accepts,
@@ -501,8 +545,14 @@ function drawUnitOperator({
     .append("svg")
     .attr("viewBox", [0, 0, outerViewBoxWidth, outerViewBoxHeight])
     .attr("x", absX)
-    .attr("y", absY)
-    .attr("height", absHeight);
+    .attr("y", absY);
+
+  if (absHeight) {
+    svg.attr("height", absHeight);
+  }
+  if (absWidth) {
+    svg.attr("width", absWidth);
+  }
 
   const outlineViewBoxWidth = 200;
   const outlineViewBoxHeight = 100;
@@ -654,7 +704,7 @@ function drawUnitOperator({
     .attr("x", 0)
     .attr("y", "1rem")
     .attr("font-size", "1rem")
-    .text(() => label);
+    .text(() => label ?? "");
   const centerSvg = svg
     .append("svg")
     .attr("height", outerViewBoxHeight / 2 - outlineYOffset * 2)

@@ -11,6 +11,23 @@ function renderSampleSvg(label: string, flow: OperationFlow) {
 }
 
 export function buildTestEverything() {
-  const flow: OperationFlow = [[], []];
+  const flow: OperationFlow = [
+    [
+      {
+        type: "global_state_read",
+        nextIndex: 0,
+      },
+      {
+        type: "io",
+        nextIndex: 0,
+      },
+    ],
+    [
+      {
+        type: "panic",
+        unitOutput: true,
+      },
+    ],
+  ];
   renderSampleSvg("test-everything", flow);
 }

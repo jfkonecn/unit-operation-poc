@@ -1,12 +1,14 @@
 //accepts: "simple" | "unit";
 //returns: "simple" | "result" | "unit";
 import { type Selection } from "d3-selection";
+import { addIo } from "./unit-operator-builders.ts";
+
+type UnitOperation = { label?: string };
 
 type UnitOutput = { unitOutput: true };
 
 type SimpleOutput = {
-  successIndex: number;
-  errorIndex: number;
+  nextIndex: number;
 };
 
 type ResultOutput = {
@@ -16,57 +18,70 @@ type ResultOutput = {
 
 type GlobalStateReadOperation = {
   type: "global_state_read";
-} & SimpleOutput;
+} & UnitOperation &
+  SimpleOutput;
 
 type RootIoOperation = {
   type: "io";
-} & SimpleOutput;
+} & UnitOperation &
+  SimpleOutput;
 
 type MiddleIoOperation = {
   type: "io";
-} & (SimpleOutput | ResultOutput | UnitOutput);
+} & UnitOperation &
+  (SimpleOutput | ResultOutput | UnitOutput);
 
 type EndIoOperation = {
   type: "io";
-} & UnitOutput;
+} & UnitOperation &
+  UnitOutput;
 
 type IoOperation = RootIoOperation | MiddleIoOperation | EndIoOperation;
 
 type MapOperation = {
   type: "map";
-} & SimpleOutput;
+} & UnitOperation &
+  SimpleOutput;
 
 type FilterOperation = {
   type: "filter";
-} & SimpleOutput;
+} & UnitOperation &
+  SimpleOutput;
 
 type SortOperation = {
   type: "sort";
-} & SimpleOutput;
+} & UnitOperation &
+  SimpleOutput;
 
 type ValidateOperation = {
   type: "validate";
-} & ResultOutput;
+} & UnitOperation &
+  ResultOutput;
 
 type AuthenticateOperation = {
   type: "authenticate";
-} & ResultOutput;
+} & UnitOperation &
+  ResultOutput;
 
 type AuthorizeOperation = {
   type: "authorize";
-} & ResultOutput;
+} & UnitOperation &
+  ResultOutput;
 
 type GlobalStateWriteOperation = {
   type: "global_state_write";
-} & UnitOutput;
+} & UnitOperation &
+  UnitOutput;
 
 type DistributionOperation = {
   type: "distribution";
-} & SimpleOutput;
+} & UnitOperation &
+  SimpleOutput;
 
 type PanicOperation = {
   type: "panic";
-} & UnitOutput;
+} & UnitOperation &
+  UnitOutput;
 
 type StartOperation = RootIoOperation | GlobalStateReadOperation;
 type EndOperation = EndIoOperation | PanicOperation | GlobalStateWriteOperation;
@@ -92,7 +107,27 @@ export function drawOperationFlow(
   svg: Selection<SVGSVGElement, unknown, null, undefined>,
   flow: OperationFlow,
 ) {
-  console.log(svg);
-  console.log(flow);
-  return;
+  const heightAndWidth: Pick<AddSvgItemArgs, "height" | "width"> = {
+    height: 100,
+    width: 100,
+  };
+  const flowLength = flow.length;
+  const maxColumnLength = flow.reduce((acc, x) => Math.max(x.length, acc), 0);
+
+  for (let column of flow) {
+    for (let unitOperation of column) {
+      const type = unitOperation.type;
+      if (type === "io") {
+        addIo({
+          x: 0,
+          y: 0,
+          height: 100,
+          label: unitOperation.label,
+          svg,
+          accepts: "unit",
+          returns: "simple",
+        });
+      }
+    }
+  }
 }
