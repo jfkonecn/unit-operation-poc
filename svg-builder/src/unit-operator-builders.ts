@@ -14,8 +14,8 @@ type CreateSvgBuilderArgs = {
 };
 
 export function createSvgBuilder({
-  height = 100,
-  width = 100,
+  height,
+  width,
 }: CreateSvgBuilderArgs = {}): {
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
   saveToFile: (fileName: string) => void;
@@ -23,11 +23,14 @@ export function createSvgBuilder({
   const dom = new JSDOM(`<body></body>`);
 
   const body = select(dom.window.document.querySelector("body"));
-  const svg = body
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("xmlns", "http://www.w3.org/2000/svg");
+  const svg = body.append("svg").attr("xmlns", "http://www.w3.org/2000/svg");
+
+  if (width) {
+    svg.attr("width", width);
+  }
+  if (height) {
+    svg.attr("height", height);
+  }
 
   return {
     svg,

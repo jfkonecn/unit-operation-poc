@@ -1,7 +1,7 @@
 //accepts: "simple" | "unit";
 //returns: "simple" | "result" | "unit";
 import { type Selection } from "d3-selection";
-import { addIo } from "./unit-operator-builders.ts";
+import { AddSvgItemArgs, addIo } from "./unit-operator-builders.ts";
 
 type UnitOperation = { label?: string };
 
@@ -109,7 +109,7 @@ export function drawOperationFlow(
 ) {
   const heightAndWidth: Pick<AddSvgItemArgs, "height" | "width"> = {
     height: 100,
-    width: 100,
+    width: 200,
   };
   const flowLength = flow.length;
   const maxColumnLength = flow.reduce((acc, x) => Math.max(x.length, acc), 0);
@@ -121,7 +121,7 @@ export function drawOperationFlow(
         addIo({
           x: 0,
           y: 0,
-          height: 100,
+          ...heightAndWidth,
           label: unitOperation.label,
           svg,
           accepts: "unit",
