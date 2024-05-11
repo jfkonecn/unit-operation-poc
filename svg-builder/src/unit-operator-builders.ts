@@ -348,7 +348,7 @@ export function addIo({
     ]);
 }
 
-export function addGuard({ height, x, y, svg, label }: AddSvgItemArgs) {
+export function addDistribution({ height, x, y, svg, label }: AddSvgItemArgs) {
   const { centerSvg } = drawUnitOperator({
     svg,
     label,
@@ -365,32 +365,34 @@ export function addGuard({ height, x, y, svg, label }: AddSvgItemArgs) {
     .attr("stroke-linecap", "round")
     .attr("stroke-linejoin", "round")
     .attr("d", [
-      "M9.879",
-      "7.519c1.171-1.025",
-      "3.071-1.025",
-      "4.242",
-      "0",
-      "1.172",
-      "1.025",
-      "1.172",
-      "2.687",
-      "0",
-      "3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45",
-      "1.827v.75M21",
-      "12a9",
-      "9",
-      "0",
-      "1",
-      "1-18",
-      "0",
-      "9",
-      "9",
-      "0",
-      "0",
-      "1",
-      "18",
-      "0Zm-9",
-      "5.25h.008v.008H12v-.008Z",
+      "M 5 4",
+      "H 19",
+      "V 10",
+      "H 5",
+      "V 4",
+      "M 12 10",
+      "V 14",
+      "M 5 12",
+      "H 19",
+      "M 5 12",
+      "V 14",
+      "M 19 12",
+      "V 14",
+      "M 3 14",
+      "H 7",
+      "V 18",
+      "H 3",
+      "V 14",
+      "M 10 14",
+      "H 14",
+      "V 18",
+      "H 10",
+      "V 14",
+      "M 17 14",
+      "H 21",
+      "V 18",
+      "H 17",
+      "V 14",
     ]);
 }
 

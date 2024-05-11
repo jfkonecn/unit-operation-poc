@@ -11,7 +11,7 @@ export type UnitOperation = {
         | "sort"
         | "global_state_read"
         | "io"
-        | "guard"
+        | "distribution"
         | "panic";
       nextIndex: number;
     }
@@ -26,7 +26,7 @@ export type UnitOperation = {
         | "global_state_read"
         | "global_state_write"
         | "io"
-        | "guard"
+        | "distribution"
         | "panic";
     }
   | {
@@ -40,7 +40,7 @@ export type UnitOperation = {
         | "global_state_read"
         | "global_state_write"
         | "io"
-        | "guard"
+        | "distribution"
         | "panic";
     }
 );

@@ -10,8 +10,8 @@ import {
   addGlobalStateRead,
   addGlobalStateWrite,
   addIo,
-  addGuard,
   addPanic,
+  addDistribution,
 } from "./unit-operator-builders.ts";
 
 function renderSampleSvg(
@@ -71,8 +71,8 @@ export function buildIo() {
   );
 }
 
-export function buildGuard() {
-  renderSampleSvg("guard", addGuard);
+export function buildDistribution() {
+  renderSampleSvg("distribution", addDistribution);
 }
 
 export function buildPanic() {
