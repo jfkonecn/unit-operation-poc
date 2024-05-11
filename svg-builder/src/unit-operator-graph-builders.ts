@@ -107,15 +107,26 @@ export function drawOperationFlow(
   svg: Selection<SVGSVGElement, unknown, null, undefined>,
   flow: OperationFlow,
 ) {
-  const heightAndWidth: Pick<AddSvgItemArgs, "height" | "width"> = {
+  const padding = 10;
+  const spaceBetweenRows = 10;
+  const spaceBetweenColumns = 10;
+  const heightAndWidth: Required<Pick<AddSvgItemArgs, "height" | "width">> = {
     height: 100,
     width: 200,
   };
   const flowLength = flow.length;
   const maxColumnLength = flow.reduce((acc, x) => Math.max(x.length, acc), 0);
-
-  for (let column of flow) {
-    for (let unitOperation of column) {
+  const viewBoxHeight =
+    padding * 2 +
+    maxColumnLength * heightAndWidth.height +
+    (maxColumnLength - 1) * spaceBetweenRows;
+  const viewBoxWidth =
+    padding * 2 +
+    flowLength * heightAndWidth.width +
+    (flowLength - 1) * spaceBetweenColumns;
+  svg.attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
+  for (const column of flow) {
+    for (const unitOperation of column) {
       const type = unitOperation.type;
       if (type === "io") {
         addIo({
