@@ -15,11 +15,17 @@ export function buildTestEverything() {
     [
       {
         type: "global_state_read",
-        nextIndex: 0,
+        next: {
+          index: 0,
+          label: "test",
+        },
       },
       {
         type: "io",
-        nextIndex: 0,
+        next: {
+          index: 0,
+          label: "test",
+        },
       },
     ],
     [

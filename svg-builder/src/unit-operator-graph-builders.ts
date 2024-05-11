@@ -1,19 +1,37 @@
 //accepts: "simple" | "unit";
 //returns: "simple" | "result" | "unit";
 import { type Selection } from "d3-selection";
-import { AddSvgItemArgs, addIo } from "./unit-operator-builders.ts";
+import {
+  type AddSvgItemArgs,
+  addIo,
+  addPanic,
+  addGlobalStateRead,
+  addMap,
+  addSort,
+  addFilter,
+  addValidate,
+  addAuthorize,
+  addAuthenticate,
+  addDistribution,
+  addGlobalStateWrite,
+} from "./unit-operator-builders.ts";
 
 type UnitOperation = { label?: string };
 
 type UnitOutput = { unitOutput: true };
 
+type IndexLink = {
+  index: number;
+  label?: string;
+};
+
 type SimpleOutput = {
-  nextIndex: number;
+  next: IndexLink;
 };
 
 type ResultOutput = {
-  successIndex: number;
-  errorIndex: number;
+  success: IndexLink;
+  error: IndexLink;
 };
 
 type GlobalStateReadOperation = {
@@ -110,35 +128,66 @@ export function drawOperationFlow(
   const padding = 10;
   const spaceBetweenRows = 10;
   const spaceBetweenColumns = 10;
-  const heightAndWidth: Required<Pick<AddSvgItemArgs, "height" | "width">> = {
-    height: 100,
-    width: 200,
-  };
+  const commonArgs: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg">> =
+    {
+      height: 100,
+      width: 200,
+      svg,
+    };
   const flowLength = flow.length;
   const maxColumnLength = flow.reduce((acc, x) => Math.max(x.length, acc), 0);
   const viewBoxHeight =
     padding * 2 +
-    maxColumnLength * heightAndWidth.height +
+    maxColumnLength * commonArgs.height +
     (maxColumnLength - 1) * spaceBetweenRows;
   const viewBoxWidth =
     padding * 2 +
-    flowLength * heightAndWidth.width +
+    flowLength * commonArgs.width +
     (flowLength - 1) * spaceBetweenColumns;
   svg.attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
-  for (const column of flow) {
-    for (const unitOperation of column) {
+  flow.forEach((column, i) => {
+    const x = padding + i * (spaceBetweenColumns + commonArgs.width);
+    column.forEach((unitOperation, j) => {
       const type = unitOperation.type;
+      const y = padding + j * (spaceBetweenRows + commonArgs.height);
+      const args: Required<
+        Pick<AddSvgItemArgs, "x" | "y" | "height" | "width" | "svg">
+      > &
+        Pick<AddSvgItemArgs, "label"> = {
+        x,
+        y,
+        label: unitOperation.label,
+        ...commonArgs,
+      };
       if (type === "io") {
         addIo({
-          x: 0,
-          y: 0,
-          ...heightAndWidth,
-          label: unitOperation.label,
-          svg,
+          ...args,
           accepts: "unit",
           returns: "simple",
         });
+      } else if (type === "panic") {
+        addPanic(args);
+      } else if (type === "global_state_read") {
+        addGlobalStateRead(args);
+      } else if (type === "map") {
+        addMap(args);
+      } else if (type === "sort") {
+        addSort(args);
+      } else if (type === "filter") {
+        addFilter(args);
+      } else if (type === "validate") {
+        addValidate(args);
+      } else if (type === "authorize") {
+        addAuthorize(args);
+      } else if (type === "authenticate") {
+        addAuthenticate(args);
+      } else if (type === "distribution") {
+        addDistribution(args);
+      } else if (type === "global_state_write") {
+        addGlobalStateWrite(args);
+      } else {
+        throw new Error(`unknown type "${type}"`);
       }
-    }
-  }
+    });
+  });
 }

@@ -450,7 +450,7 @@ export function addPanic({ height, width, x, y, svg, label }: AddSvgItemArgs) {
     height,
     width,
     accepts: "simple",
-    returns: "simple",
+    returns: "unit",
   });
 
   centerSvg
