@@ -11,6 +11,7 @@ import {
   buildSortSample,
   buildValidateSample,
 } from "./sample-unit-operator-builders.ts";
+import { buildTestEverything } from "./sample-unit-operator-graph-builders.ts";
 
 buildMapSample();
 buildFilterSample();
@@ -23,3 +24,4 @@ buildGlobalStateWrite();
 buildIo();
 buildDistribution();
 buildPanic();
+buildTestEverything();

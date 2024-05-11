@@ -82,10 +82,10 @@ type MiddleOperation =
   | AuthenticateOperation
   | AuthorizeOperation
   | DistributionOperation;
-type OperationFlow = [
-  start: StartOperation,
-  ...middle: MiddleOperation[],
-  end: EndOperation,
+export type OperationFlow = [
+  start: StartOperation[],
+  ...middle: MiddleOperation[][],
+  end: EndOperation[],
 ];
 
 export function drawOperationFlow(
