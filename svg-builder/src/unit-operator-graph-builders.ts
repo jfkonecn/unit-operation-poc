@@ -26,12 +26,12 @@ type IndexLink = {
 };
 
 type SimpleOutput = {
-  next: IndexLink;
+  next: IndexLink[];
 };
 
 type ResultOutput = {
-  success: IndexLink;
-  error: IndexLink;
+  success: IndexLink[];
+  error: IndexLink[];
 };
 
 type GlobalStateReadOperation = {
