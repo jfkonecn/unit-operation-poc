@@ -127,10 +127,10 @@ export function drawOperationFlow(
 ) {
   const padding = 10;
   const spaceBetweenRows = 10;
-  const spaceBetweenColumns = 10;
+  const spaceBetweenColumns = 200;
   const commonArgs: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg">> =
     {
-      height: 100,
+      height: 150,
       width: 200,
       svg,
     };
@@ -144,7 +144,10 @@ export function drawOperationFlow(
     padding * 2 +
     flowLength * commonArgs.width +
     (flowLength - 1) * spaceBetweenColumns;
-  svg.attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
+  svg
+    .attr("height", viewBoxHeight)
+    .attr("width", viewBoxWidth)
+    .attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
   flow.forEach((column, i) => {
     const x = padding + i * (spaceBetweenColumns + commonArgs.width);
     const smallerColumnYPadding =
@@ -195,6 +198,33 @@ export function drawOperationFlow(
       } else {
         throw new Error(`unknown type "${type}"`);
       }
+
+      if (!("unitOutput" in unitOperation)) {
+        if ("next" in unitOperation) {
+          const links = unitOperation.next;
+          drawLinks(svg, links, args, spaceBetweenColumns);
+        }
+      }
     });
   });
+}
+function drawLinks(
+  svg: Selection<SVGSVGElement, unknown, null, undefined>,
+  links: IndexLink[],
+  args: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg" | "x" | "y">>,
+  spaceBetweenColumns: number,
+) {
+  for (const link of links) {
+    svg
+      .append("path")
+      .attr("stroke-width", 4)
+      //.attr("stroke", "currentColor")
+      .attr("stroke", "red")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("d", [
+        `M ${args.x + args.width} ${args.y + args.height / 2}`,
+        `H ${args.x + args.width + spaceBetweenColumns / 2}`,
+      ]);
+  }
 }
