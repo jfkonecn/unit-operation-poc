@@ -147,9 +147,16 @@ export function drawOperationFlow(
   svg.attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
   flow.forEach((column, i) => {
     const x = padding + i * (spaceBetweenColumns + commonArgs.width);
+    const smallerColumnYPadding =
+      ((maxColumnLength - column.length) *
+        (spaceBetweenRows + commonArgs.height)) /
+      2;
     column.forEach((unitOperation, j) => {
       const type = unitOperation.type;
-      const y = padding + j * (spaceBetweenRows + commonArgs.height);
+      const y =
+        padding +
+        smallerColumnYPadding +
+        j * (spaceBetweenRows + commonArgs.height);
       const args: Required<
         Pick<AddSvgItemArgs, "x" | "y" | "height" | "width" | "svg">
       > &
