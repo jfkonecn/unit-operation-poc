@@ -34,8 +34,8 @@ export function buildTestEverything() {
     ],
     [
       {
-        type: "validate",
-        label: "validate",
+        type: "authenticate",
+        label: "authenticate",
         success: [
           {
             index: 0,
@@ -52,8 +52,122 @@ export function buildTestEverything() {
     ],
     [
       {
+        type: "authorize",
+        label: "authorize",
+        success: [
+          {
+            index: 0,
+            label: "success",
+          },
+        ],
+        error: [
+          {
+            index: 1,
+            label: "error",
+          },
+        ],
+      },
+      {
+        type: "panic",
+        unitOutput: true,
+      },
+    ],
+    [
+      {
+        type: "validate",
+        label: "validate",
+        success: [
+          {
+            index: 0,
+            label: "success",
+          },
+        ],
+        error: [
+          {
+            index: 1,
+            label: "error",
+          },
+        ],
+      },
+      {
+        type: "panic",
+        unitOutput: true,
+      },
+    ],
+    [
+      {
+        type: "map",
+        label: "map",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+      {
+        type: "panic",
+        unitOutput: true,
+      },
+    ],
+    [
+      {
+        type: "filter",
+        label: "filter",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "distribution",
+        label: "distribution",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "sort",
+        label: "sort",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "io",
+        success: [
+          {
+            index: 0,
+          },
+          {
+            index: 1,
+          },
+        ],
+        error: [
+          {
+            index: 2,
+          },
+        ],
+      },
+    ],
+    [
+      {
         type: "io",
         label: "print to console",
+        unitOutput: true,
+      },
+      {
+        type: "global_state_write",
         unitOutput: true,
       },
       {
