@@ -34,6 +34,27 @@ export function buildTestEverything() {
     ],
     [
       {
+        type: "validate",
+        label: "validate",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "print to console",
+        unitOutput: true,
+      },
+      {
         type: "panic",
         unitOutput: true,
       },
