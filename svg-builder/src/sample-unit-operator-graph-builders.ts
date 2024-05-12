@@ -39,11 +39,13 @@ export function buildTestEverything() {
         success: [
           {
             index: 0,
+            label: "success",
           },
         ],
         error: [
           {
             index: 1,
+            label: "error",
           },
         ],
       },

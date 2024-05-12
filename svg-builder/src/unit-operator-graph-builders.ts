@@ -218,14 +218,37 @@ export function drawOperationFlow(
 
       if (!("unitOutput" in unitOperation)) {
         if ("next" in unitOperation) {
-          const links = unitOperation.next;
-          for (const { index, label } of links) {
+          for (const { index, label } of unitOperation.next) {
             drawLinks({
               svg,
               label,
               spaceBetweenColumns,
               xStart: args.x + args.width,
               yStart: args.y + args.height / 2,
+              xEnd: getX(i + 1),
+              yEnd: getY(index, flow[i + 1]) + args.height / 2,
+            });
+          }
+        } else {
+          for (const { index, label } of unitOperation.success) {
+            drawLinks({
+              svg,
+              label,
+              spaceBetweenColumns,
+              xStart: args.x + args.width,
+              yStart: args.y + args.height / 3 + 8.3,
+              xEnd: getX(i + 1),
+              yEnd: getY(index, flow[i + 1]) + args.height / 2,
+            });
+          }
+
+          for (const { index, label } of unitOperation.error) {
+            drawLinks({
+              svg,
+              label,
+              spaceBetweenColumns,
+              xStart: args.x + args.width,
+              yStart: args.y + (args.height * 2) / 3 - 8.3,
               xEnd: getX(i + 1),
               yEnd: getY(index, flow[i + 1]) + args.height / 2,
             });
