@@ -12,6 +12,7 @@ import {
   addIo,
   addPanic,
   addDistribution,
+  addPassthrough,
 } from "./unit-operator-builders.ts";
 
 function renderSampleSvg(
@@ -77,4 +78,8 @@ export function buildDistribution() {
 
 export function buildPanic() {
   renderSampleSvg("panic", addPanic);
+}
+
+export function buildPassthrough() {
+  renderSampleSvg("passthrough", addPassthrough);
 }

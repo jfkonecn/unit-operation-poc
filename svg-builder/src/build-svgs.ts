@@ -10,6 +10,7 @@ import {
   buildPanic,
   buildSortSample,
   buildValidateSample,
+  buildPassthrough,
 } from "./sample-unit-operator-builders.ts";
 import { buildTestEverything } from "./sample-unit-operator-graph-builders.ts";
 
@@ -24,4 +25,5 @@ buildGlobalStateWrite();
 buildIo();
 buildDistribution();
 buildPanic();
+buildPassthrough();
 buildTestEverything();

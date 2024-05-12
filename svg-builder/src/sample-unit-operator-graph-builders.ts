@@ -128,6 +128,9 @@ export function buildTestEverything() {
           {
             index: 0,
           },
+          {
+            index: 1,
+          },
         ],
       },
     ],
@@ -135,6 +138,15 @@ export function buildTestEverything() {
       {
         type: "sort",
         label: "sort",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+      {
+        type: "passthrough",
+        label: "passthrough",
         next: [
           {
             index: 0,

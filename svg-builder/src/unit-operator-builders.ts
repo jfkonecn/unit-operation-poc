@@ -477,14 +477,26 @@ export function addPanic({ height, width, x, y, svg, label }: AddSvgItemArgs) {
     ]);
 }
 
-type DrawSingleOutputArrowArgs = {
-  fill?: string;
-  accepts: "simple" | "unit";
-  returns: "simple" | "result" | "unit";
-} & AddSvgItemArgs;
-type DrawSingleOutputArrowRtn = {
-  centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
-};
+export function addPassthrough({
+  height,
+  width,
+  x,
+  y,
+  svg,
+  label,
+}: AddSvgItemArgs) {
+  drawUnitOperator({
+    isPassthrough: true,
+    svg,
+    label,
+    x,
+    y,
+    height,
+    width,
+    accepts: "simple",
+    returns: "simple",
+  });
+}
 
 function makeRamSvg(
   centerSvg: Selection<SVGSVGElement, unknown, null, undefined>,
@@ -531,6 +543,16 @@ function makeRamSvg(
     ]);
 }
 
+type DrawSingleOutputArrowArgs = {
+  fill?: string;
+  accepts: "simple" | "unit";
+  returns: "simple" | "result" | "unit";
+  isPassthrough?: boolean;
+} & AddSvgItemArgs;
+type DrawSingleOutputArrowRtn = {
+  centerSvg: Selection<SVGSVGElement, unknown, null, undefined>;
+};
+
 function drawUnitOperator({
   svg: parentSvg,
   x: absX,
@@ -541,6 +563,7 @@ function drawUnitOperator({
   fill = "transparent",
   accepts,
   returns,
+  isPassthrough,
 }: DrawSingleOutputArrowArgs): DrawSingleOutputArrowRtn {
   const outerViewBoxWidth = 200;
   const outerViewBoxHeight = 150;
@@ -621,16 +644,27 @@ function drawUnitOperator({
     .attr("width", outerViewBoxWidth)
     .attr("viewBox", [0, 0, outlineViewBoxWidth, outlineViewBoxHeight]);
 
-  outerLineSvg
-    .append("polygon")
-    .attr("stroke-linejoin", "round")
-    .style("fill", fill)
-    .attr("stroke", "currentColor")
-    .attr("stroke-width", 4)
-    .attr(
-      "points",
-      outerPoints.map(({ x, y }) => `${x},${y}`),
-    );
+  if (isPassthrough) {
+    outerLineSvg
+      .append("line")
+      .attr("stroke", "currentColor")
+      .attr("stroke-width", 4)
+      .attr("x1", triangleSize + outlineXOffset)
+      .attr("y1", outlineViewBoxHeight / 2)
+      .attr("x2", outlineViewBoxWidth - outlineXOffset)
+      .attr("y2", outlineViewBoxHeight / 2);
+  } else {
+    outerLineSvg
+      .append("polygon")
+      .attr("stroke-linejoin", "round")
+      .style("fill", fill)
+      .attr("stroke", "currentColor")
+      .attr("stroke-width", 4)
+      .attr(
+        "points",
+        outerPoints.map(({ x, y }) => `${x},${y}`),
+      );
+  }
 
   if (accepts === "simple") {
     outerLineSvg

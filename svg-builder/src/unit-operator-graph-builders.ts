@@ -14,6 +14,7 @@ import {
   addAuthenticate,
   addDistribution,
   addGlobalStateWrite,
+  addPassthrough,
 } from "./unit-operator-builders.ts";
 
 type UnitOperation = { label?: string };
@@ -96,6 +97,11 @@ type DistributionOperation = {
 } & UnitOperation &
   SimpleOutput;
 
+type Passthrough = {
+  type: "passthrough";
+} & UnitOperation &
+  SimpleOutput;
+
 type PanicOperation = {
   type: "panic";
 } & UnitOperation &
@@ -114,7 +120,8 @@ type MiddleOperation =
   | ValidateOperation
   | AuthenticateOperation
   | AuthorizeOperation
-  | DistributionOperation;
+  | DistributionOperation
+  | Passthrough;
 export type OperationFlow = [
   start: StartOperation[],
   ...middle: MiddleOperation[][],
@@ -244,6 +251,8 @@ export function drawOperationFlow(
         addDistribution(args);
       } else if (type === "global_state_write") {
         addGlobalStateWrite(args);
+      } else if (type === "passthrough") {
+        addPassthrough(args);
       } else {
         throw new Error(`unknown type "${type}"`);
       }
