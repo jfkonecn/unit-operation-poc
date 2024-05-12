@@ -187,10 +187,42 @@ export function drawOperationFlow(
         ...commonArgs,
       };
       if (type === "io") {
+        type Accepts = Parameters<typeof addIo>[0]["accepts"];
+        type Returns = Parameters<typeof addIo>[0]["returns"];
+        const returns: Returns =
+          "next" in unitOperation
+            ? "simple"
+            : "unitOutput" in unitOperation
+              ? "unit"
+              : "result";
+
+        let accepts: Accepts = "unit";
+        const hasThisOperationsIndex = (links: IndexLink[]) => {
+          for (const { index } of links) {
+            if (index === j) {
+              return true;
+            }
+          }
+          return false;
+        };
+        for (const preOperation of flow[i - 1] ?? []) {
+          let foundLink = false;
+          if ("next" in preOperation) {
+            foundLink = hasThisOperationsIndex(preOperation.next);
+          } else if ("success" in preOperation) {
+            foundLink =
+              hasThisOperationsIndex(preOperation.success) ||
+              hasThisOperationsIndex(preOperation.error);
+          }
+          if (foundLink) {
+            accepts = "simple";
+            break;
+          }
+        }
         addIo({
           ...args,
-          accepts: "unit",
-          returns: "simple",
+          accepts,
+          returns,
         });
       } else if (type === "panic") {
         addPanic(args);
