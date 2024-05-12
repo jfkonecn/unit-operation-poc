@@ -149,17 +149,34 @@ export function drawOperationFlow(
     .attr("width", viewBoxWidth)
     .attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
   flow.forEach((column, i) => {
-    const x = padding + i * (spaceBetweenColumns + commonArgs.width);
-    const smallerColumnYPadding =
-      ((maxColumnLength - column.length) *
-        (spaceBetweenRows + commonArgs.height)) /
-      2;
+    const getX = (index: number) =>
+      padding + index * (spaceBetweenColumns + commonArgs.width);
+    const x = getX(i);
     column.forEach((unitOperation, j) => {
       const type = unitOperation.type;
-      const y =
-        padding +
-        smallerColumnYPadding +
-        j * (spaceBetweenRows + commonArgs.height);
+      const getY = (
+        index: number,
+        column:
+          | StartOperation[]
+          | MiddleOperation[]
+          | EndOperation[]
+          | undefined,
+      ) => {
+        if (!column)
+          throw new Error(
+            "Column is undefined. Are you at the end of the flow?",
+          );
+        const smallerColumnYPadding =
+          ((maxColumnLength - column.length) *
+            (spaceBetweenRows + commonArgs.height)) /
+          2;
+        return (
+          padding +
+          smallerColumnYPadding +
+          index * (spaceBetweenRows + commonArgs.height)
+        );
+      };
+      const y = getY(j, column);
       const args: Required<
         Pick<AddSvgItemArgs, "x" | "y" | "height" | "width" | "svg">
       > &
@@ -202,29 +219,49 @@ export function drawOperationFlow(
       if (!("unitOutput" in unitOperation)) {
         if ("next" in unitOperation) {
           const links = unitOperation.next;
-          drawLinks(svg, links, args, spaceBetweenColumns);
+          for (const { index, label } of links) {
+            drawLinks({
+              svg,
+              label,
+              spaceBetweenColumns,
+              xStart: args.x + args.width,
+              yStart: args.y + args.height / 2,
+              xEnd: getX(i + 1),
+              yEnd: getY(index, flow[i + 1]) + args.height / 2,
+            });
+          }
         }
       }
     });
   });
 }
-function drawLinks(
-  svg: Selection<SVGSVGElement, unknown, null, undefined>,
-  links: IndexLink[],
-  args: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg" | "x" | "y">>,
-  spaceBetweenColumns: number,
-) {
-  for (const link of links) {
-    svg
-      .append("path")
-      .attr("stroke-width", 4)
-      //.attr("stroke", "currentColor")
-      .attr("stroke", "red")
-      .attr("stroke-linecap", "round")
-      .attr("stroke-linejoin", "round")
-      .attr("d", [
-        `M ${args.x + args.width} ${args.y + args.height / 2}`,
-        `H ${args.x + args.width + spaceBetweenColumns / 2}`,
-      ]);
-  }
+
+function drawLinks({
+  svg,
+  xStart,
+  yStart,
+  xEnd,
+  yEnd,
+  label,
+}: {
+  xStart: number;
+  yStart: number;
+  xEnd: number;
+  yEnd: number;
+  label: string | undefined;
+  spaceBetweenColumns: number;
+} & Required<Pick<AddSvgItemArgs, "svg">>) {
+  const spaceBetweenColumns = xEnd - xStart;
+  svg
+    .append("path")
+    .attr("stroke-width", 4)
+    .attr("stroke", "currentColor")
+    .attr("fill", "none")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-linejoin", "round")
+    .attr("d", [
+      `M ${xStart} ${yStart}`,
+      `H ${xStart + spaceBetweenColumns / 2}`,
+      `L ${xEnd} ${yEnd}`,
+    ]);
 }
