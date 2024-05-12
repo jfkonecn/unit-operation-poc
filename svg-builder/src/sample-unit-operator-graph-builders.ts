@@ -18,7 +18,7 @@ export function buildTestEverything() {
         next: [
           {
             index: 0,
-            label: "test",
+            label: "foo",
           },
         ],
       },
@@ -27,7 +27,7 @@ export function buildTestEverything() {
         next: [
           {
             index: 0,
-            label: "test",
+            label: "bar",
           },
         ],
       },

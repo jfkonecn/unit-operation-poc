@@ -264,4 +264,12 @@ function drawLinks({
       `H ${xStart + spaceBetweenColumns / 2}`,
       `L ${xEnd} ${yEnd}`,
     ]);
+
+  svg
+    .append("text")
+    .attr("stroke", "currentColor")
+    .attr("x", xStart)
+    .attr("y", yStart - 10)
+    .attr("font-size", "1rem")
+    .text(() => label ?? "");
 }
