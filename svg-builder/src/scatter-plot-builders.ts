@@ -2,6 +2,7 @@ import { type Selection } from "d3-selection";
 import * as d3 from "d3";
 import * as fs from "node:fs";
 import { getPathToSvg } from "./utils.ts";
+import * as ss from "simple-statistics";
 // https://d3-graph-gallery.com/graph/scatter_basic.html
 
 type DrawScatterPlotArgs<T> = {
@@ -41,9 +42,43 @@ export function drawScatterPlot<T>({
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x));
 
+  const regression = ss.linearRegression(data.map(({ x, y }) => [x, y]));
+  console.log(regression);
+  const line = ss.linearRegressionLine(regression);
+  const lineData = x.domain().map(function (x) {
+    return {
+      x,
+      //y: line(x),
+      y: x,
+    };
+  });
+
+  //const regLine = d3
+  //.line()
+  //.x(function (d) {
+  //return x(d.x);
+  //})
+  //.y(function (d) {
+  //return y(d.y);
+  //});
+
+  //.attr("d", regLine);
+
   // Add Y axis
   const y = d3.scaleLinear().domain(yDomain).range([height, 0]);
   g.append("g").call(d3.axisLeft(y));
+
+  const dAttrGenerator = d3
+    .line<(typeof lineData)[0]>()
+    .x((d) => x(d.x))
+    .y((d) => y(d.y));
+
+  g.append("path")
+    .attr("d", dAttrGenerator(lineData))
+    .attr("class", "reg")
+    .style("stroke-dasharray", "3, 3")
+    .attr("stroke", "#319455")
+    .attr("stroke-width", 1);
 
   // Add dots
   g.append("g")
