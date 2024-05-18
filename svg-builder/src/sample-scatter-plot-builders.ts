@@ -28,9 +28,9 @@ function renderScatterPlotSvg<T>({
 }
 
 export function buildSimplePlot() {
-  renderScatterPlotSvg<{ GrLivArea: number; SalePrice: number }>({
+  renderScatterPlotSvg<{ GrLivArea: string; SalePrice: string }>({
     label: "simple-plot",
-    mapToPoint: (x) => ({ x: x.GrLivArea, y: x.SalePrice }),
+    mapToPoint: (x) => ({ x: +x.GrLivArea, y: +x.SalePrice }),
     xDomain: [0, 4000],
     yDomain: [0, 500_000],
   });
