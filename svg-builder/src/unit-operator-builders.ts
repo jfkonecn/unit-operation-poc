@@ -1,9 +1,8 @@
 import { select } from "d3";
 import { JSDOM } from "jsdom";
 import * as fs from "fs";
-import * as path from "node:path";
-import * as consts from "./consts.ts";
 import { type Selection } from "d3-selection";
+import { getPathToSvg } from "./utils.ts";
 // https://gist.github.com/denisemauldin/977dc65d13acf24f7b86bbf2d14eb384
 // https://heroicons.com/
 // https://www.sarasoueidan.com/blog/svg-coordinate-systems/
@@ -35,7 +34,7 @@ export function createSvgBuilder({
   return {
     svg,
     saveToFile: (fileName: string) => {
-      fs.writeFileSync(path.join(consts.pathToSvg, fileName), body.html());
+      fs.writeFileSync(getPathToSvg(fileName), body.html());
     },
   };
 }
