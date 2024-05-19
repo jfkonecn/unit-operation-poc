@@ -22,8 +22,6 @@ def display_top(snapshot, key_type="lineno"):
 
 
 def trace_and_profile(f: Callable[[int, int], Any]):
-    pageSizes = [1, 100, 1_000, 10_000]
-
     functionName = f.__name__
     saveDir = os.path.join(
         os.getcwd(), "..", "svg-builder", "svgs", "scatter-plots", functionName
@@ -37,8 +35,8 @@ def trace_and_profile(f: Callable[[int, int], Any]):
     with open(memoryCsvPath, "w") as memoryCsv, open(runtimeCsvPath, "w") as runtimeCsv:
         memoryCsv.write("pageSize,memoryAllocations")
         runtimeCsv.write("pageSize,totalRunTime")
-        for pageSize in pageSizes:
-            print(f"{pageSize}")
+        for pageSize in range(0, 10_000, 1_000):
+            print(f"{pageSize} for {functionName}")
             print("running runtime test")
             startTime = time.time()
             f(1, pageSize)
