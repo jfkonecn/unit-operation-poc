@@ -72,12 +72,7 @@ def test_query_all_and_map(page: int, page_size: int):
     [(1, 1_000), (1, 10_000), (1, 100_000), (1, 1_000_000)],
 )
 def test_get_one_row_at_a_time(page: int, page_size: int):
-    with cProfile.Profile() as profile:
-        get_one_row_at_a_time(page, page_size)
-
-    results = pstats.Stats(profile)
-    results.sort_stats(pstats.SortKey.TIME)
-    results.print_stats()
+    trace_and_profile(lambda: get_one_row_at_a_time(page, page_size))
 
 
 @pytest.mark.parametrize(
@@ -85,9 +80,4 @@ def test_get_one_row_at_a_time(page: int, page_size: int):
     [(1, 1_000), (1, 10_000), (1, 100_000), (1, 1_000_000)],
 )
 def test_in_memory_join(page: int, page_size: int):
-    with cProfile.Profile() as profile:
-        in_memory_join(page, page_size)
-
-    results = pstats.Stats(profile)
-    results.sort_stats(pstats.SortKey.TIME)
-    results.print_stats()
+    trace_and_profile(lambda: in_memory_join(page, page_size))
