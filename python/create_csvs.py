@@ -1,3 +1,4 @@
+import os
 import time
 import tracemalloc
 from typing import Any, Callable
@@ -23,20 +24,28 @@ def display_top(snapshot, key_type="lineno"):
 def trace_and_profile(f: Callable[[int, int], Any]):
     # pageSizes = [1, 100, 1_000, 10_000]
     pageSizes = [1, 100]
-    csvText = "pageSize,totalRunTime,memoryAllocations"
-    for pageSize in pageSizes:
-        startTime = time.time()
-        f(1, pageSize)
-        endTime = time.time()
-        totalRuntime = endTime - startTime
-        tracemalloc.start()
-        f(1, pageSize)
-        snapshot = tracemalloc.take_snapshot()
-        tracemalloc.stop()
-        totalMemory = display_top(snapshot)
-        csvText += f"\n{pageSize},{totalRuntime: .2f},{totalMemory}"
 
-    print(csvText)
+    currentDir = os.getcwd()
+
+    functionName = f.__name__
+    memoryCsvPath = os.path.join(currentDir, f"{functionName}_memory.csv")
+    runtimeCsvPath = os.path.join(currentDir, f"{functionName}_runtime.csv")
+
+    with open(memoryCsvPath, "w") as memoryCsv, open(runtimeCsvPath, "w") as runtimeCsv:
+        memoryCsv.write("pageSize,memoryAllocations")
+        runtimeCsv.write("pageSize,totalRunTime")
+        for pageSize in pageSizes:
+            startTime = time.time()
+            f(1, pageSize)
+            endTime = time.time()
+            totalRuntime = endTime - startTime
+            tracemalloc.start()
+            f(1, pageSize)
+            snapshot = tracemalloc.take_snapshot()
+            tracemalloc.stop()
+            totalMemory = display_top(snapshot)
+            memoryCsv.write(f"\n{pageSize},{totalMemory}")
+            runtimeCsv.write(f"\n{pageSize},{totalRuntime: .2f}")
 
 
 trace_and_profile(query_all_and_map)
