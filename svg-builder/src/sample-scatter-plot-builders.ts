@@ -45,26 +45,30 @@ export function buildSimplePlot() {
 }
 
 function renderPerformancePlotSvgs(functionName: string) {
-  renderScatterPlotSvg<{ GrLivArea: string; SalePrice: string }>({
+  renderScatterPlotSvg<{ pageSize: string; totalRunTime: string }>({
     label: `${functionName}_runtime`,
-    mapToPoint: (x) => ({ x: +x.GrLivArea, y: +x.SalePrice }),
+    mapToPoint: (x) => ({ x: +x.pageSize, y: +x.totalRunTime }),
     xDomain: [0, 4000],
     yDomain: [0, 500_000],
     baseDir: functionName,
   });
-  renderScatterPlotSvg<{ GrLivArea: string; SalePrice: string }>({
+  renderScatterPlotSvg<{ pageSize: string; memoryAllocations: string }>({
     label: `${functionName}_memory`,
-    mapToPoint: (x) => ({ x: +x.GrLivArea, y: +x.SalePrice }),
+    mapToPoint: (x) => ({ x: +x.pageSize, y: +x.memoryAllocations }),
     xDomain: [0, 4000],
     yDomain: [0, 500_000],
     baseDir: functionName,
   });
 }
 
-// trace_and_profile(query_all_and_map)
-// trace_and_profile(get_one_row_at_a_time)
-// trace_and_profile(in_memory_join)
-
 export function buildQueryAllAndMap() {
   renderPerformancePlotSvgs("query_all_and_map");
+}
+
+export function buildGetOneRowAtATime() {
+  renderPerformancePlotSvgs("get_one_row_at_a_time");
+}
+
+export function buildInMemoryJoin() {
+  renderPerformancePlotSvgs("in_memory_join");
 }

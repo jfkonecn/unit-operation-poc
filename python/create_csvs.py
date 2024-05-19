@@ -54,7 +54,7 @@ def trace_and_profile(f: Callable[[int, int], Any]):
 trace_and_profile(query_all_and_map)
 
 
-# trace_and_profile(get_one_row_at_a_time)
+trace_and_profile(get_one_row_at_a_time)
 
 
-# trace_and_profile(in_memory_join)
+trace_and_profile(in_memory_join)

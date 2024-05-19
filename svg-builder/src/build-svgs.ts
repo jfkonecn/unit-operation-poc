@@ -1,4 +1,6 @@
 import {
+  buildGetOneRowAtATime,
+  buildInMemoryJoin,
   buildQueryAllAndMap,
   buildSimplePlot,
 } from "./sample-scatter-plot-builders.ts";
@@ -33,3 +35,5 @@ buildPassthrough();
 buildTestEverything();
 buildSimplePlot();
 buildQueryAllAndMap();
+buildGetOneRowAtATime();
+buildInMemoryJoin();
