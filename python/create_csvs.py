@@ -25,11 +25,14 @@ def trace_and_profile(f: Callable[[int, int], Any]):
     # pageSizes = [1, 100, 1_000, 10_000]
     pageSizes = [1, 100]
 
-    currentDir = os.getcwd()
-
     functionName = f.__name__
-    memoryCsvPath = os.path.join(currentDir, f"{functionName}_memory.csv")
-    runtimeCsvPath = os.path.join(currentDir, f"{functionName}_runtime.csv")
+    saveDir = os.path.join(
+        os.getcwd(), "..", "svg-builder", "svgs", "scatter-plots", functionName
+    )
+    os.makedirs(saveDir, exist_ok=True)
+
+    memoryCsvPath = os.path.join(saveDir, f"{functionName}_memory.csv")
+    runtimeCsvPath = os.path.join(saveDir, f"{functionName}_runtime.csv")
 
     with open(memoryCsvPath, "w") as memoryCsv, open(runtimeCsvPath, "w") as runtimeCsv:
         memoryCsv.write("pageSize,memoryAllocations")
