@@ -7,7 +7,7 @@ import * as ss from "simple-statistics";
 
 type DrawScatterPlotArgs<T> = {
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
-  fileName: string;
+  label: string;
   mapToPoint: (x: T) => { x: number; y: number };
   totalHeight?: number;
   totalWidth?: number;
@@ -17,7 +17,7 @@ type DrawScatterPlotArgs<T> = {
 
 export function drawScatterPlot<T>({
   svg,
-  fileName,
+  label,
   mapToPoint,
   totalHeight = 400,
   totalWidth = 460,
@@ -28,7 +28,10 @@ export function drawScatterPlot<T>({
   const width = totalWidth - margin.left - margin.right;
   const height = totalHeight - margin.top - margin.bottom;
 
-  const csvData = fs.readFileSync(getPathToSvg(fileName), "utf8");
+  const csvData = fs.readFileSync(
+    getPathToSvg(`scatter-plots/${label}.csv`),
+    "utf8",
+  );
   const data = d3.csvParse(csvData).map((x) => mapToPoint(x as T));
 
   const g = svg
@@ -63,6 +66,10 @@ export function drawScatterPlot<T>({
 
   // add trend line
   const regression = ss.linearRegression(data.map(({ x, y }) => [x, y]));
+  fs.writeFileSync(
+    getPathToSvg(`scatter-plots/${label}.json`),
+    JSON.stringify(regression),
+  );
   const line = ss.linearRegressionLine(regression);
 
   const lineData = x.domain().map(function (x) {

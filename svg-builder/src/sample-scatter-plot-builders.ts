@@ -17,7 +17,7 @@ function renderScatterPlotSvg<T>({
   const { svg, saveToFile } = createSvgBuilder();
   drawScatterPlot<T>({
     svg,
-    fileName: `scatter-plots/${label}.csv`,
+    label,
     mapToPoint,
     totalWidth,
     totalHeight,
