@@ -1,4 +1,7 @@
-import { buildSimplePlot } from "./sample-scatter-plot-builders.ts";
+import {
+  buildQueryAllAndMap,
+  buildSimplePlot,
+} from "./sample-scatter-plot-builders.ts";
 import {
   buildAuthenticateSample,
   buildAuthorizeSample,
@@ -29,3 +32,4 @@ buildPanic();
 buildPassthrough();
 buildTestEverything();
 buildSimplePlot();
+buildQueryAllAndMap();

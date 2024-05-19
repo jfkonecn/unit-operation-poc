@@ -43,3 +43,28 @@ export function buildSimplePlot() {
     baseDir: "simple-plot",
   });
 }
+
+function renderPerformancePlotSvgs(functionName: string) {
+  renderScatterPlotSvg<{ GrLivArea: string; SalePrice: string }>({
+    label: `${functionName}_runtime`,
+    mapToPoint: (x) => ({ x: +x.GrLivArea, y: +x.SalePrice }),
+    xDomain: [0, 4000],
+    yDomain: [0, 500_000],
+    baseDir: functionName,
+  });
+  renderScatterPlotSvg<{ GrLivArea: string; SalePrice: string }>({
+    label: `${functionName}_memory`,
+    mapToPoint: (x) => ({ x: +x.GrLivArea, y: +x.SalePrice }),
+    xDomain: [0, 4000],
+    yDomain: [0, 500_000],
+    baseDir: functionName,
+  });
+}
+
+// trace_and_profile(query_all_and_map)
+// trace_and_profile(get_one_row_at_a_time)
+// trace_and_profile(in_memory_join)
+
+export function buildQueryAllAndMap() {
+  renderPerformancePlotSvgs("query_all_and_map");
+}
