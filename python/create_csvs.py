@@ -22,8 +22,7 @@ def display_top(snapshot, key_type="lineno"):
 
 
 def trace_and_profile(f: Callable[[int, int], Any]):
-    # pageSizes = [1, 100, 1_000, 10_000]
-    pageSizes = [1, 100]
+    pageSizes = [1, 100, 1_000, 10_000]
 
     functionName = f.__name__
     saveDir = os.path.join(
@@ -34,14 +33,18 @@ def trace_and_profile(f: Callable[[int, int], Any]):
     memoryCsvPath = os.path.join(saveDir, f"{functionName}_memory.csv")
     runtimeCsvPath = os.path.join(saveDir, f"{functionName}_runtime.csv")
 
+    print(f"running profile for {functionName}")
     with open(memoryCsvPath, "w") as memoryCsv, open(runtimeCsvPath, "w") as runtimeCsv:
         memoryCsv.write("pageSize,memoryAllocations")
         runtimeCsv.write("pageSize,totalRunTime")
         for pageSize in pageSizes:
+            print(f"{pageSize}")
+            print("running runtime test")
             startTime = time.time()
             f(1, pageSize)
             endTime = time.time()
             totalRuntime = endTime - startTime
+            print("running memory test")
             tracemalloc.start()
             f(1, pageSize)
             snapshot = tracemalloc.take_snapshot()

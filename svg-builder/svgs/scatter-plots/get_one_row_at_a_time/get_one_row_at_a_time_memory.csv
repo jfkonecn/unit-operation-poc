@@ -1,3 +1,5 @@
 pageSize,memoryAllocations
 1,0
 100,864
+1000,864
+10000,1032
