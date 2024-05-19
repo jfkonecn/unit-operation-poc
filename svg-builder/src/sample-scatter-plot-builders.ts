@@ -4,10 +4,16 @@ import { createSvgBuilder } from "./unit-operator-builders.ts";
 type DrawScatterPlotArgs<T> = Parameters<typeof drawScatterPlot<T>>[0];
 type RenderScatterPlotSvgArgs<T> = { label: string } & Pick<
   DrawScatterPlotArgs<T>,
-  "mapToPoint" | "xDomain" | "yDomain" | "totalHeight" | "totalWidth"
+  | "mapToPoint"
+  | "xDomain"
+  | "yDomain"
+  | "totalHeight"
+  | "totalWidth"
+  | "baseDir"
 >;
 function renderScatterPlotSvg<T>({
   label,
+  baseDir,
   mapToPoint,
   totalWidth,
   totalHeight,
@@ -23,8 +29,9 @@ function renderScatterPlotSvg<T>({
     totalHeight,
     xDomain,
     yDomain,
+    baseDir,
   });
-  saveToFile(`scatter-plots/${label}.svg`);
+  saveToFile(`scatter-plots/${baseDir}/${label}.svg`);
 }
 
 export function buildSimplePlot() {
@@ -33,5 +40,6 @@ export function buildSimplePlot() {
     mapToPoint: (x) => ({ x: +x.GrLivArea, y: +x.SalePrice }),
     xDomain: [0, 4000],
     yDomain: [0, 500_000],
+    baseDir: "simple-plot",
   });
 }

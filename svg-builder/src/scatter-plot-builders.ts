@@ -13,6 +13,7 @@ type DrawScatterPlotArgs<T> = {
   totalWidth?: number;
   xDomain: [number, number];
   yDomain: [number, number];
+  baseDir: string;
 };
 
 export function drawScatterPlot<T>({
@@ -23,13 +24,16 @@ export function drawScatterPlot<T>({
   totalWidth = 460,
   yDomain,
   xDomain,
+  baseDir,
 }: DrawScatterPlotArgs<T>) {
   const margin = { top: 10, right: 30, bottom: 30, left: 60 };
   const width = totalWidth - margin.left - margin.right;
   const height = totalHeight - margin.top - margin.bottom;
 
+  const resolvedBaseDir = `scatter-plots/${baseDir}`;
+
   const csvData = fs.readFileSync(
-    getPathToSvg(`scatter-plots/${label}.csv`),
+    getPathToSvg(`${resolvedBaseDir}/${label}.csv`),
     "utf8",
   );
   const data = d3.csvParse(csvData).map((x) => mapToPoint(x as T));
@@ -67,7 +71,7 @@ export function drawScatterPlot<T>({
   // add trend line
   const regression = ss.linearRegression(data.map(({ x, y }) => [x, y]));
   fs.writeFileSync(
-    getPathToSvg(`scatter-plots/${label}.json`),
+    getPathToSvg(`${resolvedBaseDir}/${label}.json`),
     JSON.stringify(regression),
   );
   const line = ss.linearRegressionLine(regression);
