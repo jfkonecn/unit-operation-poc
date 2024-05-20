@@ -35,7 +35,7 @@ def trace_and_profile(f: Callable[[int, int], Any]):
     with open(memoryCsvPath, "w") as memoryCsv, open(runtimeCsvPath, "w") as runtimeCsv:
         memoryCsv.write("pageSize,memoryAllocations")
         runtimeCsv.write("pageSize,totalRunTime")
-        for pageSize in range(0, 10_000, 1_000):
+        for pageSize in range(0, 100_000 + 1, 1_000):
             print(f"{pageSize} for {functionName}")
             print("running runtime test")
             startTime = time.time()
