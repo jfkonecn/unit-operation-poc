@@ -264,13 +264,11 @@ export function buildMvcFlow() {
         success: [
           {
             index: 0,
-            label: "success",
           },
         ],
         error: [
           {
             index: 1,
-            label: "error",
           },
         ],
       },
@@ -280,13 +278,11 @@ export function buildMvcFlow() {
         success: [
           {
             index: 2,
-            label: "success",
           },
         ],
         error: [
           {
             index: 3,
-            label: "error",
           },
         ],
       },
