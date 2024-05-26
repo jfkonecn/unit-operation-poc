@@ -177,7 +177,6 @@ function drawKey({
     totalColumns = columnIdx + 1;
     const xOffset = rowIdx * padding + rowIdx * commonArgs.width;
     const yOffset = columnIdx * padding + columnIdx * commonArgs.height;
-    console.log(`(${rowIdx}, ${columnIdx})`);
     maker({
       ...commonArgs,
       x: x + padding + xOffset,
