@@ -128,6 +128,76 @@ export type OperationFlow = [
   end: EndOperation[],
 ];
 
+const allUnitOperationMakers: ((
+  args: Omit<AddSvgItemArgs, "label">,
+) => void)[] = [
+  (args) => addMap({ ...args, label: "Map" }),
+  (args) => addFilter({ ...args, label: "Filter" }),
+  (args) => addSort({ ...args, label: "Sort" }),
+  (args) => addDistribution({ ...args, label: "Distribution" }),
+  (args) => addValidate({ ...args, label: "Validate" }),
+  (args) =>
+    addIo({ ...args, label: "I/O", accepts: "simple", returns: "result" }),
+  (args) => addAuthenticate({ ...args, label: "Authenticate" }),
+  (args) => addAuthorize({ ...args, label: "Authorize" }),
+  (args) => addGlobalStateRead({ ...args, label: "Global State Read" }),
+  (args) => addGlobalStateWrite({ ...args, label: "Global State Write" }),
+  (args) => addPanic({ ...args, label: "Panic" }),
+];
+
+function drawKey({
+  svg,
+  x,
+  y,
+  commonArgs,
+}: {
+  svg: Selection<SVGSVGElement, unknown, null, undefined>;
+  x: number;
+  y: number;
+  commonArgs: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg">>;
+}): {
+  keyHeight: number;
+  keyWidth: number;
+} {
+  const titleHeight = 50;
+  const padding = 50;
+  svg
+    .append("text")
+    .attr("stroke", "currentColor")
+    .attr("x", x + padding)
+    .attr("y", y + padding)
+    .attr("font-size", "1rem")
+    .text(() => "Key");
+  let totalRows = 0;
+  let totalColumns = 0;
+  allUnitOperationMakers.forEach((maker, i) => {
+    const rowIdx = i % 4;
+    const columnIdx = Math.trunc(i / 4);
+    totalRows = rowIdx + 1;
+    totalColumns = columnIdx + 1;
+    const xOffset = rowIdx * padding + rowIdx * commonArgs.width;
+    const yOffset = columnIdx * padding + columnIdx * commonArgs.height;
+    console.log(`(${rowIdx}, ${columnIdx})`);
+    maker({
+      ...commonArgs,
+      x: x + padding + xOffset,
+      y: y + titleHeight + padding + yOffset,
+      svg,
+    });
+  });
+  return {
+    keyHeight:
+      padding * 2 +
+      titleHeight +
+      padding * (totalRows - 1) +
+      totalRows * commonArgs.height,
+    keyWidth:
+      padding * 2 +
+      padding * (totalColumns - 1) +
+      totalColumns * commonArgs.width,
+  };
+}
+
 export function drawOperationFlow(
   svg: Selection<SVGSVGElement, unknown, null, undefined>,
   flow: OperationFlow,
@@ -143,18 +213,27 @@ export function drawOperationFlow(
     };
   const flowLength = flow.length;
   const maxColumnLength = flow.reduce((acc, x) => Math.max(x.length, acc), 0);
-  const viewBoxHeight =
+  const flowHeight =
     padding * 2 +
     maxColumnLength * commonArgs.height +
     (maxColumnLength - 1) * spaceBetweenRows;
-  const viewBoxWidth =
+  const flowWidth =
     padding * 2 +
     flowLength * commonArgs.width +
     (flowLength - 1) * spaceBetweenColumns;
+  const { keyHeight, keyWidth } = drawKey({
+    svg,
+    x: 0,
+    y: flowHeight,
+    commonArgs,
+  });
+  const viewBoxHeight = flowHeight + keyHeight;
+  const viewBoxWidth = Math.max(keyWidth, flowWidth);
   svg
     .attr("height", viewBoxHeight)
     .attr("width", viewBoxWidth)
     .attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
+
   flow.forEach((column, i) => {
     const getX = (index: number) =>
       padding + index * (spaceBetweenColumns + commonArgs.width);
