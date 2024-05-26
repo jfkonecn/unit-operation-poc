@@ -18,7 +18,10 @@ import {
   buildValidateSample,
   buildPassthrough,
 } from "./sample-unit-operator-builders.ts";
-import { buildTestEverything } from "./sample-unit-operator-graph-builders.ts";
+import {
+  buildMvcFlow,
+  buildTestEverything,
+} from "./sample-unit-operator-graph-builders.ts";
 
 buildMapSample();
 buildFilterSample();
@@ -33,6 +36,7 @@ buildDistribution();
 buildPanic();
 buildPassthrough();
 buildTestEverything();
+buildMvcFlow();
 buildSimplePlot();
 buildQueryAllAndMap();
 buildGetOneRowAtATime();

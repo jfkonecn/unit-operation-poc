@@ -190,3 +190,178 @@ export function buildTestEverything() {
   ];
   renderSampleSvg("test-everything", flow);
 }
+export function buildMvcFlow() {
+  const flow: OperationFlow = [
+    [
+      {
+        type: "io",
+        label: "Incoming HTTP Request",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "authenticate",
+        label: "Authenticate",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "distribution",
+        label: "Router",
+        next: [
+          {
+            index: 0,
+          },
+          {
+            index: 1,
+          },
+          {
+            index: 2,
+          },
+        ],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "401 Error",
+      },
+    ],
+    [
+      {
+        type: "passthrough",
+        label: "/patients",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "passthrough",
+        label: "/patients/{id}",
+        next: [{ index: 1 }],
+      },
+      {
+        type: "passthrough",
+        next: [{ index: 2 }],
+      },
+    ],
+    [
+      {
+        type: "authorize",
+        label: "Authorize",
+        success: [
+          {
+            index: 0,
+            label: "success",
+          },
+        ],
+        error: [
+          {
+            index: 1,
+            label: "error",
+          },
+        ],
+      },
+      {
+        type: "authorize",
+        label: "Authorize",
+        success: [
+          {
+            index: 2,
+            label: "success",
+          },
+        ],
+        error: [
+          {
+            index: 3,
+            label: "error",
+          },
+        ],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Get Patients Table Data",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [{ index: 1 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "403 Error",
+      },
+      {
+        type: "io",
+        label: "Get Patient Table Record",
+        success: [
+          {
+            index: 2,
+          },
+        ],
+        error: [{ index: 3 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "403 Error",
+      },
+    ],
+    [
+      {
+        type: "map",
+        label: "Map to JSON",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "500 Error",
+      },
+      {
+        type: "map",
+        label: "Map to JSON",
+        next: [{ index: 1 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "500 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        unitOutput: true,
+        label: "200 Response",
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "200 Response",
+      },
+    ],
+  ];
+  renderSampleSvg("mvc-flow", flow);
+}
