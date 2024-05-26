@@ -21,6 +21,7 @@ import {
 import {
   buildMvcFlow,
   buildTestEverything,
+  buildWeatherApiCall,
 } from "./sample-unit-operator-graph-builders.ts";
 
 buildMapSample();
@@ -37,6 +38,7 @@ buildPanic();
 buildPassthrough();
 buildTestEverything();
 buildMvcFlow();
+buildWeatherApiCall();
 buildSimplePlot();
 buildQueryAllAndMap();
 buildGetOneRowAtATime();

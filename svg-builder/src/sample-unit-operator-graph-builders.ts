@@ -361,3 +361,57 @@ export function buildMvcFlow() {
   ];
   renderSampleSvg("mvc-flow", flow);
 }
+
+export function buildWeatherApiCall() {
+  const flow: OperationFlow = [
+    [
+      {
+        type: "io",
+        label: "Ask for Location from User",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "validate",
+        label: "Validate location",
+        success: [{ index: 0 }],
+        error: [{ index: 1 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Make HTTP Request",
+        success: [{ index: 0 }],
+        error: [{ index: 1 }],
+      },
+      { type: "panic", label: "Panic", unitOutput: true },
+    ],
+    [
+      {
+        type: "validate",
+        label: "Parse JSON",
+        success: [{ index: 0 }],
+        error: [{ index: 1 }],
+      },
+      { type: "panic", label: "Panic", unitOutput: true },
+    ],
+    [
+      {
+        type: "map",
+        label: "Convert to Display String",
+        next: [{ index: 0 }],
+      },
+      { type: "panic", label: "Panic", unitOutput: true },
+    ],
+    [
+      {
+        type: "io",
+        unitOutput: true,
+        label: "Print Payload",
+      },
+    ],
+  ];
+  renderSampleSvg("weather-api-call", flow);
+}
