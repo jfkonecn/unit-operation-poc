@@ -729,7 +729,7 @@ function drawUnitOperator({
     .append("text")
     .attr("stroke", "currentColor")
     .attr("x", 0)
-    .attr("y", "1rem")
+    .attr("y", 15)
     .attr("font-size", "1rem")
     .text(() => label ?? "");
   const centerSvg = svg
@@ -741,5 +741,6 @@ function drawUnitOperator({
     .attr("viewBox", [0, 0, 24, 24])
     .attr("stroke-width", 1.5)
     .attr("stroke", "currentColor");
+
   return { centerSvg };
 }
