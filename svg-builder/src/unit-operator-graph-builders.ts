@@ -168,7 +168,7 @@ function drawKey({
     .attr("stroke", "currentColor")
     .attr("x", x + padding)
     .attr("y", y + padding)
-    .attr("font-size", "1rem")
+    .attr("font-size", `${1 * scale}rem`)
     .text(() => "Key");
   let totalRows = 0;
   let totalColumns = 0;
@@ -202,8 +202,10 @@ function drawKey({
 export function drawOperationFlow(
   svg: Selection<SVGSVGElement, unknown, null, undefined>,
   flow: OperationFlow,
+  [startIdx, endIdx] = [0, flow.length - 1],
+  includeKey = true,
+  scale = 1,
 ) {
-  const scale = 1;
   const padding = 10 * scale;
   const spaceBetweenRows = 10 * scale;
   const spaceBetweenColumns = 200 * scale;
@@ -213,8 +215,13 @@ export function drawOperationFlow(
       width: 200 * scale,
       svg,
     };
-  const flowLength = flow.length;
-  const maxColumnLength = flow.reduce((acc, x) => Math.max(x.length, acc), 0);
+
+  const flowSubset = flow.slice(startIdx, endIdx + 1);
+  const flowLength = flowSubset.length;
+  const maxColumnLength = flowSubset.reduce(
+    (acc, x) => Math.max(x.length, acc),
+    0,
+  );
   const flowHeight =
     padding * 2 +
     maxColumnLength * commonArgs.height +
@@ -223,13 +230,15 @@ export function drawOperationFlow(
     padding * 2 +
     flowLength * commonArgs.width +
     (flowLength - 1) * spaceBetweenColumns;
-  const { keyHeight, keyWidth } = drawKey({
-    svg,
-    x: 0,
-    y: flowHeight,
-    commonArgs,
-    scale,
-  });
+  const { keyHeight, keyWidth } = includeKey
+    ? drawKey({
+        svg,
+        x: 0,
+        y: flowHeight,
+        commonArgs,
+        scale,
+      })
+    : { keyHeight: 0, keyWidth: 0 };
   const viewBoxHeight = flowHeight + keyHeight;
   const viewBoxWidth = Math.max(keyWidth, flowWidth);
   svg
@@ -237,9 +246,10 @@ export function drawOperationFlow(
     .attr("width", viewBoxWidth)
     .attr("viewBox", [0, 0, viewBoxWidth, viewBoxHeight]);
 
-  flow.forEach((column, i) => {
+  flowSubset.forEach((column, i) => {
+    i = startIdx + i;
     const getX = (index: number) =>
-      padding + index * (spaceBetweenColumns + commonArgs.width);
+      padding + (index - startIdx) * (spaceBetweenColumns + commonArgs.width);
     const x = getX(i);
     column.forEach((unitOperation, j) => {
       const type = unitOperation.type;
