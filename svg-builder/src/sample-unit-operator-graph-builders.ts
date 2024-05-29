@@ -9,9 +9,10 @@ function renderSampleSvg(label: string, flow: OperationFlow) {
   drawOperationFlow(svg, flow);
   saveToFile(`unit-operation-graphs/${label}.svg`);
   const totalColumns = 2;
-  for (let i = 0; i < flow.length - totalColumns - 1; i++) {
+  console.log(`${label} has ${flow.length} columns`);
+  for (let i = 0; i < flow.length - (totalColumns - 1); i++) {
     const { svg: svg2, saveToFile: saveToFile2 } = createSvgBuilder();
-    drawOperationFlow(svg2, flow, [i, i + totalColumns - 1], false, 5);
+    drawOperationFlow(svg2, flow, [i, i + (totalColumns - 1)], false, 5);
     saveToFile2(`unit-operation-graphs/${label}_${i}.svg`);
   }
 }
