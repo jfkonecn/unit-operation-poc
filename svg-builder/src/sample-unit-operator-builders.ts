@@ -19,17 +19,27 @@ function renderSampleSvg(
   label: string,
   render: (args: AddSvgItemArgs) => void,
 ) {
+  const scale = 0.5;
+  const totalHeight = 1080 * scale;
+  const totalWidth = 1920 * scale;
   const { svg, saveToFile } = createSvgBuilder({
-    height: 600,
-    width: 600,
+    height: totalHeight,
+    width: totalWidth,
   });
+
+  const sampleHeight = 150 * 3;
+  const sampleWidth = 200 * 3;
+  const sampleX = totalWidth / 2 - sampleWidth / 2;
+  const sampleY = totalHeight / 2 - sampleHeight / 2;
   const args: AddSvgItemArgs = {
     label: label.toUpperCase(),
-    height: 200,
-    x: 100,
-    y: 200,
+    height: sampleHeight,
+    width: sampleWidth,
+    x: sampleX,
+    y: sampleY,
     svg,
   };
+  svg.attr("viewBox", [0, 0, totalWidth, totalHeight]);
   render(args);
   saveToFile(`unit-operations/${label}.svg`);
 }
