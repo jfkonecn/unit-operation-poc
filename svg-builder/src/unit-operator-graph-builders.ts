@@ -150,17 +150,19 @@ function drawKey({
   x,
   y,
   commonArgs,
+  scale,
 }: {
   svg: Selection<SVGSVGElement, unknown, null, undefined>;
   x: number;
   y: number;
   commonArgs: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg">>;
+  scale: number;
 }): {
   keyHeight: number;
   keyWidth: number;
 } {
-  const titleHeight = 50;
-  const padding = 50;
+  const titleHeight = 50 * scale;
+  const padding = 50 * scale;
   svg
     .append("text")
     .attr("stroke", "currentColor")
@@ -201,13 +203,14 @@ export function drawOperationFlow(
   svg: Selection<SVGSVGElement, unknown, null, undefined>,
   flow: OperationFlow,
 ) {
-  const padding = 10;
-  const spaceBetweenRows = 10;
-  const spaceBetweenColumns = 200;
+  const scale = 1;
+  const padding = 10 * scale;
+  const spaceBetweenRows = 10 * scale;
+  const spaceBetweenColumns = 200 * scale;
   const commonArgs: Required<Pick<AddSvgItemArgs, "height" | "width" | "svg">> =
     {
-      height: 150,
-      width: 200,
+      height: 150 * scale,
+      width: 200 * scale,
       svg,
     };
   const flowLength = flow.length;
@@ -225,6 +228,7 @@ export function drawOperationFlow(
     x: 0,
     y: flowHeight,
     commonArgs,
+    scale,
   });
   const viewBoxHeight = flowHeight + keyHeight;
   const viewBoxWidth = Math.max(keyWidth, flowWidth);
@@ -341,6 +345,7 @@ export function drawOperationFlow(
             drawLinks({
               svg,
               label,
+              strokeWidth: 4 * scale,
               spaceBetweenColumns,
               xStart: args.x + args.width,
               yStart: args.y + args.height / 2,
@@ -353,9 +358,10 @@ export function drawOperationFlow(
             drawLinks({
               svg,
               label,
+              strokeWidth: 4 * scale,
               spaceBetweenColumns,
               xStart: args.x + args.width,
-              yStart: args.y + args.height / 3 + 8.3,
+              yStart: args.y + args.height / 3 + 8.3 * scale,
               xEnd: getX(i + 1),
               yEnd: getY(index, flow[i + 1]) + args.height / 2,
             });
@@ -365,9 +371,10 @@ export function drawOperationFlow(
             drawLinks({
               svg,
               label,
+              strokeWidth: 4 * scale,
               spaceBetweenColumns,
               xStart: args.x + args.width,
-              yStart: args.y + (args.height * 2) / 3 - 8.3,
+              yStart: args.y + (args.height * 2) / 3 - 8.3 * scale,
               xEnd: getX(i + 1),
               yEnd: getY(index, flow[i + 1]) + args.height / 2,
             });
@@ -385,6 +392,7 @@ function drawLinks({
   xEnd,
   yEnd,
   label,
+  strokeWidth,
 }: {
   xStart: number;
   yStart: number;
@@ -392,11 +400,12 @@ function drawLinks({
   yEnd: number;
   label: string | undefined;
   spaceBetweenColumns: number;
+  strokeWidth: number;
 } & Required<Pick<AddSvgItemArgs, "svg">>) {
   const spaceBetweenColumns = xEnd - xStart;
   svg
     .append("path")
-    .attr("stroke-width", 4)
+    .attr("stroke-width", strokeWidth)
     .attr("stroke", "currentColor")
     .attr("fill", "none")
     .attr("stroke-linecap", "round")
