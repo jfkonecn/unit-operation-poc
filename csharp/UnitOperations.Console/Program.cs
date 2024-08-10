@@ -1,9 +1,12 @@
-﻿var filePath = args[0];
+﻿using System.Diagnostics;
+
+var filePath = args[0];
 var recordCount = int.Parse(args[1]);
+var cyclesPath = args[2];
 
 try
 {
-    return Run(filePath, recordCount);
+    return Run(filePath, recordCount, cyclesPath);
 }
 catch (Exception e)
 {
@@ -12,8 +15,9 @@ catch (Exception e)
     return 1;
 }
 
-int Run(string filePath, int recordCount)
+int Run(string filePath, int recordCount, string cyclesPath)
 {
+    PrintCycles("Start");
     var rows = new string[recordCount];
 
     {
@@ -40,7 +44,7 @@ int Run(string filePath, int recordCount)
         people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]), };
     }
 
-    quickSort(people, 0, recordCount - 1);
+    QuickSort(people, 0, recordCount - 1);
 
     Console.WriteLine($"name,age");
     foreach (var person in people)
@@ -50,14 +54,14 @@ int Run(string filePath, int recordCount)
 
     return 0;
 
-    static void swap(Person[] arr, int i, int j)
+    static void Swap(Person[] arr, int i, int j)
     {
         Person temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    static int partition(Person[] arr, int low, int high)
+    static int Partition(Person[] arr, int low, int high)
     {
         Person pivot = arr[high];
 
@@ -68,21 +72,48 @@ int Run(string filePath, int recordCount)
             if (arr[j].Age < pivot.Age)
             {
                 i++;
-                swap(arr, i, j);
+                Swap(arr, i, j);
             }
         }
-        swap(arr, i + 1, high);
+        Swap(arr, i + 1, high);
         return (i + 1);
     }
 
-    static void quickSort(Person[] arr, int low, int high)
+    static void QuickSort(Person[] arr, int low, int high)
     {
         if (low < high)
         {
-            int pi = partition(arr, low, high);
+            int pi = Partition(arr, low, high);
 
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            QuickSort(arr, low, pi - 1);
+            QuickSort(arr, pi + 1, high);
+        }
+    }
+
+    void PrintCycles(string name)
+    {
+        Process process = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = cyclesPath,
+                Arguments = name,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            }
+        };
+
+        process.Start();
+        string output = process.StandardOutput.ReadToEnd();
+        string error = process.StandardError.ReadToEnd();
+        process.WaitForExit();
+
+        Console.WriteLine(output);
+        if (!string.IsNullOrEmpty(error))
+        {
+            Console.WriteLine(error);
         }
     }
 }

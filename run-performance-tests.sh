@@ -2,6 +2,8 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+CYCLES="$SCRIPT_DIR/performance-utils/cycles"
+
 LANGUAGE="csharp"
 TEST_FILE_NAME="$(echo $ROW_COUNT)_rows.csv"
 ROW_COUNT=1
@@ -19,7 +21,7 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
 
         LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
         RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
-        eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS"
+        eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES"
     done
     echo "Finished processing language: $LANGUAGE"
     echo "----------------------------------------"
