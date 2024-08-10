@@ -165,3 +165,6 @@ pyrightconfig.json
 
 /data-generation/test-data/
 /test-clock/main
+*.so
+*.o
+performance-utils/cycles
