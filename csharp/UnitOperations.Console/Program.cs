@@ -1,5 +1,5 @@
 ﻿var filePath = args[0];
-var recordCount = uint.Parse(args[1]);
+var recordCount = int.Parse(args[1]);
 
 try
 {
@@ -12,7 +12,7 @@ catch (Exception e)
     return 1;
 }
 
-int Run(string filePath, uint recordCount)
+int Run(string filePath, int recordCount)
 {
     var rows = new string[recordCount];
 
@@ -37,17 +37,58 @@ int Run(string filePath, uint recordCount)
             Console.WriteLine($"Line \"{i + 1}:{row}\" does not have two entries");
             return 2;
         }
-        people[i] = new Person() { Name = temp[0], Age = uint.Parse(temp[1]), };
+        people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]), };
     }
 
-    // quick sort
-    // print the results
+    quickSort(people, 0, recordCount - 1);
+
+    Console.WriteLine($"name,age");
+    foreach (var person in people)
+    {
+        Console.WriteLine($"{person.Name},{person.Age}");
+    }
 
     return 0;
+
+    static void swap(Person[] arr, int i, int j)
+    {
+        Person temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    static int partition(Person[] arr, int low, int high)
+    {
+        Person pivot = arr[high];
+
+        int i = (low - 1);
+
+        for (int j = low; j <= high - 1; j++)
+        {
+            if (arr[j].Age < pivot.Age)
+            {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high);
+        return (i + 1);
+    }
+
+    static void quickSort(Person[] arr, int low, int high)
+    {
+        if (low < high)
+        {
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
 }
 
 record Person
 {
     public required string Name { get; init; }
-    public required uint Age { get; init; }
+    public required int Age { get; init; }
 }
