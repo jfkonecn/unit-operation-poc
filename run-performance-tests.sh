@@ -3,6 +3,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 CYCLES="$SCRIPT_DIR/performance-utils/cycles"
+READ_TIME="$SCRIPT_DIR/performance-utils/read-time"
 
 LANGUAGE="csharp"
 TEST_FILE_NAME="$(echo $ROW_COUNT)_rows.csv"
@@ -14,6 +15,7 @@ LANGUAGES=("csharp")
 before_temp=$(mktemp)
 after_temp=$(mktemp)
 
+eval "$READ_TIME"
 for LANGUAGE in "${LANGUAGES[@]}"; do
     echo "Processing language: $LANGUAGE"
     for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
@@ -32,6 +34,7 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
     echo "Finished processing language: $LANGUAGE"
     echo "----------------------------------------"
 done
+eval "$READ_TIME"
 
 echo "TTTTTTTTTTTTTTTTTT"
 cat "$before_temp"
