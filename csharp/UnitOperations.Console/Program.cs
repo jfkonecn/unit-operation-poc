@@ -6,7 +6,16 @@ var cyclesPath = args[2];
 
 try
 {
-    return Run(filePath, recordCount, cyclesPath);
+    var status = Run(filePath, recordCount, cyclesPath);
+    if (status == 0)
+    {
+        Utils.RunProcess(cyclesPath, "Start GC Pause");
+        Utils.ForceGC();
+        Utils.RunProcess(cyclesPath, "End Program");
+
+        Utils.PrintProcSelfStatus();
+    }
+    return status;
 }
 catch (Exception e)
 {
@@ -17,7 +26,7 @@ catch (Exception e)
 
 int Run(string filePath, int recordCount, string cyclesPath)
 {
-    PrintCycles("Start");
+    PrintCycles("Start File Read");
     var rows = new string[recordCount];
 
     {
@@ -31,6 +40,7 @@ int Run(string filePath, int recordCount, string cyclesPath)
         }
     }
 
+    Utils.RunProcess(cyclesPath, "Start Map to Person Record");
     var people = new Person[recordCount];
     for (int i = 0; i < rows.Length; i++)
     {
@@ -44,24 +54,42 @@ int Run(string filePath, int recordCount, string cyclesPath)
         people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]), };
     }
 
-    QuickSort(people, 0, recordCount - 1);
+    Utils.RunProcess(cyclesPath, "Start Map to Person QuickSort");
+    Utils.QuickSort(people, 0, recordCount - 1);
 
-    Console.WriteLine($"name,age");
+    Utils.RunProcess(cyclesPath, "Start Print Results");
+    Console.WriteLine("DDDDDDDDDDDDDDDDDDDD");
+    Console.WriteLine("name,age");
     foreach (var person in people)
     {
         Console.WriteLine($"{person.Name},{person.Age}");
     }
+    Console.WriteLine("DDDDDDDDDDDDDDDDDDDD");
+
+    void PrintCycles(string name)
+    {
+        Utils.RunProcess(cyclesPath, name);
+    }
 
     return 0;
+}
 
-    static void Swap(Person[] arr, int i, int j)
+record Person
+{
+    public required string Name { get; init; }
+    public required int Age { get; init; }
+}
+
+static class Utils
+{
+    private static void Swap(Person[] arr, int i, int j)
     {
         Person temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    static int Partition(Person[] arr, int low, int high)
+    private static int Partition(Person[] arr, int low, int high)
     {
         Person pivot = arr[high];
 
@@ -79,7 +107,7 @@ int Run(string filePath, int recordCount, string cyclesPath)
         return (i + 1);
     }
 
-    static void QuickSort(Person[] arr, int low, int high)
+    public static void QuickSort(Person[] arr, int low, int high)
     {
         if (low < high)
         {
@@ -90,14 +118,25 @@ int Run(string filePath, int recordCount, string cyclesPath)
         }
     }
 
-    void PrintCycles(string name)
+    public static void PrintProcSelfStatus()
+    {
+        Console.WriteLine("XXXXXXXXXXXXXXXXXXXX");
+        using StreamReader reader = new StreamReader("/proc/self/status");
+        string? line;
+        while ((line = reader.ReadLine()) != null)
+        {
+            Console.WriteLine(line);
+        }
+    }
+
+    public static void RunProcess(string command, string? args = null)
     {
         Process process = new Process
         {
             StartInfo = new ProcessStartInfo
             {
-                FileName = cyclesPath,
-                Arguments = name,
+                FileName = command,
+                Arguments = $"\"{args}\"",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
@@ -110,16 +149,17 @@ int Run(string filePath, int recordCount, string cyclesPath)
         string error = process.StandardError.ReadToEnd();
         process.WaitForExit();
 
-        Console.WriteLine(output);
+        Console.Write(output);
         if (!string.IsNullOrEmpty(error))
         {
-            Console.WriteLine(error);
+            Console.Write(error);
         }
     }
-}
 
-record Person
-{
-    public required string Name { get; init; }
-    public required int Age { get; init; }
+    public static void ForceGC()
+    {
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
+    }
 }

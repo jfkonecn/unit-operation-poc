@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <x86intrin.h>  // Include this header to use __rdtsc()
+#include <x86intrin.h>
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("Usage: %s <name>\n", argv[0]);
+        return 1;
+    }
+
+    char *name = argv[1];
     uint64_t cycles = __rdtsc();
 
-    printf("CPU cycles: %lu\n", cycles);
+    printf("%s,%lu\n", name, cycles);
 
     return 0;
 }
-

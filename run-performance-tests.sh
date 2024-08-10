@@ -21,7 +21,10 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
 
         LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
         RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
-        eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES"
+        eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
+            | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
+            | awk '/XXXXXXXXXXXXXXXXXXXX/{f=1; next} !f{print > "before.txt"} f{print > "after.txt"}'
+
     done
     echo "Finished processing language: $LANGUAGE"
     echo "----------------------------------------"
