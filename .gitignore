@@ -163,4 +163,5 @@ cython_debug/
 .venv
 pyrightconfig.json
 
-data-generation/test-data/
+/data-generation/test-data/
+/test-clock/main
