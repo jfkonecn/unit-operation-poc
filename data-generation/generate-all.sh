@@ -11,7 +11,7 @@ rm -r $TEST_DATA_DIR/*.csv
 mkdir -p $TEST_DATA_DIR
 
 
-NUMBERS=(1 2 3 4 5)
+NUMBERS=(10 1000 5000 10000 50000 100000)
 for NUMBER in "${NUMBERS[@]}"
 do
     echo "$NUMBER"

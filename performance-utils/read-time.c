@@ -11,6 +11,6 @@ int main() {
   clock_gettime(CLOCK_MONOTONIC, &now);
   uint64_t time = now.tv_sec * 1e9 + now.tv_nsec;
   uint64_t cycles = readCpuTimer();
-  printf("%lu ns, cycles %lu\n", time, cycles);
+  printf("%lu,%lu\n", time, cycles);
   return 0;
 }

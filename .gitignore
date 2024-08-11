@@ -168,3 +168,4 @@ pyrightconfig.json
 *.so
 *.o
 performance-utils/cycles
+analysis/results/
