@@ -38,7 +38,7 @@ lsb_release -a > "$OS_INFO_FILE"
 
 echo "Language,Total Records,File Name,Run Number,Point,Cycles" > "$CPU_RESULTS_FILE"
 echo "Language,Total Records,File Name,Run Number,VmPeak" > "$MEMORY_RESULTS_FILE"
-echo "time (ns), cycles" > "$CLOCK_SPEED_FILE"
+echo "time (ns),cycles" > "$CLOCK_SPEED_FILE"
 eval "$READ_TIME" >> "$CLOCK_SPEED_FILE"
 for LANGUAGE in "${LANGUAGES[@]}"; do
     echo "Processing language: $LANGUAGE"
