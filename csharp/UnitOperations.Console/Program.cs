@@ -12,8 +12,6 @@ try
         Utils.RunProcess(cyclesPath, "Start GC Pause");
         Utils.ForceGC();
         Utils.RunProcess(cyclesPath, "End Program");
-
-        Utils.PrintProcSelfStatus();
     }
     return status;
 }
@@ -51,7 +49,7 @@ int Run(string filePath, int recordCount, string cyclesPath)
             Console.WriteLine($"Line \"{i + 1}:{row}\" does not have two entries");
             return 2;
         }
-        people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]), };
+        people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]) };
     }
 
     Utils.RunProcess(cyclesPath, "Start Map to Person QuickSort");
@@ -118,17 +116,6 @@ static class Utils
         }
     }
 
-    public static void PrintProcSelfStatus()
-    {
-        Console.WriteLine("XXXXXXXXXXXXXXXXXXXX");
-        using StreamReader reader = new StreamReader("/proc/self/status");
-        string? line;
-        while ((line = reader.ReadLine()) != null)
-        {
-            Console.WriteLine(line);
-        }
-    }
-
     public static void RunProcess(string command, string? args = null)
     {
         Process process = new Process
@@ -141,7 +128,7 @@ static class Utils
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-            }
+            },
         };
 
         process.Start();

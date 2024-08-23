@@ -23,11 +23,11 @@ mkdir -p "$RESULT_DIR"
 
 LANGUAGES=("csharp")
 
-before_temp=$(mktemp)
-after_temp=$(mktemp)
+TEMP=$(mktemp)
 
 
 MEMORY_RESULTS_FILE="$RESULT_DIR/memory.csv"
+CPU_RESULTS_MEMORY_FILE="$RESULT_DIR/cpu-memory.csv"
 CPU_RESULTS_FILE="$RESULT_DIR/cpu.csv"
 CPU_INFO_FILE="$RESULT_DIR/cpu-info.txt"
 OS_INFO_FILE="$RESULT_DIR/os-info.txt"
@@ -37,7 +37,8 @@ lscpu > "$CPU_INFO_FILE"
 lsb_release -a > "$OS_INFO_FILE"
 
 echo "Language,Total Records,File Name,Run Number,Point,Cycles" > "$CPU_RESULTS_FILE"
-echo "Language,Total Records,File Name,Run Number,VmPeak" > "$MEMORY_RESULTS_FILE"
+echo "Language,Total Records,File Name,Run Number,Point,Cycles" > "$CPU_RESULTS_MEMORY_FILE"
+echo "Language,Total Records,File Name,Run Number,Time (ms),Heap Memory (B),Extra Heap Memory (B),Stack Memory (B)" > "$MEMORY_RESULTS_FILE"
 echo "time (ns),cycles" > "$CLOCK_SPEED_FILE"
 eval "$READ_TIME" >> "$CLOCK_SPEED_FILE"
 for LANGUAGE in "${LANGUAGES[@]}"; do
@@ -52,13 +53,21 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
         TOTAL_RUNS=10
         for RUN_NUMBER in $(seq 1 $TOTAL_RUNS)
         do
+            RUN_META_DATA="$LANGUAGE,$TOTAL_RECORDS,$FILENAME,$RUN_NUMBER,"
             echo "Run Number $RUN_NUMBER of $TOTAL_RUNS"
             eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
                 | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
-                | awk '/XXXXXXXXXXXXXXXXXXXX/{f=1; next} !f{print > "'"$before_temp"'"} f{print > "'"$after_temp"'"}'
-            RUN_META_DATA="$LANGUAGE,$TOTAL_RECORDS,$FILENAME,$RUN_NUMBER,"
-            cat "$before_temp" | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_FILE
-            cat "$after_temp" | eval "$PROC_PARSER_SCRIPT" | sed "s/^/$RUN_META_DATA/" >> $MEMORY_RESULTS_FILE
+                | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_FILE
+            eval "valgrind --tool=massif --stacks=yes --time-unit=ms --massif-out-file=$TEMP  $RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
+                | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
+                | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_MEMORY_FILE
+            awk '
+BEGIN { time=""; heap=""; extra=""; stack="" }
+/^time=/ { time=$1; sub(/time=/, "", time) }
+/^mem_heap_B=/ { heap=$1; sub(/mem_heap_B=/, "", heap) }
+/^mem_heap_extra_B=/ { extra=$1; sub(/mem_heap_extra_B=/, "", extra) }
+/^mem_stacks_B=/ { stack=$1; sub(/mem_stacks_B=/, "", stack); print time "," heap "," extra "," stack }
+' "$TEMP" | sed "s/^/$RUN_META_DATA/" >> "$MEMORY_RESULTS_FILE"
         done
 
     done
@@ -67,4 +76,4 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
 done
 eval "$READ_TIME" >> "$CLOCK_SPEED_FILE"
 
-rm "$before_temp" "$after_temp"
+rm "$TEMP"
