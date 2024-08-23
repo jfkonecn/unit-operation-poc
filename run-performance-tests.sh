@@ -58,7 +58,7 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
             eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
                 | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
                 | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_FILE
-            eval "valgrind --tool=massif --stacks=yes --time-unit=ms --massif-out-file=$TEMP  $RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
+            eval "valgrind --tool=massif --stacks=yes --time-unit=ms --log-file=/dev/null --massif-out-file=$TEMP  $RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
                 | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
                 | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_MEMORY_FILE
             awk '
