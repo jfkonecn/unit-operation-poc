@@ -38,7 +38,7 @@ lsb_release -a > "$OS_INFO_FILE"
 
 echo "Language,Total Records,File Name,Run Number,Point,Cycles" > "$CPU_RESULTS_FILE"
 echo "Language,Total Records,File Name,Run Number,Point,Cycles" > "$CPU_RESULTS_MEMORY_FILE"
-echo "Language,Total Records,File Name,Run Number,Time (ms),Heap Memory (B),Extra Heap Memory (B),Stack Memory (B)" > "$MEMORY_RESULTS_FILE"
+echo "Language,Total Records,File Name,Run Number,Instructions Executed,Heap Memory (B),Extra Heap Memory (B),Stack Memory (B)" > "$MEMORY_RESULTS_FILE"
 echo "time (ns),cycles" > "$CLOCK_SPEED_FILE"
 eval "$READ_TIME" >> "$CLOCK_SPEED_FILE"
 for LANGUAGE in "${LANGUAGES[@]}"; do
@@ -58,7 +58,7 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
             eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
                 | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
                 | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_FILE
-            eval "valgrind --tool=massif --stacks=yes --time-unit=ms --log-file=/dev/null --massif-out-file=$TEMP  $RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
+            eval "valgrind --tool=massif --stacks=yes --time-unit=i --log-file=/dev/null --massif-out-file=$TEMP  $RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
                 | sed '/DDDDDDDDDDDDDDDDDDD/,/DDDDDDDDDDDDDDDDDDD/d' \
                 | sed "s/^/$RUN_META_DATA/" >> $CPU_RESULTS_MEMORY_FILE
             awk '
