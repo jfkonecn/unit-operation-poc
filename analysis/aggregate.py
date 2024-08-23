@@ -78,6 +78,16 @@ for folder in folders:
     )
     print(temp_cpu_memory_df)
     print(whole_run_cpu_memory)
+    # temp_memory_df = (
+    # temp_memory_df.groupby(["Language", "Total Records", "Point"])["Cycles"]
+    # .mean()
+    # .reset_index()
+    # ).sort_values(by=["Language", "Total Records", "Cycles"])
+    temp_memory_df["Clock Speed (MHz)"] = clock_speed_mhz
+    temp_memory_df["Cycles"] = (
+        (clock_speed_mhz * 1e3) * temp_memory_df["Time (ms)"]
+    ).astype(int)
+    temp_memory_df.replace([float("inf"), float("-inf")], 0, inplace=True)
 
     all_whole_run_cpu_dfs.append(whole_run_cpu)
     all_unit_ops_cpu_dfs.append(temp_cpu_df)
