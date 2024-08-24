@@ -93,18 +93,25 @@ def aggregateMemoryResults(
         [temp_memory_df, temp_cpu_memory_df], ignore_index=True
     ).sort_values(by=["Language", "Total Records", "Run Number", "Cycles"])
 
-    temp_memory_df = temp_memory_df.interpolate(method="linear", limit_direction="both")
-    temp_memory_df = temp_memory_df[temp_memory_df["Point"].notna()]
-
-    columns_of_interest = [
+    for column in [
         "Heap Memory (B)",
         "Extra Heap Memory (B)",
         "Stack Memory (B)",
-        "Cycles",
-    ]
+    ]:
+        temp_memory_df[column] = temp_memory_df[column].interpolate(
+            method="linear", limit_direction="both"
+        )
+
+    temp_memory_df = temp_memory_df[temp_memory_df["Point"].notna()]
+
     temp_memory_df = (
         temp_memory_df.groupby(["Total Records", "Language", "Point"])[
-            columns_of_interest
+            [
+                "Heap Memory (B)",
+                "Extra Heap Memory (B)",
+                "Stack Memory (B)",
+                "Cycles",
+            ]
         ]
         .mean()
         .reset_index()
