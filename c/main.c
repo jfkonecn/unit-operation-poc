@@ -194,9 +194,5 @@ int main(int argc, char *argv[]) {
   int recordCount = atoi(argv[2]);
   char *cyclesPath = argv[3];
 
-  printf("File Path: %s\n", filePath);
-  printf("Record Count: %d\n", recordCount);
-  printf("Cycles Path: %s\n", cyclesPath);
-
   return run(filePath, recordCount, cyclesPath);
 }
