@@ -109,8 +109,9 @@ void readFile(const char *filePath, char **rows, int recordCount) {
 
   char line[256];
   int i = 0;
+  fgets(line, sizeof(line), file);
   while (fgets(line, sizeof(line), file) != NULL && i < recordCount) {
-    strcpy(rows[i], line);
+    snprintf(rows[i], 256, "%s", line);
     rows[i][strcspn(rows[i], "\n")] = '\0';
     i++;
   }
@@ -138,7 +139,6 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
     int j = 0;
     char *savePtr;
 
-    // Split the row by comma
     char *token = strtok_r(row, ",", &savePtr);
     while (token != NULL && j < 2) {
       temp[j++] = token;
@@ -153,7 +153,8 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
       return 2;
     }
 
-    snprintf(people[i].name, sizeof(people[i].name), "%s", temp[0]);
+    people[i].name = malloc(256);
+    strcpy(people[i].name, temp[0]);
     people[i].age = atoi(temp[1]);
   }
 
@@ -172,6 +173,9 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
 
   for (int i = 0; i < recordCount; i++) {
     free(rows[i]);
+  }
+  for (int i = 0; i < recordCount; i++) {
+    free(people[i].name);
   }
   free(rows);
   free(people);
