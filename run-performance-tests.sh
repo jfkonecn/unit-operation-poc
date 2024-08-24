@@ -21,7 +21,7 @@ RESULT_DIR="$SCRIPT_DIR/analysis/results/$TEST_NAME"
 
 mkdir -p "$RESULT_DIR"
 
-LANGUAGES=("csharp")
+LANGUAGES=("c" "csharp")
 
 TEMP=$(mktemp)
 

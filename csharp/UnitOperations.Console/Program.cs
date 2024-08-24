@@ -9,7 +9,7 @@ try
     var status = Run(filePath, recordCount, cyclesPath);
     if (status == 0)
     {
-        Utils.RunProcess(cyclesPath, "Start GC Pause");
+        Utils.RunProcess(cyclesPath, "Start Free Memory");
         Utils.ForceGC();
         Utils.RunProcess(cyclesPath, "End Program");
     }
