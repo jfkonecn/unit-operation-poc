@@ -14,9 +14,9 @@ def aggregateCpuResults(
     temp_cpu_df: pd.DataFrame, clock_speed_mhz: float
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     # Make cycles relative to the first recorded point
-    temp_cpu_df["Cycles"] = temp_cpu_df.groupby(["Run Number", "Total Records"])[
-        "Cycles"
-    ].transform(lambda x: x - x.iloc[0])
+    temp_cpu_df["Cycles"] = temp_cpu_df.groupby(
+        ["Run Number", "Language", "Total Records"]
+    )["Cycles"].transform(lambda x: x - x.iloc[0])
     temp_cpu_df = (
         temp_cpu_df.groupby(["Language", "Total Records", "Point"])["Cycles"]
         .mean()
@@ -52,18 +52,22 @@ def aggregateMemoryResults(
     clock_speed_mhz: float,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     temp_cpu_memory_df["Cycles"] = temp_cpu_memory_df.groupby(
-        ["Run Number", "Total Records"]
+        ["Run Number", "Language", "Total Records"]
     )["Cycles"].transform(lambda x: x - x.iloc[0])
     temp_memory_df["Time (ms)"] = 0
     max_cycles_df = (
-        temp_cpu_memory_df.groupby(["Run Number", "Total Records"])["Cycles"]
+        temp_cpu_memory_df.groupby(["Run Number", "Language", "Total Records"])[
+            "Cycles"
+        ]
         .max()
         .reset_index()
     )
     max_cycles_df.rename(columns={"Cycles": "Max Cycles"}, inplace=True)
 
     max_instructions_df = (
-        temp_memory_df.groupby(["Run Number", "Total Records"])["Instructions Executed"]
+        temp_memory_df.groupby(["Run Number", "Language", "Total Records"])[
+            "Instructions Executed"
+        ]
         .max()
         .reset_index()
     )
