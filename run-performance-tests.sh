@@ -1,5 +1,7 @@
 #!/bin/bash
 
+LANGUAGES=("c" "csharp")
+
 if [ -z "$1" ]; then
     echo "Usage: $0 <test_name>"
     exit 1
@@ -13,15 +15,12 @@ CYCLES="$SCRIPT_DIR/performance-utils/cycles"
 READ_TIME="$SCRIPT_DIR/performance-utils/read-time"
 PROC_PARSER_SCRIPT="$SCRIPT_DIR/performance-utils/parse-proc.sh"
 
-LANGUAGE="csharp"
 TEST_FILE_NAME="$(echo $ROW_COUNT)_rows.csv"
 ROW_COUNT=1
 
 RESULT_DIR="$SCRIPT_DIR/analysis/results/$TEST_NAME"
 
 mkdir -p "$RESULT_DIR"
-
-LANGUAGES=("c" "csharp")
 
 TEMP=$(mktemp)
 
