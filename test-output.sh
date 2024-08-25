@@ -24,8 +24,6 @@ for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
         RUN_RESULT_FOLDER="$TEST_RESULTS/$FILENAME_NO_EXT"
         mkdir -p $RUN_RESULT_FOLDER
 
-        echo "Run Number $RUN_NUMBER of $TOTAL_RUNS"
-        echo "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES"
         eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES" \
             | awk '/DDDDDDDDDDDDDDDDDDD/{flag=!flag;next} flag' \
             | sed "s/^/$RUN_META_DATA/" > "$RUN_RESULT_FOLDER/$LANGUAGE.txt"
@@ -37,9 +35,11 @@ done
 
 
 for folders in "${folders[@]}"; do
-    checksum=$(md5sum *.txt | head -n 1 | awk '{ print $1 }')
+    RUN_RESULT_FOLDER="$TEST_RESULTS/$folders"
+    checksum=$(md5sum $RUN_RESULT_FOLDER/*.txt | head -n 1 | awk '{ print $1 }')
     all_identical=true
-    for file in *.txt; do
+    for file in $RUN_RESULT_FOLDER/*.txt; do
+        echo "checking $file"
         current_checksum=$(md5sum "$file" | awk '{ print $1 }')
         if [[ $current_checksum != $checksum ]]; then
             all_identical=false
