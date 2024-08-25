@@ -145,6 +145,8 @@ def aggregateMemoryResults(
         inplace=True,
     )
 
+    whole_run_memory = whole_run_memory.sort_values(by=["Language", "Total Records"])
+
     return (temp_memory_df, whole_run_memory)
 
 
@@ -179,6 +181,14 @@ for folder in folders:
     (temp_memory_df, whole_run_memory) = aggregateMemoryResults(
         temp_memory_df, temp_cpu_memory_df, clock_speed_mhz
     )
+
+    computer_name_header = "Computer Name"
+    computer_name = os.path.basename(os.path.normpath(folder))
+
+    whole_run_cpu[computer_name_header] = computer_name
+    temp_cpu_df[computer_name_header] = computer_name
+    whole_run_memory[computer_name_header] = computer_name
+    temp_memory_df[computer_name_header] = computer_name
 
     all_whole_run_cpu_dfs.append(whole_run_cpu)
     all_unit_ops_cpu_dfs.append(temp_cpu_df)
