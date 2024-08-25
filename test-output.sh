@@ -33,13 +33,11 @@ for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
     done
 done
 
-
+all_identical=true
 for folders in "${folders[@]}"; do
     RUN_RESULT_FOLDER="$TEST_RESULTS/$folders"
     checksum=$(md5sum $RUN_RESULT_FOLDER/*.txt | head -n 1 | awk '{ print $1 }')
-    all_identical=true
     for file in $RUN_RESULT_FOLDER/*.txt; do
-        echo "checking $file"
         current_checksum=$(md5sum "$file" | awk '{ print $1 }')
         if [[ $current_checksum != $checksum ]]; then
             all_identical=false
