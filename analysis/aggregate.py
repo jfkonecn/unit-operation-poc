@@ -204,9 +204,26 @@ whole_run_cpu_df = pd.concat(all_whole_run_cpu_dfs, ignore_index=True)
 unit_ops_cpu_df = pd.concat(all_unit_ops_cpu_dfs, ignore_index=True)
 whole_run_memory_df = pd.concat(all_whole_run_memory_dfs, ignore_index=True)
 unit_ops_memory_df = pd.concat(all_unit_ops_memory_dfs, ignore_index=True)
-# print(whole_run_cpu_df.to_string())
-# print(unit_ops_cpu_df.to_string())
-# print(memory_df.to_string())
+
+
+def pivot_and_save(file_path: str, df: pd.DataFrame, x_axis: str, y_axis: str):
+    output_df = pd.DataFrame()
+
+    output_df[x_axis] = df[x_axis].unique()
+
+    pivot_df = df.pivot_table(
+        index=x_axis,
+        columns=["Computer Name", "Language"],
+        values=y_axis,
+        aggfunc="sum",
+    )
+
+    pivot_df.columns = [f"{comp}_{lang}" for comp, lang in pivot_df.columns]
+
+    output_df = output_df.merge(pivot_df, on=x_axis, how="left")
+    with pd.ExcelWriter(file_path, mode="a", engine="openpyxl") as writer:
+        # There's warning from pandas if you exceed 31 characters for a sheet name
+        output_df.to_excel(writer, sheet_name=f"{x_axis}-{y_axis}"[:31], index=False)
 
 
 aggregates_path = os.path.join(script_dir, "aggregates")
@@ -217,7 +234,13 @@ unit_ops_cpu_path = os.path.join(aggregates_path, "unit_ops_cpu.xlsx")
 whole_run_memory_path = os.path.join(aggregates_path, "whole_run_memory.xlsx")
 unit_ops_memory_path = os.path.join(aggregates_path, "unit_ops_memory.xlsx")
 
-whole_run_cpu_df.to_excel(whole_run_cpu_path, index=False)
-unit_ops_cpu_df.to_excel(unit_ops_cpu_path, index=False)
-whole_run_memory_df.to_excel(whole_run_memory_path, index=False)
-unit_ops_memory_df.to_excel(unit_ops_memory_path, index=False)
+whole_run_cpu_df.to_excel(whole_run_cpu_path, sheet_name="base", index=False)
+unit_ops_cpu_df.to_excel(unit_ops_cpu_path, sheet_name="base", index=False)
+whole_run_memory_df.to_excel(whole_run_memory_path, sheet_name="base", index=False)
+unit_ops_memory_df.to_excel(unit_ops_memory_path, sheet_name="base", index=False)
+
+pivot_and_save(whole_run_cpu_path, whole_run_cpu_df, "Total Records", "Cycles")
+
+pivot_and_save(
+    whole_run_memory_path, whole_run_memory_df, "Total Records", "Max Heap Memory (B)"
+)
