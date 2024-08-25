@@ -9,13 +9,13 @@ READ_TIME="$SCRIPT_DIR/performance-utils/read-time"
 
 TEST_RESULTS="$SCRIPT_DIR/test-results"
 
-files=()
+folders=()
 
 for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
     FILENAME=$(basename "$FILE")
     FILENAME_NO_EXT="${FILENAME%.*}"
     TOTAL_RECORDS=${FILENAME%%_*}
-    files+=($FILENAME_NO_EXT)
+    folders+=($FILENAME_NO_EXT)
     echo "Processing $FILENAME"
     for LANGUAGE in "${LANGUAGES[@]}"; do
         echo "Processing language: $LANGUAGE"
@@ -36,6 +36,23 @@ for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
 done
 
 
-for file in "${files[@]}"; do
-    echo "file: $file"
+for folders in "${folders[@]}"; do
+    checksum=$(md5sum *.txt | head -n 1 | awk '{ print $1 }')
+    all_identical=true
+    for file in *.txt; do
+        current_checksum=$(md5sum "$file" | awk '{ print $1 }')
+        if [[ $current_checksum != $checksum ]]; then
+            all_identical=false
+            echo "$file differs."
+            break
+        fi
+    done
 done
+
+if $all_identical; then
+    echo "All files are identical."
+    exit 0
+else
+    echo "Not all files are identical."
+    exit 1
+fi
