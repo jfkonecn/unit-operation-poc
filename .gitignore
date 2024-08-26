@@ -171,3 +171,4 @@ performance-utils/cycles
 analysis/results/
 analysis/aggregates/
 test-results/
+*.swp
