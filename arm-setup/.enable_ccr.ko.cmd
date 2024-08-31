@@ -1,0 +1,1 @@
+savedcmd_/home/jfkonecn/oss/unit-operation-poc/arm-setup/enable_ccr.ko := ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T arch/arm64/module.lds -o /home/jfkonecn/oss/unit-operation-poc/arm-setup/enable_ccr.ko /home/jfkonecn/oss/unit-operation-poc/arm-setup/enable_ccr.o /home/jfkonecn/oss/unit-operation-poc/arm-setup/enable_ccr.mod.o;  true
