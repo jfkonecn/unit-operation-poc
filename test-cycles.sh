@@ -9,7 +9,16 @@ output1=$(eval "$READ_TIME")
 time1=$(echo $output1 | cut -d',' -f1)
 cycles1=$(echo $output1 | cut -d',' -f2)
 
-sleep 1
+START=$(date +%s)
+
+# Don't use sleep since process could
+# also fall sleep an no up the cycle counter
+while true; do
+  NOW=$(date +%s)
+  if [ $((NOW - START)) -ge 1 ]; then
+    break
+  fi
+done
 
 # Capture the second set of time and clock cycles
 output2=$(eval "$READ_TIME")

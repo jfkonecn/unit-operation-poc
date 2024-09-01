@@ -1,5 +1,3 @@
-#include <stm32f1xx_hal.h>
-
 uint64_t readCpuTimer() { 
 #if defined(__i386__)
   int64_t ret;
@@ -22,6 +20,11 @@ uint64_t readCpuTimer() {
      */
     // asm volatile("mrs %0, cntvct_el0" : "=r" (val));
     asm volatile("mrs %0, pmccntr_el0" : "=r"(val));
+    // asm volatile("mrs %0, pmevcntr0_el0" : "=r" (val));
+    // asm volatile("mrs %0, pmevcntr0_el0" : "=r" (val));
+    // asm volatile("mrs %0, pmevcntr0_el0" : "=r" (val));
+    // asm volatile("mrs %0, pmevcntr0_el0" : "=r" (val));
+    // asm volatile("mrs %0, pmevcntr0_el0" : "=r" (val));
 
     return val;
 #else
