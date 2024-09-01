@@ -15,19 +15,23 @@ def aggregateCpuResults(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     # Make cycles relative to the first recorded point
     temp_cpu_df["Cycles"] = temp_cpu_df.groupby(
-        ["Run Number", "Language", "Total Records"]
+        ["Run Number", "Language", "Total Records", "File Size (B)"]
     )["Cycles"].transform(lambda x: x - x.iloc[0])
     temp_cpu_df = (
-        temp_cpu_df.groupby(["Language", "Total Records", "Point"])["Cycles"]
+        temp_cpu_df.groupby(["Language", "Total Records", "File Size (B)", "Point"])[
+            "Cycles"
+        ]
         .mean()
         .reset_index()
-    ).sort_values(by=["Language", "Total Records", "Cycles"])
+    ).sort_values(by=["Language", "Total Records", "File Size (B)", "Cycles"])
 
     temp_cpu_df["Cycles Difference"] = (
-        temp_cpu_df.groupby(["Language", "Total Records"])["Cycles"].diff().shift(-1)
+        temp_cpu_df.groupby(["Language", "Total Records", "File Size (B)"])["Cycles"]
+        .diff()
+        .shift(-1)
     )
     whole_run_cpu: pd.DataFrame = (
-        temp_cpu_df.groupby(["Language", "Total Records"])
+        temp_cpu_df.groupby(["Language", "Total Records", "File Size (B)"])
         .agg({"Cycles": "max"})
         .reset_index()
     )
@@ -52,22 +56,22 @@ def aggregateMemoryResults(
     clock_speed_mhz: float,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     temp_cpu_memory_df["Cycles"] = temp_cpu_memory_df.groupby(
-        ["Run Number", "Language", "Total Records"]
+        ["Run Number", "Language", "Total Records", "File Size (B)"]
     )["Cycles"].transform(lambda x: x - x.iloc[0])
     temp_memory_df["Time (ms)"] = 0
     max_cycles_df = (
-        temp_cpu_memory_df.groupby(["Run Number", "Language", "Total Records"])[
-            "Cycles"
-        ]
+        temp_cpu_memory_df.groupby(
+            ["Run Number", "Language", "Total Records", "File Size (B)"]
+        )["Cycles"]
         .max()
         .reset_index()
     )
     max_cycles_df.rename(columns={"Cycles": "Max Cycles"}, inplace=True)
 
     max_instructions_df = (
-        temp_memory_df.groupby(["Run Number", "Language", "Total Records"])[
-            "Instructions Executed"
-        ]
+        temp_memory_df.groupby(
+            ["Run Number", "Language", "Total Records", "File Size (B)"]
+        )["Instructions Executed"]
         .max()
         .reset_index()
     )
@@ -76,10 +80,12 @@ def aggregateMemoryResults(
     )
 
     temp_memory_df = temp_memory_df.merge(
-        max_cycles_df, on=["Run Number", "Total Records"], how="left"
+        max_cycles_df, on=["Run Number", "Total Records", "File Size (B)"], how="left"
     )
     temp_memory_df = temp_memory_df.merge(
-        max_instructions_df, on=["Run Number", "Total Records"], how="left"
+        max_instructions_df,
+        on=["Run Number", "Total Records", "File Size (B)"],
+        how="left",
     )
 
     temp_memory_df["Cycles"] = (
@@ -95,7 +101,9 @@ def aggregateMemoryResults(
 
     temp_memory_df = pd.concat(
         [temp_memory_df, temp_cpu_memory_df], ignore_index=True
-    ).sort_values(by=["Language", "Total Records", "Run Number", "Cycles"])
+    ).sort_values(
+        by=["Language", "Total Records", "File Size (B)", "Run Number", "Cycles"]
+    )
 
     for column in [
         "Heap Memory (B)",
@@ -109,7 +117,7 @@ def aggregateMemoryResults(
     temp_memory_df = temp_memory_df[temp_memory_df["Point"].notna()]
 
     temp_memory_df = (
-        temp_memory_df.groupby(["Total Records", "Language", "Point"])[
+        temp_memory_df.groupby(["Total Records", "File Size (B)", "Language", "Point"])[
             [
                 "Heap Memory (B)",
                 "Extra Heap Memory (B)",
@@ -119,24 +127,32 @@ def aggregateMemoryResults(
         ]
         .mean()
         .reset_index()
-    ).sort_values(by=["Language", "Total Records", "Cycles"])
+    ).sort_values(by=["Language", "Total Records", "File Size (B)", "Cycles"])
 
     max_heap_memory_df = temp_memory_df.loc[
-        temp_memory_df.groupby(["Total Records", "Language"])[
+        temp_memory_df.groupby(["Total Records", "File Size (B)", "Language"])[
             "Heap Memory (B)"
         ].idxmax()
-    ][["Total Records", "Language", "Heap Memory (B)", "Extra Heap Memory (B)"]]
+    ][
+        [
+            "Total Records",
+            "File Size (B)",
+            "Language",
+            "Heap Memory (B)",
+            "Extra Heap Memory (B)",
+        ]
+    ]
 
     max_stack_memory_df = temp_memory_df.loc[
-        temp_memory_df.groupby(["Total Records", "Language"])[
+        temp_memory_df.groupby(["Total Records", "File Size (B)", "Language"])[
             "Stack Memory (B)"
         ].idxmax()
-    ][["Total Records", "Language", "Stack Memory (B)"]]
+    ][["Total Records", "File Size (B)", "Language", "Stack Memory (B)"]]
 
     whole_run_memory = pd.merge(
         max_heap_memory_df,
         max_stack_memory_df,
-        on=["Total Records", "Language"],
+        on=["Total Records", "File Size (B)", "Language"],
         how="outer",
     )
 
@@ -149,31 +165,45 @@ def aggregateMemoryResults(
         inplace=True,
     )
 
-    whole_run_memory = whole_run_memory.sort_values(by=["Language", "Total Records"])
+    whole_run_memory = whole_run_memory.sort_values(
+        by=["Language", "Total Records", "File Size (B)"]
+    )
 
     return (temp_memory_df, whole_run_memory)
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-directory_path = os.path.join(script_dir, "results")
 
-folders = glob.glob(os.path.join(directory_path, "*/"))
-
+file_sizes_dict = {"File Name": [], "File Size (B)": []}
+test_data_path = os.path.join(script_dir, "..", "data-generation", "test-data")
+csv_files = glob.glob(os.path.join(test_data_path, "*.csv"))
+for csv_file in csv_files:
+    file_size = os.path.getsize(csv_file)
+    file_sizes_dict["File Name"].append(os.path.basename(csv_file))
+    file_sizes_dict["File Size (B)"].append(file_size)
+file_sizes_df = pd.DataFrame(file_sizes_dict)
 
 all_unit_ops_cpu_dfs = []
 all_whole_run_cpu_dfs = []
 all_unit_ops_memory_dfs = []
 all_whole_run_memory_dfs = []
 
+directory_path = os.path.join(script_dir, "results")
+folders = glob.glob(os.path.join(directory_path, "*/"))
 for folder in folders:
     print(f"Processing folder: {folder}")
     cpu_path = os.path.join(folder, "cpu.csv")
     temp_cpu_df = pd.read_csv(cpu_path)
+    temp_cpu_df = pd.merge(temp_cpu_df, file_sizes_df, on="File Name", how="left")
     cpu_memory_path = os.path.join(folder, "cpu-memory.csv")
     temp_cpu_memory_df = pd.read_csv(cpu_memory_path)
+    temp_cpu_memory_df = pd.merge(
+        temp_cpu_memory_df, file_sizes_df, on="File Name", how="left"
+    )
     memory_path = os.path.join(folder, "memory.csv")
     temp_memory_df = pd.read_csv(memory_path)
+    temp_memory_df = pd.merge(temp_memory_df, file_sizes_df, on="File Name", how="left")
     clock_speed_path = os.path.join(folder, "clock-speed.csv")
     clock_speed_df = pd.read_csv(clock_speed_path)
 
@@ -206,19 +236,30 @@ whole_run_memory_df = pd.concat(all_whole_run_memory_dfs, ignore_index=True)
 unit_ops_memory_df = pd.concat(all_unit_ops_memory_dfs, ignore_index=True)
 
 
-def pivot_and_save(file_path: str, df: pd.DataFrame, x_axis: str, y_axis: str):
+def pivot_and_save(
+    file_path: str, df: pd.DataFrame, x_axis: str, y_axis: str, is_unit_op: bool
+):
     output_df = pd.DataFrame()
 
     output_df[x_axis] = df[x_axis].unique()
 
+    columns = ["Computer Name", "Language"]
+    if is_unit_op:
+        columns.insert(0, "Point")
+
     pivot_df = df.pivot_table(
         index=x_axis,
-        columns=["Computer Name", "Language"],
+        columns=columns,
         values=y_axis,
         aggfunc="sum",
     )
 
-    pivot_df.columns = [f"{comp}_{lang}" for comp, lang in pivot_df.columns]
+    if is_unit_op:
+        pivot_df.columns = [
+            f"{point}_{comp}_{lang}" for comp, lang, point in pivot_df.columns
+        ]
+    else:
+        pivot_df.columns = [f"{comp}_{lang}" for comp, lang in pivot_df.columns]
 
     output_df = output_df.merge(pivot_df, on=x_axis, how="left")
     with pd.ExcelWriter(file_path, mode="a", engine="openpyxl") as writer:
@@ -239,8 +280,16 @@ unit_ops_cpu_df.to_excel(unit_ops_cpu_path, sheet_name="base", index=False)
 whole_run_memory_df.to_excel(whole_run_memory_path, sheet_name="base", index=False)
 unit_ops_memory_df.to_excel(unit_ops_memory_path, sheet_name="base", index=False)
 
-pivot_and_save(whole_run_cpu_path, whole_run_cpu_df, "Total Records", "Cycles")
+pivot_and_save(whole_run_cpu_path, whole_run_cpu_df, "Total Records", "Cycles", False)
+pivot_and_save(whole_run_cpu_path, whole_run_cpu_df, "File Size (B)", "Cycles", False)
+
+pivot_and_save(unit_ops_cpu_path, unit_ops_cpu_df, "Total Records", "Cycles", True)
+pivot_and_save(unit_ops_cpu_path, unit_ops_cpu_df, "File Size (B)", "Cycles", True)
 
 pivot_and_save(
-    whole_run_memory_path, whole_run_memory_df, "Total Records", "Max Heap Memory (B)"
+    whole_run_memory_path,
+    whole_run_memory_df,
+    "Total Records",
+    "Max Heap Memory (B)",
+    False,
 )
