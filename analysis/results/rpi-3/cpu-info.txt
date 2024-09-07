@@ -11,7 +11,7 @@ Core(s) per cluster:                  4
 Socket(s):                            -
 Cluster(s):                           1
 Stepping:                             r0p4
-CPU(s) scaling MHz:                   100%
+CPU(s) scaling MHz:                   75%
 CPU max MHz:                          1200.0000
 CPU min MHz:                          600.0000
 BogoMIPS:                             38.40
