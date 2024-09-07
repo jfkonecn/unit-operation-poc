@@ -42,11 +42,13 @@ echo "time (ns),cycles" > "$CLOCK_SPEED_FILE"
 eval "$READ_TIME" >> "$CLOCK_SPEED_FILE"
 for LANGUAGE in "${LANGUAGES[@]}"; do
     echo "Processing language: $LANGUAGE"
+    LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
+    BUILD_SCRIPT="$LANGUAGE_DIR/build.sh"
+    RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
+    eval "$BUILD_SCRIPT"
     for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
         FILENAME=$(basename "$FILE")
         TOTAL_RECORDS=${FILENAME%%_*}
-        LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
-        RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
         echo "Processing $FILENAME"
 
         TOTAL_RUNS=10

@@ -16,4 +16,5 @@ FILE="$SCRIPT_DIR/data-generation/test-data/"$TOTAL_RECORDS"_rows.csv"
 LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
 RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
 
+eval "$LANGUAGE_DIR/build.sh"
 eval "$RUN_SCRIPT $FILE $TOTAL_RECORDS $CYCLES"

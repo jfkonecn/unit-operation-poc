@@ -52,7 +52,7 @@ int Run(string filePath, int recordCount, string cyclesPath)
         people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]) };
     }
 
-    Utils.RunProcess(cyclesPath, "Start Map to Person QuickSort");
+    Utils.RunProcess(cyclesPath, "Start QuickSort Person Array");
     Utils.QuickSort(people, 0, recordCount - 1);
 
     Utils.RunProcess(cyclesPath, "Start Print Results");

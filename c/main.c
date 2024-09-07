@@ -158,7 +158,7 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
     people[i].age = atoi(temp[1]);
   }
 
-  runProcess(cyclesPath, "Start Map to Person QuickSort");
+  runProcess(cyclesPath, "Start QuickSort Person Array");
   quickSort(people, 0, recordCount - 1);
 
   runProcess(cyclesPath, "Start Print Results");
