@@ -284,7 +284,7 @@ def pivot_and_save(
     y-axis-scale="logarithmic"
     x-axis-label="{x_axis}"
     y-axis-label="{y_axis}"
-    class="w-full>
+    class="w-full">
 """
         )
         for series_name in pivot_df.columns:
