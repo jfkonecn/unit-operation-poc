@@ -277,43 +277,6 @@ def pivot_and_save(
     with pd.ExcelWriter(file_path_excel, mode="a", engine="openpyxl") as writer:
         # There's warning from pandas if you exceed 31 characters for a sheet name
         output_df.to_excel(writer, sheet_name=f"{x_axis}-{y_axis}"[:31], index=False)
-    # <scatter-plot plot-title="Total Run CPU Cycles" y-axis-scale="logarithmic" x-axis-label="Total Records" y-axis-label="CPU Cycles" class="w-full">
-    # <scatter-plot-series label="rpi-3_c">
-    #     <scatter-plot-point x="10" y="13581236.8"></scatter-plot-point>
-    #     <scatter-plot-point x="1000" y="22013586.6"></scatter-plot-point>
-    #     <scatter-plot-point x="5000" y="53573896.1"></scatter-plot-point>
-    #     <scatter-plot-point x="10000" y="100458696.2"></scatter-plot-point>
-    #     <scatter-plot-point x="50000" y="654577505.8"></scatter-plot-point>
-    #     <scatter-plot-point x="100000" y="1789814999.6"></scatter-plot-point>
-    # </scatter-plot-series>
-
-    # <scatter-plot-series label="rpi-3_csharp">
-    #     <scatter-plot-point x="10" y="806096827.2"></scatter-plot-point>
-    #     <scatter-plot-point x="1000" y="481710115.7"></scatter-plot-point>
-    #     <scatter-plot-point x="5000" y="810195123.5"></scatter-plot-point>
-    #     <scatter-plot-point x="10000" y="1160603648.8"></scatter-plot-point>
-    #     <scatter-plot-point x="50000" y="4954400141.3"></scatter-plot-point>
-    #     <scatter-plot-point x="100000" y="9449882676.2"></scatter-plot-point>
-    # </scatter-plot-series>
-
-    # <scatter-plot-series label="ubuntu-i9_c">
-    #     <scatter-plot-point x="10" y="7287263.4"></scatter-plot-point>
-    #     <scatter-plot-point x="1000" y="9471606.7"></scatter-plot-point>
-    #     <scatter-plot-point x="5000" y="17514109.4"></scatter-plot-point>
-    #     <scatter-plot-point x="10000" y="27819539.2"></scatter-plot-point>
-    #     <scatter-plot-point x="50000" y="180018824.2"></scatter-plot-point>
-    #     <scatter-plot-point x="100000" y="305312218.4"></scatter-plot-point>
-    # </scatter-plot-series>
-
-    # <scatter-plot-series label="ubuntu-i9_csharp">
-    #     <scatter-plot-point x="10" y="49157529.7"></scatter-plot-point>
-    #     <scatter-plot-point x="1000" y="55182062.8"></scatter-plot-point>
-    #     <scatter-plot-point x="5000" y="73817020.3"></scatter-plot-point>
-    #     <scatter-plot-point x="10000" y="112478675.4"></scatter-plot-point>
-    #     <scatter-plot-point x="50000" y="346633098.8"></scatter-plot-point>
-    #     <scatter-plot-point x="100000" y="746968312.3"></scatter-plot-point>
-    # </scatter-plot-series>
-    # </scatter-plot>
     with open(file_path_md, "a") as md_file:
         _ = md_file.write(
             f"""<scatter-plot
@@ -334,15 +297,6 @@ def pivot_and_save(
             _ = md_file.write("</scatter-plot-series>\n")
         _ = md_file.write("</scatter-plot>")
         _ = md_file.write("\n\n")
-
-        # | Total Records | rpi-3_c      | rpi-3_csharp | ubuntu-i9_c | ubuntu-i9_csharp |
-        # | ------------- | ------------ | ------------ | ----------- | ---------------- |
-        # | 10            | 13581236.8   | 806096827.2  | 7287263.4   | 49157529.7       |
-        # | 1000          | 22013586.6   | 481710115.7  | 9471606.7   | 55182062.8       |
-        # | 5000          | 53573896.1   | 810195123.5  | 17514109.4  | 73817020.3       |
-        # | 10000         | 100458696.2  | 1160603648.8 | 27819539.2  | 112478675.4      |
-        # | 50000         | 654577505.8  | 4954400141.3 | 180018824.2 | 346633098.8      |
-        # | 100000        | 1789814999.6 | 9449882676.2 | 305312218.4 | 746968312.3      |
 
         _ = md_file.write(f"| {x_axis} |")
         for series_name in pivot_df.columns:
