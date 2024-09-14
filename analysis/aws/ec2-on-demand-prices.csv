@@ -1,5 +1,5 @@
-Family,Size,Dollars Per Hour,Processor
-t3,nano,0.0052,intel
-t4g,nano,0.0042,arm
-m4,large,0.1000,intel
-m5zn,large,0.1652,intel
+Family,Size,Dollars Per Hour
+t3,nano,0.0052
+t4g,nano,0.0042
+m4,large,0.1000
+m5zn,large,0.1652

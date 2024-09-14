@@ -176,12 +176,32 @@ def aggregateMemoryResults(
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 
+aws_dir = os.path.join(script_dir, "aws")
+ec2_families_df = pd.read_csv(os.path.join(aws_dir, "ec2-families.csv"))
+ec2_on_demand_prices_df = pd.read_csv(os.path.join(aws_dir, "ec2-on-demand-prices.csv"))
+ec2_run_mapping_df = pd.read_csv(os.path.join(aws_dir, "run-mapping.csv"))
+ec2_df = pd.merge(ec2_families_df, ec2_on_demand_prices_df, on="Family", how="inner")
+ec2_df = pd.merge(ec2_df, ec2_run_mapping_df, on="Processor", how="inner")
+ec2_df["Instance"] = ec2_df["Family"] + "." + ec2_df["Size"]
+
+
+def join_ec2_df(df: pd.DataFrame):
+    df = pd.merge(ec2_df, df, on="Computer Name", how="inner")
+    # Family  Speed (GHz) Processor   Size  Dollars Per Hour Computer Name    Instance Language  Total Records  File Size (B)        Cycles  Clock Speed (MHz)     Time (ms)
+
+    df["Byte Per Cycles"] = df["File Size (B)"] / df["Cycles"]
+    df["Gigabyte Per Dollar"] = (
+        df["Byte Per Cycles"] * df["Speed (GHz)"] * 3600 * 1 / df["Dollars Per Hour"]
+    )
+    return df
+
+
 file_sizes_dict = {"File Name": [], "File Size (B)": []}
 test_data_path = os.path.join(script_dir, "..", "data-generation", "test-data")
-csv_files = glob.glob(os.path.join(test_data_path, "*.csv"))
-for csv_file in csv_files:
-    file_size = os.path.getsize(csv_file)
-    file_sizes_dict["File Name"].append(os.path.basename(csv_file))
+test_data_csv_files = glob.glob(os.path.join(test_data_path, "*.csv"))
+for test_data_csv_file in test_data_csv_files:
+    file_size = os.path.getsize(test_data_csv_file)
+    file_sizes_dict["File Name"].append(os.path.basename(test_data_csv_file))
     file_sizes_dict["File Size (B)"].append(file_size)
 file_sizes_df = pd.DataFrame(file_sizes_dict)
 
@@ -244,12 +264,14 @@ with open(file_path_md, "w"):
     pass
 
 
-def saveAsMarkdown(df: pd.DataFrame, title_prefix: str, x_axis: str, y_axis: str):
+def saveAsMarkdown(
+    df: pd.DataFrame, title_prefix: str, x_axis: str, y_axis: str, y_scale: str
+):
     with open(file_path_md, "a") as md_file:
         _ = md_file.write(
             f"""<scatter-plot
     plot-title="{title_prefix} {x_axis} vs {y_axis}"
-    y-axis-scale="logarithmic"
+    y-axis-scale="{y_scale}"
     x-axis-label="{x_axis}"
     y-axis-label="{y_axis}"
     class="w-full">
@@ -284,7 +306,35 @@ def saveAsMarkdown(df: pd.DataFrame, title_prefix: str, x_axis: str, y_axis: str
         _ = md_file.write("\n\n")
 
 
-def pivot_and_save(
+def saveAllPivotPermutationsAsMarkDown(
+    pivot_df: pd.DataFrame,
+    title_prefix: str,
+    x_axis: str,
+    y_axis: str,
+    y_scale: str,
+    separator: str,
+):
+    column_names = pivot_df.columns.to_list()
+    grouped = {}
+    for column_name in column_names:
+        combo_names = column_name.split(separator)
+        permutations_list = [list(perm) for perm in itertools.permutations(combo_names)]
+        for arr in permutations_list:
+            key = separator.join(arr[:-1])
+            if key not in grouped:
+                grouped[key] = []
+            grouped[key].append(column_name)
+    for constant_columns, value in grouped.items():
+        md_df: pd.DataFrame = pivot_df[value]
+        keys = constant_columns.split(separator)
+        for key in keys:
+            md_df.columns = md_df.columns.str.replace(key, "")
+        extra_prefix = " and ".join(keys)
+        md_df.columns = md_df.columns.str.replace(separator, "")
+        saveAsMarkdown(md_df, f"{title_prefix} {extra_prefix}", x_axis, y_axis, y_scale)
+
+
+def pivot_and_save_base(
     title_prefix: str,
     file_path_excel: str,
     df: pd.DataFrame,
@@ -324,24 +374,48 @@ def pivot_and_save(
         # There's warning from pandas if you exceed 31 characters for a sheet name
         output_df.to_excel(writer, sheet_name=f"{x_axis}-{y_axis}"[:31], index=False)
 
-    column_names = pivot_df.columns.to_list()
-    grouped = {}
-    for column_name in column_names:
-        combo_names = column_name.split(separator)
-        permutations_list = [list(perm) for perm in itertools.permutations(combo_names)]
-        for arr in permutations_list:
-            key = separator.join(arr[:-1])
-            if key not in grouped:
-                grouped[key] = []
-            grouped[key].append(column_name)
-    for constant_columns, value in grouped.items():
-        md_df: pd.DataFrame = pivot_df[value]
-        keys = constant_columns.split(separator)
-        for key in keys:
-            md_df.columns = md_df.columns.str.replace(key, "")
-        extra_prefix = " and ".join(keys)
-        md_df.columns = md_df.columns.str.replace(separator, "")
-        saveAsMarkdown(md_df, f"{title_prefix} {extra_prefix}", x_axis, y_axis)
+    saveAllPivotPermutationsAsMarkDown(
+        pivot_df, title_prefix, x_axis, y_axis, "logarithmic", separator
+    )
+
+
+def pivot_and_save_ec2(
+    title_prefix: str,
+    df: pd.DataFrame,
+    x_axis: str,
+    y_axis: str,
+    is_unit_op: bool,
+):
+    output_df = pd.DataFrame()
+
+    output_df[x_axis] = df[x_axis].unique()
+
+    columns = ["Instance", "Language"]
+    if is_unit_op:
+        columns.insert(0, "Point")
+
+    pivot_df = df.pivot_table(
+        index=x_axis,
+        columns=columns,
+        values=y_axis,
+        aggfunc="sum",
+    )
+
+    separator = ";;"
+
+    if is_unit_op:
+        pivot_df.columns = [
+            f"{point}{separator}{comp}{separator}{lang}"
+            for comp, lang, point in pivot_df.columns
+        ]
+    else:
+        pivot_df.columns = [
+            f"{comp}{separator}{lang}" for comp, lang in pivot_df.columns
+        ]
+
+    saveAllPivotPermutationsAsMarkDown(
+        pivot_df, title_prefix, x_axis, y_axis, "linear", separator
+    )
 
 
 whole_run_cpu_path = os.path.join(aggregates_path, "whole_run_cpu.xlsx")
@@ -354,14 +428,14 @@ unit_ops_cpu_df.to_excel(unit_ops_cpu_path, sheet_name="base", index=False)
 whole_run_memory_df.to_excel(whole_run_memory_path, sheet_name="base", index=False)
 unit_ops_memory_df.to_excel(unit_ops_memory_path, sheet_name="base", index=False)
 
-pivot_and_save(
+pivot_and_save_base(
     "Whole Run", whole_run_cpu_path, whole_run_cpu_df, "Total Records", "Cycles", False
 )
-pivot_and_save(
+pivot_and_save_base(
     "Whole Run", whole_run_cpu_path, whole_run_cpu_df, "File Size (B)", "Cycles", False
 )
 
-pivot_and_save(
+pivot_and_save_base(
     "Unit Operations",
     unit_ops_cpu_path,
     unit_ops_cpu_df,
@@ -369,7 +443,7 @@ pivot_and_save(
     "Cycles",
     True,
 )
-pivot_and_save(
+pivot_and_save_base(
     "Unit Operations",
     unit_ops_cpu_path,
     unit_ops_cpu_df,
@@ -378,11 +452,20 @@ pivot_and_save(
     True,
 )
 
-pivot_and_save(
+pivot_and_save_base(
     "Whole Run",
     whole_run_memory_path,
     whole_run_memory_df,
     "Total Records",
     "Max Heap Memory (B)",
+    False,
+)
+
+ec2_whole_run_cpu_df = join_ec2_df(whole_run_cpu_df)
+pivot_and_save_ec2(
+    "Whole Run",
+    ec2_whole_run_cpu_df,
+    "Total Records",
+    "Gigabyte Per Dollar",
     False,
 )
