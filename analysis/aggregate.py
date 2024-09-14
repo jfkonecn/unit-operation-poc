@@ -1,4 +1,5 @@
 import glob
+import itertools
 import os
 
 import pandas as pd
@@ -243,6 +244,46 @@ with open(file_path_md, "w"):
     pass
 
 
+def saveAsMarkdown(df: pd.DataFrame, title_prefix: str, x_axis: str, y_axis: str):
+    with open(file_path_md, "a") as md_file:
+        _ = md_file.write(
+            f"""<scatter-plot
+    plot-title="{title_prefix} {x_axis} vs {y_axis}"
+    y-axis-scale="logarithmic"
+    x-axis-label="{x_axis}"
+    y-axis-label="{y_axis}"
+    class="w-full">
+"""
+        )
+        for series_name in df.columns:
+            _ = md_file.write(f'<scatter-plot-series label="{series_name}">\n')
+            series = df[series_name]
+            for x_value, y_value in series.items():
+                _ = md_file.write(
+                    f'<scatter-plot-point x="{x_value}" y="{y_value}"></scatter-plot-point>\n'
+                )
+            _ = md_file.write("</scatter-plot-series>\n")
+        _ = md_file.write("</scatter-plot>")
+        _ = md_file.write("\n\n")
+
+        _ = md_file.write(f"| {x_axis} |")
+        for series_name in df.columns:
+            _ = md_file.write(f" {series_name} |")
+        _ = md_file.write("\n")
+
+        _ = md_file.write("| ------------- |")
+        for series_name in df.columns:
+            _ = md_file.write(" ------------- |")
+        _ = md_file.write("\n")
+
+        for x_value, row in df.iterrows():
+            _ = md_file.write(f"| {x_value} |")
+            for _, y_value in row.items():
+                _ = md_file.write(f" {y_value} |")
+            _ = md_file.write("\n")
+        _ = md_file.write("\n\n")
+
+
 def pivot_and_save(
     title_prefix: str,
     file_path_excel: str,
@@ -266,54 +307,36 @@ def pivot_and_save(
         aggfunc="sum",
     )
 
+    separator = ";;"
+
     if is_unit_op:
         pivot_df.columns = [
-            f"{point} {comp} {lang}" for comp, lang, point in pivot_df.columns
+            f"{point}{separator}{comp}{separator}{lang}"
+            for comp, lang, point in pivot_df.columns
         ]
     else:
-        pivot_df.columns = [f"{comp} {lang}" for comp, lang in pivot_df.columns]
+        pivot_df.columns = [
+            f"{comp}{separator}{lang}" for comp, lang in pivot_df.columns
+        ]
 
     output_df = output_df.merge(pivot_df, on=x_axis, how="left")
     with pd.ExcelWriter(file_path_excel, mode="a", engine="openpyxl") as writer:
         # There's warning from pandas if you exceed 31 characters for a sheet name
         output_df.to_excel(writer, sheet_name=f"{x_axis}-{y_axis}"[:31], index=False)
-    with open(file_path_md, "a") as md_file:
-        _ = md_file.write(
-            f"""<scatter-plot
-    plot-title="{title_prefix} {x_axis} vs {y_axis}"
-    y-axis-scale="logarithmic"
-    x-axis-label="{x_axis}"
-    y-axis-label="{y_axis}"
-    class="w-full">
-"""
-        )
-        for series_name in pivot_df.columns:
-            _ = md_file.write(f'<scatter-plot-series label="{series_name}">\n')
-            series = pivot_df[series_name]
-            for x_value, y_value in series.items():
-                _ = md_file.write(
-                    f'<scatter-plot-point x="{x_value}" y="{y_value}"></scatter-plot-point>\n'
-                )
-            _ = md_file.write("</scatter-plot-series>\n")
-        _ = md_file.write("</scatter-plot>")
-        _ = md_file.write("\n\n")
 
-        _ = md_file.write(f"| {x_axis} |")
-        for series_name in pivot_df.columns:
-            _ = md_file.write(f" {series_name} |")
-        _ = md_file.write("\n")
-
-        _ = md_file.write("| ------------- |")
-        for series_name in pivot_df.columns:
-            _ = md_file.write(" ------------- |")
-        _ = md_file.write("\n")
-
-        for x_value, row in pivot_df.iterrows():
-            _ = md_file.write(f"| {x_value} |")
-            for _, y_value in row.items():
-                _ = md_file.write(f" {y_value} |")
-            _ = md_file.write("\n")
-        _ = md_file.write("\n\n")
+    column_names = pivot_df.columns.to_list()
+    grouped = {}
+    for column_name in column_names:
+        combo_names = column_name.split(separator)
+        permutations_list = [list(perm) for perm in itertools.permutations(combo_names)]
+        for arr in permutations_list:
+            key = ";;".join(arr[:-1])
+            if key not in grouped:
+                grouped[key] = []
+            grouped[key].append(column_name)
+    for key, value in grouped.items():
+        md_df: pd.DataFrame = pivot_df[value]
+        saveAsMarkdown(md_df, f"{title_prefix}", x_axis, y_axis)
 
 
 whole_run_cpu_path = os.path.join(aggregates_path, "whole_run_cpu.xlsx")
