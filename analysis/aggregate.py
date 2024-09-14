@@ -190,9 +190,8 @@ def join_ec2_df(df: pd.DataFrame):
     # Family  Speed (GHz) Processor   Size  Dollars Per Hour Computer Name    Instance Language  Total Records  File Size (B)        Cycles  Clock Speed (MHz)     Time (ms)
 
     df["Byte Per Cycles"] = df["File Size (B)"] / df["Cycles"]
-    df["Gigabyte Per Dollar"] = (
-        df["Byte Per Cycles"] * df["Speed (GHz)"] * 3600 * 1 / df["Dollars Per Hour"]
-    )
+    df["Gigabytes Per Hour"] = df["Byte Per Cycles"] * df["Speed (GHz)"] * 3600
+    df["Gigabytes Per Dollar"] = df["Gigabytes Per Hour"] / df["Dollars Per Hour"]
     return df
 
 
@@ -466,6 +465,13 @@ pivot_and_save_ec2(
     "Whole Run",
     ec2_whole_run_cpu_df,
     "Total Records",
-    "Gigabyte Per Dollar",
+    "Gigabytes Per Dollar",
+    False,
+)
+pivot_and_save_ec2(
+    "Whole Run",
+    ec2_whole_run_cpu_df,
+    "Total Records",
+    "Gigabytes Per Hour",
     False,
 )
