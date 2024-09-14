@@ -330,13 +330,18 @@ def pivot_and_save(
         combo_names = column_name.split(separator)
         permutations_list = [list(perm) for perm in itertools.permutations(combo_names)]
         for arr in permutations_list:
-            key = ";;".join(arr[:-1])
+            key = separator.join(arr[:-1])
             if key not in grouped:
                 grouped[key] = []
             grouped[key].append(column_name)
-    for key, value in grouped.items():
+    for constant_columns, value in grouped.items():
         md_df: pd.DataFrame = pivot_df[value]
-        saveAsMarkdown(md_df, f"{title_prefix}", x_axis, y_axis)
+        keys = constant_columns.split(separator)
+        for key in keys:
+            md_df.columns = md_df.columns.str.replace(key, "")
+        extra_prefix = " and ".join(keys)
+        md_df.columns = md_df.columns.str.replace(separator, "")
+        saveAsMarkdown(md_df, f"{title_prefix} {extra_prefix}", x_axis, y_axis)
 
 
 whole_run_cpu_path = os.path.join(aggregates_path, "whole_run_cpu.xlsx")
