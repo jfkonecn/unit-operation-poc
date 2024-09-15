@@ -1,15 +1,22 @@
 #!/bin/bash
 
-LANGUAGES=("c" "csharp")
+set -e
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <test_name>"
     exit 1
 fi
 
-TEST_NAME=$1
-
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+for LANGUAGE_DIR in "$SCRIPT_DIR/languages"/*/; do
+    LANGUAGE=$(basename "$LANGUAGE_DIR")
+    echo "Building language: $LANGUAGE"
+    eval "$LANGUAGE_DIR/build.sh"
+done
+
+
+TEST_NAME=$1
 
 CYCLES="$SCRIPT_DIR/performance-utils/cycles"
 READ_TIME="$SCRIPT_DIR/performance-utils/read-time"
@@ -40,12 +47,10 @@ echo "Language,Total Records,File Name,Run Number,Point,Cycles" > "$CPU_RESULTS_
 echo "Language,Total Records,File Name,Run Number,Instructions Executed,Heap Memory (B),Extra Heap Memory (B),Stack Memory (B)" > "$MEMORY_RESULTS_FILE"
 echo "time (ns),cycles" > "$CLOCK_SPEED_FILE"
 eval "$READ_TIME" >> "$CLOCK_SPEED_FILE"
-for LANGUAGE in "${LANGUAGES[@]}"; do
+for LANGUAGE_DIR in "$SCRIPT_DIR/languages"/*/; do
+    LANGUAGE=$(basename "$LANGUAGE_DIR")
     echo "Processing language: $LANGUAGE"
-    LANGUAGE_DIR="$SCRIPT_DIR/languages/$LANGUAGE"
-    BUILD_SCRIPT="$LANGUAGE_DIR/build.sh"
     RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
-    eval "$BUILD_SCRIPT"
     for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
         FILENAME=$(basename "$FILE")
         TOTAL_RECORDS=${FILENAME%%_*}
