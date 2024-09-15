@@ -4,16 +4,15 @@ import os
 
 import pandas as pd
 
-# clock-speed.csv
-# cpu-info.txt
-# cpu.csv
-# memory.csv
-# os-info.txt
+
+def fixLanguages(df: pd.DataFrame):
+    df["Language"] = df["Language"].replace("csharp", "c#")
 
 
 def aggregateCpuResults(
     temp_cpu_df: pd.DataFrame, clock_speed_mhz: float
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    fixLanguages(temp_cpu_df)
     # Make cycles relative to the first recorded point
     temp_cpu_df["Cycles"] = temp_cpu_df.groupby(
         ["Run Number", "Language", "Total Records", "File Size (B)"]
@@ -23,6 +22,8 @@ def aggregateCpuResults(
             "Cycles"
         ]
         .mean()
+        .round()
+        .astype(int)
         .reset_index()
     ).sort_values(by=["Language", "Total Records", "File Size (B)", "Cycles"])
 
@@ -42,6 +43,9 @@ def aggregateCpuResults(
     )
     temp_cpu_df["Point"] = temp_cpu_df["Point"].str.replace("Start ", "")
     temp_cpu_df = temp_cpu_df.drop(columns=["Cycles"])
+    temp_cpu_df["Cycles Difference"] = (
+        temp_cpu_df["Cycles Difference"].round().astype(int)
+    )
     temp_cpu_df = temp_cpu_df.rename(columns={"Cycles Difference": "Cycles"})
 
     temp_cpu_df["Clock Speed (MHz)"] = clock_speed_mhz
@@ -56,6 +60,8 @@ def aggregateMemoryResults(
     temp_cpu_memory_df: pd.DataFrame,
     clock_speed_mhz: float,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    fixLanguages(temp_memory_df)
+    fixLanguages(temp_cpu_memory_df)
     temp_cpu_memory_df["Cycles"] = temp_cpu_memory_df.groupby(
         ["Run Number", "Language", "Total Records", "File Size (B)"]
     )["Cycles"].transform(lambda x: x - x.iloc[0])
@@ -90,14 +96,18 @@ def aggregateMemoryResults(
     )
 
     temp_memory_df["Cycles"] = (
-        temp_memory_df["Instructions Executed"]
-        * temp_memory_df["Max Cycles"]
-        / temp_memory_df["Max Instructions Executed"]
-    ).astype(int)
+        (
+            temp_memory_df["Instructions Executed"]
+            * temp_memory_df["Max Cycles"]
+            / temp_memory_df["Max Instructions Executed"]
+        )
+        .round()
+        .astype(int)
+    )
 
     temp_cpu_memory_df["Clock Speed (MHz)"] = clock_speed_mhz
-    temp_cpu_memory_df["Time (ms)"] = temp_cpu_memory_df["Cycles"] / (
-        clock_speed_mhz * 1e3
+    temp_cpu_memory_df["Time (ms)"] = (
+        (temp_cpu_memory_df["Cycles"] / (clock_speed_mhz * 1e3)).round().astype(int)
     )
 
     temp_memory_df = pd.concat(
@@ -187,11 +197,15 @@ ec2_df["Instance"] = ec2_df["Family"] + "." + ec2_df["Size"]
 
 def join_ec2_df(df: pd.DataFrame):
     df = pd.merge(ec2_df, df, on="Computer Name", how="inner")
-    # Family  Speed (GHz) Processor   Size  Dollars Per Hour Computer Name    Instance Language  Total Records  File Size (B)        Cycles  Clock Speed (MHz)     Time (ms)
 
-    df["Byte Per Cycles"] = df["File Size (B)"] / df["Cycles"]
-    df["Gigabytes Per Hour"] = df["Byte Per Cycles"] * df["Speed (GHz)"] * 3600
-    df["Gigabytes Per Dollar"] = df["Gigabytes Per Hour"] / df["Dollars Per Hour"]
+    df["Bytes Per Cycle"] = df["File Size (B)"] / df["Cycles"]
+    df["Gigabytes Per Hour"] = (df["Bytes Per Cycle"] * df["Speed (GHz)"] * 3600).round(
+        3
+    )
+    df["Gigabytes Per Dollar"] = (
+        df["Gigabytes Per Hour"] / df["Dollars Per Hour"]
+    ).round(3)
+    df["Time (ms)"] = (df["Cycles"] / (1e6 * df["Speed (GHz)"])).round(1)
     return df
 
 
@@ -461,6 +475,7 @@ pivot_and_save_base(
 )
 
 ec2_whole_run_cpu_df = join_ec2_df(whole_run_cpu_df)
+
 pivot_and_save_ec2(
     "Whole Run",
     ec2_whole_run_cpu_df,
@@ -468,10 +483,19 @@ pivot_and_save_ec2(
     "Gigabytes Per Dollar",
     False,
 )
+
 pivot_and_save_ec2(
     "Whole Run",
     ec2_whole_run_cpu_df,
     "Total Records",
     "Gigabytes Per Hour",
+    False,
+)
+
+pivot_and_save_ec2(
+    "Whole Run",
+    ec2_whole_run_cpu_df,
+    "Total Records",
+    "Time (ms)",
     False,
 )
