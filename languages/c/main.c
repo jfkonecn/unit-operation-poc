@@ -96,10 +96,6 @@ void quickSort(Person *arr, int low, int high) {
   }
 }
 
-void printCycles(const char *cyclesPath, const char *name) {
-  runProcess(cyclesPath, name);
-}
-
 void readFile(const char *filePath, char **rows, int recordCount) {
   FILE *file = fopen(filePath, "r");
   if (file == NULL) {
@@ -120,7 +116,7 @@ void readFile(const char *filePath, char **rows, int recordCount) {
 }
 
 int run(const char *filePath, int recordCount, const char *cyclesPath) {
-  printCycles(cyclesPath, "Start File Read");
+  runProcess(cyclesPath, "Start File Read");
 
   char **rows = (char **)malloc(recordCount * sizeof(char *));
   for (int i = 0; i < recordCount; i++) {

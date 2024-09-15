@@ -24,7 +24,7 @@ catch (Exception e)
 
 int Run(string filePath, int recordCount, string cyclesPath)
 {
-    PrintCycles("Start File Read");
+    Utils.RunProcess(cyclesPath, "Start File Read");
     var rows = new string[recordCount];
 
     {
@@ -63,11 +63,6 @@ int Run(string filePath, int recordCount, string cyclesPath)
         Console.WriteLine($"{person.Name},{person.Age}");
     }
     Console.WriteLine("DDDDDDDDDDDDDDDDDDDD");
-
-    void PrintCycles(string name)
-    {
-        Utils.RunProcess(cyclesPath, name);
-    }
 
     return 0;
 }

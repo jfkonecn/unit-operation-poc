@@ -27,7 +27,8 @@ public class Program {
   }
 
   public static int run(String filePath, int recordCount, String cyclesPath) {
-    printCycles("Start File Read", cyclesPath);
+    runProcess(cyclesPath, "Start File Read");
+
     String[] rows = new String[recordCount];
 
     try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -66,10 +67,6 @@ public class Program {
     System.out.println("DDDDDDDDDDDDDDDDDDDD");
 
     return 0;
-  }
-
-  private static void printCycles(String name, String cyclesPath) {
-    runProcess(cyclesPath, name);
   }
 
   public record Person(String name, int age) {
