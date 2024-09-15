@@ -77,9 +77,6 @@ public class Program {
       if (name == null || name.isBlank()) {
         throw new IllegalArgumentException("Name is required");
       }
-      if (age <= 0) {
-        throw new IllegalArgumentException("Age must be a positive integer");
-      }
     }
   }
 

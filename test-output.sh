@@ -1,7 +1,5 @@
 #!/bin/bash
 
-LANGUAGES=("c" "csharp")
-
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 CYCLES="$SCRIPT_DIR/performance-utils/cycles"
@@ -9,7 +7,11 @@ READ_TIME="$SCRIPT_DIR/performance-utils/read-time"
 
 TEST_RESULTS="$SCRIPT_DIR/test-results"
 
-folders=()
+for LANGUAGE_DIR in "$SCRIPT_DIR/languages"/*/; do
+    LANGUAGE=$(basename "$LANGUAGE_DIR")
+    echo "Building language: $LANGUAGE"
+    eval "$LANGUAGE_DIR/build.sh"
+done
 
 for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
     FILENAME=$(basename "$FILE")
@@ -17,9 +19,9 @@ for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
     TOTAL_RECORDS=${FILENAME%%_*}
     folders+=($FILENAME_NO_EXT)
     echo "Processing $FILENAME"
-    for LANGUAGE in "${LANGUAGES[@]}"; do
+    for LANGUAGE_DIR in "$SCRIPT_DIR/languages"/*/; do
+        LANGUAGE=$(basename "$LANGUAGE_DIR")
         echo "Processing language: $LANGUAGE"
-        LANGUAGE_DIR="$SCRIPT_DIR/languages/$LANGUAGE"
         RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
         RUN_RESULT_FOLDER="$TEST_RESULTS/$FILENAME_NO_EXT"
         mkdir -p $RUN_RESULT_FOLDER
