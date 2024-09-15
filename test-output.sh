@@ -19,7 +19,7 @@ for FILE in $SCRIPT_DIR/data-generation/test-data/*_rows.csv; do
     echo "Processing $FILENAME"
     for LANGUAGE in "${LANGUAGES[@]}"; do
         echo "Processing language: $LANGUAGE"
-        LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
+        LANGUAGE_DIR="$SCRIPT_DIR/languages/$LANGUAGE"
         RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
         RUN_RESULT_FOLDER="$TEST_RESULTS/$FILENAME_NO_EXT"
         mkdir -p $RUN_RESULT_FOLDER

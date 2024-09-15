@@ -13,7 +13,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CYCLES="$SCRIPT_DIR/performance-utils/cycles"
 FILE="$SCRIPT_DIR/data-generation/test-data/"$TOTAL_RECORDS"_rows.csv"
 
-LANGUAGE_DIR="$SCRIPT_DIR/$LANGUAGE"
+LANGUAGE_DIR="$SCRIPT_DIR/languages/$LANGUAGE"
 RUN_SCRIPT="$LANGUAGE_DIR/run.sh"
 
 eval "$LANGUAGE_DIR/build.sh"
