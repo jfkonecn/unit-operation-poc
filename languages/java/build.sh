@@ -1,5 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$SCRIPT_DIR"
 
-javac --release 17 "$SCRIPT_DIR/Program.java"
+mvn clean compile
+mvn package
