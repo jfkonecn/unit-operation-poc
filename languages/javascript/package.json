@@ -1,0 +1,12 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node --expose-gc main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
