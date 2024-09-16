@@ -1,0 +1,2161 @@
+Language,Total Records,File Name,Run Number,Point,Cycles
+c,100000,100000_rows.csv,1,Start File Read,515090706460
+c,100000,100000_rows.csv,1,Start Map to Person Record,515262356807
+c,100000,100000_rows.csv,1,Start Quick Sort Person Array,515426892425
+c,100000,100000_rows.csv,1,Start Print Results,516458171706
+c,100000,100000_rows.csv,1,Start Free Memory,516672000623
+c,100000,100000_rows.csv,1,End Program,516877439039
+c,100000,100000_rows.csv,2,Start File Read,523049308504
+c,100000,100000_rows.csv,2,Start Map to Person Record,523221212965
+c,100000,100000_rows.csv,2,Start Quick Sort Person Array,523384227322
+c,100000,100000_rows.csv,2,Start Print Results,524409920895
+c,100000,100000_rows.csv,2,Start Free Memory,524621048772
+c,100000,100000_rows.csv,2,End Program,524824813893
+c,100000,100000_rows.csv,3,Start File Read,530981065973
+c,100000,100000_rows.csv,3,Start Map to Person Record,531153186838
+c,100000,100000_rows.csv,3,Start Quick Sort Person Array,531316913428
+c,100000,100000_rows.csv,3,Start Print Results,532344553373
+c,100000,100000_rows.csv,3,Start Free Memory,532555997697
+c,100000,100000_rows.csv,3,End Program,532758794392
+c,100000,100000_rows.csv,4,Start File Read,539001245138
+c,100000,100000_rows.csv,4,Start Map to Person Record,539176129856
+c,100000,100000_rows.csv,4,Start Quick Sort Person Array,539361554989
+c,100000,100000_rows.csv,4,Start Print Results,540388805508
+c,100000,100000_rows.csv,4,Start Free Memory,540601842522
+c,100000,100000_rows.csv,4,End Program,540805666852
+c,100000,100000_rows.csv,5,Start File Read,546948701275
+c,100000,100000_rows.csv,5,Start Map to Person Record,547120355235
+c,100000,100000_rows.csv,5,Start Quick Sort Person Array,547282896919
+c,100000,100000_rows.csv,5,Start Print Results,548313975196
+c,100000,100000_rows.csv,5,Start Free Memory,548525173893
+c,100000,100000_rows.csv,5,End Program,548728146359
+c,100000,100000_rows.csv,6,Start File Read,554903746375
+c,100000,100000_rows.csv,6,Start Map to Person Record,555075951791
+c,100000,100000_rows.csv,6,Start Quick Sort Person Array,555238813768
+c,100000,100000_rows.csv,6,Start Print Results,556266852042
+c,100000,100000_rows.csv,6,Start Free Memory,556479201658
+c,100000,100000_rows.csv,6,End Program,556682595313
+c,100000,100000_rows.csv,7,Start File Read,562824607316
+c,100000,100000_rows.csv,7,Start Map to Person Record,562996759079
+c,100000,100000_rows.csv,7,Start Quick Sort Person Array,563159336843
+c,100000,100000_rows.csv,7,Start Print Results,564188651401
+c,100000,100000_rows.csv,7,Start Free Memory,564400252515
+c,100000,100000_rows.csv,7,End Program,564603208553
+c,100000,100000_rows.csv,8,Start File Read,570815268335
+c,100000,100000_rows.csv,8,Start Map to Person Record,570987819833
+c,100000,100000_rows.csv,8,Start Quick Sort Person Array,571150413768
+c,100000,100000_rows.csv,8,Start Print Results,572176418669
+c,100000,100000_rows.csv,8,Start Free Memory,572389086109
+c,100000,100000_rows.csv,8,End Program,572592385703
+c,100000,100000_rows.csv,9,Start File Read,578729113286
+c,100000,100000_rows.csv,9,Start Map to Person Record,578901710900
+c,100000,100000_rows.csv,9,Start Quick Sort Person Array,579064443227
+c,100000,100000_rows.csv,9,Start Print Results,580094584029
+c,100000,100000_rows.csv,9,Start Free Memory,580307480992
+c,100000,100000_rows.csv,9,End Program,580511142185
+c,100000,100000_rows.csv,10,Start File Read,586704928359
+c,100000,100000_rows.csv,10,Start Map to Person Record,586876978826
+c,100000,100000_rows.csv,10,Start Quick Sort Person Array,587039606951
+c,100000,100000_rows.csv,10,Start Print Results,588065424188
+c,100000,100000_rows.csv,10,Start Free Memory,588290624036
+c,100000,100000_rows.csv,10,End Program,588503276960
+c,10000,10000_rows.csv,1,Start File Read,592987009956
+c,10000,10000_rows.csv,1,Start Map to Person Record,593007263486
+c,10000,10000_rows.csv,1,Start Quick Sort Person Array,593026558014
+c,10000,10000_rows.csv,1,Start Print Results,593045911682
+c,10000,10000_rows.csv,1,Start Free Memory,593070666181
+c,10000,10000_rows.csv,1,End Program,593089910009
+c,10000,10000_rows.csv,2,Start File Read,597547432891
+c,10000,10000_rows.csv,2,Start Map to Person Record,597567692139
+c,10000,10000_rows.csv,2,Start Quick Sort Person Array,597587060380
+c,10000,10000_rows.csv,2,Start Print Results,597606435114
+c,10000,10000_rows.csv,2,Start Free Memory,597630905888
+c,10000,10000_rows.csv,2,End Program,597650046563
+c,10000,10000_rows.csv,3,Start File Read,602114405747
+c,10000,10000_rows.csv,3,Start Map to Person Record,602134660665
+c,10000,10000_rows.csv,3,Start Quick Sort Person Array,602153877977
+c,10000,10000_rows.csv,3,Start Print Results,602173224088
+c,10000,10000_rows.csv,3,Start Free Memory,602196734160
+c,10000,10000_rows.csv,3,End Program,602216626446
+c,10000,10000_rows.csv,4,Start File Read,606767567846
+c,10000,10000_rows.csv,4,Start Map to Person Record,606787768947
+c,10000,10000_rows.csv,4,Start Quick Sort Person Array,606807087233
+c,10000,10000_rows.csv,4,Start Print Results,606826525144
+c,10000,10000_rows.csv,4,Start Free Memory,606850910142
+c,10000,10000_rows.csv,4,End Program,606870089056
+c,10000,10000_rows.csv,5,Start File Read,611303448586
+c,10000,10000_rows.csv,5,Start Map to Person Record,611323792886
+c,10000,10000_rows.csv,5,Start Quick Sort Person Array,611343154117
+c,10000,10000_rows.csv,5,Start Print Results,611362351087
+c,10000,10000_rows.csv,5,Start Free Memory,611385971130
+c,10000,10000_rows.csv,5,End Program,611406004165
+c,10000,10000_rows.csv,6,Start File Read,615896148780
+c,10000,10000_rows.csv,6,Start Map to Person Record,615916336454
+c,10000,10000_rows.csv,6,Start Quick Sort Person Array,615935563472
+c,10000,10000_rows.csv,6,Start Print Results,615954847758
+c,10000,10000_rows.csv,6,Start Free Memory,615979032776
+c,10000,10000_rows.csv,6,End Program,615998075943
+c,10000,10000_rows.csv,7,Start File Read,620443471930
+c,10000,10000_rows.csv,7,Start Map to Person Record,620463844882
+c,10000,10000_rows.csv,7,Start Quick Sort Person Array,620483116491
+c,10000,10000_rows.csv,7,Start Print Results,620502534310
+c,10000,10000_rows.csv,7,Start Free Memory,620526871354
+c,10000,10000_rows.csv,7,End Program,620546008229
+c,10000,10000_rows.csv,8,Start File Read,625004116064
+c,10000,10000_rows.csv,8,Start Map to Person Record,625025418278
+c,10000,10000_rows.csv,8,Start Quick Sort Person Array,625046756828
+c,10000,10000_rows.csv,8,Start Print Results,625067052408
+c,10000,10000_rows.csv,8,Start Free Memory,625094915886
+c,10000,10000_rows.csv,8,End Program,625117063825
+c,10000,10000_rows.csv,9,Start File Read,629544966776
+c,10000,10000_rows.csv,9,Start Map to Person Record,629565276538
+c,10000,10000_rows.csv,9,Start Quick Sort Person Array,629584387316
+c,10000,10000_rows.csv,9,Start Print Results,629603885050
+c,10000,10000_rows.csv,9,Start Free Memory,629627995041
+c,10000,10000_rows.csv,9,End Program,629646988813
+c,10000,10000_rows.csv,10,Start File Read,634119993825
+c,10000,10000_rows.csv,10,Start Map to Person Record,634140364870
+c,10000,10000_rows.csv,10,Start Quick Sort Person Array,634159620500
+c,10000,10000_rows.csv,10,Start Print Results,634179026434
+c,10000,10000_rows.csv,10,Start Free Memory,634203439202
+c,10000,10000_rows.csv,10,End Program,634222443378
+c,1000,1000_rows.csv,1,Start File Read,638640557561
+c,1000,1000_rows.csv,1,Start Map to Person Record,638645377975
+c,1000,1000_rows.csv,1,Start Quick Sort Person Array,638649854399
+c,1000,1000_rows.csv,1,Start Print Results,638653349093
+c,1000,1000_rows.csv,1,Start Free Memory,638659006390
+c,1000,1000_rows.csv,1,End Program,638663368768
+c,1000,1000_rows.csv,2,Start File Read,643131231087
+c,1000,1000_rows.csv,2,Start Map to Person Record,643136003680
+c,1000,1000_rows.csv,2,Start Quick Sort Person Array,643140489501
+c,1000,1000_rows.csv,2,Start Print Results,643144034156
+c,1000,1000_rows.csv,2,Start Free Memory,643148224903
+c,1000,1000_rows.csv,2,End Program,643152717402
+c,1000,1000_rows.csv,3,Start File Read,647532197472
+c,1000,1000_rows.csv,3,Start Map to Person Record,647536956885
+c,1000,1000_rows.csv,3,Start Quick Sort Person Array,647541471591
+c,1000,1000_rows.csv,3,Start Print Results,647545001247
+c,1000,1000_rows.csv,3,Start Free Memory,647550718585
+c,1000,1000_rows.csv,3,End Program,647555076743
+c,1000,1000_rows.csv,4,Start File Read,651939230978
+c,1000,1000_rows.csv,4,Start Map to Person Record,651943967727
+c,1000,1000_rows.csv,4,Start Quick Sort Person Array,651948480812
+c,1000,1000_rows.csv,4,Start Print Results,651952007664
+c,1000,1000_rows.csv,4,Start Free Memory,651957721791
+c,1000,1000_rows.csv,4,End Program,651962064470
+c,1000,1000_rows.csv,5,Start File Read,656336733624
+c,1000,1000_rows.csv,5,Start Map to Person Record,656341486742
+c,1000,1000_rows.csv,5,Start Quick Sort Person Array,656345987481
+c,1000,1000_rows.csv,5,Start Print Results,656349552029
+c,1000,1000_rows.csv,5,Start Free Memory,656355266603
+c,1000,1000_rows.csv,5,End Program,656359634345
+c,1000,1000_rows.csv,6,Start File Read,660714351876
+c,1000,1000_rows.csv,6,Start Map to Person Record,660719116183
+c,1000,1000_rows.csv,6,Start Quick Sort Person Array,660723654984
+c,1000,1000_rows.csv,6,Start Print Results,660727197537
+c,1000,1000_rows.csv,6,Start Free Memory,660731508891
+c,1000,1000_rows.csv,6,End Program,660735996876
+c,1000,1000_rows.csv,7,Start File Read,665121021002
+c,1000,1000_rows.csv,7,Start Map to Person Record,665125778702
+c,1000,1000_rows.csv,7,Start Quick Sort Person Array,665130260393
+c,1000,1000_rows.csv,7,Start Print Results,665133773192
+c,1000,1000_rows.csv,7,Start Free Memory,665137859105
+c,1000,1000_rows.csv,7,End Program,665143792554
+c,1000,1000_rows.csv,8,Start File Read,669539523631
+c,1000,1000_rows.csv,8,Start Map to Person Record,669544329325
+c,1000,1000_rows.csv,8,Start Quick Sort Person Array,669548861508
+c,1000,1000_rows.csv,8,Start Print Results,669552476866
+c,1000,1000_rows.csv,8,Start Free Memory,669558151191
+c,1000,1000_rows.csv,8,End Program,669562587036
+c,1000,1000_rows.csv,9,Start File Read,673908007434
+c,1000,1000_rows.csv,9,Start Map to Person Record,673912788255
+c,1000,1000_rows.csv,9,Start Quick Sort Person Array,673917312872
+c,1000,1000_rows.csv,9,Start Print Results,673920893302
+c,1000,1000_rows.csv,9,Start Free Memory,673926562932
+c,1000,1000_rows.csv,9,End Program,673930957936
+c,1000,1000_rows.csv,10,Start File Read,678328141711
+c,1000,1000_rows.csv,10,Start Map to Person Record,678332876330
+c,1000,1000_rows.csv,10,Start Quick Sort Person Array,678337390922
+c,1000,1000_rows.csv,10,Start Print Results,678340911709
+c,1000,1000_rows.csv,10,Start Free Memory,678346635307
+c,1000,1000_rows.csv,10,End Program,678351006659
+c,10,10_rows.csv,1,Start File Read,682759255480
+c,10,10_rows.csv,1,Start Map to Person Record,682762295474
+c,10,10_rows.csv,1,Start Quick Sort Person Array,682765060702
+c,10,10_rows.csv,1,Start Print Results,682767853327
+c,10,10_rows.csv,1,Start Free Memory,682770688030
+c,10,10_rows.csv,1,End Program,682773478074
+c,10,10_rows.csv,2,Start File Read,687145640362
+c,10,10_rows.csv,2,Start Map to Person Record,687148680023
+c,10,10_rows.csv,2,Start Quick Sort Person Array,687151447995
+c,10,10_rows.csv,2,Start Print Results,687154231719
+c,10,10_rows.csv,2,Start Free Memory,687156982976
+c,10,10_rows.csv,2,End Program,687159887561
+c,10,10_rows.csv,3,Start File Read,691542482215
+c,10,10_rows.csv,3,Start Map to Person Record,691545522112
+c,10,10_rows.csv,3,Start Quick Sort Person Array,691548285346
+c,10,10_rows.csv,3,Start Print Results,691551056567
+c,10,10_rows.csv,3,Start Free Memory,691553827802
+c,10,10_rows.csv,3,End Program,691556660644
+c,10,10_rows.csv,4,Start File Read,695950329736
+c,10,10_rows.csv,4,Start Map to Person Record,695953336327
+c,10,10_rows.csv,4,Start Quick Sort Person Array,695956156768
+c,10,10_rows.csv,4,Start Print Results,695958842606
+c,10,10_rows.csv,4,Start Free Memory,695961631790
+c,10,10_rows.csv,4,End Program,695964375063
+c,10,10_rows.csv,5,Start File Read,700355323212
+c,10,10_rows.csv,5,Start Map to Person Record,700358366880
+c,10,10_rows.csv,5,Start Quick Sort Person Array,700361118404
+c,10,10_rows.csv,5,Start Print Results,700363873253
+c,10,10_rows.csv,5,Start Free Memory,700366602601
+c,10,10_rows.csv,5,End Program,700369416416
+c,10,10_rows.csv,6,Start File Read,704734499041
+c,10,10_rows.csv,6,Start Map to Person Record,704739153854
+c,10,10_rows.csv,6,Start Quick Sort Person Array,704743562245
+c,10,10_rows.csv,6,Start Print Results,704747046211
+c,10,10_rows.csv,6,Start Free Memory,704750350902
+c,10,10_rows.csv,6,End Program,704754301770
+c,10,10_rows.csv,7,Start File Read,709143796544
+c,10,10_rows.csv,7,Start Map to Person Record,709146786231
+c,10,10_rows.csv,7,Start Quick Sort Person Array,709149545216
+c,10,10_rows.csv,7,Start Print Results,709152311106
+c,10,10_rows.csv,7,Start Free Memory,709155038979
+c,10,10_rows.csv,7,End Program,709157835431
+c,10,10_rows.csv,8,Start File Read,713507951041
+c,10,10_rows.csv,8,Start Map to Person Record,713510979633
+c,10,10_rows.csv,8,Start Quick Sort Person Array,713513733388
+c,10,10_rows.csv,8,Start Print Results,713516504961
+c,10,10_rows.csv,8,Start Free Memory,713519327271
+c,10,10_rows.csv,8,End Program,713522085255
+c,10,10_rows.csv,9,Start File Read,717922127735
+c,10,10_rows.csv,9,Start Map to Person Record,717925144383
+c,10,10_rows.csv,9,Start Quick Sort Person Array,717927911723
+c,10,10_rows.csv,9,Start Print Results,717930660575
+c,10,10_rows.csv,9,Start Free Memory,717933377790
+c,10,10_rows.csv,9,End Program,717936187089
+c,10,10_rows.csv,10,Start File Read,722280408128
+c,10,10_rows.csv,10,Start Map to Person Record,722283447322
+c,10,10_rows.csv,10,Start Quick Sort Person Array,722286206176
+c,10,10_rows.csv,10,Start Print Results,722288945122
+c,10,10_rows.csv,10,Start Free Memory,722291681542
+c,10,10_rows.csv,10,End Program,722294498253
+c,50000,50000_rows.csv,1,Start File Read,727340197632
+c,50000,50000_rows.csv,1,Start Map to Person Record,727429141258
+c,50000,50000_rows.csv,1,Start Quick Sort Person Array,727517123676
+c,50000,50000_rows.csv,1,Start Print Results,727793520307
+c,50000,50000_rows.csv,1,Start Free Memory,727902715610
+c,50000,50000_rows.csv,1,End Program,728002778630
+c,50000,50000_rows.csv,2,Start File Read,733011188593
+c,50000,50000_rows.csv,2,Start Map to Person Record,733099624267
+c,50000,50000_rows.csv,2,Start Quick Sort Person Array,733184814400
+c,50000,50000_rows.csv,2,Start Print Results,733461690239
+c,50000,50000_rows.csv,2,Start Free Memory,733588974133
+c,50000,50000_rows.csv,2,End Program,733690323806
+c,50000,50000_rows.csv,3,Start File Read,738726944644
+c,50000,50000_rows.csv,3,Start Map to Person Record,738814944596
+c,50000,50000_rows.csv,3,Start Quick Sort Person Array,738900278547
+c,50000,50000_rows.csv,3,Start Print Results,739176812549
+c,50000,50000_rows.csv,3,Start Free Memory,739286276562
+c,50000,50000_rows.csv,3,End Program,739386355806
+c,50000,50000_rows.csv,4,Start File Read,744401853337
+c,50000,50000_rows.csv,4,Start Map to Person Record,744490521821
+c,50000,50000_rows.csv,4,Start Quick Sort Person Array,744576029042
+c,50000,50000_rows.csv,4,Start Print Results,744852550405
+c,50000,50000_rows.csv,4,Start Free Memory,744962644341
+c,50000,50000_rows.csv,4,End Program,745062792681
+c,50000,50000_rows.csv,5,Start File Read,750083807309
+c,50000,50000_rows.csv,5,Start Map to Person Record,750172199394
+c,50000,50000_rows.csv,5,Start Quick Sort Person Array,750257654633
+c,50000,50000_rows.csv,5,Start Print Results,750534511154
+c,50000,50000_rows.csv,5,Start Free Memory,750643580902
+c,50000,50000_rows.csv,5,End Program,750743651029
+c,50000,50000_rows.csv,6,Start File Read,755771465004
+c,50000,50000_rows.csv,6,Start Map to Person Record,755859908399
+c,50000,50000_rows.csv,6,Start Quick Sort Person Array,755945938945
+c,50000,50000_rows.csv,6,Start Print Results,756223051804
+c,50000,50000_rows.csv,6,Start Free Memory,756332168116
+c,50000,50000_rows.csv,6,End Program,756432132851
+c,50000,50000_rows.csv,7,Start File Read,761445007697
+c,50000,50000_rows.csv,7,Start Map to Person Record,761534225701
+c,50000,50000_rows.csv,7,Start Quick Sort Person Array,761619351315
+c,50000,50000_rows.csv,7,Start Print Results,761896160117
+c,50000,50000_rows.csv,7,Start Free Memory,762005650881
+c,50000,50000_rows.csv,7,End Program,762105508906
+c,50000,50000_rows.csv,8,Start File Read,767141293909
+c,50000,50000_rows.csv,8,Start Map to Person Record,767229982774
+c,50000,50000_rows.csv,8,Start Quick Sort Person Array,767315678602
+c,50000,50000_rows.csv,8,Start Print Results,767592466294
+c,50000,50000_rows.csv,8,Start Free Memory,767702304143
+c,50000,50000_rows.csv,8,End Program,767802494340
+c,50000,50000_rows.csv,9,Start File Read,772853830143
+c,50000,50000_rows.csv,9,Start Map to Person Record,772941832834
+c,50000,50000_rows.csv,9,Start Quick Sort Person Array,773027129194
+c,50000,50000_rows.csv,9,Start Print Results,773303872951
+c,50000,50000_rows.csv,9,Start Free Memory,773412820103
+c,50000,50000_rows.csv,9,End Program,773513048281
+c,50000,50000_rows.csv,10,Start File Read,778562214563
+c,50000,50000_rows.csv,10,Start Map to Person Record,778651078833
+c,50000,50000_rows.csv,10,Start Quick Sort Person Array,778738848594
+c,50000,50000_rows.csv,10,Start Print Results,779015836718
+c,50000,50000_rows.csv,10,Start Free Memory,779125238742
+c,50000,50000_rows.csv,10,End Program,779225569676
+c,5000,5000_rows.csv,1,Start File Read,783626007627
+c,5000,5000_rows.csv,1,Start Map to Person Record,783637780200
+c,5000,5000_rows.csv,1,Start Quick Sort Person Array,783649028027
+c,5000,5000_rows.csv,1,Start Print Results,783657417540
+c,5000,5000_rows.csv,1,Start Free Memory,783668008194
+c,5000,5000_rows.csv,1,End Program,783682177918
+c,5000,5000_rows.csv,2,Start File Read,788090034781
+c,5000,5000_rows.csv,2,Start Map to Person Record,788101834247
+c,5000,5000_rows.csv,2,Start Quick Sort Person Array,788113096289
+c,5000,5000_rows.csv,2,Start Print Results,788121455465
+c,5000,5000_rows.csv,2,Start Free Memory,788132072657
+c,5000,5000_rows.csv,2,End Program,788146302089
+c,5000,5000_rows.csv,3,Start File Read,792567766306
+c,5000,5000_rows.csv,3,Start Map to Person Record,792579578709
+c,5000,5000_rows.csv,3,Start Quick Sort Person Array,792590743010
+c,5000,5000_rows.csv,3,Start Print Results,792599151835
+c,5000,5000_rows.csv,3,Start Free Memory,792609795015
+c,5000,5000_rows.csv,3,End Program,792623942699
+c,5000,5000_rows.csv,4,Start File Read,797047280388
+c,5000,5000_rows.csv,4,Start Map to Person Record,797059062427
+c,5000,5000_rows.csv,4,Start Quick Sort Person Array,797070154489
+c,5000,5000_rows.csv,4,Start Print Results,797078584353
+c,5000,5000_rows.csv,4,Start Free Memory,797092532173
+c,5000,5000_rows.csv,4,End Program,797103107601
+c,5000,5000_rows.csv,5,Start File Read,801515635996
+c,5000,5000_rows.csv,5,Start Map to Person Record,801527442422
+c,5000,5000_rows.csv,5,Start Quick Sort Person Array,801538613693
+c,5000,5000_rows.csv,5,Start Print Results,801546967204
+c,5000,5000_rows.csv,5,Start Free Memory,801557663321
+c,5000,5000_rows.csv,5,End Program,801571651106
+c,5000,5000_rows.csv,6,Start File Read,805998712045
+c,5000,5000_rows.csv,6,Start Map to Person Record,806010467734
+c,5000,5000_rows.csv,6,Start Quick Sort Person Array,806021645107
+c,5000,5000_rows.csv,6,Start Print Results,806030051391
+c,5000,5000_rows.csv,6,Start Free Memory,806040676322
+c,5000,5000_rows.csv,6,End Program,806054851395
+c,5000,5000_rows.csv,7,Start File Read,810468651560
+c,5000,5000_rows.csv,7,Start Map to Person Record,810480848698
+c,5000,5000_rows.csv,7,Start Quick Sort Person Array,810492161608
+c,5000,5000_rows.csv,7,Start Print Results,810500652400
+c,5000,5000_rows.csv,7,Start Free Memory,810511237946
+c,5000,5000_rows.csv,7,End Program,810525276880
+c,5000,5000_rows.csv,8,Start File Read,814907611701
+c,5000,5000_rows.csv,8,Start Map to Person Record,814919355443
+c,5000,5000_rows.csv,8,Start Quick Sort Person Array,814930562853
+c,5000,5000_rows.csv,8,Start Print Results,814938943034
+c,5000,5000_rows.csv,8,Start Free Memory,814949580659
+c,5000,5000_rows.csv,8,End Program,814963783619
+c,5000,5000_rows.csv,9,Start File Read,819382188229
+c,5000,5000_rows.csv,9,Start Map to Person Record,819395003585
+c,5000,5000_rows.csv,9,Start Quick Sort Person Array,819406171451
+c,5000,5000_rows.csv,9,Start Print Results,819414528442
+c,5000,5000_rows.csv,9,Start Free Memory,819428460387
+c,5000,5000_rows.csv,9,End Program,819438944146
+c,5000,5000_rows.csv,10,Start File Read,823867533454
+c,5000,5000_rows.csv,10,Start Map to Person Record,823879285234
+c,5000,5000_rows.csv,10,Start Quick Sort Person Array,823890595943
+c,5000,5000_rows.csv,10,Start Print Results,823898916831
+c,5000,5000_rows.csv,10,Start Free Memory,823909597541
+c,5000,5000_rows.csv,10,End Program,823923626554
+csharp,100000,100000_rows.csv,1,Start File Read,848021349148
+csharp,100000,100000_rows.csv,1,Start Map to Person Record,848643819853
+csharp,100000,100000_rows.csv,1,Start Quick Sort Person Array,849154563702
+csharp,100000,100000_rows.csv,1,Start Print Results,854288848112
+csharp,100000,100000_rows.csv,1,Start Free Memory,858317041228
+csharp,100000,100000_rows.csv,1,End Program,858362820317
+csharp,100000,100000_rows.csv,2,Start File Read,882876619695
+csharp,100000,100000_rows.csv,2,Start Map to Person Record,883494636057
+csharp,100000,100000_rows.csv,2,Start Quick Sort Person Array,883993177813
+csharp,100000,100000_rows.csv,2,Start Print Results,889212660993
+csharp,100000,100000_rows.csv,2,Start Free Memory,892815254262
+csharp,100000,100000_rows.csv,2,End Program,892858697239
+csharp,100000,100000_rows.csv,3,Start File Read,917268072337
+csharp,100000,100000_rows.csv,3,Start Map to Person Record,917886777872
+csharp,100000,100000_rows.csv,3,Start Quick Sort Person Array,918392130002
+csharp,100000,100000_rows.csv,3,Start Print Results,923469219160
+csharp,100000,100000_rows.csv,3,Start Free Memory,927111257334
+csharp,100000,100000_rows.csv,3,End Program,927160644438
+csharp,100000,100000_rows.csv,4,Start File Read,951288662514
+csharp,100000,100000_rows.csv,4,Start Map to Person Record,951916809404
+csharp,100000,100000_rows.csv,4,Start Quick Sort Person Array,952410578984
+csharp,100000,100000_rows.csv,4,Start Print Results,957620401197
+csharp,100000,100000_rows.csv,4,Start Free Memory,961596805049
+csharp,100000,100000_rows.csv,4,End Program,961633695700
+csharp,100000,100000_rows.csv,5,Start File Read,986155775089
+csharp,100000,100000_rows.csv,5,Start Map to Person Record,986811750044
+csharp,100000,100000_rows.csv,5,Start Quick Sort Person Array,987314252366
+csharp,100000,100000_rows.csv,5,Start Print Results,992478707630
+csharp,100000,100000_rows.csv,5,Start Free Memory,996584946486
+csharp,100000,100000_rows.csv,5,End Program,996628697424
+csharp,100000,100000_rows.csv,6,Start File Read,1021001058688
+csharp,100000,100000_rows.csv,6,Start Map to Person Record,1021644177462
+csharp,100000,100000_rows.csv,6,Start Quick Sort Person Array,1022152088354
+csharp,100000,100000_rows.csv,6,Start Print Results,1027242183045
+csharp,100000,100000_rows.csv,6,Start Free Memory,1031257231536
+csharp,100000,100000_rows.csv,6,End Program,1031297063487
+csharp,100000,100000_rows.csv,7,Start File Read,1055772271442
+csharp,100000,100000_rows.csv,7,Start Map to Person Record,1056395154846
+csharp,100000,100000_rows.csv,7,Start Quick Sort Person Array,1056892733556
+csharp,100000,100000_rows.csv,7,Start Print Results,1062117956630
+csharp,100000,100000_rows.csv,7,Start Free Memory,1065706585599
+csharp,100000,100000_rows.csv,7,End Program,1065760051501
+csharp,100000,100000_rows.csv,8,Start File Read,1090135069676
+csharp,100000,100000_rows.csv,8,Start Map to Person Record,1090804937823
+csharp,100000,100000_rows.csv,8,Start Quick Sort Person Array,1091310719106
+csharp,100000,100000_rows.csv,8,Start Print Results,1096483288545
+csharp,100000,100000_rows.csv,8,Start Free Memory,1100114635706
+csharp,100000,100000_rows.csv,8,End Program,1100156513866
+csharp,100000,100000_rows.csv,9,Start File Read,1124989523124
+csharp,100000,100000_rows.csv,9,Start Map to Person Record,1125606125784
+csharp,100000,100000_rows.csv,9,Start Quick Sort Person Array,1126102307232
+csharp,100000,100000_rows.csv,9,Start Print Results,1131289331366
+csharp,100000,100000_rows.csv,9,Start Free Memory,1134855360280
+csharp,100000,100000_rows.csv,9,End Program,1134902677233
+csharp,100000,100000_rows.csv,10,Start File Read,1159413844808
+csharp,100000,100000_rows.csv,10,Start Map to Person Record,1160032236548
+csharp,100000,100000_rows.csv,10,Start Quick Sort Person Array,1160544867192
+csharp,100000,100000_rows.csv,10,Start Print Results,1165744213298
+csharp,100000,100000_rows.csv,10,Start Free Memory,1169652399830
+csharp,100000,100000_rows.csv,10,End Program,1169697950688
+csharp,10000,10000_rows.csv,1,Start File Read,1188656890309
+csharp,10000,10000_rows.csv,1,Start Map to Person Record,1189537828518
+csharp,10000,10000_rows.csv,1,Start Quick Sort Person Array,1189663410085
+csharp,10000,10000_rows.csv,1,Start Print Results,1189911917610
+csharp,10000,10000_rows.csv,1,Start Free Memory,1190164111955
+csharp,10000,10000_rows.csv,1,End Program,1190189754257
+csharp,10000,10000_rows.csv,2,Start File Read,1208985987147
+csharp,10000,10000_rows.csv,2,Start Map to Person Record,1209897161812
+csharp,10000,10000_rows.csv,2,Start Quick Sort Person Array,1210030834025
+csharp,10000,10000_rows.csv,2,Start Print Results,1210283122167
+csharp,10000,10000_rows.csv,2,Start Free Memory,1210541052347
+csharp,10000,10000_rows.csv,2,End Program,1210560031474
+csharp,10000,10000_rows.csv,3,Start File Read,1229004989327
+csharp,10000,10000_rows.csv,3,Start Map to Person Record,1229998687057
+csharp,10000,10000_rows.csv,3,Start Quick Sort Person Array,1230128812676
+csharp,10000,10000_rows.csv,3,Start Print Results,1230387614111
+csharp,10000,10000_rows.csv,3,Start Free Memory,1230648258674
+csharp,10000,10000_rows.csv,3,End Program,1230671315091
+csharp,10000,10000_rows.csv,4,Start File Read,1249637042830
+csharp,10000,10000_rows.csv,4,Start Map to Person Record,1250547095004
+csharp,10000,10000_rows.csv,4,Start Quick Sort Person Array,1250673769278
+csharp,10000,10000_rows.csv,4,Start Print Results,1250923971627
+csharp,10000,10000_rows.csv,4,Start Free Memory,1251180919346
+csharp,10000,10000_rows.csv,4,End Program,1251200979367
+csharp,10000,10000_rows.csv,5,Start File Read,1268883769557
+csharp,10000,10000_rows.csv,5,Start Map to Person Record,1269888157737
+csharp,10000,10000_rows.csv,5,Start Quick Sort Person Array,1270078993222
+csharp,10000,10000_rows.csv,5,Start Print Results,1270425583077
+csharp,10000,10000_rows.csv,5,Start Free Memory,1270751490403
+csharp,10000,10000_rows.csv,5,End Program,1270795287623
+csharp,10000,10000_rows.csv,6,Start File Read,1291195678327
+csharp,10000,10000_rows.csv,6,Start Map to Person Record,1291674478499
+csharp,10000,10000_rows.csv,6,Start Quick Sort Person Array,1291748415541
+csharp,10000,10000_rows.csv,6,Start Print Results,1291884938154
+csharp,10000,10000_rows.csv,6,Start Free Memory,1292076688898
+csharp,10000,10000_rows.csv,6,End Program,1292090132670
+csharp,10000,10000_rows.csv,7,Start File Read,1311492338295
+csharp,10000,10000_rows.csv,7,Start Map to Person Record,1311970153191
+csharp,10000,10000_rows.csv,7,Start Quick Sort Person Array,1312044213100
+csharp,10000,10000_rows.csv,7,Start Print Results,1312182155331
+csharp,10000,10000_rows.csv,7,Start Free Memory,1312363924199
+csharp,10000,10000_rows.csv,7,End Program,1312375083086
+csharp,10000,10000_rows.csv,8,Start File Read,1331824002760
+csharp,10000,10000_rows.csv,8,Start Map to Person Record,1332310495542
+csharp,10000,10000_rows.csv,8,Start Quick Sort Person Array,1332384610586
+csharp,10000,10000_rows.csv,8,Start Print Results,1332522069160
+csharp,10000,10000_rows.csv,8,Start Free Memory,1332706041436
+csharp,10000,10000_rows.csv,8,End Program,1332717457588
+csharp,10000,10000_rows.csv,9,Start File Read,1352261627639
+csharp,10000,10000_rows.csv,9,Start Map to Person Record,1352753469245
+csharp,10000,10000_rows.csv,9,Start Quick Sort Person Array,1352829119884
+csharp,10000,10000_rows.csv,9,Start Print Results,1352964658398
+csharp,10000,10000_rows.csv,9,Start Free Memory,1353162248556
+csharp,10000,10000_rows.csv,9,End Program,1353177058266
+csharp,10000,10000_rows.csv,10,Start File Read,1372787758199
+csharp,10000,10000_rows.csv,10,Start Map to Person Record,1373304198882
+csharp,10000,10000_rows.csv,10,Start Quick Sort Person Array,1373378056820
+csharp,10000,10000_rows.csv,10,Start Print Results,1373516697769
+csharp,10000,10000_rows.csv,10,Start Free Memory,1373699851653
+csharp,10000,10000_rows.csv,10,End Program,1373711179657
+csharp,1000,1000_rows.csv,1,Start File Read,1395055636335
+csharp,1000,1000_rows.csv,1,Start Map to Person Record,1395773674239
+csharp,1000,1000_rows.csv,1,Start Quick Sort Person Array,1395790679312
+csharp,1000,1000_rows.csv,1,Start Print Results,1395821041530
+csharp,1000,1000_rows.csv,1,Start Free Memory,1395879695097
+csharp,1000,1000_rows.csv,1,End Program,1396059529287
+csharp,1000,1000_rows.csv,2,Start File Read,1414570999767
+csharp,1000,1000_rows.csv,2,Start Map to Person Record,1415250059835
+csharp,1000,1000_rows.csv,2,Start Quick Sort Person Array,1415269169702
+csharp,1000,1000_rows.csv,2,Start Print Results,1415301478817
+csharp,1000,1000_rows.csv,2,Start Free Memory,1415343792479
+csharp,1000,1000_rows.csv,2,End Program,1415476386247
+csharp,1000,1000_rows.csv,3,Start File Read,1432631176281
+csharp,1000,1000_rows.csv,3,Start Map to Person Record,1433408378644
+csharp,1000,1000_rows.csv,3,Start Quick Sort Person Array,1433436993134
+csharp,1000,1000_rows.csv,3,Start Print Results,1433461522012
+csharp,1000,1000_rows.csv,3,Start Free Memory,1433533621704
+csharp,1000,1000_rows.csv,3,End Program,1433718648480
+csharp,1000,1000_rows.csv,4,Start File Read,1452834051970
+csharp,1000,1000_rows.csv,4,Start Map to Person Record,1453227523382
+csharp,1000,1000_rows.csv,4,Start Quick Sort Person Array,1453236082760
+csharp,1000,1000_rows.csv,4,Start Print Results,1453245759277
+csharp,1000,1000_rows.csv,4,Start Free Memory,1453278366176
+csharp,1000,1000_rows.csv,4,End Program,1453343566604
+csharp,1000,1000_rows.csv,5,Start File Read,1473411447617
+csharp,1000,1000_rows.csv,5,Start Map to Person Record,1473791951278
+csharp,1000,1000_rows.csv,5,Start Quick Sort Person Array,1473800551339
+csharp,1000,1000_rows.csv,5,Start Print Results,1473810116499
+csharp,1000,1000_rows.csv,5,Start Free Memory,1473843245153
+csharp,1000,1000_rows.csv,5,End Program,1473908075179
+csharp,1000,1000_rows.csv,6,Start File Read,1495594168201
+csharp,1000,1000_rows.csv,6,Start Map to Person Record,1496315243127
+csharp,1000,1000_rows.csv,6,Start Quick Sort Person Array,1496329805565
+csharp,1000,1000_rows.csv,6,Start Print Results,1496357238894
+csharp,1000,1000_rows.csv,6,Start Free Memory,1496405258208
+csharp,1000,1000_rows.csv,6,End Program,1496533604868
+csharp,1000,1000_rows.csv,7,Start File Read,1515057547523
+csharp,1000,1000_rows.csv,7,Start Map to Person Record,1515740523637
+csharp,1000,1000_rows.csv,7,Start Quick Sort Person Array,1515765048607
+csharp,1000,1000_rows.csv,7,Start Print Results,1515787643551
+csharp,1000,1000_rows.csv,7,Start Free Memory,1515835391611
+csharp,1000,1000_rows.csv,7,End Program,1515966353178
+csharp,1000,1000_rows.csv,8,Start File Read,1533351915677
+csharp,1000,1000_rows.csv,8,Start Map to Person Record,1534022679108
+csharp,1000,1000_rows.csv,8,Start Quick Sort Person Array,1534044539815
+csharp,1000,1000_rows.csv,8,Start Print Results,1534071617731
+csharp,1000,1000_rows.csv,8,Start Free Memory,1534115872650
+csharp,1000,1000_rows.csv,8,End Program,1534331398738
+csharp,1000,1000_rows.csv,9,Start File Read,1556772153133
+csharp,1000,1000_rows.csv,9,Start Map to Person Record,1557500865952
+csharp,1000,1000_rows.csv,9,Start Quick Sort Person Array,1557516115734
+csharp,1000,1000_rows.csv,9,Start Print Results,1557538020582
+csharp,1000,1000_rows.csv,9,Start Free Memory,1557583229388
+csharp,1000,1000_rows.csv,9,End Program,1557720197611
+csharp,1000,1000_rows.csv,10,Start File Read,1576332134673
+csharp,1000,1000_rows.csv,10,Start Map to Person Record,1577010009101
+csharp,1000,1000_rows.csv,10,Start Quick Sort Person Array,1577024333224
+csharp,1000,1000_rows.csv,10,Start Print Results,1577042847701
+csharp,1000,1000_rows.csv,10,Start Free Memory,1577094228200
+csharp,1000,1000_rows.csv,10,End Program,1577228426947
+csharp,10,10_rows.csv,1,Start File Read,1594992034713
+csharp,10,10_rows.csv,1,Start Map to Person Record,1595943082679
+csharp,10,10_rows.csv,1,Start Quick Sort Person Array,1595958708332
+csharp,10,10_rows.csv,1,Start Print Results,1595992019254
+csharp,10,10_rows.csv,1,Start Free Memory,1596022986238
+csharp,10,10_rows.csv,1,End Program,1596172630039
+csharp,10,10_rows.csv,2,Start File Read,1613598666561
+csharp,10,10_rows.csv,2,Start Map to Person Record,1614313798489
+csharp,10,10_rows.csv,2,Start Quick Sort Person Array,1614333013957
+csharp,10,10_rows.csv,2,Start Print Results,1614357168119
+csharp,10,10_rows.csv,2,Start Free Memory,1614383386759
+csharp,10,10_rows.csv,2,End Program,1614583309476
+csharp,10,10_rows.csv,3,Start File Read,1634641101495
+csharp,10,10_rows.csv,3,Start Map to Person Record,1635296375069
+csharp,10,10_rows.csv,3,Start Quick Sort Person Array,1635307691377
+csharp,10,10_rows.csv,3,Start Print Results,1635323921818
+csharp,10,10_rows.csv,3,Start Free Memory,1635348797804
+csharp,10,10_rows.csv,3,End Program,1635499546630
+csharp,10,10_rows.csv,4,Start File Read,1655920538204
+csharp,10,10_rows.csv,4,Start Map to Person Record,1656303214258
+csharp,10,10_rows.csv,4,Start Quick Sort Person Array,1656309137949
+csharp,10,10_rows.csv,4,Start Print Results,1656315315067
+csharp,10,10_rows.csv,4,Start Free Memory,1656327230511
+csharp,10,10_rows.csv,4,End Program,1656391818951
+csharp,10,10_rows.csv,5,Start File Read,1677490781424
+csharp,10,10_rows.csv,5,Start Map to Person Record,1678283939976
+csharp,10,10_rows.csv,5,Start Quick Sort Person Array,1678303324522
+csharp,10,10_rows.csv,5,Start Print Results,1678316392106
+csharp,10,10_rows.csv,5,Start Free Memory,1678347526454
+csharp,10,10_rows.csv,5,End Program,1678478350542
+csharp,10,10_rows.csv,6,Start File Read,1696695788319
+csharp,10,10_rows.csv,6,Start Map to Person Record,1697388034610
+csharp,10,10_rows.csv,6,Start Quick Sort Person Array,1697400738736
+csharp,10,10_rows.csv,6,Start Print Results,1697420014486
+csharp,10,10_rows.csv,6,Start Free Memory,1697447001915
+csharp,10,10_rows.csv,6,End Program,1697573401898
+csharp,10,10_rows.csv,7,Start File Read,1716051200848
+csharp,10,10_rows.csv,7,Start Map to Person Record,1716437499038
+csharp,10,10_rows.csv,7,Start Quick Sort Person Array,1716443232028
+csharp,10,10_rows.csv,7,Start Print Results,1716449481595
+csharp,10,10_rows.csv,7,Start Free Memory,1716462208996
+csharp,10,10_rows.csv,7,End Program,1716527460314
+csharp,10,10_rows.csv,8,Start File Read,1735522685666
+csharp,10,10_rows.csv,8,Start Map to Person Record,1735911917241
+csharp,10,10_rows.csv,8,Start Quick Sort Person Array,1735917672931
+csharp,10,10_rows.csv,8,Start Print Results,1735923910989
+csharp,10,10_rows.csv,8,Start Free Memory,1735936454092
+csharp,10,10_rows.csv,8,End Program,1736001603773
+csharp,10,10_rows.csv,9,Start File Read,1755960507471
+csharp,10,10_rows.csv,9,Start Map to Person Record,1756347169097
+csharp,10,10_rows.csv,9,Start Quick Sort Person Array,1756352867647
+csharp,10,10_rows.csv,9,Start Print Results,1756359079879
+csharp,10,10_rows.csv,9,Start Free Memory,1756371521246
+csharp,10,10_rows.csv,9,End Program,1756437011667
+csharp,10,10_rows.csv,10,Start File Read,1775207323673
+csharp,10,10_rows.csv,10,Start Map to Person Record,1775586245739
+csharp,10,10_rows.csv,10,Start Quick Sort Person Array,1775592210310
+csharp,10,10_rows.csv,10,Start Print Results,1775602321181
+csharp,10,10_rows.csv,10,Start Free Memory,1775615103279
+csharp,10,10_rows.csv,10,End Program,1775679743852
+csharp,50000,50000_rows.csv,1,Start File Read,1799061269484
+csharp,50000,50000_rows.csv,1,Start Map to Person Record,1799654290976
+csharp,50000,50000_rows.csv,1,Start Quick Sort Person Array,1799943396809
+csharp,50000,50000_rows.csv,1,Start Print Results,1801390229083
+csharp,50000,50000_rows.csv,1,Start Free Memory,1803375344338
+csharp,50000,50000_rows.csv,1,End Program,1803402204194
+csharp,50000,50000_rows.csv,2,Start File Read,1830060962261
+csharp,50000,50000_rows.csv,2,Start Map to Person Record,1830622078665
+csharp,50000,50000_rows.csv,2,Start Quick Sort Person Array,1830908299028
+csharp,50000,50000_rows.csv,2,Start Print Results,1832354792907
+csharp,50000,50000_rows.csv,2,Start Free Memory,1834262071375
+csharp,50000,50000_rows.csv,2,End Program,1834289668052
+csharp,50000,50000_rows.csv,3,Start File Read,1859805198960
+csharp,50000,50000_rows.csv,3,Start Map to Person Record,1860357994126
+csharp,50000,50000_rows.csv,3,Start Quick Sort Person Array,1860660352722
+csharp,50000,50000_rows.csv,3,Start Print Results,1862132492593
+csharp,50000,50000_rows.csv,3,Start Free Memory,1864008439570
+csharp,50000,50000_rows.csv,3,End Program,1864032672839
+csharp,50000,50000_rows.csv,4,Start File Read,1888941164074
+csharp,50000,50000_rows.csv,4,Start Map to Person Record,1889493097931
+csharp,50000,50000_rows.csv,4,Start Quick Sort Person Array,1889783055952
+csharp,50000,50000_rows.csv,4,Start Print Results,1891299447458
+csharp,50000,50000_rows.csv,4,Start Free Memory,1893116134919
+csharp,50000,50000_rows.csv,4,End Program,1893138081995
+csharp,50000,50000_rows.csv,5,Start File Read,1919756520622
+csharp,50000,50000_rows.csv,5,Start Map to Person Record,1920316698142
+csharp,50000,50000_rows.csv,5,Start Quick Sort Person Array,1920600499766
+csharp,50000,50000_rows.csv,5,Start Print Results,1922081815884
+csharp,50000,50000_rows.csv,5,Start Free Memory,1923902030139
+csharp,50000,50000_rows.csv,5,End Program,1923929096542
+csharp,50000,50000_rows.csv,6,Start File Read,1947828113566
+csharp,50000,50000_rows.csv,6,Start Map to Person Record,1948383442967
+csharp,50000,50000_rows.csv,6,Start Quick Sort Person Array,1948666347855
+csharp,50000,50000_rows.csv,6,Start Print Results,1950164731682
+csharp,50000,50000_rows.csv,6,Start Free Memory,1952118394092
+csharp,50000,50000_rows.csv,6,End Program,1952147107916
+csharp,50000,50000_rows.csv,7,Start File Read,1977404700231
+csharp,50000,50000_rows.csv,7,Start Map to Person Record,1977959921257
+csharp,50000,50000_rows.csv,7,Start Quick Sort Person Array,1978245390818
+csharp,50000,50000_rows.csv,7,Start Print Results,1979736034621
+csharp,50000,50000_rows.csv,7,Start Free Memory,1981705102696
+csharp,50000,50000_rows.csv,7,End Program,1981736514295
+csharp,50000,50000_rows.csv,8,Start File Read,2008575371266
+csharp,50000,50000_rows.csv,8,Start Map to Person Record,2009130967691
+csharp,50000,50000_rows.csv,8,Start Quick Sort Person Array,2009411470557
+csharp,50000,50000_rows.csv,8,Start Print Results,2010900505676
+csharp,50000,50000_rows.csv,8,Start Free Memory,2013710865591
+csharp,50000,50000_rows.csv,8,End Program,2013724657949
+csharp,50000,50000_rows.csv,9,Start File Read,2039562176058
+csharp,50000,50000_rows.csv,9,Start Map to Person Record,2040127590718
+csharp,50000,50000_rows.csv,9,Start Quick Sort Person Array,2040414933160
+csharp,50000,50000_rows.csv,9,Start Print Results,2041896583691
+csharp,50000,50000_rows.csv,9,Start Free Memory,2044078086714
+csharp,50000,50000_rows.csv,9,End Program,2044130820075
+csharp,50000,50000_rows.csv,10,Start File Read,2069407520064
+csharp,50000,50000_rows.csv,10,Start Map to Person Record,2070449935085
+csharp,50000,50000_rows.csv,10,Start Quick Sort Person Array,2071102478359
+csharp,50000,50000_rows.csv,10,Start Print Results,2073117474668
+csharp,50000,50000_rows.csv,10,Start Free Memory,2075087957681
+csharp,50000,50000_rows.csv,10,End Program,2075111408831
+csharp,5000,5000_rows.csv,1,Start File Read,2093685381629
+csharp,5000,5000_rows.csv,1,Start Map to Person Record,2094459315013
+csharp,5000,5000_rows.csv,1,Start Quick Sort Person Array,2094502368977
+csharp,5000,5000_rows.csv,1,Start Print Results,2094582929881
+csharp,5000,5000_rows.csv,1,Start Free Memory,2094731465185
+csharp,5000,5000_rows.csv,1,End Program,2094860604543
+csharp,5000,5000_rows.csv,2,Start File Read,2113561471574
+csharp,5000,5000_rows.csv,2,Start Map to Person Record,2114245193694
+csharp,5000,5000_rows.csv,2,Start Quick Sort Person Array,2114289784440
+csharp,5000,5000_rows.csv,2,Start Print Results,2114373892934
+csharp,5000,5000_rows.csv,2,Start Free Memory,2114525223694
+csharp,5000,5000_rows.csv,2,End Program,2114656430485
+csharp,5000,5000_rows.csv,3,Start File Read,2133259043760
+csharp,5000,5000_rows.csv,3,Start Map to Person Record,2133926830638
+csharp,5000,5000_rows.csv,3,Start Quick Sort Person Array,2133970143029
+csharp,5000,5000_rows.csv,3,Start Print Results,2134057047740
+csharp,5000,5000_rows.csv,3,Start Free Memory,2134214208612
+csharp,5000,5000_rows.csv,3,End Program,2134395417963
+csharp,5000,5000_rows.csv,4,Start File Read,2153052942559
+csharp,5000,5000_rows.csv,4,Start Map to Person Record,2153764420667
+csharp,5000,5000_rows.csv,4,Start Quick Sort Person Array,2153808963244
+csharp,5000,5000_rows.csv,4,Start Print Results,2153894174861
+csharp,5000,5000_rows.csv,4,Start Free Memory,2154040324991
+csharp,5000,5000_rows.csv,4,End Program,2154203632019
+csharp,5000,5000_rows.csv,5,Start File Read,2172722231594
+csharp,5000,5000_rows.csv,5,Start Map to Person Record,2173405014465
+csharp,5000,5000_rows.csv,5,Start Quick Sort Person Array,2173448198810
+csharp,5000,5000_rows.csv,5,Start Print Results,2173529924454
+csharp,5000,5000_rows.csv,5,Start Free Memory,2173686627638
+csharp,5000,5000_rows.csv,5,End Program,2173820138644
+csharp,5000,5000_rows.csv,6,Start File Read,2192489211971
+csharp,5000,5000_rows.csv,6,Start Map to Person Record,2193186028647
+csharp,5000,5000_rows.csv,6,Start Quick Sort Person Array,2193229161392
+csharp,5000,5000_rows.csv,6,Start Print Results,2193310922718
+csharp,5000,5000_rows.csv,6,Start Free Memory,2193462084881
+csharp,5000,5000_rows.csv,6,End Program,2193596526043
+csharp,5000,5000_rows.csv,7,Start File Read,2212223100212
+csharp,5000,5000_rows.csv,7,Start Map to Person Record,2212905984759
+csharp,5000,5000_rows.csv,7,Start Quick Sort Person Array,2212940421532
+csharp,5000,5000_rows.csv,7,Start Print Results,2213025888465
+csharp,5000,5000_rows.csv,7,Start Free Memory,2213168946911
+csharp,5000,5000_rows.csv,7,End Program,2213297296411
+csharp,5000,5000_rows.csv,8,Start File Read,2232030044987
+csharp,5000,5000_rows.csv,8,Start Map to Person Record,2232719317161
+csharp,5000,5000_rows.csv,8,Start Quick Sort Person Array,2232764287239
+csharp,5000,5000_rows.csv,8,Start Print Results,2232841255790
+csharp,5000,5000_rows.csv,8,Start Free Memory,2232998249468
+csharp,5000,5000_rows.csv,8,End Program,2233133677258
+csharp,5000,5000_rows.csv,9,Start File Read,2252142150401
+csharp,5000,5000_rows.csv,9,Start Map to Person Record,2252830041285
+csharp,5000,5000_rows.csv,9,Start Quick Sort Person Array,2252872803789
+csharp,5000,5000_rows.csv,9,Start Print Results,2252954555977
+csharp,5000,5000_rows.csv,9,Start Free Memory,2253102168469
+csharp,5000,5000_rows.csv,9,End Program,2253235930516
+csharp,5000,5000_rows.csv,10,Start File Read,2271883410258
+csharp,5000,5000_rows.csv,10,Start Map to Person Record,2272556658140
+csharp,5000,5000_rows.csv,10,Start Quick Sort Person Array,2272603629896
+csharp,5000,5000_rows.csv,10,Start Print Results,2272691000582
+csharp,5000,5000_rows.csv,10,Start Free Memory,2272837550971
+csharp,5000,5000_rows.csv,10,End Program,2272967490831
+go,100000,100000_rows.csv,1,Start File Read,2279561025273
+go,100000,100000_rows.csv,1,Start Map to Person Record,2279621079343
+go,100000,100000_rows.csv,1,Start Quick Sort Person Array,2279762064735
+go,100000,100000_rows.csv,1,Start Print Results,2280412871562
+go,100000,100000_rows.csv,1,Start Free Memory,2281484885376
+go,100000,100000_rows.csv,1,End Program,2281493699761
+go,100000,100000_rows.csv,2,Start File Read,2287747688747
+go,100000,100000_rows.csv,2,Start Map to Person Record,2287809430574
+go,100000,100000_rows.csv,2,Start Quick Sort Person Array,2287951573999
+go,100000,100000_rows.csv,2,Start Print Results,2288608750475
+go,100000,100000_rows.csv,2,Start Free Memory,2289650439360
+go,100000,100000_rows.csv,2,End Program,2289657741121
+go,100000,100000_rows.csv,3,Start File Read,2295935726883
+go,100000,100000_rows.csv,3,Start Map to Person Record,2295995644185
+go,100000,100000_rows.csv,3,Start Quick Sort Person Array,2296137335674
+go,100000,100000_rows.csv,3,Start Print Results,2296787916425
+go,100000,100000_rows.csv,3,Start Free Memory,2297836221094
+go,100000,100000_rows.csv,3,End Program,2297843277831
+go,100000,100000_rows.csv,4,Start File Read,2304099325033
+go,100000,100000_rows.csv,4,Start Map to Person Record,2304160845601
+go,100000,100000_rows.csv,4,Start Quick Sort Person Array,2304293850883
+go,100000,100000_rows.csv,4,Start Print Results,2304944441744
+go,100000,100000_rows.csv,4,Start Free Memory,2305982870422
+go,100000,100000_rows.csv,4,End Program,2305990187061
+go,100000,100000_rows.csv,5,Start File Read,2312284304636
+go,100000,100000_rows.csv,5,Start Map to Person Record,2312344288367
+go,100000,100000_rows.csv,5,Start Quick Sort Person Array,2312486240860
+go,100000,100000_rows.csv,5,Start Print Results,2313144540082
+go,100000,100000_rows.csv,5,Start Free Memory,2314204817004
+go,100000,100000_rows.csv,5,End Program,2314212211715
+go,100000,100000_rows.csv,6,Start File Read,2320505741643
+go,100000,100000_rows.csv,6,Start Map to Person Record,2320565745497
+go,100000,100000_rows.csv,6,Start Quick Sort Person Array,2320701180283
+go,100000,100000_rows.csv,6,Start Print Results,2321354736846
+go,100000,100000_rows.csv,6,Start Free Memory,2322395077981
+go,100000,100000_rows.csv,6,End Program,2322404980504
+go,100000,100000_rows.csv,7,Start File Read,2328687872641
+go,100000,100000_rows.csv,7,Start Map to Person Record,2328747751690
+go,100000,100000_rows.csv,7,Start Quick Sort Person Array,2328889542553
+go,100000,100000_rows.csv,7,Start Print Results,2329539733286
+go,100000,100000_rows.csv,7,Start Free Memory,2330584864513
+go,100000,100000_rows.csv,7,End Program,2330592158532
+go,100000,100000_rows.csv,8,Start File Read,2336868411478
+go,100000,100000_rows.csv,8,Start Map to Person Record,2336928440908
+go,100000,100000_rows.csv,8,Start Quick Sort Person Array,2337070119501
+go,100000,100000_rows.csv,8,Start Print Results,2337729116627
+go,100000,100000_rows.csv,8,Start Free Memory,2338775833160
+go,100000,100000_rows.csv,8,End Program,2338783163616
+go,100000,100000_rows.csv,9,Start File Read,2345054854950
+go,100000,100000_rows.csv,9,Start Map to Person Record,2345118890487
+go,100000,100000_rows.csv,9,Start Quick Sort Person Array,2345260944201
+go,100000,100000_rows.csv,9,Start Print Results,2345913861157
+go,100000,100000_rows.csv,9,Start Free Memory,2346966179741
+go,100000,100000_rows.csv,9,End Program,2346973479655
+go,100000,100000_rows.csv,10,Start File Read,2353267186960
+go,100000,100000_rows.csv,10,Start Map to Person Record,2353327222158
+go,100000,100000_rows.csv,10,Start Quick Sort Person Array,2353469089807
+go,100000,100000_rows.csv,10,Start Print Results,2354119085146
+go,100000,100000_rows.csv,10,Start Free Memory,2355158264395
+go,100000,100000_rows.csv,10,End Program,2355165553975
+go,10000,10000_rows.csv,1,Start File Read,2359700018721
+go,10000,10000_rows.csv,1,Start Map to Person Record,2359710374864
+go,10000,10000_rows.csv,1,Start Quick Sort Person Array,2359722248641
+go,10000,10000_rows.csv,1,Start Print Results,2359735315639
+go,10000,10000_rows.csv,1,Start Free Memory,2359851300794
+go,10000,10000_rows.csv,1,End Program,2359856102837
+go,10000,10000_rows.csv,2,Start File Read,2364378325936
+go,10000,10000_rows.csv,2,Start Map to Person Record,2364388420478
+go,10000,10000_rows.csv,2,Start Quick Sort Person Array,2364402230769
+go,10000,10000_rows.csv,2,Start Print Results,2364414672421
+go,10000,10000_rows.csv,2,Start Free Memory,2364516100646
+go,10000,10000_rows.csv,2,End Program,2364520896381
+go,10000,10000_rows.csv,3,Start File Read,2369035377354
+go,10000,10000_rows.csv,3,Start Map to Person Record,2369045977038
+go,10000,10000_rows.csv,3,Start Quick Sort Person Array,2369059436602
+go,10000,10000_rows.csv,3,Start Print Results,2369072108448
+go,10000,10000_rows.csv,3,Start Free Memory,2369174614247
+go,10000,10000_rows.csv,3,End Program,2369179672851
+go,10000,10000_rows.csv,4,Start File Read,2373683306205
+go,10000,10000_rows.csv,4,Start Map to Person Record,2373693635755
+go,10000,10000_rows.csv,4,Start Quick Sort Person Array,2373705584355
+go,10000,10000_rows.csv,4,Start Print Results,2373718326765
+go,10000,10000_rows.csv,4,Start Free Memory,2373823914758
+go,10000,10000_rows.csv,4,End Program,2373828670495
+go,10000,10000_rows.csv,5,Start File Read,2378349764040
+go,10000,10000_rows.csv,5,Start Map to Person Record,2378359503073
+go,10000,10000_rows.csv,5,Start Quick Sort Person Array,2378373133305
+go,10000,10000_rows.csv,5,Start Print Results,2378385826308
+go,10000,10000_rows.csv,5,Start Free Memory,2378492123694
+go,10000,10000_rows.csv,5,End Program,2378498139558
+go,10000,10000_rows.csv,6,Start File Read,2382984060949
+go,10000,10000_rows.csv,6,Start Map to Person Record,2382994832417
+go,10000,10000_rows.csv,6,Start Quick Sort Person Array,2383008400158
+go,10000,10000_rows.csv,6,Start Print Results,2383020972357
+go,10000,10000_rows.csv,6,Start Free Memory,2383125096875
+go,10000,10000_rows.csv,6,End Program,2383130091645
+go,10000,10000_rows.csv,7,Start File Read,2387664449068
+go,10000,10000_rows.csv,7,Start Map to Person Record,2387675004675
+go,10000,10000_rows.csv,7,Start Quick Sort Person Array,2387686908697
+go,10000,10000_rows.csv,7,Start Print Results,2387699893701
+go,10000,10000_rows.csv,7,Start Free Memory,2387805525102
+go,10000,10000_rows.csv,7,End Program,2387810362052
+go,10000,10000_rows.csv,8,Start File Read,2392302254945
+go,10000,10000_rows.csv,8,Start Map to Person Record,2392312635201
+go,10000,10000_rows.csv,8,Start Quick Sort Person Array,2392324505345
+go,10000,10000_rows.csv,8,Start Print Results,2392337230553
+go,10000,10000_rows.csv,8,Start Free Memory,2392446532224
+go,10000,10000_rows.csv,8,End Program,2392454046061
+go,10000,10000_rows.csv,9,Start File Read,2396992706947
+go,10000,10000_rows.csv,9,Start Map to Person Record,2397002754944
+go,10000,10000_rows.csv,9,Start Quick Sort Person Array,2397016341447
+go,10000,10000_rows.csv,9,Start Print Results,2397028936006
+go,10000,10000_rows.csv,9,Start Free Memory,2397134885027
+go,10000,10000_rows.csv,9,End Program,2397139801030
+go,10000,10000_rows.csv,10,Start File Read,2401638275772
+go,10000,10000_rows.csv,10,Start Map to Person Record,2401648021958
+go,10000,10000_rows.csv,10,Start Quick Sort Person Array,2401661571383
+go,10000,10000_rows.csv,10,Start Print Results,2401674219713
+go,10000,10000_rows.csv,10,Start Free Memory,2401785957059
+go,10000,10000_rows.csv,10,End Program,2401792139955
+go,1000,1000_rows.csv,1,Start File Read,2406208801198
+go,1000,1000_rows.csv,1,Start Map to Person Record,2406213094390
+go,1000,1000_rows.csv,1,Start Quick Sort Person Array,2406218074871
+go,1000,1000_rows.csv,1,Start Print Results,2406221953528
+go,1000,1000_rows.csv,1,Start Free Memory,2406233905361
+go,1000,1000_rows.csv,1,End Program,2406239731799
+go,1000,1000_rows.csv,2,Start File Read,2410638458458
+go,1000,1000_rows.csv,2,Start Map to Person Record,2410642675816
+go,1000,1000_rows.csv,2,Start Quick Sort Person Array,2410647590087
+go,1000,1000_rows.csv,2,Start Print Results,2410652056282
+go,1000,1000_rows.csv,2,Start Free Memory,2410663368240
+go,1000,1000_rows.csv,2,End Program,2410669223346
+go,1000,1000_rows.csv,3,Start File Read,2415053165558
+go,1000,1000_rows.csv,3,Start Map to Person Record,2415058039933
+go,1000,1000_rows.csv,3,Start Quick Sort Person Array,2415062533759
+go,1000,1000_rows.csv,3,Start Print Results,2415066242474
+go,1000,1000_rows.csv,3,Start Free Memory,2415081551433
+go,1000,1000_rows.csv,3,End Program,2415087517373
+go,1000,1000_rows.csv,4,Start File Read,2419466208412
+go,1000,1000_rows.csv,4,Start Map to Person Record,2419470377957
+go,1000,1000_rows.csv,4,Start Quick Sort Person Array,2419475575638
+go,1000,1000_rows.csv,4,Start Print Results,2419479766305
+go,1000,1000_rows.csv,4,Start Free Memory,2419495309747
+go,1000,1000_rows.csv,4,End Program,2419499911515
+go,1000,1000_rows.csv,5,Start File Read,2423900011724
+go,1000,1000_rows.csv,5,Start Map to Person Record,2423904722303
+go,1000,1000_rows.csv,5,Start Quick Sort Person Array,2423910051767
+go,1000,1000_rows.csv,5,Start Print Results,2423914472267
+go,1000,1000_rows.csv,5,Start Free Memory,2423925685552
+go,1000,1000_rows.csv,5,End Program,2423931805747
+go,1000,1000_rows.csv,6,Start File Read,2428287216472
+go,1000,1000_rows.csv,6,Start Map to Person Record,2428291390111
+go,1000,1000_rows.csv,6,Start Quick Sort Person Array,2428296653968
+go,1000,1000_rows.csv,6,Start Print Results,2428301148096
+go,1000,1000_rows.csv,6,Start Free Memory,2428316562241
+go,1000,1000_rows.csv,6,End Program,2428321340040
+go,1000,1000_rows.csv,7,Start File Read,2432727814389
+go,1000,1000_rows.csv,7,Start Map to Person Record,2432732128839
+go,1000,1000_rows.csv,7,Start Quick Sort Person Array,2432737209859
+go,1000,1000_rows.csv,7,Start Print Results,2432740985472
+go,1000,1000_rows.csv,7,Start Free Memory,2432753105835
+go,1000,1000_rows.csv,7,End Program,2432759001814
+go,1000,1000_rows.csv,8,Start File Read,2437142683008
+go,1000,1000_rows.csv,8,Start Map to Person Record,2437147328987
+go,1000,1000_rows.csv,8,Start Quick Sort Person Array,2437152741565
+go,1000,1000_rows.csv,8,Start Print Results,2437157205031
+go,1000,1000_rows.csv,8,Start Free Memory,2437172214566
+go,1000,1000_rows.csv,8,End Program,2437176663689
+go,1000,1000_rows.csv,9,Start File Read,2441573301670
+go,1000,1000_rows.csv,9,Start Map to Person Record,2441578631788
+go,1000,1000_rows.csv,9,Start Quick Sort Person Array,2441585109351
+go,1000,1000_rows.csv,9,Start Print Results,2441589718045
+go,1000,1000_rows.csv,9,Start Free Memory,2441602107883
+go,1000,1000_rows.csv,9,End Program,2441608328996
+go,1000,1000_rows.csv,10,Start File Read,2445972311232
+go,1000,1000_rows.csv,10,Start Map to Person Record,2445976545760
+go,1000,1000_rows.csv,10,Start Quick Sort Person Array,2445981951766
+go,1000,1000_rows.csv,10,Start Print Results,2445986417254
+go,1000,1000_rows.csv,10,Start Free Memory,2445997831266
+go,1000,1000_rows.csv,10,End Program,2446003648417
+go,10,10_rows.csv,1,Start File Read,2450387918352
+go,10,10_rows.csv,1,Start Map to Person Record,2450391831304
+go,10,10_rows.csv,1,Start Quick Sort Person Array,2450395771868
+go,10,10_rows.csv,1,Start Print Results,2450399628206
+go,10,10_rows.csv,1,Start Free Memory,2450403897268
+go,10,10_rows.csv,1,End Program,2450408732962
+go,10,10_rows.csv,2,Start File Read,2454815470121
+go,10,10_rows.csv,2,Start Map to Person Record,2454819064958
+go,10,10_rows.csv,2,Start Quick Sort Person Array,2454823261971
+go,10,10_rows.csv,2,Start Print Results,2454827357244
+go,10,10_rows.csv,2,Start Free Memory,2454833264625
+go,10,10_rows.csv,2,End Program,2454839288579
+go,10,10_rows.csv,3,Start File Read,2459206050007
+go,10,10_rows.csv,3,Start Map to Person Record,2459210145156
+go,10,10_rows.csv,3,Start Quick Sort Person Array,2459213325972
+go,10,10_rows.csv,3,Start Print Results,2459216925728
+go,10,10_rows.csv,3,Start Free Memory,2459220915138
+go,10,10_rows.csv,3,End Program,2459227166468
+go,10,10_rows.csv,4,Start File Read,2463592214850
+go,10,10_rows.csv,4,Start Map to Person Record,2463595778732
+go,10,10_rows.csv,4,Start Quick Sort Person Array,2463599820567
+go,10,10_rows.csv,4,Start Print Results,2463603837181
+go,10,10_rows.csv,4,Start Free Memory,2463609182133
+go,10,10_rows.csv,4,End Program,2463613942788
+go,10,10_rows.csv,5,Start File Read,2468014072611
+go,10,10_rows.csv,5,Start Map to Person Record,2468017721974
+go,10,10_rows.csv,5,Start Quick Sort Person Array,2468021792505
+go,10,10_rows.csv,5,Start Print Results,2468025602373
+go,10,10_rows.csv,5,Start Free Memory,2468031327170
+go,10,10_rows.csv,5,End Program,2468037467450
+go,10,10_rows.csv,6,Start File Read,2472432324991
+go,10,10_rows.csv,6,Start Map to Person Record,2472435920084
+go,10,10_rows.csv,6,Start Quick Sort Person Array,2472440133482
+go,10,10_rows.csv,6,Start Print Results,2472444104579
+go,10,10_rows.csv,6,Start Free Memory,2472449884115
+go,10,10_rows.csv,6,End Program,2472455862714
+go,10,10_rows.csv,7,Start File Read,2476824286685
+go,10,10_rows.csv,7,Start Map to Person Record,2476827952391
+go,10,10_rows.csv,7,Start Quick Sort Person Array,2476832011349
+go,10,10_rows.csv,7,Start Print Results,2476835850057
+go,10,10_rows.csv,7,Start Free Memory,2476841194684
+go,10,10_rows.csv,7,End Program,2476846694696
+go,10,10_rows.csv,8,Start File Read,2481236069550
+go,10,10_rows.csv,8,Start Map to Person Record,2481239624451
+go,10,10_rows.csv,8,Start Quick Sort Person Array,2481243553408
+go,10,10_rows.csv,8,Start Print Results,2481247089006
+go,10,10_rows.csv,8,Start Free Memory,2481251793010
+go,10,10_rows.csv,8,End Program,2481256815826
+go,10,10_rows.csv,9,Start File Read,2485641785286
+go,10,10_rows.csv,9,Start Map to Person Record,2485645357013
+go,10,10_rows.csv,9,Start Quick Sort Person Array,2485649548070
+go,10,10_rows.csv,9,Start Print Results,2485653369327
+go,10,10_rows.csv,9,Start Free Memory,2485659089606
+go,10,10_rows.csv,9,End Program,2485664922646
+go,10,10_rows.csv,10,Start File Read,2490046090805
+go,10,10_rows.csv,10,Start Map to Person Record,2490049594594
+go,10,10_rows.csv,10,Start Quick Sort Person Array,2490053728207
+go,10,10_rows.csv,10,Start Print Results,2490057762816
+go,10,10_rows.csv,10,Start Free Memory,2490063584907
+go,10,10_rows.csv,10,End Program,2490069568067
+go,50000,50000_rows.csv,1,Start File Read,2495240510636
+go,50000,50000_rows.csv,1,Start Map to Person Record,2495274526855
+go,50000,50000_rows.csv,1,Start Quick Sort Person Array,2495354104109
+go,50000,50000_rows.csv,1,Start Print Results,2495529883326
+go,50000,50000_rows.csv,1,Start Free Memory,2496052386124
+go,50000,50000_rows.csv,1,End Program,2496059222869
+go,50000,50000_rows.csv,2,Start File Read,2501238631234
+go,50000,50000_rows.csv,2,Start Map to Person Record,2501270952293
+go,50000,50000_rows.csv,2,Start Quick Sort Person Array,2501352167367
+go,50000,50000_rows.csv,2,Start Print Results,2501527054543
+go,50000,50000_rows.csv,2,Start Free Memory,2502061626318
+go,50000,50000_rows.csv,2,End Program,2502068021570
+go,50000,50000_rows.csv,3,Start File Read,2507254863754
+go,50000,50000_rows.csv,3,Start Map to Person Record,2507287291176
+go,50000,50000_rows.csv,3,Start Quick Sort Person Array,2507368191468
+go,50000,50000_rows.csv,3,Start Print Results,2507543087328
+go,50000,50000_rows.csv,3,Start Free Memory,2508062231906
+go,50000,50000_rows.csv,3,End Program,2508067526166
+go,50000,50000_rows.csv,4,Start File Read,2513244988695
+go,50000,50000_rows.csv,4,Start Map to Person Record,2513277241811
+go,50000,50000_rows.csv,4,Start Quick Sort Person Array,2513359637726
+go,50000,50000_rows.csv,4,Start Print Results,2513532684581
+go,50000,50000_rows.csv,4,Start Free Memory,2514052116757
+go,50000,50000_rows.csv,4,End Program,2514057996757
+go,50000,50000_rows.csv,5,Start File Read,2519281176957
+go,50000,50000_rows.csv,5,Start Map to Person Record,2519313636269
+go,50000,50000_rows.csv,5,Start Quick Sort Person Array,2519394556071
+go,50000,50000_rows.csv,5,Start Print Results,2519569424013
+go,50000,50000_rows.csv,5,Start Free Memory,2520094627388
+go,50000,50000_rows.csv,5,End Program,2520100085139
+go,50000,50000_rows.csv,6,Start File Read,2525308870867
+go,50000,50000_rows.csv,6,Start Map to Person Record,2525342268047
+go,50000,50000_rows.csv,6,Start Quick Sort Person Array,2525423186555
+go,50000,50000_rows.csv,6,Start Print Results,2525598399427
+go,50000,50000_rows.csv,6,Start Free Memory,2526122739792
+go,50000,50000_rows.csv,6,End Program,2526130040594
+go,50000,50000_rows.csv,7,Start File Read,2531328592576
+go,50000,50000_rows.csv,7,Start Map to Person Record,2531360983622
+go,50000,50000_rows.csv,7,Start Quick Sort Person Array,2531442017104
+go,50000,50000_rows.csv,7,Start Print Results,2531617009562
+go,50000,50000_rows.csv,7,Start Free Memory,2532140461199
+go,50000,50000_rows.csv,7,End Program,2532145949843
+go,50000,50000_rows.csv,8,Start File Read,2537318536473
+go,50000,50000_rows.csv,8,Start Map to Person Record,2537353126976
+go,50000,50000_rows.csv,8,Start Quick Sort Person Array,2537436623948
+go,50000,50000_rows.csv,8,Start Print Results,2537610089225
+go,50000,50000_rows.csv,8,Start Free Memory,2538139645353
+go,50000,50000_rows.csv,8,End Program,2538145280352
+go,50000,50000_rows.csv,9,Start File Read,2543313808776
+go,50000,50000_rows.csv,9,Start Map to Person Record,2543346204064
+go,50000,50000_rows.csv,9,Start Quick Sort Person Array,2543427274087
+go,50000,50000_rows.csv,9,Start Print Results,2543602117400
+go,50000,50000_rows.csv,9,Start Free Memory,2544136681897
+go,50000,50000_rows.csv,9,End Program,2544142179292
+go,50000,50000_rows.csv,10,Start File Read,2549306174596
+go,50000,50000_rows.csv,10,Start Map to Person Record,2549338557908
+go,50000,50000_rows.csv,10,Start Quick Sort Person Array,2549419461965
+go,50000,50000_rows.csv,10,Start Print Results,2549594443557
+go,50000,50000_rows.csv,10,Start Free Memory,2550120461522
+go,50000,50000_rows.csv,10,End Program,2550130020391
+go,5000,5000_rows.csv,1,Start File Read,2554577604553
+go,5000,5000_rows.csv,1,Start Map to Person Record,2554584493796
+go,5000,5000_rows.csv,1,Start Quick Sort Person Array,2554593655108
+go,5000,5000_rows.csv,1,Start Print Results,2554599778505
+go,5000,5000_rows.csv,1,Start Free Memory,2554658147339
+go,5000,5000_rows.csv,1,End Program,2554664126431
+go,5000,5000_rows.csv,2,Start File Read,2559114048597
+go,5000,5000_rows.csv,2,Start Map to Person Record,2559120321948
+go,5000,5000_rows.csv,2,Start Quick Sort Person Array,2559128745531
+go,5000,5000_rows.csv,2,Start Print Results,2559136233441
+go,5000,5000_rows.csv,2,Start Free Memory,2559192374474
+go,5000,5000_rows.csv,2,End Program,2559197038420
+go,5000,5000_rows.csv,3,Start File Read,2563646407216
+go,5000,5000_rows.csv,3,Start Map to Person Record,2563653803319
+go,5000,5000_rows.csv,3,Start Quick Sort Person Array,2563661845542
+go,5000,5000_rows.csv,3,Start Print Results,2563667987828
+go,5000,5000_rows.csv,3,Start Free Memory,2563720401890
+go,5000,5000_rows.csv,3,End Program,2563725144440
+go,5000,5000_rows.csv,4,Start File Read,2568160523415
+go,5000,5000_rows.csv,4,Start Map to Person Record,2568167797852
+go,5000,5000_rows.csv,4,Start Quick Sort Person Array,2568176806243
+go,5000,5000_rows.csv,4,Start Print Results,2568182933403
+go,5000,5000_rows.csv,4,Start Free Memory,2568238437576
+go,5000,5000_rows.csv,4,End Program,2568244013643
+go,5000,5000_rows.csv,5,Start File Read,2572689808353
+go,5000,5000_rows.csv,5,Start Map to Person Record,2572696764783
+go,5000,5000_rows.csv,5,Start Quick Sort Person Array,2572705942800
+go,5000,5000_rows.csv,5,Start Print Results,2572712274380
+go,5000,5000_rows.csv,5,Start Free Memory,2572762338091
+go,5000,5000_rows.csv,5,End Program,2572768124278
+go,5000,5000_rows.csv,6,Start File Read,2577238797068
+go,5000,5000_rows.csv,6,Start Map to Person Record,2577245923810
+go,5000,5000_rows.csv,6,Start Quick Sort Person Array,2577254883679
+go,5000,5000_rows.csv,6,Start Print Results,2577261012926
+go,5000,5000_rows.csv,6,Start Free Memory,2577315304252
+go,5000,5000_rows.csv,6,End Program,2577320028909
+go,5000,5000_rows.csv,7,Start File Read,2581739801694
+go,5000,5000_rows.csv,7,Start Map to Person Record,2581746802478
+go,5000,5000_rows.csv,7,Start Quick Sort Person Array,2581755937454
+go,5000,5000_rows.csv,7,Start Print Results,2581762015561
+go,5000,5000_rows.csv,7,Start Free Memory,2581813336044
+go,5000,5000_rows.csv,7,End Program,2581818060392
+go,5000,5000_rows.csv,8,Start File Read,2586262339707
+go,5000,5000_rows.csv,8,Start Map to Person Record,2586269375774
+go,5000,5000_rows.csv,8,Start Quick Sort Person Array,2586278344335
+go,5000,5000_rows.csv,8,Start Print Results,2586284470490
+go,5000,5000_rows.csv,8,Start Free Memory,2586336669422
+go,5000,5000_rows.csv,8,End Program,2586341351659
+go,5000,5000_rows.csv,9,Start File Read,2590774655745
+go,5000,5000_rows.csv,9,Start Map to Person Record,2590782074046
+go,5000,5000_rows.csv,9,Start Quick Sort Person Array,2590790889411
+go,5000,5000_rows.csv,9,Start Print Results,2590796986613
+go,5000,5000_rows.csv,9,Start Free Memory,2590853723091
+go,5000,5000_rows.csv,9,End Program,2590858410486
+go,5000,5000_rows.csv,10,Start File Read,2595319573829
+go,5000,5000_rows.csv,10,Start Map to Person Record,2595327100138
+go,5000,5000_rows.csv,10,Start Quick Sort Person Array,2595336487246
+go,5000,5000_rows.csv,10,Start Print Results,2595342818065
+go,5000,5000_rows.csv,10,Start Free Memory,2595401751703
+go,5000,5000_rows.csv,10,End Program,2595409316020
+java,100000,100000_rows.csv,1,Start File Read,2607217446494
+java,100000,100000_rows.csv,1,Start Map to Person Record,2608039622685
+java,100000,100000_rows.csv,1,Start Quick Sort Person Array,2609408881847
+java,100000,100000_rows.csv,1,Start Print Results,2611189550525
+java,100000,100000_rows.csv,1,Start Free Memory,2613576347847
+java,100000,100000_rows.csv,1,End Program,2613648004556
+java,100000,100000_rows.csv,2,Start File Read,2625433769906
+java,100000,100000_rows.csv,2,Start Map to Person Record,2626216087990
+java,100000,100000_rows.csv,2,Start Quick Sort Person Array,2627651753419
+java,100000,100000_rows.csv,2,Start Print Results,2629423956307
+java,100000,100000_rows.csv,2,Start Free Memory,2631723731553
+java,100000,100000_rows.csv,2,End Program,2631784829660
+java,100000,100000_rows.csv,3,Start File Read,2643566837254
+java,100000,100000_rows.csv,3,Start Map to Person Record,2644418159882
+java,100000,100000_rows.csv,3,Start Quick Sort Person Array,2645762266112
+java,100000,100000_rows.csv,3,Start Print Results,2647657910511
+java,100000,100000_rows.csv,3,Start Free Memory,2650024429631
+java,100000,100000_rows.csv,3,End Program,2650086410718
+java,100000,100000_rows.csv,4,Start File Read,2662208023491
+java,100000,100000_rows.csv,4,Start Map to Person Record,2663015034514
+java,100000,100000_rows.csv,4,Start Quick Sort Person Array,2664392894038
+java,100000,100000_rows.csv,4,Start Print Results,2666185142312
+java,100000,100000_rows.csv,4,Start Free Memory,2668472027192
+java,100000,100000_rows.csv,4,End Program,2668529842777
+java,100000,100000_rows.csv,5,Start File Read,2680244516327
+java,100000,100000_rows.csv,5,Start Map to Person Record,2681056006388
+java,100000,100000_rows.csv,5,Start Quick Sort Person Array,2682388034146
+java,100000,100000_rows.csv,5,Start Print Results,2684229929480
+java,100000,100000_rows.csv,5,Start Free Memory,2686642216784
+java,100000,100000_rows.csv,5,End Program,2686717927760
+java,100000,100000_rows.csv,6,Start File Read,2698357552748
+java,100000,100000_rows.csv,6,Start Map to Person Record,2699167750114
+java,100000,100000_rows.csv,6,Start Quick Sort Person Array,2700477312588
+java,100000,100000_rows.csv,6,Start Print Results,2702295559616
+java,100000,100000_rows.csv,6,Start Free Memory,2704759332703
+java,100000,100000_rows.csv,6,End Program,2704822003614
+java,100000,100000_rows.csv,7,Start File Read,2716474877078
+java,100000,100000_rows.csv,7,Start Map to Person Record,2717412850268
+java,100000,100000_rows.csv,7,Start Quick Sort Person Array,2718752225255
+java,100000,100000_rows.csv,7,Start Print Results,2720553081870
+java,100000,100000_rows.csv,7,Start Free Memory,2723019708367
+java,100000,100000_rows.csv,7,End Program,2723078581281
+java,100000,100000_rows.csv,8,Start File Read,2734749440649
+java,100000,100000_rows.csv,8,Start Map to Person Record,2735550476447
+java,100000,100000_rows.csv,8,Start Quick Sort Person Array,2736871847922
+java,100000,100000_rows.csv,8,Start Print Results,2738656309072
+java,100000,100000_rows.csv,8,Start Free Memory,2740969585996
+java,100000,100000_rows.csv,8,End Program,2741036924842
+java,100000,100000_rows.csv,9,Start File Read,2752740258301
+java,100000,100000_rows.csv,9,Start Map to Person Record,2753518313959
+java,100000,100000_rows.csv,9,Start Quick Sort Person Array,2754896391825
+java,100000,100000_rows.csv,9,Start Print Results,2756644507585
+java,100000,100000_rows.csv,9,Start Free Memory,2759052086772
+java,100000,100000_rows.csv,9,End Program,2759114225932
+java,100000,100000_rows.csv,10,Start File Read,2771118826058
+java,100000,100000_rows.csv,10,Start Map to Person Record,2771922344277
+java,100000,100000_rows.csv,10,Start Quick Sort Person Array,2773234225209
+java,100000,100000_rows.csv,10,Start Print Results,2775040618029
+java,100000,100000_rows.csv,10,Start Free Memory,2777429139923
+java,100000,100000_rows.csv,10,End Program,2777494601408
+java,10000,10000_rows.csv,1,Start File Read,2785051727391
+java,10000,10000_rows.csv,1,Start Map to Person Record,2785439931733
+java,10000,10000_rows.csv,1,Start Quick Sort Person Array,2785884995328
+java,10000,10000_rows.csv,1,Start Print Results,2786053510596
+java,10000,10000_rows.csv,1,Start Free Memory,2787122228215
+java,10000,10000_rows.csv,1,End Program,2787210489657
+java,10000,10000_rows.csv,2,Start File Read,2794710730336
+java,10000,10000_rows.csv,2,Start Map to Person Record,2795109789199
+java,10000,10000_rows.csv,2,Start Quick Sort Person Array,2795492873276
+java,10000,10000_rows.csv,2,Start Print Results,2795647336112
+java,10000,10000_rows.csv,2,Start Free Memory,2796939128242
+java,10000,10000_rows.csv,2,End Program,2797015468849
+java,10000,10000_rows.csv,3,Start File Read,2804476682005
+java,10000,10000_rows.csv,3,Start Map to Person Record,2804876344751
+java,10000,10000_rows.csv,3,Start Quick Sort Person Array,2805327859898
+java,10000,10000_rows.csv,3,Start Print Results,2805479022839
+java,10000,10000_rows.csv,3,Start Free Memory,2806594021754
+java,10000,10000_rows.csv,3,End Program,2806659184977
+java,10000,10000_rows.csv,4,Start File Read,2814265164738
+java,10000,10000_rows.csv,4,Start Map to Person Record,2814655164941
+java,10000,10000_rows.csv,4,Start Quick Sort Person Array,2815081477815
+java,10000,10000_rows.csv,4,Start Print Results,2815228982733
+java,10000,10000_rows.csv,4,Start Free Memory,2816402238729
+java,10000,10000_rows.csv,4,End Program,2816475715222
+java,10000,10000_rows.csv,5,Start File Read,2823980863234
+java,10000,10000_rows.csv,5,Start Map to Person Record,2824367726214
+java,10000,10000_rows.csv,5,Start Quick Sort Person Array,2824790113243
+java,10000,10000_rows.csv,5,Start Print Results,2824981182710
+java,10000,10000_rows.csv,5,Start Free Memory,2826053155908
+java,10000,10000_rows.csv,5,End Program,2826114130215
+java,10000,10000_rows.csv,6,Start File Read,2833766695533
+java,10000,10000_rows.csv,6,Start Map to Person Record,2834156122229
+java,10000,10000_rows.csv,6,Start Quick Sort Person Array,2834588126351
+java,10000,10000_rows.csv,6,Start Print Results,2834756690187
+java,10000,10000_rows.csv,6,Start Free Memory,2835873526181
+java,10000,10000_rows.csv,6,End Program,2835929869589
+java,10000,10000_rows.csv,7,Start File Read,2843433980692
+java,10000,10000_rows.csv,7,Start Map to Person Record,2843828851684
+java,10000,10000_rows.csv,7,Start Quick Sort Person Array,2844264728854
+java,10000,10000_rows.csv,7,Start Print Results,2844463804911
+java,10000,10000_rows.csv,7,Start Free Memory,2845536658074
+java,10000,10000_rows.csv,7,End Program,2845619194548
+java,10000,10000_rows.csv,8,Start File Read,2853187271833
+java,10000,10000_rows.csv,8,Start Map to Person Record,2853586599426
+java,10000,10000_rows.csv,8,Start Quick Sort Person Array,2854036857845
+java,10000,10000_rows.csv,8,Start Print Results,2854191582487
+java,10000,10000_rows.csv,8,Start Free Memory,2855455148674
+java,10000,10000_rows.csv,8,End Program,2855512718099
+java,10000,10000_rows.csv,9,Start File Read,2862981763972
+java,10000,10000_rows.csv,9,Start Map to Person Record,2863399346746
+java,10000,10000_rows.csv,9,Start Quick Sort Person Array,2863824465916
+java,10000,10000_rows.csv,9,Start Print Results,2863976201240
+java,10000,10000_rows.csv,9,Start Free Memory,2865181216087
+java,10000,10000_rows.csv,9,End Program,2865253059593
+java,10000,10000_rows.csv,10,Start File Read,2872794110915
+java,10000,10000_rows.csv,10,Start Map to Person Record,2873232344915
+java,10000,10000_rows.csv,10,Start Quick Sort Person Array,2873659246885
+java,10000,10000_rows.csv,10,Start Print Results,2873812080825
+java,10000,10000_rows.csv,10,Start Free Memory,2874907481434
+java,10000,10000_rows.csv,10,End Program,2874974431725
+java,1000,1000_rows.csv,1,Start File Read,2881292204047
+java,1000,1000_rows.csv,1,Start Map to Person Record,2881542568135
+java,1000,1000_rows.csv,1,Start Quick Sort Person Array,2881658131056
+java,1000,1000_rows.csv,1,Start Print Results,2881696522360
+java,1000,1000_rows.csv,1,Start Free Memory,2882189266043
+java,1000,1000_rows.csv,1,End Program,2882255080663
+java,1000,1000_rows.csv,2,Start File Read,2888538370920
+java,1000,1000_rows.csv,2,Start Map to Person Record,2888784126945
+java,1000,1000_rows.csv,2,Start Quick Sort Person Array,2888903076354
+java,1000,1000_rows.csv,2,Start Print Results,2888941329554
+java,1000,1000_rows.csv,2,Start Free Memory,2889441736717
+java,1000,1000_rows.csv,2,End Program,2889506338660
+java,1000,1000_rows.csv,3,Start File Read,2895831590869
+java,1000,1000_rows.csv,3,Start Map to Person Record,2896085950096
+java,1000,1000_rows.csv,3,Start Quick Sort Person Array,2896206821140
+java,1000,1000_rows.csv,3,Start Print Results,2896249994441
+java,1000,1000_rows.csv,3,Start Free Memory,2896717007245
+java,1000,1000_rows.csv,3,End Program,2896770755724
+java,1000,1000_rows.csv,4,Start File Read,2903050171191
+java,1000,1000_rows.csv,4,Start Map to Person Record,2903350589594
+java,1000,1000_rows.csv,4,Start Quick Sort Person Array,2903479097424
+java,1000,1000_rows.csv,4,Start Print Results,2903513678418
+java,1000,1000_rows.csv,4,Start Free Memory,2903985481136
+java,1000,1000_rows.csv,4,End Program,2904060061409
+java,1000,1000_rows.csv,5,Start File Read,2910383509817
+java,1000,1000_rows.csv,5,Start Map to Person Record,2910650167428
+java,1000,1000_rows.csv,5,Start Quick Sort Person Array,2910764665780
+java,1000,1000_rows.csv,5,Start Print Results,2910810386536
+java,1000,1000_rows.csv,5,Start Free Memory,2911293196971
+java,1000,1000_rows.csv,5,End Program,2911386416384
+java,1000,1000_rows.csv,6,Start File Read,2917670073437
+java,1000,1000_rows.csv,6,Start Map to Person Record,2917970231801
+java,1000,1000_rows.csv,6,Start Quick Sort Person Array,2918080466218
+java,1000,1000_rows.csv,6,Start Print Results,2918119216883
+java,1000,1000_rows.csv,6,Start Free Memory,2918610802115
+java,1000,1000_rows.csv,6,End Program,2918684181185
+java,1000,1000_rows.csv,7,Start File Read,2925031537502
+java,1000,1000_rows.csv,7,Start Map to Person Record,2925269474598
+java,1000,1000_rows.csv,7,Start Quick Sort Person Array,2925397254925
+java,1000,1000_rows.csv,7,Start Print Results,2925436300623
+java,1000,1000_rows.csv,7,Start Free Memory,2925897713146
+java,1000,1000_rows.csv,7,End Program,2925967767356
+java,1000,1000_rows.csv,8,Start File Read,2932291377040
+java,1000,1000_rows.csv,8,Start Map to Person Record,2932550068745
+java,1000,1000_rows.csv,8,Start Quick Sort Person Array,2932666285795
+java,1000,1000_rows.csv,8,Start Print Results,2932704676201
+java,1000,1000_rows.csv,8,Start Free Memory,2933179818579
+java,1000,1000_rows.csv,8,End Program,2933237442482
+java,1000,1000_rows.csv,9,Start File Read,2939535365946
+java,1000,1000_rows.csv,9,Start Map to Person Record,2939792289097
+java,1000,1000_rows.csv,9,Start Quick Sort Person Array,2939936858251
+java,1000,1000_rows.csv,9,Start Print Results,2939988328482
+java,1000,1000_rows.csv,9,Start Free Memory,2940490318073
+java,1000,1000_rows.csv,9,End Program,2940551066212
+java,1000,1000_rows.csv,10,Start File Read,2946844923069
+java,1000,1000_rows.csv,10,Start Map to Person Record,2947100091902
+java,1000,1000_rows.csv,10,Start Quick Sort Person Array,2947217183721
+java,1000,1000_rows.csv,10,Start Print Results,2947263316774
+java,1000,1000_rows.csv,10,Start Free Memory,2947756798844
+java,1000,1000_rows.csv,10,End Program,2947823921777
+java,10,10_rows.csv,1,Start File Read,2953694321856
+java,10,10_rows.csv,1,Start Map to Person Record,2953895108640
+java,10,10_rows.csv,1,Start Quick Sort Person Array,2953908430086
+java,10,10_rows.csv,1,Start Print Results,2953930071576
+java,10,10_rows.csv,1,Start Free Memory,2954163435129
+java,10,10_rows.csv,1,End Program,2954208144158
+java,10,10_rows.csv,2,Start File Read,2960050930303
+java,10,10_rows.csv,2,Start Map to Person Record,2960259051325
+java,10,10_rows.csv,2,Start Quick Sort Person Array,2960274982000
+java,10,10_rows.csv,2,Start Print Results,2960284340977
+java,10,10_rows.csv,2,Start Free Memory,2960523777411
+java,10,10_rows.csv,2,End Program,2960569535379
+java,10,10_rows.csv,3,Start File Read,2966415666803
+java,10,10_rows.csv,3,Start Map to Person Record,2966616398814
+java,10,10_rows.csv,3,Start Quick Sort Person Array,2966637819317
+java,10,10_rows.csv,3,Start Print Results,2966647269381
+java,10,10_rows.csv,3,Start Free Memory,2966889109067
+java,10,10_rows.csv,3,End Program,2966933322294
+java,10,10_rows.csv,4,Start File Read,2972778399490
+java,10,10_rows.csv,4,Start Map to Person Record,2972983818193
+java,10,10_rows.csv,4,Start Quick Sort Person Array,2973007327725
+java,10,10_rows.csv,4,Start Print Results,2973016907483
+java,10,10_rows.csv,4,Start Free Memory,2973244420253
+java,10,10_rows.csv,4,End Program,2973288576951
+java,10,10_rows.csv,5,Start File Read,2979096276009
+java,10,10_rows.csv,5,Start Map to Person Record,2979303764735
+java,10,10_rows.csv,5,Start Quick Sort Person Array,2979319099129
+java,10,10_rows.csv,5,Start Print Results,2979329569312
+java,10,10_rows.csv,5,Start Free Memory,2979559542880
+java,10,10_rows.csv,5,End Program,2979604264913
+java,10,10_rows.csv,6,Start File Read,2985439615215
+java,10,10_rows.csv,6,Start Map to Person Record,2985647573444
+java,10,10_rows.csv,6,Start Quick Sort Person Array,2985671354723
+java,10,10_rows.csv,6,Start Print Results,2985680609042
+java,10,10_rows.csv,6,Start Free Memory,2985912810818
+java,10,10_rows.csv,6,End Program,2985959588728
+java,10,10_rows.csv,7,Start File Read,2991797808721
+java,10,10_rows.csv,7,Start Map to Person Record,2992005714746
+java,10,10_rows.csv,7,Start Quick Sort Person Array,2992019617767
+java,10,10_rows.csv,7,Start Print Results,2992034592084
+java,10,10_rows.csv,7,Start Free Memory,2992269420152
+java,10,10_rows.csv,7,End Program,2992311612161
+java,10,10_rows.csv,8,Start File Read,2998147661144
+java,10,10_rows.csv,8,Start Map to Person Record,2998362606576
+java,10,10_rows.csv,8,Start Quick Sort Person Array,2998378911213
+java,10,10_rows.csv,8,Start Print Results,2998389058476
+java,10,10_rows.csv,8,Start Free Memory,2998623307356
+java,10,10_rows.csv,8,End Program,2998667825771
+java,10,10_rows.csv,9,Start File Read,3004500205313
+java,10,10_rows.csv,9,Start Map to Person Record,3004698876409
+java,10,10_rows.csv,9,Start Quick Sort Person Array,3004716584499
+java,10,10_rows.csv,9,Start Print Results,3004726547756
+java,10,10_rows.csv,9,Start Free Memory,3004968835349
+java,10,10_rows.csv,9,End Program,3005011894433
+java,10,10_rows.csv,10,Start File Read,3010834829711
+java,10,10_rows.csv,10,Start Map to Person Record,3011039563416
+java,10,10_rows.csv,10,Start Quick Sort Person Array,3011053515819
+java,10,10_rows.csv,10,Start Print Results,3011070441433
+java,10,10_rows.csv,10,Start Free Memory,3011294211243
+java,10,10_rows.csv,10,End Program,3011336615981
+java,50000,50000_rows.csv,1,Start File Read,3021129633415
+java,50000,50000_rows.csv,1,Start Map to Person Record,3021811566001
+java,50000,50000_rows.csv,1,Start Quick Sort Person Array,3022652196512
+java,50000,50000_rows.csv,1,Start Print Results,3023323325597
+java,50000,50000_rows.csv,1,Start Free Memory,3025394303149
+java,50000,50000_rows.csv,1,End Program,3025456133661
+java,50000,50000_rows.csv,2,Start File Read,3035891248655
+java,50000,50000_rows.csv,2,Start Map to Person Record,3036603939156
+java,50000,50000_rows.csv,2,Start Quick Sort Person Array,3037339618337
+java,50000,50000_rows.csv,2,Start Print Results,3037896515728
+java,50000,50000_rows.csv,2,Start Free Memory,3039799179933
+java,50000,50000_rows.csv,2,End Program,3039866740145
+java,50000,50000_rows.csv,3,Start File Read,3049580228780
+java,50000,50000_rows.csv,3,Start Map to Person Record,3050323495325
+java,50000,50000_rows.csv,3,Start Quick Sort Person Array,3051058114531
+java,50000,50000_rows.csv,3,Start Print Results,3051859702421
+java,50000,50000_rows.csv,3,Start Free Memory,3054725334482
+java,50000,50000_rows.csv,3,End Program,3054824430634
+java,50000,50000_rows.csv,4,Start File Read,3064458146849
+java,50000,50000_rows.csv,4,Start Map to Person Record,3065197040796
+java,50000,50000_rows.csv,4,Start Quick Sort Person Array,3065952753987
+java,50000,50000_rows.csv,4,Start Print Results,3066758352696
+java,50000,50000_rows.csv,4,Start Free Memory,3068881610842
+java,50000,50000_rows.csv,4,End Program,3068932403726
+java,50000,50000_rows.csv,5,Start File Read,3078738127465
+java,50000,50000_rows.csv,5,Start Map to Person Record,3079423274442
+java,50000,50000_rows.csv,5,Start Quick Sort Person Array,3080204849123
+java,50000,50000_rows.csv,5,Start Print Results,3080974156310
+java,50000,50000_rows.csv,5,Start Free Memory,3082884041255
+java,50000,50000_rows.csv,5,End Program,3082935681051
+java,50000,50000_rows.csv,6,Start File Read,3092731134481
+java,50000,50000_rows.csv,6,Start Map to Person Record,3093422822784
+java,50000,50000_rows.csv,6,Start Quick Sort Person Array,3094232509789
+java,50000,50000_rows.csv,6,Start Print Results,3094950418166
+java,50000,50000_rows.csv,6,Start Free Memory,3097067096116
+java,50000,50000_rows.csv,6,End Program,3097126094389
+java,50000,50000_rows.csv,7,Start File Read,3107488617361
+java,50000,50000_rows.csv,7,Start Map to Person Record,3108190033453
+java,50000,50000_rows.csv,7,Start Quick Sort Person Array,3108972715184
+java,50000,50000_rows.csv,7,Start Print Results,3109795806636
+java,50000,50000_rows.csv,7,Start Free Memory,3111921801864
+java,50000,50000_rows.csv,7,End Program,3111980644967
+java,50000,50000_rows.csv,8,Start File Read,3121764040974
+java,50000,50000_rows.csv,8,Start Map to Person Record,3122509173479
+java,50000,50000_rows.csv,8,Start Quick Sort Person Array,3123291270494
+java,50000,50000_rows.csv,8,Start Print Results,3124080128563
+java,50000,50000_rows.csv,8,Start Free Memory,3126234178440
+java,50000,50000_rows.csv,8,End Program,3126321790010
+java,50000,50000_rows.csv,9,Start File Read,3136101371496
+java,50000,50000_rows.csv,9,Start Map to Person Record,3136770486502
+java,50000,50000_rows.csv,9,Start Quick Sort Person Array,3137537443137
+java,50000,50000_rows.csv,9,Start Print Results,3138319126419
+java,50000,50000_rows.csv,9,Start Free Memory,3140436515831
+java,50000,50000_rows.csv,9,End Program,3140495942415
+java,50000,50000_rows.csv,10,Start File Read,3150323833966
+java,50000,50000_rows.csv,10,Start Map to Person Record,3150997996192
+java,50000,50000_rows.csv,10,Start Quick Sort Person Array,3151770785795
+java,50000,50000_rows.csv,10,Start Print Results,3152535216900
+java,50000,50000_rows.csv,10,Start Free Memory,3154692414005
+java,50000,50000_rows.csv,10,End Program,3154751930831
+java,5000,5000_rows.csv,1,Start File Read,3161719444503
+java,5000,5000_rows.csv,1,Start Map to Person Record,3162096171007
+java,5000,5000_rows.csv,1,Start Quick Sort Person Array,3162382739511
+java,5000,5000_rows.csv,1,Start Print Results,3162449943982
+java,5000,5000_rows.csv,1,Start Free Memory,3163228701736
+java,5000,5000_rows.csv,1,End Program,3163277784111
+java,5000,5000_rows.csv,2,Start File Read,3170218211880
+java,5000,5000_rows.csv,2,Start Map to Person Record,3170604878617
+java,5000,5000_rows.csv,2,Start Quick Sort Person Array,3170882377290
+java,5000,5000_rows.csv,2,Start Print Results,3170952920836
+java,5000,5000_rows.csv,2,Start Free Memory,3171808474529
+java,5000,5000_rows.csv,2,End Program,3171871766735
+java,5000,5000_rows.csv,3,Start File Read,3178919765695
+java,5000,5000_rows.csv,3,Start Map to Person Record,3179291706547
+java,5000,5000_rows.csv,3,Start Quick Sort Person Array,3179585087661
+java,5000,5000_rows.csv,3,Start Print Results,3179658325825
+java,5000,5000_rows.csv,3,Start Free Memory,3180574150289
+java,5000,5000_rows.csv,3,End Program,3180623467823
+java,5000,5000_rows.csv,4,Start File Read,3187628230080
+java,5000,5000_rows.csv,4,Start Map to Person Record,3187959070693
+java,5000,5000_rows.csv,4,Start Quick Sort Person Array,3188283549388
+java,5000,5000_rows.csv,4,Start Print Results,3188345975270
+java,5000,5000_rows.csv,4,Start Free Memory,3189192280329
+java,5000,5000_rows.csv,4,End Program,3189242302738
+java,5000,5000_rows.csv,5,Start File Read,3196246739253
+java,5000,5000_rows.csv,5,Start Map to Person Record,3196694092557
+java,5000,5000_rows.csv,5,Start Quick Sort Person Array,3196977219190
+java,5000,5000_rows.csv,5,Start Print Results,3197044560558
+java,5000,5000_rows.csv,5,Start Free Memory,3197787713896
+java,5000,5000_rows.csv,5,End Program,3197837395413
+java,5000,5000_rows.csv,6,Start File Read,3204813864630
+java,5000,5000_rows.csv,6,Start Map to Person Record,3205255437460
+java,5000,5000_rows.csv,6,Start Quick Sort Person Array,3205540998257
+java,5000,5000_rows.csv,6,Start Print Results,3205614066762
+java,5000,5000_rows.csv,6,Start Free Memory,3206455574726
+java,5000,5000_rows.csv,6,End Program,3206504139391
+java,5000,5000_rows.csv,7,Start File Read,3213635635249
+java,5000,5000_rows.csv,7,Start Map to Person Record,3214025269865
+java,5000,5000_rows.csv,7,Start Quick Sort Person Array,3214317958252
+java,5000,5000_rows.csv,7,Start Print Results,3214390788526
+java,5000,5000_rows.csv,7,Start Free Memory,3215240943727
+java,5000,5000_rows.csv,7,End Program,3215289398745
+java,5000,5000_rows.csv,8,Start File Read,3222295033136
+java,5000,5000_rows.csv,8,Start Map to Person Record,3222671278992
+java,5000,5000_rows.csv,8,Start Quick Sort Person Array,3222959236006
+java,5000,5000_rows.csv,8,Start Print Results,3223031539446
+java,5000,5000_rows.csv,8,Start Free Memory,3223870741345
+java,5000,5000_rows.csv,8,End Program,3223918192583
+java,5000,5000_rows.csv,9,Start File Read,3230917182622
+java,5000,5000_rows.csv,9,Start Map to Person Record,3231299359022
+java,5000,5000_rows.csv,9,Start Quick Sort Person Array,3231586772017
+java,5000,5000_rows.csv,9,Start Print Results,3231661908891
+java,5000,5000_rows.csv,9,Start Free Memory,3232577166691
+java,5000,5000_rows.csv,9,End Program,3232625913478
+java,5000,5000_rows.csv,10,Start File Read,3239671875641
+java,5000,5000_rows.csv,10,Start Map to Person Record,3240070301304
+java,5000,5000_rows.csv,10,Start Quick Sort Person Array,3240363902162
+java,5000,5000_rows.csv,10,Start Print Results,3240434964179
+java,5000,5000_rows.csv,10,Start Free Memory,3241274525665
+java,5000,5000_rows.csv,10,End Program,3241323724475
+javascript,100000,100000_rows.csv,1,Start File Read,3541908690504
+javascript,100000,100000_rows.csv,1,Start Map to Person Record,3542186026807
+javascript,100000,100000_rows.csv,1,Start Quick Sort Person Array,3542827091499
+javascript,100000,100000_rows.csv,1,Start Print Results,3545413723229
+javascript,100000,100000_rows.csv,1,Start Free Memory,3551000394878
+javascript,100000,100000_rows.csv,1,End Program,3551063846768
+javascript,100000,100000_rows.csv,2,Start File Read,3853784597908
+javascript,100000,100000_rows.csv,2,Start Map to Person Record,3854055524819
+javascript,100000,100000_rows.csv,2,Start Quick Sort Person Array,3854705429219
+javascript,100000,100000_rows.csv,2,Start Print Results,3857277231077
+javascript,100000,100000_rows.csv,2,Start Free Memory,3862632952051
+javascript,100000,100000_rows.csv,2,End Program,3862692105410
+javascript,100000,100000_rows.csv,3,Start File Read,4165471336817
+javascript,100000,100000_rows.csv,3,Start Map to Person Record,4165745245628
+javascript,100000,100000_rows.csv,3,Start Quick Sort Person Array,4166393569892
+javascript,100000,100000_rows.csv,3,Start Print Results,4168977944547
+javascript,100000,100000_rows.csv,3,Start Free Memory,4174417376955
+javascript,100000,100000_rows.csv,3,End Program,4174476206800
+javascript,100000,100000_rows.csv,4,Start File Read,4476840858336
+javascript,100000,100000_rows.csv,4,Start Map to Person Record,4477112638051
+javascript,100000,100000_rows.csv,4,Start Quick Sort Person Array,4477762148062
+javascript,100000,100000_rows.csv,4,Start Print Results,4480330845154
+javascript,100000,100000_rows.csv,4,Start Free Memory,4485771022324
+javascript,100000,100000_rows.csv,4,End Program,4485829977142
+javascript,100000,100000_rows.csv,5,Start File Read,4788050996581
+javascript,100000,100000_rows.csv,5,Start Map to Person Record,4788321115807
+javascript,100000,100000_rows.csv,5,Start Quick Sort Person Array,4788963011407
+javascript,100000,100000_rows.csv,5,Start Print Results,4791540769235
+javascript,100000,100000_rows.csv,5,Start Free Memory,4797119636520
+javascript,100000,100000_rows.csv,5,End Program,4797178755499
+javascript,100000,100000_rows.csv,6,Start File Read,5099315659928
+javascript,100000,100000_rows.csv,6,Start Map to Person Record,5099586685164
+javascript,100000,100000_rows.csv,6,Start Quick Sort Person Array,5100230852739
+javascript,100000,100000_rows.csv,6,Start Print Results,5102803355531
+javascript,100000,100000_rows.csv,6,Start Free Memory,5108111010087
+javascript,100000,100000_rows.csv,6,End Program,5108169144199
+javascript,100000,100000_rows.csv,7,Start File Read,5409991230537
+javascript,100000,100000_rows.csv,7,Start Map to Person Record,5410266248307
+javascript,100000,100000_rows.csv,7,Start Quick Sort Person Array,5410918616912
+javascript,100000,100000_rows.csv,7,Start Print Results,5413497108717
+javascript,100000,100000_rows.csv,7,Start Free Memory,5419019747821
+javascript,100000,100000_rows.csv,7,End Program,5419079414147
+javascript,100000,100000_rows.csv,8,Start File Read,5721180505428
+javascript,100000,100000_rows.csv,8,Start Map to Person Record,5721451744834
+javascript,100000,100000_rows.csv,8,Start Quick Sort Person Array,5722097019670
+javascript,100000,100000_rows.csv,8,Start Print Results,5724669517815
+javascript,100000,100000_rows.csv,8,Start Free Memory,5730211479952
+javascript,100000,100000_rows.csv,8,End Program,5730270923239
+javascript,100000,100000_rows.csv,9,Start File Read,6032455867294
+javascript,100000,100000_rows.csv,9,Start Map to Person Record,6032726178601
+javascript,100000,100000_rows.csv,9,Start Quick Sort Person Array,6033372036905
+javascript,100000,100000_rows.csv,9,Start Print Results,6035942710122
+javascript,100000,100000_rows.csv,9,Start Free Memory,6041414620535
+javascript,100000,100000_rows.csv,9,End Program,6041473283701
+javascript,100000,100000_rows.csv,10,Start File Read,6343495893831
+javascript,100000,100000_rows.csv,10,Start Map to Person Record,6343770869505
+javascript,100000,100000_rows.csv,10,Start Quick Sort Person Array,6344439139977
+javascript,100000,100000_rows.csv,10,Start Print Results,6346994817423
+javascript,100000,100000_rows.csv,10,Start Free Memory,6352498333448
+javascript,100000,100000_rows.csv,10,End Program,6352556725615
+javascript,10000,10000_rows.csv,1,Start File Read,6590447442727
+javascript,10000,10000_rows.csv,1,Start Map to Person Record,6590516910854
+javascript,10000,10000_rows.csv,1,Start Quick Sort Person Array,6590607446670
+javascript,10000,10000_rows.csv,1,Start Print Results,6590712084567
+javascript,10000,10000_rows.csv,1,Start Free Memory,6591639788803
+javascript,10000,10000_rows.csv,1,End Program,6591705789580
+javascript,10000,10000_rows.csv,2,Start File Read,6827949745421
+javascript,10000,10000_rows.csv,2,Start Map to Person Record,6828019214488
+javascript,10000,10000_rows.csv,2,Start Quick Sort Person Array,6828109187237
+javascript,10000,10000_rows.csv,2,Start Print Results,6828209282414
+javascript,10000,10000_rows.csv,2,Start Free Memory,6829158697735
+javascript,10000,10000_rows.csv,2,End Program,6829210594018
+javascript,10000,10000_rows.csv,3,Start File Read,7065357070320
+javascript,10000,10000_rows.csv,3,Start Map to Person Record,7065426668876
+javascript,10000,10000_rows.csv,3,Start Quick Sort Person Array,7065515808005
+javascript,10000,10000_rows.csv,3,Start Print Results,7065626478408
+javascript,10000,10000_rows.csv,3,Start Free Memory,7066570924655
+javascript,10000,10000_rows.csv,3,End Program,7066623518547
+javascript,10000,10000_rows.csv,4,Start File Read,7302530511609
+javascript,10000,10000_rows.csv,4,Start Map to Person Record,7302601625240
+javascript,10000,10000_rows.csv,4,Start Quick Sort Person Array,7302690620936
+javascript,10000,10000_rows.csv,4,Start Print Results,7302803549008
+javascript,10000,10000_rows.csv,4,Start Free Memory,7303772298758
+javascript,10000,10000_rows.csv,4,End Program,7303825010267
+javascript,10000,10000_rows.csv,5,Start File Read,7539840517221
+javascript,10000,10000_rows.csv,5,Start Map to Person Record,7539909754704
+javascript,10000,10000_rows.csv,5,Start Quick Sort Person Array,7539999334612
+javascript,10000,10000_rows.csv,5,Start Print Results,7540113835257
+javascript,10000,10000_rows.csv,5,Start Free Memory,7541069450019
+javascript,10000,10000_rows.csv,5,End Program,7541122775568
+javascript,10000,10000_rows.csv,6,Start File Read,7777364505184
+javascript,10000,10000_rows.csv,6,Start Map to Person Record,7777434257586
+javascript,10000,10000_rows.csv,6,Start Quick Sort Person Array,7777522715694
+javascript,10000,10000_rows.csv,6,Start Print Results,7777632863296
+javascript,10000,10000_rows.csv,6,Start Free Memory,7778562791809
+javascript,10000,10000_rows.csv,6,End Program,7778615777713
+javascript,10000,10000_rows.csv,7,Start File Read,8015181610259
+javascript,10000,10000_rows.csv,7,Start Map to Person Record,8015251128121
+javascript,10000,10000_rows.csv,7,Start Quick Sort Person Array,8015340776973
+javascript,10000,10000_rows.csv,7,Start Print Results,8015453740918
+javascript,10000,10000_rows.csv,7,Start Free Memory,8016388102693
+javascript,10000,10000_rows.csv,7,End Program,8016440820515
+javascript,10000,10000_rows.csv,8,Start File Read,8252682048628
+javascript,10000,10000_rows.csv,8,Start Map to Person Record,8252757872079
+javascript,10000,10000_rows.csv,8,Start Quick Sort Person Array,8252853839143
+javascript,10000,10000_rows.csv,8,Start Print Results,8252961821508
+javascript,10000,10000_rows.csv,8,Start Free Memory,8253903502551
+javascript,10000,10000_rows.csv,8,End Program,8253957176917
+javascript,10000,10000_rows.csv,9,Start File Read,8490120371467
+javascript,10000,10000_rows.csv,9,Start Map to Person Record,8490196214874
+javascript,10000,10000_rows.csv,9,Start Quick Sort Person Array,8490292512900
+javascript,10000,10000_rows.csv,9,Start Print Results,8490399439596
+javascript,10000,10000_rows.csv,9,Start Free Memory,8491337481223
+javascript,10000,10000_rows.csv,9,End Program,8491390044799
+javascript,10000,10000_rows.csv,10,Start File Read,8727683406012
+javascript,10000,10000_rows.csv,10,Start Map to Person Record,8727752947814
+javascript,10000,10000_rows.csv,10,Start Quick Sort Person Array,8727850042780
+javascript,10000,10000_rows.csv,10,Start Print Results,8727958355413
+javascript,10000,10000_rows.csv,10,Start Free Memory,8728886467993
+javascript,10000,10000_rows.csv,10,End Program,8728938833229
+javascript,1000,1000_rows.csv,1,Start File Read,9125221413916
+javascript,1000,1000_rows.csv,1,Start Map to Person Record,9125248450979
+javascript,1000,1000_rows.csv,1,Start Quick Sort Person Array,9125267763141
+javascript,1000,1000_rows.csv,1,Start Print Results,9125313263009
+javascript,1000,1000_rows.csv,1,Start Free Memory,9125481102051
+javascript,1000,1000_rows.csv,1,End Program,9125532189828
+javascript,1000,1000_rows.csv,2,Start File Read,9522276075426
+javascript,1000,1000_rows.csv,2,Start Map to Person Record,9522303084365
+javascript,1000,1000_rows.csv,2,Start Quick Sort Person Array,9522322558956
+javascript,1000,1000_rows.csv,2,Start Print Results,9522367915009
+javascript,1000,1000_rows.csv,2,Start Free Memory,9522535231849
+javascript,1000,1000_rows.csv,2,End Program,9522586647071
+javascript,1000,1000_rows.csv,3,Start File Read,9918867403299
+javascript,1000,1000_rows.csv,3,Start Map to Person Record,9918894228235
+javascript,1000,1000_rows.csv,3,Start Quick Sort Person Array,9918913797263
+javascript,1000,1000_rows.csv,3,Start Print Results,9918959631904
+javascript,1000,1000_rows.csv,3,Start Free Memory,9919136960973
+javascript,1000,1000_rows.csv,3,End Program,9919200408284
+javascript,1000,1000_rows.csv,4,Start File Read,10316163433020
+javascript,1000,1000_rows.csv,4,Start Map to Person Record,10316190605715
+javascript,1000,1000_rows.csv,4,Start Quick Sort Person Array,10316209929755
+javascript,1000,1000_rows.csv,4,Start Print Results,10316255618939
+javascript,1000,1000_rows.csv,4,Start Free Memory,10316422724994
+javascript,1000,1000_rows.csv,4,End Program,10316474095844
+javascript,1000,1000_rows.csv,5,Start File Read,10713193122971
+javascript,1000,1000_rows.csv,5,Start Map to Person Record,10713220047993
+javascript,1000,1000_rows.csv,5,Start Quick Sort Person Array,10713239405499
+javascript,1000,1000_rows.csv,5,Start Print Results,10713285527993
+javascript,1000,1000_rows.csv,5,Start Free Memory,10713451794514
+javascript,1000,1000_rows.csv,5,End Program,10713502827538
+javascript,1000,1000_rows.csv,6,Start File Read,11109926433944
+javascript,1000,1000_rows.csv,6,Start Map to Person Record,11109953149413
+javascript,1000,1000_rows.csv,6,Start Quick Sort Person Array,11109972405264
+javascript,1000,1000_rows.csv,6,Start Print Results,11110018204584
+javascript,1000,1000_rows.csv,6,Start Free Memory,11110185464018
+javascript,1000,1000_rows.csv,6,End Program,11110237300564
+javascript,1000,1000_rows.csv,7,Start File Read,11506880196392
+javascript,1000,1000_rows.csv,7,Start Map to Person Record,11506923122459
+javascript,1000,1000_rows.csv,7,Start Quick Sort Person Array,11506944565189
+javascript,1000,1000_rows.csv,7,Start Print Results,11506996564435
+javascript,1000,1000_rows.csv,7,Start Free Memory,11507164699628
+javascript,1000,1000_rows.csv,7,End Program,11507216199273
+javascript,1000,1000_rows.csv,8,Start File Read,11903451385087
+javascript,1000,1000_rows.csv,8,Start Map to Person Record,11903478154801
+javascript,1000,1000_rows.csv,8,Start Quick Sort Person Array,11903497712673
+javascript,1000,1000_rows.csv,8,Start Print Results,11903543527055
+javascript,1000,1000_rows.csv,8,Start Free Memory,11903733352587
+javascript,1000,1000_rows.csv,8,End Program,11903792412864
+javascript,1000,1000_rows.csv,9,Start File Read,12300482748741
+javascript,1000,1000_rows.csv,9,Start Map to Person Record,12300509879576
+javascript,1000,1000_rows.csv,9,Start Quick Sort Person Array,12300529049637
+javascript,1000,1000_rows.csv,9,Start Print Results,12300574529183
+javascript,1000,1000_rows.csv,9,Start Free Memory,12300739504107
+javascript,1000,1000_rows.csv,9,End Program,12300791157440
+javascript,1000,1000_rows.csv,10,Start File Read,12697232318775
+javascript,1000,1000_rows.csv,10,Start Map to Person Record,12697259269470
+javascript,1000,1000_rows.csv,10,Start Quick Sort Person Array,12697278464779
+javascript,1000,1000_rows.csv,10,Start Print Results,12697324943065
+javascript,1000,1000_rows.csv,10,Start Free Memory,12697492405733
+javascript,1000,1000_rows.csv,10,End Program,12697543274733
+javascript,10,10_rows.csv,1,Start File Read,13093628559047
+javascript,10,10_rows.csv,1,Start Map to Person Record,13093653376861
+javascript,10,10_rows.csv,1,Start Quick Sort Person Array,13093664500868
+javascript,10,10_rows.csv,1,Start Print Results,13093676340464
+javascript,10,10_rows.csv,1,Start Free Memory,13093710275936
+javascript,10,10_rows.csv,1,End Program,13093765510062
+javascript,10,10_rows.csv,2,Start File Read,13490222568332
+javascript,10,10_rows.csv,2,Start Map to Person Record,13490247063847
+javascript,10,10_rows.csv,2,Start Quick Sort Person Array,13490258354350
+javascript,10,10_rows.csv,2,Start Print Results,13490270045709
+javascript,10,10_rows.csv,2,Start Free Memory,13490303566546
+javascript,10,10_rows.csv,2,End Program,13490358699450
+javascript,10,10_rows.csv,3,Start File Read,13886865113380
+javascript,10,10_rows.csv,3,Start Map to Person Record,13886903887934
+javascript,10,10_rows.csv,3,Start Quick Sort Person Array,13886918373096
+javascript,10,10_rows.csv,3,Start Print Results,13886933162070
+javascript,10,10_rows.csv,3,Start Free Memory,13886978021122
+javascript,10,10_rows.csv,3,End Program,13887032784671
+javascript,10,10_rows.csv,4,Start File Read,14283657787492
+javascript,10,10_rows.csv,4,Start Map to Person Record,14283682471886
+javascript,10,10_rows.csv,4,Start Quick Sort Person Array,14283693795598
+javascript,10,10_rows.csv,4,Start Print Results,14283705434260
+javascript,10,10_rows.csv,4,Start Free Memory,14283739096121
+javascript,10,10_rows.csv,4,End Program,14283793973769
+javascript,10,10_rows.csv,5,Start File Read,14680823437923
+javascript,10,10_rows.csv,5,Start Map to Person Record,14680848112550
+javascript,10,10_rows.csv,5,Start Quick Sort Person Array,14680859409098
+javascript,10,10_rows.csv,5,Start Print Results,14680871189204
+javascript,10,10_rows.csv,5,Start Free Memory,14680904464478
+javascript,10,10_rows.csv,5,End Program,14680959111259
+javascript,10,10_rows.csv,6,Start File Read,15078415396242
+javascript,10,10_rows.csv,6,Start Map to Person Record,15078440238377
+javascript,10,10_rows.csv,6,Start Quick Sort Person Array,15078451488611
+javascript,10,10_rows.csv,6,Start Print Results,15078463343628
+javascript,10,10_rows.csv,6,Start Free Memory,15078496915151
+javascript,10,10_rows.csv,6,End Program,15078551710384
+javascript,10,10_rows.csv,7,Start File Read,15475607952472
+javascript,10,10_rows.csv,7,Start Map to Person Record,15475632749985
+javascript,10,10_rows.csv,7,Start Quick Sort Person Array,15475644023857
+javascript,10,10_rows.csv,7,Start Print Results,15475655874500
+javascript,10,10_rows.csv,7,Start Free Memory,15475689383265
+javascript,10,10_rows.csv,7,End Program,15475744151233
+javascript,10,10_rows.csv,8,Start File Read,15873174309731
+javascript,10,10_rows.csv,8,Start Map to Person Record,15873198953343
+javascript,10,10_rows.csv,8,Start Quick Sort Person Array,15873210330900
+javascript,10,10_rows.csv,8,Start Print Results,15873222043163
+javascript,10,10_rows.csv,8,Start Free Memory,15873255964145
+javascript,10,10_rows.csv,8,End Program,15873310586793
+javascript,10,10_rows.csv,9,Start File Read,16270545006893
+javascript,10,10_rows.csv,9,Start Map to Person Record,16270569874132
+javascript,10,10_rows.csv,9,Start Quick Sort Person Array,16270580990776
+javascript,10,10_rows.csv,9,Start Print Results,16270592784840
+javascript,10,10_rows.csv,9,Start Free Memory,16270626170625
+javascript,10,10_rows.csv,9,End Program,16270680876013
+javascript,10,10_rows.csv,10,Start File Read,16667815828042
+javascript,10,10_rows.csv,10,Start Map to Person Record,16667840453362
+javascript,10,10_rows.csv,10,Start Quick Sort Person Array,16667851587466
+javascript,10,10_rows.csv,10,Start Print Results,16667863227655
+javascript,10,10_rows.csv,10,Start Free Memory,16667896764224
+javascript,10,10_rows.csv,10,End Program,16667951461281
+javascript,50000,50000_rows.csv,1,Start File Read,16907754171405
+javascript,50000,50000_rows.csv,1,Start Map to Person Record,16907926861368
+javascript,50000,50000_rows.csv,1,Start Quick Sort Person Array,16908295440937
+javascript,50000,50000_rows.csv,1,Start Print Results,16908958755428
+javascript,50000,50000_rows.csv,1,Start Free Memory,16911973093100
+javascript,50000,50000_rows.csv,1,End Program,16912029285746
+javascript,50000,50000_rows.csv,2,Start File Read,17152091234478
+javascript,50000,50000_rows.csv,2,Start Map to Person Record,17152264147765
+javascript,50000,50000_rows.csv,2,Start Quick Sort Person Array,17152629014542
+javascript,50000,50000_rows.csv,2,Start Print Results,17153294131697
+javascript,50000,50000_rows.csv,2,Start Free Memory,17156251877222
+javascript,50000,50000_rows.csv,2,End Program,17156307948263
+javascript,50000,50000_rows.csv,3,Start File Read,17395878329068
+javascript,50000,50000_rows.csv,3,Start Map to Person Record,17396054378308
+javascript,50000,50000_rows.csv,3,Start Quick Sort Person Array,17396422981568
+javascript,50000,50000_rows.csv,3,Start Print Results,17397103188820
+javascript,50000,50000_rows.csv,3,Start Free Memory,17400105012450
+javascript,50000,50000_rows.csv,3,End Program,17400161373668
+javascript,50000,50000_rows.csv,4,Start File Read,17640045681904
+javascript,50000,50000_rows.csv,4,Start Map to Person Record,17640215632211
+javascript,50000,50000_rows.csv,4,Start Quick Sort Person Array,17640587799604
+javascript,50000,50000_rows.csv,4,Start Print Results,17641266179369
+javascript,50000,50000_rows.csv,4,Start Free Memory,17644139646579
+javascript,50000,50000_rows.csv,4,End Program,17644208793135
+javascript,50000,50000_rows.csv,5,Start File Read,17882643015782
+javascript,50000,50000_rows.csv,5,Start Map to Person Record,17882814418075
+javascript,50000,50000_rows.csv,5,Start Quick Sort Person Array,17883177379221
+javascript,50000,50000_rows.csv,5,Start Print Results,17883874210730
+javascript,50000,50000_rows.csv,5,Start Free Memory,17886849996982
+javascript,50000,50000_rows.csv,5,End Program,17886905389083
+javascript,50000,50000_rows.csv,6,Start File Read,18125298555704
+javascript,50000,50000_rows.csv,6,Start Map to Person Record,18125470133094
+javascript,50000,50000_rows.csv,6,Start Quick Sort Person Array,18125837474855
+javascript,50000,50000_rows.csv,6,Start Print Results,18126505994620
+javascript,50000,50000_rows.csv,6,Start Free Memory,18129484076525
+javascript,50000,50000_rows.csv,6,End Program,18129539497035
+javascript,50000,50000_rows.csv,7,Start File Read,18368096645100
+javascript,50000,50000_rows.csv,7,Start Map to Person Record,18368267908085
+javascript,50000,50000_rows.csv,7,Start Quick Sort Person Array,18368630036034
+javascript,50000,50000_rows.csv,7,Start Print Results,18369286242717
+javascript,50000,50000_rows.csv,7,Start Free Memory,18372203401143
+javascript,50000,50000_rows.csv,7,End Program,18372259115943
+javascript,50000,50000_rows.csv,8,Start File Read,18610820924505
+javascript,50000,50000_rows.csv,8,Start Map to Person Record,18610993359980
+javascript,50000,50000_rows.csv,8,Start Quick Sort Person Array,18611385185706
+javascript,50000,50000_rows.csv,8,Start Print Results,18612028300636
+javascript,50000,50000_rows.csv,8,Start Free Memory,18615010548649
+javascript,50000,50000_rows.csv,8,End Program,18615066102210
+javascript,50000,50000_rows.csv,9,Start File Read,18853675931162
+javascript,50000,50000_rows.csv,9,Start Map to Person Record,18853845905913
+javascript,50000,50000_rows.csv,9,Start Quick Sort Person Array,18854210413425
+javascript,50000,50000_rows.csv,9,Start Print Results,18854880375209
+javascript,50000,50000_rows.csv,9,Start Free Memory,18857948526973
+javascript,50000,50000_rows.csv,9,End Program,18858004024705
+javascript,50000,50000_rows.csv,10,Start File Read,19096746472007
+javascript,50000,50000_rows.csv,10,Start Map to Person Record,19096916385319
+javascript,50000,50000_rows.csv,10,Start Quick Sort Person Array,19097277087224
+javascript,50000,50000_rows.csv,10,Start Print Results,19097936743659
+javascript,50000,50000_rows.csv,10,Start Free Memory,19100956868185
+javascript,50000,50000_rows.csv,10,End Program,19101016286497
+javascript,5000,5000_rows.csv,1,Start File Read,19497705926867
+javascript,5000,5000_rows.csv,1,Start Map to Person Record,19497741402929
+javascript,5000,5000_rows.csv,1,Start Quick Sort Person Array,19497804131511
+javascript,5000,5000_rows.csv,1,Start Print Results,19497877001573
+javascript,5000,5000_rows.csv,1,Start Free Memory,19498524362456
+javascript,5000,5000_rows.csv,1,End Program,19498576859620
+javascript,5000,5000_rows.csv,2,Start File Read,19894894895809
+javascript,5000,5000_rows.csv,2,Start Map to Person Record,19894930469045
+javascript,5000,5000_rows.csv,2,Start Quick Sort Person Array,19894994332948
+javascript,5000,5000_rows.csv,2,Start Print Results,19895069610214
+javascript,5000,5000_rows.csv,2,Start Free Memory,19895766341973
+javascript,5000,5000_rows.csv,2,End Program,19895819323177
+javascript,5000,5000_rows.csv,3,Start File Read,20292323978120
+javascript,5000,5000_rows.csv,3,Start Map to Person Record,20292360293533
+javascript,5000,5000_rows.csv,3,Start Quick Sort Person Array,20292424430676
+javascript,5000,5000_rows.csv,3,Start Print Results,20292527475984
+javascript,5000,5000_rows.csv,3,Start Free Memory,20293195097690
+javascript,5000,5000_rows.csv,3,End Program,20293247687872
+javascript,5000,5000_rows.csv,4,Start File Read,20690179621741
+javascript,5000,5000_rows.csv,4,Start Map to Person Record,20690215150465
+javascript,5000,5000_rows.csv,4,Start Quick Sort Person Array,20690279248884
+javascript,5000,5000_rows.csv,4,Start Print Results,20690353297395
+javascript,5000,5000_rows.csv,4,Start Free Memory,20691034359909
+javascript,5000,5000_rows.csv,4,End Program,20691088170972
+javascript,5000,5000_rows.csv,5,Start File Read,21088015583407
+javascript,5000,5000_rows.csv,5,Start Map to Person Record,21088051050863
+javascript,5000,5000_rows.csv,5,Start Quick Sort Person Array,21088115157106
+javascript,5000,5000_rows.csv,5,Start Print Results,21088191392457
+javascript,5000,5000_rows.csv,5,Start Free Memory,21088874800506
+javascript,5000,5000_rows.csv,5,End Program,21088929064456
+javascript,5000,5000_rows.csv,6,Start File Read,21485794610645
+javascript,5000,5000_rows.csv,6,Start Map to Person Record,21485831229854
+javascript,5000,5000_rows.csv,6,Start Quick Sort Person Array,21485895956019
+javascript,5000,5000_rows.csv,6,Start Print Results,21485977788974
+javascript,5000,5000_rows.csv,6,Start Free Memory,21486674954902
+javascript,5000,5000_rows.csv,6,End Program,21486728262426
+javascript,5000,5000_rows.csv,7,Start File Read,21883670119662
+javascript,5000,5000_rows.csv,7,Start Map to Person Record,21883705759805
+javascript,5000,5000_rows.csv,7,Start Quick Sort Person Array,21883769659434
+javascript,5000,5000_rows.csv,7,Start Print Results,21883849228548
+javascript,5000,5000_rows.csv,7,Start Free Memory,21884521593204
+javascript,5000,5000_rows.csv,7,End Program,21884577111466
+javascript,5000,5000_rows.csv,8,Start File Read,22281561702706
+javascript,5000,5000_rows.csv,8,Start Map to Person Record,22281597168979
+javascript,5000,5000_rows.csv,8,Start Quick Sort Person Array,22281667230658
+javascript,5000,5000_rows.csv,8,Start Print Results,22281762924381
+javascript,5000,5000_rows.csv,8,Start Free Memory,22282441128379
+javascript,5000,5000_rows.csv,8,End Program,22282493559542
+javascript,5000,5000_rows.csv,9,Start File Read,22679833424731
+javascript,5000,5000_rows.csv,9,Start Map to Person Record,22679868949682
+javascript,5000,5000_rows.csv,9,Start Quick Sort Person Array,22679932782091
+javascript,5000,5000_rows.csv,9,Start Print Results,22680008978594
+javascript,5000,5000_rows.csv,9,Start Free Memory,22680741786277
+javascript,5000,5000_rows.csv,9,End Program,22680794137487
+javascript,5000,5000_rows.csv,10,Start File Read,23077678412354
+javascript,5000,5000_rows.csv,10,Start Map to Person Record,23077714818185
+javascript,5000,5000_rows.csv,10,Start Quick Sort Person Array,23077778661853
+javascript,5000,5000_rows.csv,10,Start Print Results,23077855224637
+javascript,5000,5000_rows.csv,10,Start Free Memory,23078552140178
+javascript,5000,5000_rows.csv,10,End Program,23078608299119
+python,100000,100000_rows.csv,1,Start File Read,23116314959778
+python,100000,100000_rows.csv,1,Start Map to Person Record,23116481640548
+python,100000,100000_rows.csv,1,Start Quick Sort Person Array,23117495348529
+python,100000,100000_rows.csv,1,Start Print Results,23147307211299
+python,100000,100000_rows.csv,1,Start Free Memory,23148132428062
+python,100000,100000_rows.csv,1,End Program,23148160859058
+python,100000,100000_rows.csv,2,Start File Read,23184911244770
+python,100000,100000_rows.csv,2,Start Map to Person Record,23185078320961
+python,100000,100000_rows.csv,2,Start Quick Sort Person Array,23186067387193
+python,100000,100000_rows.csv,2,Start Print Results,23215859245096
+python,100000,100000_rows.csv,2,Start Free Memory,23216698284987
+python,100000,100000_rows.csv,2,End Program,23216727067438
+python,100000,100000_rows.csv,3,Start File Read,23254042876208
+python,100000,100000_rows.csv,3,Start Map to Person Record,23254209651954
+python,100000,100000_rows.csv,3,Start Quick Sort Person Array,23255212704289
+python,100000,100000_rows.csv,3,Start Print Results,23285171513646
+python,100000,100000_rows.csv,3,Start Free Memory,23286001001666
+python,100000,100000_rows.csv,3,End Program,23286029458998
+python,100000,100000_rows.csv,4,Start File Read,23322868142519
+python,100000,100000_rows.csv,4,Start Map to Person Record,23323034989639
+python,100000,100000_rows.csv,4,Start Quick Sort Person Array,23324043562452
+python,100000,100000_rows.csv,4,Start Print Results,23353894745888
+python,100000,100000_rows.csv,4,Start Free Memory,23354730238571
+python,100000,100000_rows.csv,4,End Program,23354758830670
+python,100000,100000_rows.csv,5,Start File Read,23391499464825
+python,100000,100000_rows.csv,5,Start Map to Person Record,23391667562590
+python,100000,100000_rows.csv,5,Start Quick Sort Person Array,23392712337059
+python,100000,100000_rows.csv,5,Start Print Results,23422740031534
+python,100000,100000_rows.csv,5,Start Free Memory,23423572310601
+python,100000,100000_rows.csv,5,End Program,23423601103252
+python,100000,100000_rows.csv,6,Start File Read,23460497031088
+python,100000,100000_rows.csv,6,Start Map to Person Record,23460663719618
+python,100000,100000_rows.csv,6,Start Quick Sort Person Array,23461659829832
+python,100000,100000_rows.csv,6,Start Print Results,23491607150053
+python,100000,100000_rows.csv,6,Start Free Memory,23492431186710
+python,100000,100000_rows.csv,6,End Program,23492459926314
+python,100000,100000_rows.csv,7,Start File Read,23529224593792
+python,100000,100000_rows.csv,7,Start Map to Person Record,23529391974534
+python,100000,100000_rows.csv,7,Start Quick Sort Person Array,23530383438181
+python,100000,100000_rows.csv,7,Start Print Results,23560295620117
+python,100000,100000_rows.csv,7,Start Free Memory,23561120201340
+python,100000,100000_rows.csv,7,End Program,23561150553538
+python,100000,100000_rows.csv,8,Start File Read,23598004172386
+python,100000,100000_rows.csv,8,Start Map to Person Record,23598171248931
+python,100000,100000_rows.csv,8,Start Quick Sort Person Array,23599162866635
+python,100000,100000_rows.csv,8,Start Print Results,23629041205177
+python,100000,100000_rows.csv,8,Start Free Memory,23629903596610
+python,100000,100000_rows.csv,8,End Program,23629932276710
+python,100000,100000_rows.csv,9,Start File Read,23666479063497
+python,100000,100000_rows.csv,9,Start Map to Person Record,23666653193608
+python,100000,100000_rows.csv,9,Start Quick Sort Person Array,23667674652359
+python,100000,100000_rows.csv,9,Start Print Results,23698007530006
+python,100000,100000_rows.csv,9,Start Free Memory,23698854374635
+python,100000,100000_rows.csv,9,End Program,23698883106142
+python,100000,100000_rows.csv,10,Start File Read,23736301567801
+python,100000,100000_rows.csv,10,Start Map to Person Record,23736468518436
+python,100000,100000_rows.csv,10,Start Quick Sort Person Array,23737459601049
+python,100000,100000_rows.csv,10,Start Print Results,23767473672192
+python,100000,100000_rows.csv,10,Start Free Memory,23768295914244
+python,100000,100000_rows.csv,10,End Program,23768324612712
+python,10000,10000_rows.csv,1,Start File Read,23773842747482
+python,10000,10000_rows.csv,1,Start Map to Person Record,23773863710408
+python,10000,10000_rows.csv,1,Start Quick Sort Person Array,23773954982868
+python,10000,10000_rows.csv,1,Start Print Results,23774378526420
+python,10000,10000_rows.csv,1,Start Free Memory,23774460215064
+python,10000,10000_rows.csv,1,End Program,23774488795357
+python,10000,10000_rows.csv,2,Start File Read,23779980954698
+python,10000,10000_rows.csv,2,Start Map to Person Record,23780001753672
+python,10000,10000_rows.csv,2,Start Quick Sort Person Array,23780093443241
+python,10000,10000_rows.csv,2,Start Print Results,23780518674329
+python,10000,10000_rows.csv,2,Start Free Memory,23780599799889
+python,10000,10000_rows.csv,2,End Program,23780628314528
+python,10000,10000_rows.csv,3,Start File Read,23786119763514
+python,10000,10000_rows.csv,3,Start Map to Person Record,23786140531797
+python,10000,10000_rows.csv,3,Start Quick Sort Person Array,23786232996534
+python,10000,10000_rows.csv,3,Start Print Results,23786659225971
+python,10000,10000_rows.csv,3,Start Free Memory,23786747824038
+python,10000,10000_rows.csv,3,End Program,23786776371741
+python,10000,10000_rows.csv,4,Start File Read,23792245842336
+python,10000,10000_rows.csv,4,Start Map to Person Record,23792266707928
+python,10000,10000_rows.csv,4,Start Quick Sort Person Array,23792359801237
+python,10000,10000_rows.csv,4,Start Print Results,23792792413557
+python,10000,10000_rows.csv,4,Start Free Memory,23792874335388
+python,10000,10000_rows.csv,4,End Program,23792902964982
+python,10000,10000_rows.csv,5,Start File Read,23798380808689
+python,10000,10000_rows.csv,5,Start Map to Person Record,23798401560817
+python,10000,10000_rows.csv,5,Start Quick Sort Person Array,23798492836133
+python,10000,10000_rows.csv,5,Start Print Results,23798925385777
+python,10000,10000_rows.csv,5,Start Free Memory,23799006706255
+python,10000,10000_rows.csv,5,End Program,23799035317837
+python,10000,10000_rows.csv,6,Start File Read,23804511429476
+python,10000,10000_rows.csv,6,Start Map to Person Record,23804534851605
+python,10000,10000_rows.csv,6,Start Quick Sort Person Array,23804632312218
+python,10000,10000_rows.csv,6,Start Print Results,23805058020936
+python,10000,10000_rows.csv,6,Start Free Memory,23805139850944
+python,10000,10000_rows.csv,6,End Program,23805168495961
+python,10000,10000_rows.csv,7,Start File Read,23810667994671
+python,10000,10000_rows.csv,7,Start Map to Person Record,23810688782738
+python,10000,10000_rows.csv,7,Start Quick Sort Person Array,23810781013741
+python,10000,10000_rows.csv,7,Start Print Results,23811204611553
+python,10000,10000_rows.csv,7,Start Free Memory,23811286225450
+python,10000,10000_rows.csv,7,End Program,23811314856223
+python,10000,10000_rows.csv,8,Start File Read,23816800869290
+python,10000,10000_rows.csv,8,Start Map to Person Record,23816821750801
+python,10000,10000_rows.csv,8,Start Quick Sort Person Array,23816914258296
+python,10000,10000_rows.csv,8,Start Print Results,23817338931377
+python,10000,10000_rows.csv,8,Start Free Memory,23817420474740
+python,10000,10000_rows.csv,8,End Program,23817449076510
+python,10000,10000_rows.csv,9,Start File Read,23822941150216
+python,10000,10000_rows.csv,9,Start Map to Person Record,23822962079044
+python,10000,10000_rows.csv,9,Start Quick Sort Person Array,23823053819198
+python,10000,10000_rows.csv,9,Start Print Results,23823478338975
+python,10000,10000_rows.csv,9,Start Free Memory,23823559573091
+python,10000,10000_rows.csv,9,End Program,23823588104527
+python,10000,10000_rows.csv,10,Start File Read,23829088795704
+python,10000,10000_rows.csv,10,Start Map to Person Record,23829109724854
+python,10000,10000_rows.csv,10,Start Quick Sort Person Array,23829200566176
+python,10000,10000_rows.csv,10,Start Print Results,23829625722222
+python,10000,10000_rows.csv,10,Start Free Memory,23829707735266
+python,10000,10000_rows.csv,10,End Program,23829736382359
+python,1000,1000_rows.csv,1,Start File Read,23834701062363
+python,1000,1000_rows.csv,1,Start Map to Person Record,23834707058983
+python,1000,1000_rows.csv,1,Start Quick Sort Person Array,23834719160538
+python,1000,1000_rows.csv,1,Start Print Results,23834740039221
+python,1000,1000_rows.csv,1,Start Free Memory,23834750827452
+python,1000,1000_rows.csv,1,End Program,23834781177069
+python,1000,1000_rows.csv,2,Start File Read,23839690926164
+python,1000,1000_rows.csv,2,Start Map to Person Record,23839696913710
+python,1000,1000_rows.csv,2,Start Quick Sort Person Array,23839709016219
+python,1000,1000_rows.csv,2,Start Print Results,23839729966538
+python,1000,1000_rows.csv,2,Start Free Memory,23839741031716
+python,1000,1000_rows.csv,2,End Program,23839771205558
+python,1000,1000_rows.csv,3,Start File Read,23844661886748
+python,1000,1000_rows.csv,3,Start Map to Person Record,23844667898664
+python,1000,1000_rows.csv,3,Start Quick Sort Person Array,23844680054067
+python,1000,1000_rows.csv,3,Start Print Results,23844700925527
+python,1000,1000_rows.csv,3,Start Free Memory,23844711955766
+python,1000,1000_rows.csv,3,End Program,23844742091181
+python,1000,1000_rows.csv,4,Start File Read,23849677942116
+python,1000,1000_rows.csv,4,Start Map to Person Record,23849683979807
+python,1000,1000_rows.csv,4,Start Quick Sort Person Array,23849696059403
+python,1000,1000_rows.csv,4,Start Print Results,23849716988494
+python,1000,1000_rows.csv,4,Start Free Memory,23849728075319
+python,1000,1000_rows.csv,4,End Program,23849758218892
+python,1000,1000_rows.csv,5,Start File Read,23854691863609
+python,1000,1000_rows.csv,5,Start Map to Person Record,23854697817577
+python,1000,1000_rows.csv,5,Start Quick Sort Person Array,23854710004447
+python,1000,1000_rows.csv,5,Start Print Results,23854730799757
+python,1000,1000_rows.csv,5,Start Free Memory,23854742823024
+python,1000,1000_rows.csv,5,End Program,23854771651911
+python,1000,1000_rows.csv,6,Start File Read,23859697633995
+python,1000,1000_rows.csv,6,Start Map to Person Record,23859706139521
+python,1000,1000_rows.csv,6,Start Quick Sort Person Array,23859720730866
+python,1000,1000_rows.csv,6,Start Print Results,23859746049638
+python,1000,1000_rows.csv,6,Start Free Memory,23859759397266
+python,1000,1000_rows.csv,6,End Program,23859789123635
+python,1000,1000_rows.csv,7,Start File Read,23864720270760
+python,1000,1000_rows.csv,7,Start Map to Person Record,23864726314259
+python,1000,1000_rows.csv,7,Start Quick Sort Person Array,23864738378214
+python,1000,1000_rows.csv,7,Start Print Results,23864759180520
+python,1000,1000_rows.csv,7,Start Free Memory,23864770084838
+python,1000,1000_rows.csv,7,End Program,23864800328772
+python,1000,1000_rows.csv,8,Start File Read,23869742319631
+python,1000,1000_rows.csv,8,Start Map to Person Record,23869748289620
+python,1000,1000_rows.csv,8,Start Quick Sort Person Array,23869760435060
+python,1000,1000_rows.csv,8,Start Print Results,23869781364236
+python,1000,1000_rows.csv,8,Start Free Memory,23869793530096
+python,1000,1000_rows.csv,8,End Program,23869823048820
+python,1000,1000_rows.csv,9,Start File Read,23874750336248
+python,1000,1000_rows.csv,9,Start Map to Person Record,23874756365171
+python,1000,1000_rows.csv,9,Start Quick Sort Person Array,23874768540933
+python,1000,1000_rows.csv,9,Start Print Results,23874789394664
+python,1000,1000_rows.csv,9,Start Free Memory,23874800232944
+python,1000,1000_rows.csv,9,End Program,23874830374696
+python,1000,1000_rows.csv,10,Start File Read,23879771357518
+python,1000,1000_rows.csv,10,Start Map to Person Record,23879777289545
+python,1000,1000_rows.csv,10,Start Quick Sort Person Array,23879789348822
+python,1000,1000_rows.csv,10,Start Print Results,23879810422598
+python,1000,1000_rows.csv,10,Start Free Memory,23879821211412
+python,1000,1000_rows.csv,10,End Program,23879851387228
+python,10,10_rows.csv,1,Start File Read,23884729087581
+python,10,10_rows.csv,1,Start Map to Person Record,23884733401872
+python,10,10_rows.csv,1,Start Quick Sort Person Array,23884737487647
+python,10,10_rows.csv,1,Start Print Results,23884741464417
+python,10,10_rows.csv,1,Start Free Memory,23884745502369
+python,10,10_rows.csv,1,End Program,23884774835655
+python,10,10_rows.csv,2,Start File Read,23889672605133
+python,10,10_rows.csv,2,Start Map to Person Record,23889677020392
+python,10,10_rows.csv,2,Start Quick Sort Person Array,23889681080113
+python,10,10_rows.csv,2,Start Print Results,23889685025553
+python,10,10_rows.csv,2,Start Free Memory,23889689037495
+python,10,10_rows.csv,2,End Program,23889718340208
+python,10,10_rows.csv,3,Start File Read,23894605416551
+python,10,10_rows.csv,3,Start Map to Person Record,23894609713929
+python,10,10_rows.csv,3,Start Quick Sort Person Array,23894613757467
+python,10,10_rows.csv,3,Start Print Results,23894617743459
+python,10,10_rows.csv,3,Start Free Memory,23894621667698
+python,10,10_rows.csv,3,End Program,23894651008709
+python,10,10_rows.csv,4,Start File Read,23899532326778
+python,10,10_rows.csv,4,Start Map to Person Record,23899536639724
+python,10,10_rows.csv,4,Start Quick Sort Person Array,23899540682359
+python,10,10_rows.csv,4,Start Print Results,23899544665785
+python,10,10_rows.csv,4,Start Free Memory,23899548617018
+python,10,10_rows.csv,4,End Program,23899577945101
+python,10,10_rows.csv,5,Start File Read,23904433474289
+python,10,10_rows.csv,5,Start Map to Person Record,23904437730509
+python,10,10_rows.csv,5,Start Quick Sort Person Array,23904441723998
+python,10,10_rows.csv,5,Start Print Results,23904445709247
+python,10,10_rows.csv,5,Start Free Memory,23904449664705
+python,10,10_rows.csv,5,End Program,23904478796798
+python,10,10_rows.csv,6,Start File Read,23909410450200
+python,10,10_rows.csv,6,Start Map to Person Record,23909414755904
+python,10,10_rows.csv,6,Start Quick Sort Person Array,23909418815001
+python,10,10_rows.csv,6,Start Print Results,23909422838624
+python,10,10_rows.csv,6,Start Free Memory,23909426912835
+python,10,10_rows.csv,6,End Program,23909456306756
+python,10,10_rows.csv,7,Start File Read,23914334276836
+python,10,10_rows.csv,7,Start Map to Person Record,23914338589991
+python,10,10_rows.csv,7,Start Quick Sort Person Array,23914342607038
+python,10,10_rows.csv,7,Start Print Results,23914346584210
+python,10,10_rows.csv,7,Start Free Memory,23914350764234
+python,10,10_rows.csv,7,End Program,23914385091008
+python,10,10_rows.csv,8,Start File Read,23919292455364
+python,10,10_rows.csv,8,Start Map to Person Record,23919296784428
+python,10,10_rows.csv,8,Start Quick Sort Person Array,23919300798464
+python,10,10_rows.csv,8,Start Print Results,23919304789298
+python,10,10_rows.csv,8,Start Free Memory,23919309444313
+python,10,10_rows.csv,8,End Program,23919338461922
+python,10,10_rows.csv,9,Start File Read,23924227390870
+python,10,10_rows.csv,9,Start Map to Person Record,23924232500183
+python,10,10_rows.csv,9,Start Quick Sort Person Array,23924237194228
+python,10,10_rows.csv,9,Start Print Results,23924241867547
+python,10,10_rows.csv,9,Start Free Memory,23924246661871
+python,10,10_rows.csv,9,End Program,23924278993895
+python,10,10_rows.csv,10,Start File Read,23929146911951
+python,10,10_rows.csv,10,Start Map to Person Record,23929151218014
+python,10,10_rows.csv,10,Start Quick Sort Person Array,23929155282809
+python,10,10_rows.csv,10,Start Print Results,23929159260894
+python,10,10_rows.csv,10,Start Free Memory,23929163286892
+python,10,10_rows.csv,10,End Program,23929192804494
+python,50000,50000_rows.csv,1,Start File Read,23942648030808
+python,50000,50000_rows.csv,1,Start Map to Person Record,23942735565948
+python,50000,50000_rows.csv,1,Start Quick Sort Person Array,23943191736250
+python,50000,50000_rows.csv,1,Start Print Results,23950965571314
+python,50000,50000_rows.csv,1,Start Free Memory,23951375592810
+python,50000,50000_rows.csv,1,End Program,23951404417389
+python,50000,50000_rows.csv,2,Start File Read,23964866225065
+python,50000,50000_rows.csv,2,Start Map to Person Record,23964952185290
+python,50000,50000_rows.csv,2,Start Quick Sort Person Array,23965388641458
+python,50000,50000_rows.csv,2,Start Print Results,23973050661336
+python,50000,50000_rows.csv,2,Start Free Memory,23973465460003
+python,50000,50000_rows.csv,2,End Program,23973494059053
+python,50000,50000_rows.csv,3,Start File Read,23987019436138
+python,50000,50000_rows.csv,3,Start Map to Person Record,23987105515088
+python,50000,50000_rows.csv,3,Start Quick Sort Person Array,23987538250059
+python,50000,50000_rows.csv,3,Start Print Results,23995207705306
+python,50000,50000_rows.csv,3,Start Free Memory,23995618024355
+python,50000,50000_rows.csv,3,End Program,23995646783938
+python,50000,50000_rows.csv,4,Start File Read,24009135479156
+python,50000,50000_rows.csv,4,Start Map to Person Record,24009221350717
+python,50000,50000_rows.csv,4,Start Quick Sort Person Array,24009655504722
+python,50000,50000_rows.csv,4,Start Print Results,24017312934077
+python,50000,50000_rows.csv,4,Start Free Memory,24017722122440
+python,50000,50000_rows.csv,4,End Program,24017750823712
+python,50000,50000_rows.csv,5,Start File Read,24031192568929
+python,50000,50000_rows.csv,5,Start Map to Person Record,24031278554297
+python,50000,50000_rows.csv,5,Start Quick Sort Person Array,24031717699719
+python,50000,50000_rows.csv,5,Start Print Results,24039384251591
+python,50000,50000_rows.csv,5,Start Free Memory,24039793396576
+python,50000,50000_rows.csv,5,End Program,24039822131998
+python,50000,50000_rows.csv,6,Start File Read,24053331445971
+python,50000,50000_rows.csv,6,Start Map to Person Record,24053417433180
+python,50000,50000_rows.csv,6,Start Quick Sort Person Array,24053848109766
+python,50000,50000_rows.csv,6,Start Print Results,24061492475815
+python,50000,50000_rows.csv,6,Start Free Memory,24061902762784
+python,50000,50000_rows.csv,6,End Program,24061931527498
+python,50000,50000_rows.csv,7,Start File Read,24075409246095
+python,50000,50000_rows.csv,7,Start Map to Person Record,24075495067556
+python,50000,50000_rows.csv,7,Start Quick Sort Person Array,24075932254046
+python,50000,50000_rows.csv,7,Start Print Results,24083574932752
+python,50000,50000_rows.csv,7,Start Free Memory,24084040754277
+python,50000,50000_rows.csv,7,End Program,24084069649884
+python,50000,50000_rows.csv,8,Start File Read,24097558956140
+python,50000,50000_rows.csv,8,Start Map to Person Record,24097644937723
+python,50000,50000_rows.csv,8,Start Quick Sort Person Array,24098090654124
+python,50000,50000_rows.csv,8,Start Print Results,24105745730642
+python,50000,50000_rows.csv,8,Start Free Memory,24106156022436
+python,50000,50000_rows.csv,8,End Program,24106185088778
+python,50000,50000_rows.csv,9,Start File Read,24119645665067
+python,50000,50000_rows.csv,9,Start Map to Person Record,24119731924291
+python,50000,50000_rows.csv,9,Start Quick Sort Person Array,24120174095718
+python,50000,50000_rows.csv,9,Start Print Results,24127838093736
+python,50000,50000_rows.csv,9,Start Free Memory,24128261673482
+python,50000,50000_rows.csv,9,End Program,24128295476789
+python,50000,50000_rows.csv,10,Start File Read,24141797305712
+python,50000,50000_rows.csv,10,Start Map to Person Record,24141883278526
+python,50000,50000_rows.csv,10,Start Quick Sort Person Array,24142315994657
+python,50000,50000_rows.csv,10,Start Print Results,24149981963541
+python,50000,50000_rows.csv,10,Start Free Memory,24150394605491
+python,50000,50000_rows.csv,10,End Program,24150423309231
+python,5000,5000_rows.csv,1,Start File Read,24155552805800
+python,5000,5000_rows.csv,1,Start Map to Person Record,24155565400840
+python,5000,5000_rows.csv,1,Start Quick Sort Person Array,24155608633805
+python,5000,5000_rows.csv,1,Start Print Results,24155744841482
+python,5000,5000_rows.csv,1,Start Free Memory,24155786841981
+python,5000,5000_rows.csv,1,End Program,24155815619956
+python,5000,5000_rows.csv,2,Start File Read,24160944935380
+python,5000,5000_rows.csv,2,Start Map to Person Record,24160957590594
+python,5000,5000_rows.csv,2,Start Quick Sort Person Array,24161000254182
+python,5000,5000_rows.csv,2,Start Print Results,24161135333822
+python,5000,5000_rows.csv,2,Start Free Memory,24161177601065
+python,5000,5000_rows.csv,2,End Program,24161206514287
+python,5000,5000_rows.csv,3,Start File Read,24166282334491
+python,5000,5000_rows.csv,3,Start Map to Person Record,24166294890668
+python,5000,5000_rows.csv,3,Start Quick Sort Person Array,24166337142500
+python,5000,5000_rows.csv,3,Start Print Results,24166472086540
+python,5000,5000_rows.csv,3,Start Free Memory,24166514366728
+python,5000,5000_rows.csv,3,End Program,24166543181305
+python,5000,5000_rows.csv,4,Start File Read,24171662158375
+python,5000,5000_rows.csv,4,Start Map to Person Record,24171674814913
+python,5000,5000_rows.csv,4,Start Quick Sort Person Array,24171717257845
+python,5000,5000_rows.csv,4,Start Print Results,24171853559559
+python,5000,5000_rows.csv,4,Start Free Memory,24171897352087
+python,5000,5000_rows.csv,4,End Program,24171928206309
+python,5000,5000_rows.csv,5,Start File Read,24177042869594
+python,5000,5000_rows.csv,5,Start Map to Person Record,24177055441538
+python,5000,5000_rows.csv,5,Start Quick Sort Person Array,24177098039347
+python,5000,5000_rows.csv,5,Start Print Results,24177232897526
+python,5000,5000_rows.csv,5,Start Free Memory,24177275243939
+python,5000,5000_rows.csv,5,End Program,24177304139977
+python,5000,5000_rows.csv,6,Start File Read,24182408337326
+python,5000,5000_rows.csv,6,Start Map to Person Record,24182421289689
+python,5000,5000_rows.csv,6,Start Quick Sort Person Array,24182463341083
+python,5000,5000_rows.csv,6,Start Print Results,24182598249391
+python,5000,5000_rows.csv,6,Start Free Memory,24182640498642
+python,5000,5000_rows.csv,6,End Program,24182669657181
+python,5000,5000_rows.csv,7,Start File Read,24187786638823
+python,5000,5000_rows.csv,7,Start Map to Person Record,24187799297854
+python,5000,5000_rows.csv,7,Start Quick Sort Person Array,24187841970034
+python,5000,5000_rows.csv,7,Start Print Results,24187976983821
+python,5000,5000_rows.csv,7,Start Free Memory,24188019842305
+python,5000,5000_rows.csv,7,End Program,24188062906581
+python,5000,5000_rows.csv,8,Start File Read,24193193928180
+python,5000,5000_rows.csv,8,Start Map to Person Record,24193206458283
+python,5000,5000_rows.csv,8,Start Quick Sort Person Array,24193248708448
+python,5000,5000_rows.csv,8,Start Print Results,24193383855579
+python,5000,5000_rows.csv,8,Start Free Memory,24193426189053
+python,5000,5000_rows.csv,8,End Program,24193454907874
+python,5000,5000_rows.csv,9,Start File Read,24198544256525
+python,5000,5000_rows.csv,9,Start Map to Person Record,24198556834827
+python,5000,5000_rows.csv,9,Start Quick Sort Person Array,24198599873191
+python,5000,5000_rows.csv,9,Start Print Results,24198734654906
+python,5000,5000_rows.csv,9,Start Free Memory,24198777270457
+python,5000,5000_rows.csv,9,End Program,24198806167971
+python,5000,5000_rows.csv,10,Start File Read,24203932050392
+python,5000,5000_rows.csv,10,Start Map to Person Record,24203944560817
+python,5000,5000_rows.csv,10,Start Quick Sort Person Array,24203986933979
+python,5000,5000_rows.csv,10,Start Print Results,24204122848236
+python,5000,5000_rows.csv,10,Start Free Memory,24204165375574
+python,5000,5000_rows.csv,10,End Program,24204194193301
