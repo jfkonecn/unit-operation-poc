@@ -326,7 +326,7 @@ def saveAllPivotPermutationsAsMarkDown(
     column_names = pivot_df.columns.to_list()
     grouped = {}
     for column_name in column_names:
-        combo_names = column_name.split(separator)[:-1]
+        combo_names = column_name.split(separator)
         permutations_list = [list(perm) for perm in itertools.permutations(combo_names)]
         for arr in permutations_list:
             key = separator.join(arr)
@@ -335,7 +335,7 @@ def saveAllPivotPermutationsAsMarkDown(
             grouped[key].append(column_name)
     for constant_columns, value in grouped.items():
         md_df: pd.DataFrame = pivot_df[value]
-        keys = constant_columns.split(separator)
+        keys = constant_columns.split(separator)[:-1]
         for key in keys:
             md_df.columns = md_df.columns.str.replace(key, "")
         extra_prefix = " and ".join(keys)
