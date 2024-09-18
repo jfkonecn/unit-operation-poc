@@ -1,0 +1,4 @@
+Computer Name,Processor@Speed,Speed (GHz),Watts,$/kWh
+rpi-3,PI 3 Model B@1.2,1.2,2.4,0.1930
+ubuntu-i9,i9@4.7,4.7,204.6,0.1930
+ubuntu-i9,i9@5.0,5.0,249.7,0.1930

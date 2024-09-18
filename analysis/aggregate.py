@@ -186,17 +186,13 @@ def aggregateMemoryResults(
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 
-aws_dir = os.path.join(script_dir, "aws")
-ec2_families_df = pd.read_csv(os.path.join(aws_dir, "ec2-families.csv"))
-ec2_on_demand_prices_df = pd.read_csv(os.path.join(aws_dir, "ec2-on-demand-prices.csv"))
-ec2_run_mapping_df = pd.read_csv(os.path.join(aws_dir, "run-mapping.csv"))
-ec2_df = pd.merge(ec2_families_df, ec2_on_demand_prices_df, on="Family", how="inner")
-ec2_df = pd.merge(ec2_df, ec2_run_mapping_df, on="Processor", how="inner")
-ec2_df["Instance"] = ec2_df["Family"] + "." + ec2_df["Size"]
+cpu_run_cost_dir = os.path.join(script_dir, "cpu-run-cost")
+cost_df = pd.read_csv(os.path.join(cpu_run_cost_dir, "run-mapping.csv"))
+cost_df["Dollars Per Hour"] = (cost_df["Watts"] / 1000) * cost_df["$/kWh"]
 
 
-def join_ec2_df(df: pd.DataFrame):
-    df = pd.merge(ec2_df, df, on="Computer Name", how="inner")
+def join_cost_df(df: pd.DataFrame):
+    df = pd.merge(cost_df, df, on="Computer Name", how="inner")
 
     df["Bytes Per Cycle"] = df["File Size (B)"] / df["Cycles"]
     df["Gigabytes Per Hour"] = (df["Bytes Per Cycle"] * df["Speed (GHz)"] * 3600).round(
@@ -403,7 +399,7 @@ def pivot_and_save_ec2(
 
     output_df[x_axis] = df[x_axis].unique()
 
-    columns = ["Instance", "Language"]
+    columns = ["Processor@Speed", "Language"]
     if is_unit_op:
         columns.insert(0, "Point")
 
@@ -474,11 +470,11 @@ pivot_and_save_base(
     False,
 )
 
-ec2_whole_run_cpu_df = join_ec2_df(whole_run_cpu_df)
+cost_whole_run_cpu_df = join_cost_df(whole_run_cpu_df)
 
 pivot_and_save_ec2(
     "Whole Run",
-    ec2_whole_run_cpu_df,
+    cost_whole_run_cpu_df,
     "Total Records",
     "Gigabytes Per Dollar",
     False,
@@ -486,7 +482,7 @@ pivot_and_save_ec2(
 
 pivot_and_save_ec2(
     "Whole Run",
-    ec2_whole_run_cpu_df,
+    cost_whole_run_cpu_df,
     "Total Records",
     "Gigabytes Per Hour",
     False,
@@ -494,7 +490,7 @@ pivot_and_save_ec2(
 
 pivot_and_save_ec2(
     "Whole Run",
-    ec2_whole_run_cpu_df,
+    cost_whole_run_cpu_df,
     "Total Records",
     "Time (ms)",
     False,
