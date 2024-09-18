@@ -326,10 +326,10 @@ def saveAllPivotPermutationsAsMarkDown(
     column_names = pivot_df.columns.to_list()
     grouped = {}
     for column_name in column_names:
-        combo_names = column_name.split(separator)
+        combo_names = column_name.split(separator)[:-1]
         permutations_list = [list(perm) for perm in itertools.permutations(combo_names)]
         for arr in permutations_list:
-            key = separator.join(arr[:-1])
+            key = separator.join(arr)
             if key not in grouped:
                 grouped[key] = []
             grouped[key].append(column_name)
@@ -371,7 +371,7 @@ def pivot_and_save_base(
     if is_unit_op:
         pivot_df.columns = [
             f"{point}{separator}{comp}{separator}{lang}"
-            for comp, lang, point in pivot_df.columns
+            for point, comp, lang in pivot_df.columns
         ]
     else:
         pivot_df.columns = [
