@@ -171,3 +171,5 @@ performance-utils/read-time
 analysis/aggregates/
 test-results/
 *.swp
+
+.~lock.*
