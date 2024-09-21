@@ -3,6 +3,7 @@ import itertools
 import os
 
 import pandas as pd
+from sklearn.linear_model import LinearRegression
 
 
 def fixLanguages(df: pd.DataFrame):
@@ -315,6 +316,21 @@ def saveAsMarkdown(
                 _ = md_file.write(f" {y_value} |")
             _ = md_file.write("\n")
         _ = md_file.write("\n\n")
+
+        print(df)
+        total_records = df.index.values.reshape(-1, 1)
+        for lang in df.columns:
+            values = df[lang].values
+            model = LinearRegression()
+            model = model.fit(total_records, values)
+
+            slope = model.coef_[0]
+            intercept = model.intercept_
+            r_squared = model.score(total_records, values)
+            print(f'{lang}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}')
+
+
+        print(f"Equation of the line (using first and last points): y = {slope:.2f}x + {intercept:.2f}")
 
 
 def saveAllPivotPermutationsAsMarkDown(
