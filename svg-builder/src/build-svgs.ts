@@ -19,7 +19,9 @@ import {
   buildPassthrough,
 } from "./sample-unit-operator-builders.ts";
 import {
+  buildKey,
   buildMvcFlow,
+  buildPerformanceTests,
   buildTestEverything,
   buildWeatherApiCall,
 } from "./sample-unit-operator-graph-builders.ts";
@@ -43,3 +45,5 @@ buildSimplePlot();
 buildQueryAllAndMap();
 buildGetOneRowAtATime();
 buildInMemoryJoin();
+buildPerformanceTests();
+buildKey();

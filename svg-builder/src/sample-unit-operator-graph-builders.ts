@@ -4,16 +4,22 @@ import {
   drawOperationFlow,
 } from "./unit-operator-graph-builders.ts";
 
-function renderSampleSvg(label: string, flow: OperationFlow) {
+function renderSampleSvg(
+  label: string,
+  flow: OperationFlow,
+  includeSlideSize = true,
+) {
   const { svg, saveToFile } = createSvgBuilder();
   drawOperationFlow(svg, flow);
   saveToFile(`unit-operation-graphs/${label}.svg`);
   const totalColumns = 2;
   console.log(`${label} has ${flow.length} columns`);
-  for (let i = 0; i < flow.length - (totalColumns - 1); i++) {
-    const { svg: svg2, saveToFile: saveToFile2 } = createSvgBuilder();
-    drawOperationFlow(svg2, flow, [i, i + (totalColumns - 1)], false, 5);
-    saveToFile2(`unit-operation-graphs/${label}_${i}.svg`);
+  if (includeSlideSize) {
+    for (let i = 0; i < flow.length - (totalColumns - 1); i++) {
+      const { svg: svg2, saveToFile: saveToFile2 } = createSvgBuilder();
+      drawOperationFlow(svg2, flow, [i, i + (totalColumns - 1)], false, 5);
+      saveToFile2(`unit-operation-graphs/${label}_${i}.svg`);
+    }
   }
 }
 
@@ -421,4 +427,53 @@ export function buildWeatherApiCall() {
     ],
   ];
   renderSampleSvg("weather-api-call", flow);
+}
+
+export function buildPerformanceTests() {
+  const flow: OperationFlow = [
+    [
+      {
+        type: "io",
+        label: "Read People CSV File",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "validate",
+        label: "Validate Person Rows",
+        success: [{ index: 0 }],
+        error: [{ index: 1 }],
+      },
+    ],
+    [
+      {
+        type: "sort",
+        label: "Quick Sort Person Rows",
+        next: [{ index: 0 }],
+      },
+      { type: "panic", label: "Panic", unitOutput: true },
+    ],
+    [
+      {
+        type: "io",
+        label: "Print Person Rows",
+        success: [{ index: 0 }],
+        error: [{ index: 1 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Free Used Memory",
+        unitOutput: true,
+      },
+      { type: "panic", label: "Panic", unitOutput: true },
+    ],
+  ];
+  renderSampleSvg("performance-tests", flow);
+}
+
+export function buildKey() {
+  renderSampleSvg("key", [[], [], [], []] as unknown as OperationFlow, false);
 }
