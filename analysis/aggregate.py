@@ -268,13 +268,15 @@ unit_ops_memory_df = pd.concat(all_unit_ops_memory_dfs, ignore_index=True)
 
 aggregates_path = os.path.join(script_dir, "aggregates")
 os.makedirs(aggregates_path, exist_ok=True)
-file_path_md = os.path.join(aggregates_path, "graphs.md")
-with open(file_path_md, "w"):
-    pass
 
 
 def saveAsMarkdown(
-    df: pd.DataFrame, title_prefix: str, x_axis: str, y_axis: str, y_scale: str
+    df: pd.DataFrame,
+    title_prefix: str,
+    x_axis: str,
+    y_axis: str,
+    y_scale: str,
+    file_path_md: str,
 ):
     with open(file_path_md, "a") as md_file:
         _ = md_file.write(
@@ -322,7 +324,10 @@ def saveAllPivotPermutationsAsMarkDown(
     y_axis: str,
     y_scale: str,
     separator: str,
+    file_path_md: str,
 ):
+    with open(file_path_md, "w"):
+        pass
     column_names = pivot_df.columns.to_list()
     grouped = {}
     for column_name in column_names:
@@ -340,7 +345,14 @@ def saveAllPivotPermutationsAsMarkDown(
             md_df.columns = md_df.columns.str.replace(key, "")
         extra_prefix = " and ".join(keys)
         md_df.columns = md_df.columns.str.replace(separator, "")
-        saveAsMarkdown(md_df, f"{title_prefix} {extra_prefix}", x_axis, y_axis, y_scale)
+        saveAsMarkdown(
+            md_df,
+            f"{title_prefix} {extra_prefix}",
+            x_axis,
+            y_axis,
+            y_scale,
+            file_path_md,
+        )
 
 
 def pivot_and_save_base(
@@ -383,12 +395,15 @@ def pivot_and_save_base(
         # There's warning from pandas if you exceed 31 characters for a sheet name
         output_df.to_excel(writer, sheet_name=f"{x_axis}-{y_axis}"[:31], index=False)
 
+    file_path_md = os.path.join(
+        aggregates_path, f"{"_".join([col.replace(" ", "_") for col in columns])}_base.md"
+    )
     saveAllPivotPermutationsAsMarkDown(
-        pivot_df, title_prefix, x_axis, y_axis, "logarithmic", separator
+        pivot_df, title_prefix, x_axis, y_axis, "logarithmic", separator, file_path_md
     )
 
 
-def pivot_and_save_ec2(
+def pivot_and_cost(
     title_prefix: str,
     df: pd.DataFrame,
     x_axis: str,
@@ -422,8 +437,12 @@ def pivot_and_save_ec2(
             f"{comp}{separator}{lang}" for comp, lang in pivot_df.columns
         ]
 
+    file_path_md = os.path.join(
+        aggregates_path, f"{"_".join([col.replace(" ", "_") for col in columns])}_cost.md"
+    )
+
     saveAllPivotPermutationsAsMarkDown(
-        pivot_df, title_prefix, x_axis, y_axis, "linear", separator
+        pivot_df, title_prefix, x_axis, y_axis, "linear", separator, file_path_md
     )
 
 
@@ -472,7 +491,7 @@ pivot_and_save_base(
 
 cost_whole_run_cpu_df = join_cost_df(whole_run_cpu_df)
 
-pivot_and_save_ec2(
+pivot_and_cost(
     "Whole Run",
     cost_whole_run_cpu_df,
     "Total Records",
@@ -480,7 +499,7 @@ pivot_and_save_ec2(
     False,
 )
 
-pivot_and_save_ec2(
+pivot_and_cost(
     "Whole Run",
     cost_whole_run_cpu_df,
     "Total Records",
@@ -488,7 +507,7 @@ pivot_and_save_ec2(
     False,
 )
 
-pivot_and_save_ec2(
+pivot_and_cost(
     "Whole Run",
     cost_whole_run_cpu_df,
     "Total Records",
