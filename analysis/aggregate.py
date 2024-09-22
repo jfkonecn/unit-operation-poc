@@ -14,6 +14,7 @@ def aggregateCpuResults(
     temp_cpu_df: pd.DataFrame, clock_speed_mhz: float
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     fixLanguages(temp_cpu_df)
+    print(temp_cpu_df.to_string())
     # Make cycles relative to the first recorded point
     temp_cpu_df["Cycles"] = temp_cpu_df.groupby(
         ["Run Number", "Language", "Total Records", "File Size (B)"]
@@ -44,6 +45,8 @@ def aggregateCpuResults(
     )
     temp_cpu_df["Point"] = temp_cpu_df["Point"].str.replace("Start ", "")
     temp_cpu_df = temp_cpu_df.drop(columns=["Cycles"])
+    print(temp_cpu_df.to_string())
+
     temp_cpu_df["Cycles Difference"] = (
         temp_cpu_df["Cycles Difference"].round().astype(int)
     )
