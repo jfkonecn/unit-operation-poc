@@ -9,7 +9,7 @@ try
     var status = Run(filePath, recordCount, cyclesPath);
     if (status == 0)
     {
-        Utils.RunProcess(cyclesPath, "Start Free Memory");
+        Utils.RunProcess(cyclesPath, "Start Free Used Memory");
         Utils.ForceGC();
         Utils.RunProcess(cyclesPath, "End Program");
     }
@@ -24,7 +24,7 @@ catch (Exception e)
 
 int Run(string filePath, int recordCount, string cyclesPath)
 {
-    Utils.RunProcess(cyclesPath, "Start File Read");
+    Utils.RunProcess(cyclesPath, "Start Read People CSV File");
     var rows = new string[recordCount];
 
     {
@@ -38,7 +38,7 @@ int Run(string filePath, int recordCount, string cyclesPath)
         }
     }
 
-    Utils.RunProcess(cyclesPath, "Start Map to Person Record");
+    Utils.RunProcess(cyclesPath, "Start Validate Person Rows");
     var people = new Person[recordCount];
     for (int i = 0; i < rows.Length; i++)
     {
@@ -52,10 +52,10 @@ int Run(string filePath, int recordCount, string cyclesPath)
         people[i] = new Person() { Name = temp[0], Age = int.Parse(temp[1]) };
     }
 
-    Utils.RunProcess(cyclesPath, "Start Quick Sort Person Array");
+    Utils.RunProcess(cyclesPath, "Start Quick Sort Person Rows");
     Utils.QuickSort(people, 0, recordCount - 1);
 
-    Utils.RunProcess(cyclesPath, "Start Print Results");
+    Utils.RunProcess(cyclesPath, "Start Print Person Rows");
     Console.WriteLine("DDDDDDDDDDDDDDDDDDDD");
     Console.WriteLine("name,age");
     foreach (var person in people)

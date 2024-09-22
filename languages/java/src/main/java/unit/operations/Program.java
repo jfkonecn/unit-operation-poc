@@ -14,7 +14,7 @@ public class Program {
     try {
       int status = run(filePath, recordCount, cyclesPath);
       if (status == 0) {
-        runProcess(cyclesPath, "Start Free Memory");
+        runProcess(cyclesPath, "Start Free Used Memory");
         forceGC();
         runProcess(cyclesPath, "End Program");
       }
@@ -27,7 +27,7 @@ public class Program {
   }
 
   public static int run(String filePath, int recordCount, String cyclesPath) {
-    runProcess(cyclesPath, "Start File Read");
+    runProcess(cyclesPath, "Start Read People CSV File");
 
     String[] rows = new String[recordCount];
 
@@ -43,7 +43,7 @@ public class Program {
       return 1;
     }
 
-    runProcess(cyclesPath, "Start Map to Person Record");
+    runProcess(cyclesPath, "Start Validate Person Rows");
     Person[] people = new Person[recordCount];
     for (int i = 0; i < rows.length; i++) {
       String row = rows[i];
@@ -55,10 +55,10 @@ public class Program {
       people[i] = new Person(temp[0], Integer.parseInt(temp[1]));
     }
 
-    runProcess(cyclesPath, "Start Quick Sort Person Array");
+    runProcess(cyclesPath, "Start Quick Sort Person Rows");
     quickSort(people, 0, recordCount - 1);
 
-    runProcess(cyclesPath, "Start Print Results");
+    runProcess(cyclesPath, "Start Print Person Rows");
     System.out.println("DDDDDDDDDDDDDDDDDDDD");
     System.out.println("name,age");
     for (Person person : people) {

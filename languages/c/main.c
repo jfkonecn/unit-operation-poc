@@ -116,7 +116,7 @@ void readFile(const char *filePath, char **rows, int recordCount) {
 }
 
 int run(const char *filePath, int recordCount, const char *cyclesPath) {
-  runProcess(cyclesPath, "Start File Read");
+  runProcess(cyclesPath, "Start Read People CSV File");
 
   char **rows = (char **)malloc(recordCount * sizeof(char *));
   for (int i = 0; i < recordCount; i++) {
@@ -125,7 +125,7 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
 
   readFile(filePath, rows, recordCount);
 
-  runProcess(cyclesPath, "Start Map to Person Record");
+  runProcess(cyclesPath, "Start Validate Person Rows");
 
   Person *people = (Person *)malloc(recordCount * sizeof(Person));
 
@@ -154,10 +154,10 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
     people[i].age = atoi(temp[1]);
   }
 
-  runProcess(cyclesPath, "Start Quick Sort Person Array");
+  runProcess(cyclesPath, "Start Quick Sort Person Rows");
   quickSort(people, 0, recordCount - 1);
 
-  runProcess(cyclesPath, "Start Print Results");
+  runProcess(cyclesPath, "Start Print Person Rows");
   printf("DDDDDDDDDDDDDDDDDDDD\n");
   printf("name,age\n");
   for (int i = 0; i < recordCount; i++) {
@@ -165,7 +165,7 @@ int run(const char *filePath, int recordCount, const char *cyclesPath) {
   }
   printf("DDDDDDDDDDDDDDDDDDDD\n");
 
-  runProcess(cyclesPath, "Start Free Memory");
+  runProcess(cyclesPath, "Start Free Used Memory");
 
   for (int i = 0; i < recordCount; i++) {
     free(rows[i]);

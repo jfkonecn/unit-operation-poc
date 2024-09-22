@@ -53,7 +53,7 @@ def force_gc():
 
 
 def run(file_path: str, record_count: int, cycles_path: str) -> int:
-    run_process(cycles_path, "Start File Read")
+    run_process(cycles_path, "Start Read People CSV File")
     rows = [None] * record_count
 
     with open(file_path, "r") as reader:
@@ -63,7 +63,7 @@ def run(file_path: str, record_count: int, cycles_path: str) -> int:
             if line:
                 rows[i] = line
 
-    run_process(cycles_path, "Start Map to Person Record")
+    run_process(cycles_path, "Start Validate Person Rows")
     people = [None] * record_count
 
     for i, row in enumerate(rows):
@@ -73,10 +73,10 @@ def run(file_path: str, record_count: int, cycles_path: str) -> int:
             return 2
         people[i] = Person(name=temp[0], age=int(temp[1]))
 
-    run_process(cycles_path, "Start Quick Sort Person Array")
+    run_process(cycles_path, "Start Quick Sort Person Rows")
     quick_sort(people, 0, record_count - 1)
 
-    run_process(cycles_path, "Start Print Results")
+    run_process(cycles_path, "Start Print Person Rows")
     print("DDDDDDDDDDDDDDDDDDDD")
     print("name,age")
     for person in people:
@@ -103,7 +103,7 @@ def main():
     try:
         status = run(file_path, record_count, cycles_path)
         if status == 0:
-            run_process(cycles_path, "Start Free Memory")
+            run_process(cycles_path, "Start Free Used Memory")
             force_gc()
             run_process(cycles_path, "End Program")
         return status

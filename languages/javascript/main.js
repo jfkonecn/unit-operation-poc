@@ -49,7 +49,7 @@ function forceGC() {
 }
 
 function run(filePath, recordCount, cyclesPath) {
-  runProcess(cyclesPath, "Start File Read");
+  runProcess(cyclesPath, "Start Read People CSV File");
 
   let rows = new Array(recordCount);
 
@@ -64,7 +64,7 @@ function run(filePath, recordCount, cyclesPath) {
     return 1;
   }
 
-  runProcess(cyclesPath, "Start Map to Person Record");
+  runProcess(cyclesPath, "Start Validate Person Rows");
 
   let people = new Array(recordCount);
   for (let i = 0; i < rows.length; i++) {
@@ -82,10 +82,10 @@ function run(filePath, recordCount, cyclesPath) {
     };
   }
 
-  runProcess(cyclesPath, "Start Quick Sort Person Array");
+  runProcess(cyclesPath, "Start Quick Sort Person Rows");
   quickSort(people, 0, recordCount - 1);
 
-  runProcess(cyclesPath, "Start Print Results");
+  runProcess(cyclesPath, "Start Print Person Rows");
   console.log("DDDDDDDDDDDDDDDDDDDD");
   console.log("name,age");
   people.forEach((person) => {
@@ -103,7 +103,7 @@ const cyclesPath = process.argv[4];
 try {
   const status = run(filePath, recordCount, cyclesPath);
   if (status === 0) {
-    runProcess(cyclesPath, "Start Free Memory");
+    runProcess(cyclesPath, "Start Free Used Memory");
     forceGC();
     runProcess(cyclesPath, "End Program");
   }

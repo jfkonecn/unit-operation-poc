@@ -60,7 +60,7 @@ func forceGC() {
 }
 
 func run(filePath string, recordCount int, cyclesPath string) int {
-	runProcess(cyclesPath, "Start File Read")
+	runProcess(cyclesPath, "Start Read People CSV File")
 	rows := make([]string, recordCount)
 
 	file, err := os.Open(filePath)
@@ -83,7 +83,7 @@ func run(filePath string, recordCount int, cyclesPath string) int {
 		return 1
 	}
 
-	runProcess(cyclesPath, "Start Map to Person Record")
+	runProcess(cyclesPath, "Start Validate Person Rows")
 	people := make([]Person, recordCount)
 	for i, row := range rows {
 		temp := strings.Split(row, ",")
@@ -99,10 +99,10 @@ func run(filePath string, recordCount int, cyclesPath string) int {
 		people[i] = Person{Name: temp[0], Age: age}
 	}
 
-	runProcess(cyclesPath, "Start Quick Sort Person Array")
+	runProcess(cyclesPath, "Start Quick Sort Person Rows")
 	quickSort(people, 0, recordCount-1)
 
-	runProcess(cyclesPath, "Start Print Results")
+	runProcess(cyclesPath, "Start Print Person Rows")
 	fmt.Println("DDDDDDDDDDDDDDDDDDDD")
 	fmt.Println("name,age")
 	for _, person := range people {
@@ -139,7 +139,7 @@ func main() {
 
 	status := run(filePath, recordCount, cyclesPath)
 	if status == 0 {
-		runProcess(cyclesPath, "Start Free Memory")
+		runProcess(cyclesPath, "Start Free Used Memory")
 		forceGC()
 		runProcess(cyclesPath, "End Program")
 	}
