@@ -317,20 +317,22 @@ def saveAsMarkdown(
             _ = md_file.write("\n")
         _ = md_file.write("\n\n")
 
-        print(df)
-        total_records = df.index.values.reshape(-1, 1)
+        df.reset_index(inplace=True)
+        median_record = int(pd.Series(df.index).median())
+        removed_row = df.loc[[median_record]]
+        print(removed_row)
+        df_filtered = df.drop(median_record)
+
         for lang in df.columns:
-            values = df[lang].values
+            x_filtered = df_filtered.index.values.reshape(-1, 1)
+            y_filtered = df_filtered[lang].values
             model = LinearRegression()
-            model = model.fit(total_records, values)
+            model = model.fit(x_filtered, y_filtered)
 
             slope = model.coef_[0]
             intercept = model.intercept_
-            r_squared = model.score(total_records, values)
-            print(f'{lang}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}')
-
-
-        print(f"Equation of the line (using first and last points): y = {slope:.2f}x + {intercept:.2f}")
+            r_squared = model.score(x_filtered, y_filtered)
+            print(f"{lang}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}")
 
 
 def saveAllPivotPermutationsAsMarkDown(
@@ -412,7 +414,8 @@ def pivot_and_save_base(
         output_df.to_excel(writer, sheet_name=f"{x_axis}-{y_axis}"[:31], index=False)
 
     file_path_md = os.path.join(
-        aggregates_path, f"{"_".join([col.replace(" ", "_") for col in columns])}_base.md"
+        aggregates_path,
+        f"{"_".join([col.replace(" ", "_") for col in columns])}_base.md",
     )
     saveAllPivotPermutationsAsMarkDown(
         pivot_df, title_prefix, x_axis, y_axis, "logarithmic", separator, file_path_md
@@ -454,7 +457,8 @@ def pivot_and_cost(
         ]
 
     file_path_md = os.path.join(
-        aggregates_path, f"{"_".join([col.replace(" ", "_") for col in columns])}_cost.md"
+        aggregates_path,
+        f"{"_".join([col.replace(" ", "_") for col in columns])}_cost.md",
     )
 
     saveAllPivotPermutationsAsMarkDown(
