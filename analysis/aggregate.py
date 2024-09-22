@@ -318,27 +318,47 @@ def saveAsMarkdown(
         _ = md_file.write("\n\n")
 
         df.reset_index(inplace=True)
-        median_record = int(pd.Series(df.index).median())
-        removed_row = df.loc[[median_record]]
-        df_filtered = df.drop(median_record)
+        df_filtered: pd.DataFrame = df[::2]
+        df_removed: pd.DataFrame = df.drop(df_filtered.index)
+        x_filtered = df_filtered.iloc[:, 0].values.reshape(-1, 1)
 
-        for lang in df.columns:
-            x_filtered = df_filtered.index.values.reshape(-1, 1)
-            y_filtered = df_filtered[lang].values
+        md_columns = [f"Predicted {y_axis}", f"Actual {y_axis}"]
+
+        for idx, series_name in enumerate(df.columns):
+            if idx == 0:
+                continue
+            y_filtered = df_filtered[series_name].values
             model = LinearRegression()
             model = model.fit(x_filtered, y_filtered)
-
-            predicted_value = model.predict([[median_record]])[0]
-
-            actual_value = removed_row[lang].values[0]
-
             slope = model.coef_[0]
             intercept = model.intercept_
             r_squared = model.score(x_filtered, y_filtered)
-            print(f"{lang}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}")
-            print(
-                f"For {removed_row[x_axis].values[0]} Predicted: {predicted_value}, Actual: {actual_value} "
+
+            _ = md_file.write(
+                f"{series_name}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}\n\n"
             )
+
+            _ = md_file.write(f"| {x_axis} |")
+            for column_name in md_columns:
+                _ = md_file.write(f" {column_name} |")
+            _ = md_file.write("\n")
+
+            _ = md_file.write("| ------------- |")
+            for _ in md_columns:
+                _ = md_file.write(" ------------- |")
+            _ = md_file.write("\n")
+
+            for _, row in df_removed.iterrows():
+                actual_x = row.iloc[0]
+                actual_y = row[series_name]
+
+                predicted_value = model.predict([[actual_x]])[0]
+
+                _ = md_file.write(
+                    f"| {actual_x} | {predicted_value:.2f} | {actual_y} |\n"
+                )
+
+            _ = md_file.write("\n\n")
 
 
 def saveAllPivotPermutationsAsMarkDown(
