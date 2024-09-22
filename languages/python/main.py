@@ -2,7 +2,7 @@ import gc
 import subprocess
 import sys
 
-sys.setrecursionlimit(2000)
+sys.setrecursionlimit(2048)
 
 
 class Person:
