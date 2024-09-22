@@ -320,7 +320,6 @@ def saveAsMarkdown(
         df.reset_index(inplace=True)
         median_record = int(pd.Series(df.index).median())
         removed_row = df.loc[[median_record]]
-        print(removed_row)
         df_filtered = df.drop(median_record)
 
         for lang in df.columns:
@@ -329,10 +328,17 @@ def saveAsMarkdown(
             model = LinearRegression()
             model = model.fit(x_filtered, y_filtered)
 
+            predicted_value = model.predict([[median_record]])[0]
+
+            actual_value = removed_row[lang].values[0]
+
             slope = model.coef_[0]
             intercept = model.intercept_
             r_squared = model.score(x_filtered, y_filtered)
             print(f"{lang}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}")
+            print(
+                f"For {removed_row[x_axis].values[0]} Predicted: {predicted_value}, Actual: {actual_value} "
+            )
 
 
 def saveAllPivotPermutationsAsMarkDown(
