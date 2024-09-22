@@ -1,4 +1,4 @@
 Distributor ID:	Ubuntu
-Description:	Ubuntu 22.04.4 LTS
-Release:	22.04
-Codename:	jammy
+Description:	Ubuntu 24.04.1 LTS
+Release:	24.04
+Codename:	noble
