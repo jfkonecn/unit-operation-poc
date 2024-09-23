@@ -407,6 +407,7 @@ def pivot_and_save_base(
     x_axis: str,
     y_axis: str,
     is_unit_op: bool,
+    md_file_prefix: str,
 ):
     output_df = pd.DataFrame()
 
@@ -442,7 +443,7 @@ def pivot_and_save_base(
 
     file_path_md = os.path.join(
         aggregates_path,
-        f"{"_".join([col.replace(" ", "_") for col in columns])}_base.md",
+        f"{md_file_prefix}_{title_prefix.replace(" ", "_")}_{"_".join([col.replace(" ", "_") for col in columns])}_base.md",
     )
     saveAllPivotPermutationsAsMarkDown(
         pivot_df, title_prefix, x_axis, y_axis, "logarithmic", separator, file_path_md
@@ -455,6 +456,7 @@ def pivot_and_cost(
     x_axis: str,
     y_axis: str,
     is_unit_op: bool,
+    md_file_prefix: str,
 ):
     output_df = pd.DataFrame()
 
@@ -485,7 +487,7 @@ def pivot_and_cost(
 
     file_path_md = os.path.join(
         aggregates_path,
-        f"{"_".join([col.replace(" ", "_") for col in columns])}_cost.md",
+        f"{md_file_prefix}_{title_prefix.replace(" ", "_")}_{"_".join([col.replace(" ", "_") for col in columns])}_cost.md",
     )
 
     saveAllPivotPermutationsAsMarkDown(
@@ -503,61 +505,80 @@ unit_ops_cpu_df.to_excel(unit_ops_cpu_path, sheet_name="base", index=False)
 whole_run_memory_df.to_excel(whole_run_memory_path, sheet_name="base", index=False)
 unit_ops_memory_df.to_excel(unit_ops_memory_path, sheet_name="base", index=False)
 
+index = 0
+index += 1
 pivot_and_save_base(
-    "Whole Run", whole_run_cpu_path, whole_run_cpu_df, "Total Records", "Cycles", False
-)
-pivot_and_save_base(
-    "Whole Run", whole_run_cpu_path, whole_run_cpu_df, "File Size (B)", "Cycles", False
+    "Whole Run",
+    whole_run_cpu_path,
+    whole_run_cpu_df,
+    "Total Records",
+    "Cycles",
+    False,
+    str(index),
 )
 
+index += 1
 pivot_and_save_base(
-    "Unit Operations",
+    "Whole Run Cycles",
+    whole_run_cpu_path,
+    whole_run_cpu_df,
+    "File Size (B)",
+    "Cycles",
+    False,
+    str(index),
+)
+
+index += 1
+pivot_and_save_base(
+    "Unit Operations Cycles",
     unit_ops_cpu_path,
     unit_ops_cpu_df,
     "Total Records",
     "Cycles",
     True,
+    str(index),
 )
+
+index += 1
 pivot_and_save_base(
-    "Unit Operations",
+    "Unit Operations File",
     unit_ops_cpu_path,
     unit_ops_cpu_df,
     "File Size (B)",
     "Cycles",
     True,
+    str(index),
 )
 
+index += 1
 pivot_and_save_base(
-    "Whole Run",
+    "Whole Run Memory",
     whole_run_memory_path,
     whole_run_memory_df,
     "Total Records",
     "Max Heap Memory (B)",
     False,
+    str(index),
 )
 
 cost_whole_run_cpu_df = join_cost_df(whole_run_cpu_df)
 
+index += 1
 pivot_and_cost(
-    "Whole Run",
+    "Whole Run Dollars",
     cost_whole_run_cpu_df,
     "Total Records",
     "Gigabytes Per Dollar",
     False,
+    str(index),
 )
 
+index += 1
 pivot_and_cost(
-    "Whole Run",
-    cost_whole_run_cpu_df,
-    "Total Records",
-    "Gigabytes Per Hour",
-    False,
-)
-
-pivot_and_cost(
-    "Whole Run",
+    "Whole Run Time",
     cost_whole_run_cpu_df,
     "Total Records",
     "Time (ms)",
     False,
+    str(index),
 )
