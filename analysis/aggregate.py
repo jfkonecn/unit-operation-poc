@@ -340,7 +340,7 @@ def saveAsMarkdown(
             r_squared = model.score(x_to_model, y_to_model)
 
             _ = md_file.write(
-                f"{series_name}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.4f}\n\n"
+                f"{series_name}: y = {slope:.2e}x + {intercept:.2e}, R^2 = {r_squared:.4f}\n\n"
             )
 
             _ = md_file.write(f"| {x_axis} |")
