@@ -4,6 +4,7 @@ import os
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 
 def fixLanguages(df: pd.DataFrame):
@@ -319,24 +320,27 @@ def saveAsMarkdown(
         _ = md_file.write("\n\n")
 
         df.reset_index(inplace=True)
-        df_filtered: pd.DataFrame = df[::2]
-        df_removed: pd.DataFrame = df.drop(df_filtered.index)
-        x_filtered = df_filtered.iloc[:, 0].values.reshape(-1, 1)
+        # df_to_model: pd.DataFrame = df[::3]
+        # df_to_predict: pd.DataFrame = df.drop(df_to_model.index)
+        df_to_model, df_to_predict = train_test_split(
+            df, test_size=0.25, random_state=42
+        )
+        x_to_model = df_to_model.iloc[:, 0].values.reshape(-1, 1)
 
-        md_columns = [f"Predicted {y_axis}", f"Actual {y_axis}"]
+        md_columns = [f"Predicted {y_axis}", f"Actual {y_axis}", "% Error"]
 
         for idx, series_name in enumerate(df.columns):
             if idx == 0:
                 continue
-            y_filtered = df_filtered[series_name].values
+            y_to_model = df_to_model[series_name].values
             model = LinearRegression()
-            model = model.fit(x_filtered, y_filtered)
+            model = model.fit(x_to_model, y_to_model)
             slope = model.coef_[0]
             intercept = model.intercept_
-            r_squared = model.score(x_filtered, y_filtered)
+            r_squared = model.score(x_to_model, y_to_model)
 
             _ = md_file.write(
-                f"{series_name}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.2f}\n\n"
+                f"{series_name}: y = {slope:.2f}x + {intercept:.2f}, R^2 = {r_squared:.4f}\n\n"
             )
 
             _ = md_file.write(f"| {x_axis} |")
@@ -349,14 +353,16 @@ def saveAsMarkdown(
                 _ = md_file.write(" ------------- |")
             _ = md_file.write("\n")
 
-            for _, row in df_removed.iterrows():
-                actual_x = row.iloc[0]
+            for _, row in df_to_predict.iterrows():
+                actual_x = row[x_axis]
                 actual_y = row[series_name]
 
-                predicted_value = model.predict([[actual_x]])[0]
+                predicted_y = model.predict([[actual_x]])[0]
+
+                percent_error = abs(actual_y - predicted_y) / actual_y * 100
 
                 _ = md_file.write(
-                    f"| {actual_x} | {predicted_value:.2f} | {actual_y} |\n"
+                    f"| {actual_x} | {predicted_y:.2f} | {actual_y} | {percent_error:.2f} |\n"
                 )
 
             _ = md_file.write("\n\n")
