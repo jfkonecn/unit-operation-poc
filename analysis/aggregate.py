@@ -201,9 +201,12 @@ def join_cost_df(df: pd.DataFrame):
     df["Gigabytes Per Hour"] = (df["Bytes Per Cycle"] * df["Speed (GHz)"] * 3600).round(
         3
     )
+
     df["Gigabytes Per Dollar"] = (
         df["Gigabytes Per Hour"] / df["Dollars Per Hour"]
     ).round(3)
+
+    df["Dollars"] = df["Dollars Per Hour"] * (df["Time (ms)"] / (1000 * 3600))
     df["Time (ms)"] = (df["Cycles"] / (1e6 * df["Speed (GHz)"])).round(1)
     return df
 
@@ -315,7 +318,10 @@ def saveAsMarkdown(
         for x_value, row in df.iterrows():
             _ = md_file.write(f"| {x_value} |")
             for _, y_value in row.items():
-                _ = md_file.write(f" {y_value} |")
+                if isinstance(y_value, float):
+                    _ = md_file.write(f" {y_value:.2e} |")
+                else:
+                    _ = md_file.write(f" {y_value} |")
             _ = md_file.write("\n")
         _ = md_file.write("\n\n")
 
@@ -585,6 +591,16 @@ pivot_and_cost(
     cost_whole_run_cpu_df,
     "Total Records",
     "Time (ms)",
+    False,
+    str(index),
+)
+
+index += 1
+pivot_and_cost(
+    "Whole Run Time",
+    cost_whole_run_cpu_df,
+    "Total Records",
+    "Dollars",
     False,
     str(index),
 )
