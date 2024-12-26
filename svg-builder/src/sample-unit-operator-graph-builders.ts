@@ -374,6 +374,61 @@ export function buildMvcFlow() {
   ];
   renderSampleSvg("mvc-flow", flow);
 }
+export function buildUnixPipe() {
+  const flow: OperationFlow = [
+    [
+      {
+        type: "io",
+        label: "cat file.txt",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "filter",
+        label: 'grep "word"',
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "Standard Error",
+      },
+    ],
+    [
+      {
+        type: "map",
+        label: "wc -l",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "io",
+        unitOutput: true,
+        label: "Standard Out",
+      },
+    ],
+  ];
+  renderSampleSvg("unix-pipe", flow);
+}
 
 export function buildWeatherApiCall() {
   const flow: OperationFlow = [

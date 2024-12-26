@@ -24,6 +24,7 @@ import {
   buildPerformanceTests,
   buildTestEverything,
   buildWeatherApiCall,
+  buildUnixPipe,
 } from "./sample-unit-operator-graph-builders.ts";
 
 buildMapSample();
@@ -47,3 +48,4 @@ buildGetOneRowAtATime();
 buildInMemoryJoin();
 buildPerformanceTests();
 buildKey();
+buildUnixPipe();

@@ -43,7 +43,7 @@ type GlobalStateReadOperation = {
 type RootIoOperation = {
   type: "io";
 } & UnitOperation &
-  SimpleOutput;
+  (SimpleOutput | ResultOutput);
 
 type MiddleIoOperation = {
   type: "io";
