@@ -25,6 +25,8 @@ import {
   buildTestEverything,
   buildWeatherApiCall,
   buildUnixPipe,
+  buildServerSideRender,
+  buildClientSideRender,
 } from "./sample-unit-operator-graph-builders.ts";
 
 buildMapSample();
@@ -49,3 +51,5 @@ buildInMemoryJoin();
 buildPerformanceTests();
 buildKey();
 buildUnixPipe();
+buildServerSideRender();
+buildClientSideRender();

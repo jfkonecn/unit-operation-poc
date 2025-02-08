@@ -8,9 +8,10 @@ function renderSampleSvg(
   label: string,
   flow: OperationFlow,
   includeSlideSize = true,
+  includeKey = true,
 ) {
   const { svg, saveToFile } = createSvgBuilder();
-  drawOperationFlow(svg, flow);
+  drawOperationFlow(svg, flow, [0, flow.length - 1], includeKey);
   saveToFile(`unit-operation-graphs/${label}.svg`);
   const totalColumns = 2;
   console.log(`${label} has ${flow.length} columns`);
@@ -531,4 +532,304 @@ export function buildPerformanceTests() {
 
 export function buildKey() {
   renderSampleSvg("key", [[], [], [], []] as unknown as OperationFlow, false);
+}
+
+export function buildServerSideRender() {
+  const flow: OperationFlow = [
+    [
+      {
+        type: "io",
+        label: "GET index.html",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "passthrough",
+        label: "/index.html",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Get Patients Table Data",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [{ index: 1 }],
+      },
+    ],
+    [
+      {
+        type: "map",
+        label: "Map to HTML",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "500 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "200 Response",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Parse HTML",
+        next: [
+          {
+            index: 0,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "GET styles.css",
+        next: [
+          {
+            index: 0,
+          },
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "passthrough",
+        label: "/styles.css",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "200 Reponse",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Render HTML",
+        unitOutput: true,
+      },
+    ],
+  ];
+  renderSampleSvg("server-side-render", flow, true, false);
+}
+
+export function buildClientSideRender() {
+  const flow: OperationFlow = [
+    [
+      {
+        type: "io",
+        label: "GET index.html",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "passthrough",
+        label: "/index.html",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "200 Response",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Parse HTML",
+        next: [
+          {
+            index: 0,
+          },
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "GET styles.css",
+        next: [
+          {
+            index: 0,
+          },
+          {
+            index: 1,
+          },
+        ],
+      },
+      {
+        type: "io",
+        label: "GET app.js",
+        next: [
+          {
+            index: 2,
+          },
+          {
+            index: 3,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "passthrough",
+        label: "/styles.css",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+      {
+        type: "passthrough",
+        label: "/app.js",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Render HTML",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "GET /api/patients",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [
+          {
+            index: 1,
+          },
+        ],
+      },
+    ],
+    [
+      {
+        type: "passthrough",
+        label: "/api/patients",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "404 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Get Patients Table Data",
+        success: [
+          {
+            index: 0,
+          },
+        ],
+        error: [{ index: 1 }],
+      },
+    ],
+    [
+      {
+        type: "map",
+        label: "Map to JSON",
+        next: [{ index: 0 }],
+      },
+      {
+        type: "io",
+        unitOutput: true,
+        label: "500 Error",
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "200 Response",
+        next: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "validate",
+        label: "Parse JSON",
+        success: [{ index: 0 }],
+        error: [{ index: 0 }],
+      },
+    ],
+    [
+      {
+        type: "io",
+        label: "Render HTML",
+        unitOutput: true,
+      },
+    ],
+  ];
+  renderSampleSvg("client-side-render", flow, true, false);
 }
